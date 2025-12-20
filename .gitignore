@@ -66,3 +66,8 @@ dist/
 # Debugging
 debug/
 .dlv/
+
+
+# Aii Agent local permissions (do not commit)
+.aii/permissions.json
+.aii/audit.log

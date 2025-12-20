@@ -14,9 +14,9 @@ func TestMaxArea(t *testing.T) {
 		{"Example 2", []int{1, 1}, 1},
 		{"Two equal heights", []int{2, 2, 2, 2}, 6},
 		{"Single large height", []int{1, 100, 1}, 2},
-		{"Increasing sequence", []int{1, 2, 3, 4, 5}, 8},
-		{"Decreasing sequence", []int{5, 4, 3, 2, 1}, 8},
-		{"Large height at edges", []int{100, 1, 1, 100}, 200},
+		{"Increasing sequence", []int{1, 2, 3, 4, 5}, 6},
+		{"Decreasing sequence", []int{5, 4, 3, 2, 1}, 6},
+		{"Large height at edges", []int{100, 1, 1, 100}, 300},
 	}
 
 	for _, tt := range tests {

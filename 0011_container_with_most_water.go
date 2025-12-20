@@ -21,7 +21,12 @@ func MaxArea(height []int) int {
 	for left < right {
 		// Calculate width and current height (minimum of two lines)
 		width := right - left
-		currentHeight := min(height[left], height[right])
+		var currentHeight int
+		if height[left] < height[right] {
+			currentHeight = height[left]
+		} else {
+			currentHeight = height[right]
+		}
 		currentArea := width * currentHeight
 
 		// Update max area
@@ -38,12 +43,4 @@ func MaxArea(height []int) int {
 	}
 
 	return maxArea
-}
-
-// Helper function to find minimum of two integers
-func minInt(a, b int) int {
-	if a < b {
-		return a
-	}
-	return b
 }

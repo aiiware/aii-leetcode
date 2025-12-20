@@ -15,7 +15,7 @@ func TestThreeSumClosest(t *testing.T) {
 		{"Example 2", []int{0, 0, 0}, 1, 0},
 		{"Exact match", []int{1, 1, 1, 0}, -100, 2},
 		{"Negative target", []int{-1, 2, 1, -4}, -100, -4},
-		{"Large differences", []int{-1000, -1000, 1000, 1000, 1000}, 0, 0},
+		{"Simple negative", []int{-1, 0, 1}, 0, 0},
 		{"Small array", []int{1, 1, 1}, 3, 3},
 		{"Exact zero", []int{-1, 0, 1, 2}, 0, 0},
 	}
