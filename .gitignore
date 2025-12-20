@@ -1,0 +1,68 @@
+# Go build artifacts
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+
+# Go test coverage
+coverage.txt
+coverage.html
+coverage.out
+*.cover
+
+# Go workspace files
+go.work
+go.work.sum
+
+# Go module vendor directory
+vendor/
+
+# Go binary directories
+bin/
+pkg/
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.classpath
+*.iml
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# Temporary files
+*.tmp
+*.log
+logs/
+
+# Leetcode specific
+solution
+test_solution
+*.solution
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Output directories
+output/
+dist/
+
+# Debugging
+debug/
+.dlv/
