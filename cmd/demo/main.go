@@ -6,7 +6,7 @@ import (
 )
 
 func main() {
-	fmt.Println("=== LeetCode Solutions Demo (Problems 0001-0020) ===")
+	fmt.Println("=== LeetCode Solutions Demo (Problems 0001-0030) ===")
 	fmt.Println()
 
 	// Two Sum examples
@@ -354,6 +354,180 @@ func main() {
 	fmt.Printf("Example 3: s = %q\n", s20c)
 	fmt.Printf("  Valid: %v\n\n", valid3)
 
+	// Merge Two Sorted Lists examples
+	fmt.Println("\n21. Merge Two Sorted Lists (Problem 0021)")
+	fmt.Println("------------------------------------------")
+
+	// Example 1
+	list21a1 := leetcode.NewListFromSlice([]int{1, 2, 4})
+	list21a2 := leetcode.NewListFromSlice([]int{1, 3, 4})
+	merged1 := leetcode.MergeTwoLists(list21a1, list21a2)
+	fmt.Printf("Example 1: list1 = [1, 2, 4], list2 = [1, 3, 4]\n")
+	fmt.Printf("  Merged: %v\n\n", merged1.ToSlice())
+
+	// Example 2
+	list21b1 := leetcode.NewListFromSlice([]int{})
+	list21b2 := leetcode.NewListFromSlice([]int{0})
+	merged2 := leetcode.MergeTwoLists(list21b1, list21b2)
+	fmt.Printf("Example 2: list1 = [], list2 = [0]\n")
+	fmt.Printf("  Merged: %v\n\n", merged2.ToSlice())
+
+	// Generate Parentheses examples
+	fmt.Println("\n22. Generate Parentheses (Problem 0022)")
+	fmt.Println("----------------------------------------")
+
+	// Example 1
+	n22a := 3
+	parentheses1 := leetcode.GenerateParenthesis(n22a)
+	fmt.Printf("Example 1: n = %d\n", n22a)
+	fmt.Printf("  Generated: %v\n\n", parentheses1)
+
+	// Example 2
+	n22b := 1
+	parentheses2 := leetcode.GenerateParenthesis(n22b)
+	fmt.Printf("Example 2: n = %d\n", n22b)
+	fmt.Printf("  Generated: %v\n\n", parentheses2)
+
+	// Merge k Sorted Lists examples
+	fmt.Println("\n23. Merge k Sorted Lists (Problem 0023)")
+	fmt.Println("----------------------------------------")
+
+	// Example 1
+	lists23a := []*leetcode.ListNode{
+		leetcode.NewListFromSlice([]int{1, 4, 5}),
+		leetcode.NewListFromSlice([]int{1, 3, 4}),
+		leetcode.NewListFromSlice([]int{2, 6}),
+	}
+	mergedK1 := leetcode.MergeKLists(lists23a)
+	fmt.Printf("Example 1: lists = [[1,4,5], [1,3,4], [2,6]]\n")
+	fmt.Printf("  Merged: %v\n\n", mergedK1.ToSlice())
+
+	// Example 2
+	lists23b := []*leetcode.ListNode{}
+	mergedK2 := leetcode.MergeKLists(lists23b)
+	fmt.Printf("Example 2: lists = []\n")
+	fmt.Printf("  Merged: %v\n\n", mergedK2.ToSlice())
+
+	// Swap Nodes in Pairs examples
+	fmt.Println("\n24. Swap Nodes in Pairs (Problem 0024)")
+	fmt.Println("----------------------------------------")
+
+	// Example 1
+	list24a := leetcode.NewListFromSlice([]int{1, 2, 3, 4})
+	swapped1 := leetcode.SwapPairs(list24a)
+	fmt.Printf("Example 1: head = [1, 2, 3, 4]\n")
+	fmt.Printf("  Swapped: %v\n\n", swapped1.ToSlice())
+
+	// Example 2
+	list24b := leetcode.NewListFromSlice([]int{1})
+	swapped2 := leetcode.SwapPairs(list24b)
+	fmt.Printf("Example 2: head = [1]\n")
+	fmt.Printf("  Swapped: %v\n\n", swapped2.ToSlice())
+
+	// Reverse Nodes in k-Group examples
+	fmt.Println("\n25. Reverse Nodes in k-Group (Problem 0025)")
+	fmt.Println("--------------------------------------------")
+
+	// Example 1
+	list25a := leetcode.NewListFromSlice([]int{1, 2, 3, 4, 5})
+	reversedK1 := leetcode.ReverseKGroup(list25a, 2)
+	fmt.Printf("Example 1: head = [1, 2, 3, 4, 5], k = 2\n")
+	fmt.Printf("  Reversed: %v\n\n", reversedK1.ToSlice())
+
+	// Example 2
+	list25b := leetcode.NewListFromSlice([]int{1, 2, 3, 4, 5})
+	reversedK2 := leetcode.ReverseKGroup(list25b, 3)
+	fmt.Printf("Example 2: head = [1, 2, 3, 4, 5], k = 3\n")
+	fmt.Printf("  Reversed: %v\n\n", reversedK2.ToSlice())
+
+	// Remove Duplicates from Sorted Array examples
+	fmt.Println("\n26. Remove Duplicates from Sorted Array (Problem 0026)")
+	fmt.Println("-------------------------------------------------------")
+
+	// Example 1
+	nums26a := []int{1, 1, 2}
+	k26a := leetcode.RemoveDuplicates(nums26a)
+	fmt.Printf("Example 1: nums = [1, 1, 2]\n")
+	fmt.Printf("  Result: k = %d, nums = %v\n\n", k26a, nums26a[:k26a])
+
+	// Example 2
+	nums26b := []int{0, 0, 1, 1, 1, 2, 2, 3, 3, 4}
+	k26b := leetcode.RemoveDuplicates(nums26b)
+	fmt.Printf("Example 2: nums = [0, 0, 1, 1, 1, 2, 2, 3, 3, 4]\n")
+	fmt.Printf("  Result: k = %d, nums = %v\n\n", k26b, nums26b[:k26b])
+
+	// Remove Element examples
+	fmt.Println("\n27. Remove Element (Problem 0027)")
+	fmt.Println("-----------------------------------")
+
+	// Example 1
+	nums27a := []int{3, 2, 2, 3}
+	val27a := 3
+	k27a := leetcode.RemoveElement(nums27a, val27a)
+	fmt.Printf("Example 1: nums = [3, 2, 2, 3], val = %d\n", val27a)
+	fmt.Printf("  Result: k = %d, nums = %v\n\n", k27a, nums27a[:k27a])
+
+	// Example 2
+	nums27b := []int{0, 1, 2, 2, 3, 0, 4, 2}
+	val27b := 2
+	k27b := leetcode.RemoveElement(nums27b, val27b)
+	fmt.Printf("Example 2: nums = [0, 1, 2, 2, 3, 0, 4, 2], val = %d\n", val27b)
+	fmt.Printf("  Result: k = %d, nums = %v\n\n", k27b, nums27b[:k27b])
+
+	// Find the Index of the First Occurrence in a String examples
+	fmt.Println("\n28. Find the Index of the First Occurrence in a String (Problem 0028)")
+	fmt.Println("------------------------------------------------------------------------")
+
+	// Example 1
+	haystack28a := "sadbutsad"
+	needle28a := "sad"
+	index28a := leetcode.StrStr(haystack28a, needle28a)
+	fmt.Printf("Example 1: haystack = %q, needle = %q\n", haystack28a, needle28a)
+	fmt.Printf("  Result: index = %d\n\n", index28a)
+
+	// Example 2
+	haystack28b := "leetcode"
+	needle28b := "leeto"
+	index28b := leetcode.StrStr(haystack28b, needle28b)
+	fmt.Printf("Example 2: haystack = %q, needle = %q\n", haystack28b, needle28b)
+	fmt.Printf("  Result: index = %d\n\n", index28b)
+
+	// Divide Two Integers examples
+	fmt.Println("\n29. Divide Two Integers (Problem 0029)")
+	fmt.Println("---------------------------------------")
+
+	// Example 1
+	dividend29a := 10
+	divisor29a := 3
+	quotient29a := leetcode.Divide(dividend29a, divisor29a)
+	fmt.Printf("Example 1: dividend = %d, divisor = %d\n", dividend29a, divisor29a)
+	fmt.Printf("  Result: %d / %d = %d\n\n", dividend29a, divisor29a, quotient29a)
+
+	// Example 2
+	dividend29b := 7
+	divisor29b := -3
+	quotient29b := leetcode.Divide(dividend29b, divisor29b)
+	fmt.Printf("Example 2: dividend = %d, divisor = %d\n", dividend29b, divisor29b)
+	fmt.Printf("  Result: %d / %d = %d\n\n", dividend29b, divisor29b, quotient29b)
+
+	// Substring with Concatenation of All Words examples
+	fmt.Println("\n30. Substring with Concatenation of All Words (Problem 0030)")
+	fmt.Println("--------------------------------------------------------------")
+
+	// Example 1
+	s30a := "barfoothefoobarman"
+	words30a := []string{"foo", "bar"}
+	indices30a := leetcode.FindSubstring(s30a, words30a)
+	fmt.Printf("Example 1: s = %q, words = %v\n", s30a, words30a)
+	fmt.Printf("  Result: indices = %v\n\n", indices30a)
+
+	// Example 2
+	s30b := "wordgoodgoodgoodbestword"
+	words30b := []string{"word", "good", "best", "word"}
+	indices30b := leetcode.FindSubstring(s30b, words30b)
+	fmt.Printf("Example 2: s = %q, words = %v\n", s30b, words30b)
+	fmt.Printf("  Result: indices = %v\n\n", indices30b)
+
 	fmt.Println("=== Demo Complete ===")
-	fmt.Println("\nAll LeetCode problems 0001-0020 implemented successfully!")
+	fmt.Println("\nAll LeetCode problems 0001-0030 implemented successfully!")
 }
