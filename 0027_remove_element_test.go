@@ -38,8 +38,8 @@ func TestRemoveElement(t *testing.T) {
 		expected := test.modified
 
 		// Sort both slices for comparison
-		sortInts(actual)
-		sortInts(expected)
+		sortIntsHelper(actual)
+		sortIntsHelper(expected)
 
 		if !reflect.DeepEqual(actual, expected) {
 			t.Errorf("Test %d (standard) failed: got array %v, expected %v",
@@ -81,8 +81,8 @@ func TestRemoveElementTwoPointers(t *testing.T) {
 		expected := test.modified
 
 		// Sort both slices for comparison
-		sortInts(actual)
-		sortInts(expected)
+		sortIntsHelper(actual)
+		sortIntsHelper(expected)
 
 		if !reflect.DeepEqual(actual, expected) {
 			t.Errorf("Test %d (two pointers) failed: got array %v, expected %v",
@@ -92,7 +92,7 @@ func TestRemoveElementTwoPointers(t *testing.T) {
 }
 
 // Helper function to sort integers
-func sortInts(arr []int) {
+func sortIntsHelper(arr []int) {
 	for i := 0; i < len(arr); i++ {
 		for j := i + 1; j < len(arr); j++ {
 			if arr[i] > arr[j] {
