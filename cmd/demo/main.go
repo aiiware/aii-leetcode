@@ -6,7 +6,7 @@ import (
 )
 
 func main() {
-	fmt.Println("=== LeetCode Solutions Demo (Problems 0001-0030) ===")
+	fmt.Println("=== LeetCode Solutions Demo (Problems 0001-0050) ===")
 	fmt.Println()
 
 	// Two Sum examples
@@ -380,7 +380,7 @@ func main() {
 	n22a := 3
 	parentheses1 := leetcode.GenerateParenthesis(n22a)
 	fmt.Printf("Example 1: n = %d\n", n22a)
-	fmt.Printf("  Generated: %v\n\n", parentheses1)
+	fmt.Printf("  Generated: %v (length: %d)\n\n", len(parentheses1), len(parentheses1))
 
 	// Example 2
 	n22b := 1
@@ -528,6 +528,331 @@ func main() {
 	fmt.Printf("Example 2: s = %q, words = %v\n", s30b, words30b)
 	fmt.Printf("  Result: indices = %v\n\n", indices30b)
 
+	// Next Permutation examples
+	fmt.Println("\n31. Next Permutation (Problem 0031)")
+	fmt.Println("-------------------------------------")
+
+	// Example 1
+	nums31a := []int{1, 2, 3}
+	leetcode.NextPermutation(nums31a)
+	fmt.Printf("Example 1: nums = [1, 2, 3]\n")
+	fmt.Printf("  Next permutation: %v\n\n", nums31a)
+
+	// Example 2
+	nums31b := []int{3, 2, 1}
+	leetcode.NextPermutation(nums31b)
+	fmt.Printf("Example 2: nums = [3, 2, 1]\n")
+	fmt.Printf("  Next permutation: %v\n\n", nums31b)
+
+	// Longest Valid Parentheses examples
+	fmt.Println("\n32. Longest Valid Parentheses (Problem 0032)")
+	fmt.Println("---------------------------------------------")
+
+	// Example 1
+	s32a := "(()"
+	longest32a := leetcode.LongestValidParentheses(s32a)
+	fmt.Printf("Example 1: s = %q\n", s32a)
+	fmt.Printf("  Longest valid parentheses length: %d\n\n", longest32a)
+
+	// Example 2
+	s32b := ")()())"
+	longest32b := leetcode.LongestValidParentheses(s32b)
+	fmt.Printf("Example 2: s = %q\n", s32b)
+	fmt.Printf("  Longest valid parentheses length: %d\n\n", longest32b)
+
+	// Search in Rotated Sorted Array examples
+	fmt.Println("\n33. Search in Rotated Sorted Array (Problem 0033)")
+	fmt.Println("---------------------------------------------------")
+
+	// Example 1
+	nums33a := []int{4, 5, 6, 7, 0, 1, 2}
+	target33a := 0
+	result33a := leetcode.SearchInRotatedSortedArray(nums33a, target33a)
+	fmt.Printf("Example 1: nums = %v, target = %d\n", nums33a, target33a)
+	fmt.Printf("  Index: %d\n\n", result33a)
+
+	// Example 2
+	nums33b := []int{4, 5, 6, 7, 0, 1, 2}
+	target33b := 3
+	result33b := leetcode.SearchInRotatedSortedArray(nums33b, target33b)
+	fmt.Printf("Example 2: nums = %v, target = %d\n", nums33b, target33b)
+	fmt.Printf("  Index: %d\n\n", result33b)
+
+	// Find First and Last Position examples
+	fmt.Println("\n34. Find First and Last Position of Element in Sorted Array (Problem 0034)")
+	fmt.Println("------------------------------------------------------------------------------------")
+
+	// Example 1
+	nums34a := []int{5, 7, 7, 8, 8, 10}
+	target34a := 8
+	result34a := leetcode.SearchRange(nums34a, target34a)
+	fmt.Printf("Example 1: nums = %v, target = %d\n", nums34a, target34a)
+	fmt.Printf("  Range: %v\n\n", result34a)
+
+	// Example 2
+	nums34b := []int{5, 7, 7, 8, 8, 10}
+	target34b := 6
+	result34b := leetcode.SearchRange(nums34b, target34b)
+	fmt.Printf("Example 2: nums = %v, target = %d\n", nums34b, target34b)
+	fmt.Printf("  Range: %v\n\n", result34b)
+
+	// Search Insert Position examples
+	fmt.Println("\n35. Search Insert Position (Problem 0035)")
+	fmt.Println("------------------------------------------")
+
+	// Example 1
+	nums35a := []int{1, 3, 5, 6}
+	target35a := 5
+	result35a := leetcode.SearchInsert(nums35a, target35a)
+	fmt.Printf("Example 1: nums = %v, target = %d\n", nums35a, target35a)
+	fmt.Printf("  Index: %d\n\n", result35a)
+
+	// Example 2
+	nums35b := []int{1, 3, 5, 6}
+	target35b := 7
+	result35b := leetcode.SearchInsert(nums35b, target35b)
+	fmt.Printf("Example 2: nums = %v, target = %d\n", nums35b, target35b)
+	fmt.Printf("  Index: %d\n\n", result35b)
+
+	// Valid Sudoku examples
+	fmt.Println("\n36. Valid Sudoku (Problem 0036)")
+	fmt.Println("---------------------------------")
+
+	// Example 1
+	board36a := [][]byte{
+		{'5', '3', '.', '.', '7', '.', '.', '.', '.'},
+		{'6', '.', '.', '1', '9', '5', '.', '.', '.'},
+		{'.', '9', '8', '.', '.', '.', '.', '6', '.'},
+		{'8', '.', '.', '.', '6', '.', '.', '.', '3'},
+		{'4', '.', '.', '8', '.', '3', '.', '.', '1'},
+		{'7', '.', '.', '.', '2', '.', '.', '.', '6'},
+		{'.', '6', '.', '.', '.', '.', '2', '8', '.'},
+		{'.', '.', '.', '4', '1', '9', '.', '.', '5'},
+		{'.', '.', '.', '.', '8', '.', '.', '7', '9'},
+	}
+	valid36a := leetcode.IsValidSudoku(board36a)
+	fmt.Printf("Example 1: Valid sudoku board\n")
+	fmt.Printf("  Is valid: %v\n\n", valid36a)
+
+	// Count and Say examples
+	fmt.Println("\n38. Count and Say (Problem 0038)")
+	fmt.Println("---------------------------------")
+
+	// Example 1
+	n38a := 1
+	result38a := leetcode.CountAndSay(n38a)
+	fmt.Printf("Example 1: n = %d\n", n38a)
+	fmt.Printf("  Sequence: %q\n\n", result38a)
+
+	// Example 2
+	n38b := 4
+	result38b := leetcode.CountAndSay(n38b)
+	fmt.Printf("Example 2: n = %d\n", n38b)
+	fmt.Printf("  Sequence: %q\n\n", result38b)
+
+	// Combination Sum examples
+	fmt.Println("\n39. Combination Sum (Problem 0039)")
+	fmt.Println("-----------------------------------")
+
+	// Example 1
+	candidates39a := []int{2, 3, 6, 7}
+	target39a := 7
+	combos39a := leetcode.CombinationSum(candidates39a, target39a)
+	fmt.Printf("Example 1: candidates = %v, target = %d\n", candidates39a, target39a)
+	fmt.Printf("  Result: %v (count: %d)\n\n", len(combos39a), len(combos39a))
+
+	// Example 2
+	candidates39b := []int{2, 3, 5}
+	target39b := 8
+	combos39b := leetcode.CombinationSum(candidates39b, target39b)
+	fmt.Printf("Example 2: candidates = %v, target = %d\n", candidates39b, target39b)
+	fmt.Printf("  Result: %v (count: %d)\n\n", len(combos39b), len(combos39b))
+
+	// Combination Sum II examples
+	fmt.Println("\n40. Combination Sum II (Problem 0040)")
+	fmt.Println("--------------------------------------")
+
+	// Example 1
+	candidates40a := []int{10, 1, 2, 7, 6, 1, 5}
+	target40a := 8
+	combos40a := leetcode.CombinationSum2(candidates40a, target40a)
+	fmt.Printf("Example 1: candidates = %v, target = %d\n", candidates40a, target40a)
+	fmt.Printf("  Result: %v (count: %d)\n\n", len(combos40a), len(combos40a))
+
+	// Example 2
+	candidates40b := []int{2, 5, 2, 1, 2}
+	target40b := 5
+	combos40b := leetcode.CombinationSum2(candidates40b, target40b)
+	fmt.Printf("Example 2: candidates = %v, target = %d\n", candidates40b, target40b)
+	fmt.Printf("  Result: %v (count: %d)\n\n", len(combos40b), len(combos40b))
+
+	// First Missing Positive examples
+	fmt.Println("\n41. First Missing Positive (Problem 0041)")
+	fmt.Println("------------------------------------------")
+
+	// Example 1
+	nums41a := []int{1, 2, 0}
+	result41a := leetcode.FirstMissingPositive(nums41a)
+	fmt.Printf("Example 1: nums = %v\n", nums41a)
+	fmt.Printf("  First missing positive: %d\n\n", result41a)
+
+	// Example 2
+	nums41b := []int{3, 4, -1, 1}
+	result41b := leetcode.FirstMissingPositive(nums41b)
+	fmt.Printf("Example 2: nums = %v\n", nums41b)
+	fmt.Printf("  First missing positive: %d\n\n", result41b)
+
+	// Trapping Rain Water examples
+	fmt.Println("\n42. Trapping Rain Water (Problem 0042)")
+	fmt.Println("---------------------------------------")
+
+	// Example 1
+	height42a := []int{0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1}
+	water42a := leetcode.Trap(height42a)
+	fmt.Printf("Example 1: height = %v\n", height42a)
+	fmt.Printf("  Water trapped: %d\n\n", water42a)
+
+	// Example 2
+	height42b := []int{4, 2, 0, 3, 2, 5}
+	water42b := leetcode.Trap(height42b)
+	fmt.Printf("Example 2: height = %v\n", height42b)
+	fmt.Printf("  Water trapped: %d\n\n", water42b)
+
+	// Multiply Strings examples
+	fmt.Println("\n43. Multiply Strings (Problem 0043)")
+	fmt.Println("------------------------------------")
+
+	// Example 1
+	num143a := "123"
+	num243a := "456"
+	product43a := leetcode.Multiply(num143a, num243a)
+	fmt.Printf("Example 1: num1 = %q, num2 = %q\n", num143a, num243a)
+	fmt.Printf("  Product: %q\n\n", product43a)
+
+	// Example 2
+	num143b := "0"
+	num243b := "123"
+	product43b := leetcode.Multiply(num143b, num243b)
+	fmt.Printf("Example 2: num1 = %q, num2 = %q\n", num143b, num243b)
+	fmt.Printf("  Product: %q\n\n", product43b)
+
+	// Wildcard Matching examples
+	fmt.Println("\n44. Wildcard Matching (Problem 0044)")
+	fmt.Println("-------------------------------------")
+
+	// Example 1
+	s44a := "aa"
+	p44a := "a"
+	match44a := leetcode.IsMatchWildcard(s44a, p44a)
+	fmt.Printf("Example 1: s = %q, p = %q\n", s44a, p44a)
+	fmt.Printf("  Matches: %v\n\n", match44a)
+
+	// Example 2
+	s44b := "aa"
+	p44b := "*"
+	match44b := leetcode.IsMatchWildcard(s44b, p44b)
+	fmt.Printf("Example 2: s = %q, p = %q\n", s44b, p44b)
+	fmt.Printf("  Matches: %v\n\n", match44b)
+
+	// Jump Game II examples
+	fmt.Println("\n45. Jump Game II (Problem 0045)")
+	fmt.Println("--------------------------------")
+
+	// Example 1
+	nums45a := []int{2, 3, 1, 1, 4}
+	jumps45a := leetcode.Jump(nums45a)
+	fmt.Printf("Example 1: nums = %v\n", nums45a)
+	fmt.Printf("  Minimum jumps: %d\n\n", jumps45a)
+
+	// Example 2
+	nums45b := []int{2, 3, 0, 1, 4}
+	jumps45b := leetcode.Jump(nums45b)
+	fmt.Printf("Example 2: nums = %v\n", nums45b)
+	fmt.Printf("  Minimum jumps: %d\n\n", jumps45b)
+
+	// Permutations examples
+	fmt.Println("\n46. Permutations (Problem 0046)")
+	fmt.Println("--------------------------------")
+
+	// Example 1
+	nums46a := []int{1, 2, 3}
+	perms46a := leetcode.Permute(nums46a)
+	fmt.Printf("Example 1: nums = %v\n", nums46a)
+	fmt.Printf("  Permutations count: %d\n\n", len(perms46a))
+
+	// Example 2
+	nums46b := []int{0, 1}
+	perms46b := leetcode.Permute(nums46b)
+	fmt.Printf("Example 2: nums = %v\n", nums46b)
+	fmt.Printf("  Permutations count: %d\n\n", len(perms46b))
+
+	// Permutations II examples
+	fmt.Println("\n47. Permutations II (Problem 0047)")
+	fmt.Println("-----------------------------------")
+
+	// Example 1
+	nums47a := []int{1, 1, 2}
+	perms47a := leetcode.PermuteUnique(nums47a)
+	fmt.Printf("Example 1: nums = %v\n", nums47a)
+	fmt.Printf("  Unique permutations count: %d\n\n", len(perms47a))
+
+	// Example 2
+	nums47b := []int{1}
+	perms47b := leetcode.PermuteUnique(nums47b)
+	fmt.Printf("Example 2: nums = %v\n", nums47b)
+	fmt.Printf("  Unique permutations count: %d\n\n", len(perms47b))
+
+	// Rotate Image examples
+	fmt.Println("\n48. Rotate Image (Problem 0048)")
+	fmt.Println("--------------------------------")
+
+	// Example 1
+	matrix48a := [][]int{
+		{1, 2, 3},
+		{4, 5, 6},
+		{7, 8, 9},
+	}
+	leetcode.Rotate(matrix48a)
+	fmt.Printf("Example 1: Rotated 3x3 matrix\n")
+	fmt.Printf("  Result: [%d, %d, %d], [%d, %d, %d], [%d, %d, %d]\n\n",
+		matrix48a[0][0], matrix48a[0][1], matrix48a[0][2],
+		matrix48a[1][0], matrix48a[1][1], matrix48a[1][2],
+		matrix48a[2][0], matrix48a[2][1], matrix48a[2][2])
+
+	// Group Anagrams examples
+	fmt.Println("\n49. Group Anagrams (Problem 0049)")
+	fmt.Println("---------------------------------")
+
+	// Example 1
+	strs49a := []string{"eat", "tea", "ate", "eat", "tan", "nat", "bat"}
+	groups49a := leetcode.GroupAnagrams(strs49a)
+	fmt.Printf("Example 1: strs = %v\n", strs49a)
+	fmt.Printf("  Groups count: %d\n\n", len(groups49a))
+
+	// Example 2
+	strs49b := []string{""}
+	groups49b := leetcode.GroupAnagrams(strs49b)
+	fmt.Printf("Example 2: strs = %v\n", strs49b)
+	fmt.Printf("  Groups count: %d\n\n", len(groups49b))
+
+	// Pow(x, n) examples
+	fmt.Println("\n50. Pow(x, n) (Problem 0050)")
+	fmt.Println("------------------------------")
+
+	// Example 1
+	x50a := 2.0
+	n50a := 10
+	result50a := leetcode.MyPow(x50a, n50a)
+	fmt.Printf("Example 1: x = %f, n = %d\n", x50a, n50a)
+	fmt.Printf("  Result: %.6f\n\n", result50a)
+
+	// Example 2
+	x50b := 2.1
+	n50b := 3
+	result50b := leetcode.MyPow(x50b, n50b)
+	fmt.Printf("Example 2: x = %f, n = %d\n", x50b, n50b)
+	fmt.Printf("  Result: %.6f\n\n", result50b)
+
 	fmt.Println("=== Demo Complete ===")
-	fmt.Println("\nAll LeetCode problems 0001-0030 implemented successfully!")
+	fmt.Println("\nAll LeetCode problems 0001-0050 implemented successfully!")
 }
