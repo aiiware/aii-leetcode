@@ -4,7 +4,7 @@ A comprehensive collection of LeetCode problem solutions implemented in Go with 
 
 ## Overview
 
-This package contains solutions for LeetCode problems **0001-0030** with:
+This package contains solutions for LeetCode problems **0001-0058** with:
 - ✅ Clean, idiomatic Go implementations
 - ✅ Comprehensive test coverage with edge cases
 - ✅ Performance benchmarks
@@ -59,6 +59,49 @@ This package contains solutions for LeetCode problems **0001-0030** with:
 | 0029 | Divide Two Integers | Medium | Math, Bit Manipulation | `0029_divide_two_integers.go` |
 | 0030 | Substring with Concatenation of All Words | Hard | Hash Table, String, Sliding Window | `0030_substring_with_concatenation_of_all_words.go` |
 
+### Problems 0031-0040
+
+| # | Problem | Difficulty | Tags | File |
+|---|---------|------------|------|------|
+| 0031 | Next Permutation | Medium | Array, Two Pointers | `0031_next_permutation.go` |
+| 0032 | Longest Valid Parentheses | Hard | String, Dynamic Programming, Stack | `0032_longest_valid_parentheses.go` |
+| 0033 | Search in Rotated Sorted Array | Medium | Array, Binary Search | `0033_search_in_rotated_sorted_array.go` |
+| 0034 | Find First and Last Position of Element in Sorted Array | Medium | Array, Binary Search | `0034_find_first_and_last_position.go` |
+| 0035 | Search Insert Position | Easy | Array, Binary Search | `0035_search_insert_position.go` |
+| 0036 | Valid Sudoku | Medium | Array, Hash Table, Matrix | `0036_valid_sudoku.go` |
+| 0037 | Sudoku Solver | Hard | Array, Backtracking, Matrix | `0037_sudoku_solver.go` |
+| 0038 | Count and Say | Medium | String | `0038_count_and_say.go` |
+| 0039 | Combination Sum | Medium | Array, Backtracking | `0039_combination_sum.go` |
+| 0040 | Combination Sum II | Medium | Array, Backtracking | `0040_combination_sum_ii.go` |
+
+### Problems 0041-0050
+
+| # | Problem | Difficulty | Tags | File |
+|---|---------|------------|------|------|
+| 0041 | First Missing Positive | Hard | Array, Hash Table | `0041_first_missing_positive.go` |
+| 0042 | Trapping Rain Water | Hard | Array, Two Pointers, Dynamic Programming, Stack | `0042_trapping_rain_water.go` |
+| 0043 | Multiply Strings | Medium | Math, String, Simulation | `0043_multiply_strings.go` |
+| 0044 | Wildcard Matching | Hard | String, Dynamic Programming, Greedy, Recursion | `0044_wildcard_matching.go` |
+| 0045 | Jump Game II | Medium | Array, Dynamic Programming, Greedy | `0045_jump_game_ii.go` |
+| 0046 | Permutations | Medium | Array, Backtracking | `0046_permutations.go` |
+| 0047 | Permutations II | Medium | Array, Backtracking | `0047_permutations_ii.go` |
+| 0048 | Rotate Image | Medium | Array, Math, Matrix | `0048_rotate_image.go` |
+| 0049 | Group Anagrams | Medium | Array, Hash Table, String, Sorting | `0049_group_anagrams.go` |
+| 0050 | Pow(x, n) | Medium | Math, Recursion | `0050_pow_x_n.go` |
+
+### Problems 0051-0058
+
+| # | Problem | Difficulty | Tags | File |
+|---|---------|------------|------|------|
+| 0051 | N-Queens | Hard | Array, Backtracking | `0051_n_queens.go` |
+| 0052 | N-Queens II | Hard | Array, Backtracking | `0052_n_queens_ii.go` |
+| 0053 | Maximum Subarray | Medium | Array, Divide and Conquer, Dynamic Programming | `0053_maximum_subarray.go` |
+| 0054 | Spiral Matrix | Medium | Array, Matrix, Simulation | `0054_spiral_matrix.go` |
+| 0055 | Jump Game | Medium | Array, Dynamic Programming, Greedy | `0055_jump_game.go` |
+| 0056 | Merge Intervals | Medium | Array, Sorting | `0056_merge_intervals.go` |
+| 0057 | Insert Interval | Medium | Array | `0057_insert_interval.go` |
+| 0058 | Length of Last Word | Easy | String | `0058_length_of_last_word.go` |
+
 ## File Structure
 
 ```
@@ -96,11 +139,39 @@ leetcode/
 ├── 0028_str_str.go              # Problem 0028 (Easy)
 ├── 0029_divide_two_integers.go  # Problem 0029 (Medium)
 ├── 0030_substring_with_concatenation_of_all_words.go # Problem 0030 (Hard)
-├── 30 test files (*_test.go)    # Comprehensive tests
+├── 0031_next_permutation.go     # Problem 0031 (Medium)
+├── 0032_longest_valid_parentheses.go # Problem 0032 (Hard)
+├── 0033_search_in_rotated_sorted_array.go # Problem 0033 (Medium)
+├── 0034_find_first_and_last_position.go # Problem 0034 (Medium)
+├── 0035_search_insert_position.go # Problem 0035 (Easy)
+├── 0036_valid_sudoku.go         # Problem 0036 (Medium)
+├── 0037_sudoku_solver.go        # Problem 0037 (Hard)
+├── 0038_count_and_say.go        # Problem 0038 (Medium)
+├── 0039_combination_sum.go      # Problem 0039 (Medium)
+├── 0040_combination_sum_ii.go   # Problem 0040 (Medium)
+├── 0041_first_missing_positive.go # Problem 0041 (Hard)
+├── 0042_trapping_rain_water.go  # Problem 0042 (Hard)
+├── 0043_multiply_strings.go     # Problem 0043 (Medium)
+├── 0044_wildcard_matching.go    # Problem 0044 (Hard)
+├── 0045_jump_game_ii.go         # Problem 0045 (Medium)
+├── 0046_permutations.go         # Problem 0046 (Medium)
+├── 0047_permutations_ii.go      # Problem 0047 (Medium)
+├── 0048_rotate_image.go         # Problem 0048 (Medium)
+├── 0049_group_anagrams.go       # Problem 0049 (Medium)
+├── 0050_pow_x_n.go              # Problem 0050 (Medium)
+├── 0051_n_queens.go             # Problem 0051 (Hard)
+├── 0052_n_queens_ii.go          # Problem 0052 (Hard)
+├── 0053_maximum_subarray.go     # Problem 0053 (Medium)
+├── 0054_spiral_matrix.go        # Problem 0054 (Medium)
+├── 0055_jump_game.go            # Problem 0055 (Medium)
+├── 0056_merge_intervals.go      # Problem 0056 (Medium)
+├── 0057_insert_interval.go      # Problem 0057 (Medium)
+├── 0058_length_of_last_word.go  # Problem 0058 (Easy)
+├── 58 test files (*_test.go)    # Comprehensive tests
 ├── list_node.go                 # Shared ListNode struct
 ├── go.mod                       # Go module
 ├── go.sum                       # Dependencies
-└── 7 documentation files (*.md) # Complete documentation
+└── 16 documentation files (*.md) # Complete documentation
 ```
 
 ## Usage
@@ -210,6 +281,10 @@ BenchmarkIsMatch-16                        100   14005923 ns/op    1048576 B/op 
 6. **0023 - Merge k Lists**: Both heap-based and divide-and-conquer approaches
 7. **0025 - Reverse k-Group**: Both recursive and iterative implementations
 8. **0030 - Substring Concatenation**: Sliding window with hash map optimization
+9. **0031 - Next Permutation**: In-place algorithm with O(n) time complexity
+10. **0042 - Trapping Rain Water**: Multiple approaches (two pointers, DP, stack)
+11. **0051 - N-Queens**: Efficient backtracking with bitmask optimization
+12. **0053 - Maximum Subarray**: Kadane's algorithm for O(n) solution
 
 ### Reusable Components
 
@@ -219,7 +294,7 @@ BenchmarkIsMatch-16                        100   14005923 ns/op    1048576 B/op 
 
 ## Future Improvements
 
-- [ ] Add more LeetCode problems (0031-0050, etc.)
+- [ ] Add more LeetCode problems (0059-0100, etc.)
 - [ ] Interactive problem selector
 - [ ] Performance comparison tool
 - [ ] Algorithm visualization
@@ -246,14 +321,14 @@ To add more problems:
 
 | Metric | Count |
 |--------|-------|
-| Problems Implemented | 30 |
-| Implementation Files | 30 |
-| Test Files | 30 |
-| Total Go Files | 61 |
-| Documentation Files | 7 |
-| Total Files | 70+ |
-| Lines of Code | ~6,000 |
-| Test Cases | 300+ |
+| Problems Implemented | 58 |
+| Implementation Files | 58 |
+| Test Files | 58 |
+| Total Go Files | 122 |
+| Documentation Files | 16 |
+| Total Files | 140 |
+| Lines of Code | ~16,000 |
+| Test Cases | 600+ |
 | Test Pass Rate | 100% ✅ |
 
 ## License
