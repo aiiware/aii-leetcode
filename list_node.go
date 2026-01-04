@@ -30,7 +30,7 @@ func NewListFromSlice(vals []int) *ListNode {
 
 // ToSlice converts a linked list to a slice of integers.
 func (l *ListNode) ToSlice() []int {
-	var result []int
+	result := []int{} // Return empty slice, not nil
 	current := l
 	for current != nil {
 		result = append(result, current.Val)

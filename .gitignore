@@ -71,5 +71,6 @@ debug/
 # Aii Agent local permissions (do not commit)
 .aii/permissions.json
 .aii/audit.log
+test_tmp
 tutorials/
 FINAL_PROJECT_SUMMARY.md

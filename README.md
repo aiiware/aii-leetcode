@@ -4,7 +4,7 @@ A comprehensive collection of LeetCode problem solutions implemented in Go with 
 
 ## Overview
 
-This package contains solutions for LeetCode problems **0001-0058** with:
+This package contains solutions for LeetCode problems **0001-0083** with:
 - ✅ Clean, idiomatic Go implementations
 - ✅ Comprehensive test coverage with edge cases
 - ✅ Performance benchmarks
@@ -64,7 +64,7 @@ This package contains solutions for LeetCode problems **0001-0058** with:
 | # | Problem | Difficulty | Tags | File |
 |---|---------|------------|------|------|
 | 0031 | Next Permutation | Medium | Array, Two Pointers | `0031_next_permutation.go` |
-| 0032 | Longest Valid Parentheses | Hard | String, Dynamic Programming, Stack | `0032_longest_valid_parentheses.go` |
+| 0032 | Longest Valid Parentheses | Hard | String, Dynamic Programming, Stack | `00332_longest_valid_parentheses.go` |
 | 0033 | Search in Rotated Sorted Array | Medium | Array, Binary Search | `0033_search_in_rotated_sorted_array.go` |
 | 0034 | Find First and Last Position of Element in Sorted Array | Medium | Array, Binary Search | `0034_find_first_and_last_position.go` |
 | 0035 | Search Insert Position | Easy | Array, Binary Search | `0035_search_insert_position.go` |
@@ -84,12 +84,12 @@ This package contains solutions for LeetCode problems **0001-0058** with:
 | 0044 | Wildcard Matching | Hard | String, Dynamic Programming, Greedy, Recursion | `0044_wildcard_matching.go` |
 | 0045 | Jump Game II | Medium | Array, Dynamic Programming, Greedy | `0045_jump_game_ii.go` |
 | 0046 | Permutations | Medium | Array, Backtracking | `0046_permutations.go` |
-| 0047 | Permutations II | Medium | Array, Backtracking | `0047_permutations_ii.go` |
+| 0047 | Permutations II | Medium | Array, Backtracking | `00447_permutations_ii.go` |
 | 0048 | Rotate Image | Medium | Array, Math, Matrix | `0048_rotate_image.go` |
 | 0049 | Group Anagrams | Medium | Array, Hash Table, String, Sorting | `0049_group_anagrams.go` |
 | 0050 | Pow(x, n) | Medium | Math, Recursion | `0050_pow_x_n.go` |
 
-### Problems 0051-0058
+### Problems 0051-0060
 
 | # | Problem | Difficulty | Tags | File |
 |---|---------|------------|------|------|
@@ -101,6 +101,46 @@ This package contains solutions for LeetCode problems **0001-0058** with:
 | 0056 | Merge Intervals | Medium | Array, Sorting | `0056_merge_intervals.go` |
 | 0057 | Insert Interval | Medium | Array | `0057_insert_interval.go` |
 | 0058 | Length of Last Word | Easy | String | `0058_length_of_last_word.go` |
+| 0059 | Spiral Matrix II | Medium | Array, Matrix, Simulation | `00559_spiral_matrix_ii.go` |
+| 0060 | Permutation Sequence | Hard | Math, Backtracking | `0060_permutation_sequence.go` |
+
+### Problems 0061-0070
+
+| # | Problem | Difficulty | Tags | File |
+|---|---------|------------|------|------|
+| 0061 | Rotate List | Medium | Linked List, Two Pointers | `0061_rotate_list.go` |
+| 0062 | Unique Paths | Medium | Math, Dynamic Programming, Combinatorics | `00662_unique_paths.go` |
+| 0063 | Unique Paths II | Medium | Array, Dynamic Programming, Matrix | `0063_unique_paths_ii.go` |
+| 0064 | Minimum Path Sum | Medium | Array, Dynamic Programming, Matrix | `0064_minimum_path_sum.go` |
+| 0065 | Valid Number | Hard | String | `0065_valid_number.go` |
+| 0066 | Plus One | Easy | Array, Math | `0066_plus_one.go` |
+| 0067 | Add Binary | Easy | Math, String, Bit Manipulation | `0067_add_binary.go` |
+| 0068 | Text Justification | Hard | String, Simulation | `0068_text_justification.go` |
+| 0069 | Sqrt(x) | Easy | Math, Binary Search | `0069_sqrt_x.go` |
+| 0070 | Climbing Stairs | Easy | Math, Dynamic Programming, Memoization | `0070_climbing_stairs.go` |
+
+### Problems 0071-0080
+
+| # | Problem | Difficulty | Tags | File |
+|---|---------|------------|------|------|
+| 0071 | Simplify Path | Medium | String, Stack | `0071_simplify_path.go` |
+| 0072 | Edit Distance | Hard | String, Dynamic Programming | `0072_edit_distance.go` |
+| 0073 | Set Matrix Zeroes | Medium | Array, Hash Table, Matrix | `0073_set_matrix_zeroes.go` |
+| 0074 | Search a 2D Matrix | Medium | Array, Binary Search, Matrix | `0074_search_a_2d_matrix.go` |
+| 0075 | Sort Colors | Medium | Array, Two Pointers, Sorting | `0075_sort_colors.go` |
+| 0076 | Minimum Window Substring | Hard | Hash Table, String, Sliding Window | `0076_minimum_window_substring.go` |
+| 0077 | Combinations | Medium | Array, Backtracking | `0077_combinations.go` |
+| 0078 | Subsets | Medium | Array, Backtracking, Bit Manipulation | `0078_subsets.go` |
+| 0079 | Word Search | Medium | Array, Backtracking, Depth-First Search, Matrix | `0079_word_search.go` |
+| 0080 | Remove Duplicates from Sorted Array II | Medium | Array, Two Pointers | `0080_remove_duplicates_ii.go` |
+
+### Problems 0081-0083
+
+| # | Problem | Difficulty | Tags | File |
+|---|---------|------------|------|------|
+| 0081 | Search in Rotated Sorted Array II | Medium | Array, Binary Search | `0081_search_in_rotated_sorted_array_ii.go` |
+| 0082 | Remove Duplicates from Sorted List II | Medium | Linked List, Two Pointers | `0082_remove_duplicates_from_sorted_list_ii.go` |
+| 0083 | Remove Duplicates from Sorted List | Easy | Linked List | `0083_remove_duplicates_from_sorted_list.go` |
 
 ## File Structure
 
@@ -167,7 +207,32 @@ leetcode/
 ├── 0056_merge_intervals.go      # Problem 0056 (Medium)
 ├── 0057_insert_interval.go      # Problem 0057 (Medium)
 ├── 0058_length_of_last_word.go  # Problem 0058 (Easy)
-├── 58 test files (*_test.go)    # Comprehensive tests
+├── 0059_spiral_matrix_ii.go     # Problem 0059 (Medium)
+├── 0060_permutation_sequence.go # Problem 0060 (Hard)
+├── 0061_rotate_list.go          # Problem 0061 (Medium)
+├── 0062_unique_paths.go         # Problem 0062 (Medium)
+├── 0063_unique_paths_ii.go      # Problem 0063 (Medium)
+├── 0064_minimum_path_sum.go     # Problem 0064 (Medium)
+├── 0065_valid_number.go         # Problem 0065 (Hard)
+├── 0066_plus_one.go             # Problem 0066 (Easy)
+├── 0067_add_binary.go           # Problem 0067 (Easy)
+├── 0068_text_justification.go   # Problem 0068 (Hard)
+├── 0069_sqrt_x.go               # Problem 0069 (Easy)
+├── 0070_climbing_stairs.go      # Problem 0070 (Easy)
+├── 0071_simplify_path.go        # Problem 0071 (Medium)
+├── 0072_edit_distance.go        # Problem 0072 (Hard)
+├── 0073_set_matrix_zeroes.go    # Problem 0073 (Medium)
+├── 0074_search_a_2d_matrix.go   # Problem 0074 (Medium)
+├── 0075_sort_colors.go          # Problem 0075 (Medium)
+├── 0076_minimum_window_substring.go # Problem 0076 (Hard)
+├── 0077_combinations.go         # Problem 0077 (Medium)
+├── 0078_subsets.go              # Problem 0078 (Medium)
+├── 0079_word_search.go          # Problem 0079 (Medium)
+├── 0080_remove_duplicates_ii.go # Problem 0080 (Medium)
+├── 0081_search_in_rotated_sorted_array_ii.go # Problem 0081 (Medium)
+├── 0082_remove_duplicates_from_sorted_list_ii.go # Problem 0082 (Medium)
+├── 0083_remove_duplicates_from_sorted_list.go # Problem 0083 (Easy)
+├── 83 test files (*_test.go)    # Comprehensive tests
 ├── list_node.go                 # Shared ListNode struct
 ├── go.mod                       # Go module
 ├── go.sum                       # Dependencies
@@ -285,16 +350,31 @@ BenchmarkIsMatch-16                        100   14005923 ns/op    1048576 B/op 
 10. **0042 - Trapping Rain Water**: Multiple approaches (two pointers, DP, stack)
 11. **0051 - N-Queens**: Efficient backtracking with bitmask optimization
 12. **0053 - Maximum Subarray**: Kadane's algorithm for O(n) solution
+13. **0059 - Spiral Matrix II**: Efficient boundary tracking algorithm
+14. **0060 - Permutation Sequence**: Mathematical solution using factorial number system
+15. **0062 - Unique Paths**: Space-optimized DP with O(n) space complexity
+16. **0065 - Valid Number**: State machine approach for complex validation
+17. **0068 - Text Justification**: Greedy algorithm with proper space distribution
+18. **0069 - Sqrt(x)**: Binary search avoiding overflow with division
+19. **0070 - Climbing Stairs**: Fibonacci-like sequence with O(1) space
+20. **0071 - Simplify Path**: Stack-based approach for Unix path canonicalization
+21. **0072 - Edit Distance**: Space-optimized DP with O(min(m,n)) space complexity
+22. **0073 - Set Matrix Zeroes**: In-place algorithm with O(1) space complexity
+23. **0079 - Word Search**: Multiple approaches (DFS with visited matrix, in-place modification, BFS, early pruning)
+24. **0080 - Remove Duplicates II**: Two-pointer approach allowing at most 2 duplicates
+25. **0081 - Search in Rotated Sorted Array II**: Binary search with duplicate handling
+26. **0082 - Remove Duplicates from Sorted List II**: Dummy node approach for edge cases
+27. **0083 - Remove Duplicates from Sorted List**: Simple iterative approach
 
 ### Reusable Components
 
 - **ListNode**: Shared data structure for linked list problems
   - Helper functions: `NewListFromSlice()`, `ToSlice()`, `Equal()`
-  - Used by problems: 0002, 0019, 0021, 0023, 0024, 0025
+  - Used by problems: 0002, 0019, 0021, 0023, 0024, 0025, 0061, 0082, 0083
 
 ## Future Improvements
 
-- [ ] Add more LeetCode problems (0059-0100, etc.)
+- [ ] Add more LeetCode problems (0084-0100, etc.)
 - [ ] Interactive problem selector
 - [ ] Performance comparison tool
 - [ ] Algorithm visualization
@@ -321,14 +401,14 @@ To add more problems:
 
 | Metric | Count |
 |--------|-------|
-| Problems Implemented | 58 |
-| Implementation Files | 58 |
-| Test Files | 58 |
-| Total Go Files | 122 |
+| Problems Implemented | 83 |
+| Implementation Files | 83 |
+| Test Files | 83 |
+| Total Go Files | 173 |
 | Documentation Files | 16 |
-| Total Files | 140 |
-| Lines of Code | ~16,000 |
-| Test Cases | 600+ |
+| Total Files | 191 |
+| Lines of Code | ~30,000 |
+| Test Cases | 830+ |
 | Test Pass Rate | 100% ✅ |
 
 ## License

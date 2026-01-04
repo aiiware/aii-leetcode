@@ -42,11 +42,3 @@ func MaxSubArray(nums []int) int {
 
 	return maxGlobal
 }
-
-// // Helper function to get maximum of two integers
-// func max(a, b int) int {
-// if a > b {
-// return a
-// }
-// return b
-// }
