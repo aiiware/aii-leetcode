@@ -120,8 +120,28 @@ func RemoveDuplicatesIIBruteForce(nums []int) int {
 
 // RemoveDuplicatesIIGeneric allows at most n duplicates (generalized version)
 func RemoveDuplicatesIIGeneric(nums []int, maxDuplicates int) int {
+	if maxDuplicates < 0 {
+		return 0
+	}
+	
 	if len(nums) <= maxDuplicates {
 		return len(nums)
+	}
+
+	// Special case: maxDuplicates = 0 means keep only unique elements (remove all duplicates)
+	if maxDuplicates == 0 {
+		if len(nums) == 0 {
+			return 0
+		}
+		
+		k := 1 // position to write next unique element
+		for i := 1; i < len(nums); i++ {
+			if nums[i] != nums[k-1] {
+				nums[k] = nums[i]
+				k++
+			}
+		}
+		return k
 	}
 
 	k := maxDuplicates // position to write next valid element
