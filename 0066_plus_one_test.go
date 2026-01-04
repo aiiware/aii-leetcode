@@ -1,6 +1,7 @@
 package leetcode
 
 import (
+	"strconv"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -136,7 +137,7 @@ func TestPlusOne_PropertyBased(t *testing.T) {
 	testNumbers := []int{0, 1, 9, 10, 99, 100, 123, 999, 1000, 123456789, 999999999}
 
 	for _, num := range testNumbers {
-		t.Run("Property test for "+string(rune(num)), func(t *testing.T) {
+		t.Run("Property test for "+strconv.Itoa(num), func(t *testing.T) {
 			// Convert number to digits
 			digits := intToDigits(num)
 			

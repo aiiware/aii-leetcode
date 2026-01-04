@@ -38,20 +38,24 @@ func PlusOne(digits []int) []int {
 		return []int{1}
 	}
 
+	// Create a copy of the input to avoid modifying the original
+	result := make([]int, n)
+	copy(result, digits)
+
 	// Start from the least significant digit
 	for i := n - 1; i >= 0; i-- {
-		if digits[i] < 9 {
-			digits[i]++
-			return digits
+		if result[i] < 9 {
+			result[i]++
+			return result
 		}
 		// Current digit is 9, set it to 0 and continue to next digit
-		digits[i] = 0
+		result[i] = 0
 	}
 
 	// If we're here, all digits were 9 (e.g., 999 -> 1000)
 	// Create a new slice with an extra digit
-	result := make([]int, n+1)
-	result[0] = 1
+	newResult := make([]int, n+1)
+	newResult[0] = 1
 	// Remaining digits are already 0 (default value)
-	return result
+	return newResult
 }
