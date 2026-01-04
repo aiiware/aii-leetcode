@@ -136,11 +136,13 @@ func TestAddBinary_EdgeCases(t *testing.T) {
 			a += "1"
 			b += "1"
 		}
-		// Result should be 1000-bit number of all 1s plus 1 = 1 followed by 1000 zeros
-		expected := "1"
+		// Result should be 1000 ones followed by a zero
+		// (111...111 + 111...111 = 111...1110)
+		expected := ""
 		for i := 0; i < 1000; i++ {
-			expected += "0"
+			expected += "1"
 		}
+		expected += "0"
 
 		result := AddBinary(a, b)
 		assert.Equal(t, expected, result)

@@ -67,7 +67,13 @@ func AddBinary(a string, b string) string {
 		result[k], result[len(result)-1-k] = result[len(result)-1-k], result[k]
 	}
 
-	return string(result)
+	// Trim leading zeros
+	start := 0
+	for start < len(result)-1 && result[start] == '0' {
+		start++
+	}
+
+	return string(result[start:])
 }
 
 // Helper function
