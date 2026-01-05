@@ -78,4 +78,5 @@ debug*
 test_tmp
 tutorials/
 FINAL_PROJECT_SUMMARY.md
-
+cmd/brute_force/
+cmd/test_*
