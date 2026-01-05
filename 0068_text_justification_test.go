@@ -81,7 +81,7 @@ func TestFullJustify_EdgeCases(t *testing.T) {
 		words := []string{"Supercalifragilisticexpialidocious"}
 		maxWidth := 50
 		result := FullJustify(words, maxWidth)
-		expected := []string{"Supercalifragilisticexpialidocious                 "}
+		expected := []string{"Supercalifragilisticexpialidocious                "}
 		assert.Equal(t, expected, result)
 	})
 
@@ -89,7 +89,7 @@ func TestFullJustify_EdgeCases(t *testing.T) {
 		words := []string{"aaa", "bbb", "ccc", "ddd", "eee"}
 		maxWidth := 15
 		result := FullJustify(words, maxWidth)
-		expected := []string{"aaa bbb ccc ddd", "eee           "}
+		expected := []string{"aaa bbb ccc ddd", "eee            "}
 		assert.Equal(t, expected, result)
 	})
 

@@ -63,7 +63,7 @@ func TestMinWindow(t *testing.T) {
 			name:     "Multiple possible windows, choose smallest",
 			s:        "ADOBECODEBANCABC",
 			t:        "ABC",
-			expected: "ABC",
+			expected: "CAB", // Both "ABC" and "CAB" are valid and same length
 		},
 		{
 			name:     "t with duplicate characters",
@@ -111,7 +111,7 @@ func TestMinWindow(t *testing.T) {
 			name:     "Large s with small t",
 			s:        "this is a test string with multiple a's and b's and c's",
 			t:        "abc",
-			expected: "a's and b's and c",
+			expected: "b's and c", // Shorter than "a's and b's and c"
 		},
 	}
 
@@ -166,7 +166,7 @@ func TestMinWindowOptimized(t *testing.T) {
 			name:     "Multiple possible windows, choose smallest",
 			s:        "ADOBECODEBANCABC",
 			t:        "ABC",
-			expected: "ABC",
+			expected: "CAB", // Both "ABC" and "CAB" are valid and same length
 		},
 		{
 			name:     "t with duplicate characters",
@@ -245,7 +245,7 @@ func TestMinWindowSimplified(t *testing.T) {
 			name:     "Multiple possible windows, choose smallest",
 			s:        "ADOBECODEBANCABC",
 			t:        "ABC",
-			expected: "ABC",
+			expected: "CAB", // Both "ABC" and "CAB" are valid and same length
 		},
 		{
 			name:     "t with duplicate characters",

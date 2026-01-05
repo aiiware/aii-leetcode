@@ -65,7 +65,7 @@ func TestCanJump(t *testing.T) {
 		{
 			name:     "Can reach with exact jump",
 			nums:     []int{2, 0, 1, 0, 2},
-			expected: true,
+			expected: false,
 		},
 		{
 			name:     "Large numbers",
@@ -80,7 +80,7 @@ func TestCanJump(t *testing.T) {
 		{
 			name:     "Complex case unreachable",
 			nums:     []int{2, 3, 1, 0, 2, 0, 1},
-			expected: false,
+			expected: true,
 		},
 	}
 

@@ -70,7 +70,7 @@ func TestRemoveDuplicatesII(t *testing.T) {
 		{
 			name:     "Mixed with negative numbers",
 			nums:     []int{-5, -5, -5, -3, -3, -3, -1, 0, 0, 2, 2, 2},
-			expected: 8,
+			expected: 9,
 			expectedNums: []int{-5, -5, -3, -3, -1, 0, 0, 2, 2},
 		},
 		{

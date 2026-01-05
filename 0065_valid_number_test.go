@@ -150,7 +150,12 @@ func TestIsNumber_PropertyBased(t *testing.T) {
 	}
 
 	// Test that adding invalid characters makes valid patterns invalid
-	invalidSuffixes := []string{"a", " ", ".", "e", "E", "+", "-", "x", "!"}
+	// Note: space is NOT invalid at beginning/end (it gets trimmed), but IS invalid in middle
+	// However, for property-based testing, we're adding suffixes/prefixes, so space would be invalid
+	// if it appears immediately after/before the number without being trimmed.
+	// Actually, let's remove space from invalidSuffixes since the implementation trims it.
+	// Also, "." is valid as a suffix for some numbers (e.g., "3." is valid).
+	invalidSuffixes := []string{"a", "e", "E", "+", "-", "x", "!"}
 	for _, pattern := range validPatterns {
 		for _, suffix := range invalidSuffixes {
 			invalid := pattern + suffix
@@ -161,8 +166,12 @@ func TestIsNumber_PropertyBased(t *testing.T) {
 	}
 
 	// Test that adding invalid prefixes makes valid patterns invalid
+	// Note: space, "+", "-" at beginning are valid (trimmed or sign)
+	// "." at beginning is valid for some patterns (e.g., ".1")
+	// So we need a different set for prefixes
+	invalidPrefixes := []string{"a", "e", "E", "x", "!"}
 	for _, pattern := range validPatterns {
-		for _, prefix := range invalidSuffixes {
+		for _, prefix := range invalidPrefixes {
 			invalid := prefix + pattern
 			t.Run("Invalid with prefix: "+invalid, func(t *testing.T) {
 				assert.False(t, IsNumber(invalid), "Pattern %q should be invalid", invalid)

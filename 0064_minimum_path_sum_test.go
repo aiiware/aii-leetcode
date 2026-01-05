@@ -172,30 +172,36 @@ func TestMinPathSum_PropertyBased(t *testing.T) {
 		{2, 6, 3, 1},
 		{4, 2, 1, 3},
 	}
-
+	m, n := len(grid), len(grid[0])
 	result := MinPathSum(grid)
 
-	// Calculate sum of first row (only moving right)
-	firstRowSum := 0
-	for j := 0; j < len(grid[0]); j++ {
-		firstRowSum += grid[0][j]
+	// Path 1: Go right all the way, then down all the way
+	path1Sum := 0
+	for j := 0; j < n; j++ {
+		path1Sum += grid[0][j]
+	}
+	for i := 1; i < m; i++ {
+		path1Sum += grid[i][n-1]
 	}
 
-	// Calculate sum of first column (only moving down)
-	firstColSum := 0
-	for i := 0; i < len(grid); i++ {
-		firstColSum += grid[i][0]
+	// Path 2: Go down all the way, then right all the way
+	path2Sum := 0
+	for i := 0; i < m; i++ {
+		path2Sum += grid[i][0]
+	}
+	for j := 1; j < n; j++ {
+		path2Sum += grid[m-1][j]
 	}
 
-	// Result should be <= min of these two
-	minPossible := firstRowSum
-	if firstColSum < minPossible {
-		minPossible = firstColSum
+	// Result should be <= min of these two paths
+	minPossible := path1Sum
+	if path2Sum < minPossible {
+		minPossible = path2Sum
 	}
 
 	assert.True(t, result <= minPossible,
-		"Result %d should be <= min(firstRowSum=%d, firstColSum=%d)=%d",
-		result, firstRowSum, firstColSum, minPossible)
+		"Result %d should be <= min(path1Sum=%d, path2Sum=%d)=%d",
+		result, path1Sum, path2Sum, minPossible)
 
 	// Result should be >= grid[0][0] + grid[m-1][n-1]
 	minValue := grid[0][0] + grid[len(grid)-1][len(grid[0])-1]
