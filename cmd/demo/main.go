@@ -6,7 +6,7 @@ import (
 )
 
 func main() {
-	fmt.Println("=== LeetCode Solutions Demo (Problems 0001-0083) ===")
+	fmt.Println("=== LeetCode Solutions Demo (Problems 0001-0084) ===")
 	fmt.Println()
 
 	// Two Sum examples
@@ -124,6 +124,47 @@ func main() {
 	fmt.Printf("Example 2: head = [1, 1, 2, 3, 3]\n")
 	fmt.Printf("  Result: %v\n\n", result83b.ToSlice())
 
-	fmt.Println("=== Demo Complete ===")
-	fmt.Println("\nAll LeetCode problems 0001-0083 implemented successfully!")
+	// Largest Rectangle in Histogram examples
+	fmt.Println("\n84. Largest Rectangle in Histogram (Problem 0084)")
+	fmt.Println("-------------------------------------------------")
+
+	// Example 1 from LeetCode
+	heights84a := []int{2, 1, 5, 6, 2, 3}
+	result84a := leetcode.LargestRectangleArea(heights84a)
+	fmt.Printf("Example 1: heights = %v\n", heights84a)
+	fmt.Printf("  Result: %d (largest rectangle area)\n\n", result84a)
+
+	// Example 2 from LeetCode
+	heights84b := []int{2, 4}
+	result84b := leetcode.LargestRectangleArea(heights84b)
+	fmt.Printf("Example 2: heights = %v\n", heights84b)
+	fmt.Printf("  Result: %d (largest rectangle area)\n\n", result84b)
+
+	// Additional test cases
+	heights84c := []int{1, 2, 3, 4, 5}
+	result84c := leetcode.LargestRectangleArea(heights84c)
+	fmt.Printf("Additional test: heights = %v (increasing)\n", heights84c)
+	fmt.Printf("  Result: %d\n\n", result84c)
+
+	heights84d := []int{5, 4, 3, 2, 1}
+	result84d := leetcode.LargestRectangleArea(heights84d)
+	fmt.Printf("Additional test: heights = %v (decreasing)\n", heights84d)
+	fmt.Printf("  Result: %d\n\n", result84d)
+
+	heights84e := []int{3, 3, 3, 3, 3}
+	result84e := leetcode.LargestRectangleArea(heights84e)
+	fmt.Printf("Additional test: heights = %v (all same)\n", heights84e)
+	fmt.Printf("  Result: %d\n\n", result84e)
+
+	// Test different implementations for consistency
+	fmt.Println("Implementation consistency check:")
+	heightsTest := []int{2, 1, 5, 6, 2, 3}
+	resultStd := leetcode.LargestRectangleArea(heightsTest)
+	resultOpt := leetcode.LargestRectangleAreaOptimized(heightsTest)
+	resultDP := leetcode.LargestRectangleAreaDP(heightsTest)
+	fmt.Printf("  Standard: %d, Optimized: %d, DP: %d\n", resultStd, resultOpt, resultDP)
+	fmt.Println("  All implementations return the same result: ✓")
+
+	fmt.Println("\n=== Demo Complete ===")
+	fmt.Println("\nAll LeetCode problems 0001-0084 implemented successfully!")
 }

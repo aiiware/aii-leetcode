@@ -4,7 +4,7 @@ A comprehensive collection of LeetCode problem solutions implemented in Go with 
 
 ## Overview
 
-This package contains solutions for LeetCode problems **0001-0083** with:
+This package contains solutions for LeetCode problems **0001-0084** with:
 - ✅ Clean, idiomatic Go implementations
 - ✅ Comprehensive test coverage with edge cases
 - ✅ Performance benchmarks
@@ -97,7 +97,7 @@ This package contains solutions for LeetCode problems **0001-0083** with:
 | 0052 | N-Queens II | Hard | Array, Backtracking | `0052_n_queens_ii.go` |
 | 0053 | Maximum Subarray | Medium | Array, Divide and Conquer, Dynamic Programming | `0053_maximum_subarray.go` |
 | 0054 | Spiral Matrix | Medium | Array, Matrix, Simulation | `0054_spiral_matrix.go` |
-| 0055 | Jump Game | Medium | Array, Dynamic Programming, Greedy | `0055_jump_game.go` |
+| 0055 | Jump Game | Medium | Array, Dynamic Programming, Greedy | `00555_jump_game.go` |
 | 0056 | Merge Intervals | Medium | Array, Sorting | `0056_merge_intervals.go` |
 | 0057 | Insert Interval | Medium | Array | `0057_insert_interval.go` |
 | 0058 | Length of Last Word | Easy | String | `0058_length_of_last_word.go` |
@@ -134,13 +134,14 @@ This package contains solutions for LeetCode problems **0001-0083** with:
 | 0079 | Word Search | Medium | Array, Backtracking, Depth-First Search, Matrix | `0079_word_search.go` |
 | 0080 | Remove Duplicates from Sorted Array II | Medium | Array, Two Pointers | `0080_remove_duplicates_ii.go` |
 
-### Problems 0081-0083
+### Problems 0081-0084
 
 | # | Problem | Difficulty | Tags | File |
 |---|---------|------------|------|------|
 | 0081 | Search in Rotated Sorted Array II | Medium | Array, Binary Search | `0081_search_in_rotated_sorted_array_ii.go` |
 | 0082 | Remove Duplicates from Sorted List II | Medium | Linked List, Two Pointers | `0082_remove_duplicates_from_sorted_list_ii.go` |
 | 0083 | Remove Duplicates from Sorted List | Easy | Linked List | `0083_remove_duplicates_from_sorted_list.go` |
+| 0084 | Largest Rectangle in Histogram | Hard | Array, Stack, Monotonic Stack | `0084_largest_rectangle_in_histogram.go` |
 
 ## File Structure
 
@@ -232,7 +233,8 @@ leetcode/
 ├── 0081_search_in_rotated_sorted_array_ii.go # Problem 0081 (Medium)
 ├── 0082_remove_duplicates_from_sorted_list_ii.go # Problem 0082 (Medium)
 ├── 0083_remove_duplicates_from_sorted_list.go # Problem 0083 (Easy)
-├── 83 test files (*_test.go)    # Comprehensive tests
+├── 0084_largest_rectangle_in_histogram.go # Problem 0084 (Hard)
+├── 84 test files (*_test.go)    # Comprehensive tests
 ├── list_node.go                 # Shared ListNode struct
 ├── go.mod                       # Go module
 ├── go.sum                       # Dependencies
@@ -293,6 +295,11 @@ func main() {
 	l2 := leetcode.NewListFromSlice([]int{1, 3, 4})
 	result := leetcode.MergeTwoLists(l1, l2)
 	fmt.Println(result.ToSlice()) // Output: [1 1 2 3 4 4]
+
+	// Problem 0084: Largest Rectangle in Histogram
+	heights := []int{2, 1, 5, 6, 2, 3}
+	area := leetcode.LargestRectangleArea(heights)
+	fmt.Println(area) // Output: 10
 }
 ```
 
@@ -365,6 +372,7 @@ BenchmarkIsMatch-16                        100   14005923 ns/op    1048576 B/op 
 25. **0081 - Search in Rotated Sorted Array II**: Binary search with duplicate handling
 26. **0082 - Remove Duplicates from Sorted List II**: Dummy node approach for edge cases
 27. **0083 - Remove Duplicates from Sorted List**: Simple iterative approach
+28. **0084 - Largest Rectangle in Histogram**: Multiple approaches (monotonic stack, divide and conquer, segment tree, DP)
 
 ### Reusable Components
 
@@ -374,7 +382,7 @@ BenchmarkIsMatch-16                        100   14005923 ns/op    1048576 B/op 
 
 ## Future Improvements
 
-- [ ] Add more LeetCode problems (0084-0100, etc.)
+- [ ] Add more LeetCode problems (0085-0100, etc.)
 - [ ] Interactive problem selector
 - [ ] Performance comparison tool
 - [ ] Algorithm visualization
@@ -401,14 +409,14 @@ To add more problems:
 
 | Metric | Count |
 |--------|-------|
-| Problems Implemented | 83 |
-| Implementation Files | 83 |
-| Test Files | 83 |
-| Total Go Files | 173 |
+| Problems Implemented | 84 |
+| Implementation Files | 84 |
+| Test Files | 84 |
+| Total Go Files | 174 |
 | Documentation Files | 16 |
-| Total Files | 191 |
-| Lines of Code | ~30,000 |
-| Test Cases | 830+ |
+| Total Files | 192 |
+| Lines of Code | ~31,000 |
+| Test Cases | 840+ |
 | Test Pass Rate | 100% ✅ |
 
 ## License
