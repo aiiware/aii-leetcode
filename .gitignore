@@ -64,8 +64,12 @@ output/
 dist/
 
 # Debugging
+
 debug/
+
 .dlv/
+
+debug*
 
 
 # Aii Agent local permissions (do not commit)
@@ -74,4 +78,4 @@ debug/
 test_tmp
 tutorials/
 FINAL_PROJECT_SUMMARY.md
-debug*
+
