@@ -136,7 +136,7 @@ func TestIsInterleave(t *testing.T) {
 			name:     "Long strings true",
 			s1:       "abcdefghij",
 			s2:       "klmnopqrst",
-			s3:       "akblcmdneofpgqhrsjt",
+			s3:       "akblcmdneofpgqhrisjt",
 			expected: true,
 		},
 		{
@@ -150,8 +150,8 @@ func TestIsInterleave(t *testing.T) {
 			name:     "Interleaved duplicates",
 			s1:       "aabb",
 			s2:       "ccdd",
-			s3:       "acbacbdd",
-			expected: true,
+			s3:       "acbdacbd",
+			expected: false, // Fixed: this is not a valid interleaving
 		},
 		{
 			name:     "LeetCode test case 1",
@@ -439,19 +439,19 @@ func BenchmarkIsInterleave(b *testing.B) {
 			name: "Medium",
 			s1:   "abcdefghij",
 			s2:   "klmnopqrst",
-			s3:   "akblcmdneofpgqhrsjt",
+			s3:   "akblcmdneofpgqhrisjt",
 		},
 		{
 			name: "Large",
-			s1:   repeat("abc", 10),
-			s2:   repeat("def", 10),
-			s3:   repeat("adbecf", 10),
+			s1:   repeat97("abc", 10),
+			s2:   repeat97("def", 10),
+			s3:   repeat97("adbecf", 10),
 		},
 		{
 			name: "All same characters",
-			s1:   repeat("a", 20),
-			s2:   repeat("a", 20),
-			s3:   repeat("a", 40),
+			s1:   repeat97("a", 20),
+			s2:   repeat97("a", 20),
+			s3:   repeat97("a", 40),
 		},
 	}
 
@@ -481,9 +481,9 @@ func BenchmarkIsInterleave(b *testing.B) {
 
 func BenchmarkIsInterleaveWorstCase(b *testing.B) {
 	// Worst case: all characters are the same, many possible paths
-	s1 := repeat("a", 50)
-	s2 := repeat("a", 50)
-	s3 := repeat("a", 100)
+	s1 := repeat97("a", 50)
+	s2 := repeat97("a", 50)
+	s3 := repeat97("a", 100)
 
 	b.ResetTimer()
 
@@ -536,7 +536,7 @@ func countChars(s string) map[byte]int {
 	return count
 }
 
-func repeat(s string, n int) string {
+func repeat97(s string, n int) string {
 	result := ""
 	for i := 0; i < n; i++ {
 		result += s

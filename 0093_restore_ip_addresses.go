@@ -124,7 +124,7 @@ func restoreIpAddressesDFS(s string) []string {
 	var result []string
 	
 	var dfs func(int, int, string)
-	dfs = func(start, segmentNum, current string) {
+	dfs = func(start int, segmentNum int, current string) {
 		// If we have 4 segments and used all characters
 		if segmentNum == 4 {
 			if start == len(s) {

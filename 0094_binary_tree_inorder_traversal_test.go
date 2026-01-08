@@ -1,7 +1,6 @@
 package leetcode
 
 import (
-	"fmt"
 	"testing"
 )
 
@@ -69,7 +68,7 @@ func TestInorderTraversal(t *testing.T) {
 		{
 			name:     "Complex tree 1",
 			root:     NewTreeFromSlice([]*int{intPtr(5), intPtr(3), intPtr(8), intPtr(2), intPtr(4), intPtr(6), intPtr(9), intPtr(1), nil, nil, nil, nil, nil, intPtr(7)}),
-			expected: []int{1, 2, 3, 4, 5, 6, 7, 8, 9},
+			expected: []int{1, 2, 3, 4, 5, 6, 8, 7, 9}, // Fixed: 7 is left child of 9, so order is 6, 8, 7, 9
 		},
 		{
 			name:     "Tree with null values in middle",
@@ -182,12 +181,16 @@ func TestInorderTraversalEdgeCases(t *testing.T) {
 			t.Errorf("Expected %d nodes, got %d", expectedLength, len(result))
 		}
 
-		// Check that result is sorted (inorder traversal of BST should be sorted)
-		// Since we inserted values in order, the inorder traversal should be sorted
-		for i := 1; i < len(result); i++ {
-			if result[i] < result[i-1] {
-				t.Errorf("Result not sorted at index %d: %d < %d",
-					i, result[i], result[i-1])
+		// Note: A complete binary tree created from array is NOT a BST,
+		// so inorder traversal won't be sorted. Removing the sorted check.
+		// Just verify we got all values 1..127
+		valueCount := make(map[int]bool)
+		for _, val := range result {
+			valueCount[val] = true
+		}
+		for i := 1; i <= 127; i++ {
+			if !valueCount[i] {
+				t.Errorf("Missing value %d in traversal", i)
 			}
 		}
 	})
@@ -406,117 +409,4 @@ func BenchmarkInorderTraversalWorstCase(b *testing.B) {
 			inorderTraversalOptimized(root)
 		}
 	})
-}
-
-// Helper functions
-
-func intPtr(x int) *int {
-	return &x
-}
-
-func slicesEqual(a, b []int) bool {
-	if len(a) != len(b) {
-		return false
-	}
-	for i := range a {
-		if a[i] != b[i] {
-			return false
-		}
-	}
-	return true
-}
-
-func countNodes(root *TreeNode) int {
-	if root == nil {
-		return 0
-	}
-	return 1 + countNodes(root.Left) + countNodes(root.Right)
-}
-
-func isBST(root *TreeNode) bool {
-	var check func(*TreeNode, int, int) bool
-	check = func(node *TreeNode, min, max int) bool {
-		if node == nil {
-			return true
-		}
-		if node.Val <= min || node.Val >= max {
-			return false
-		}
-		return check(node.Left, min, node.Val) && check(node.Right, node.Val, max)
-	}
-	return check(root, -1<<31, 1<<31-1)
-}
-
-func getAllValues(root *TreeNode) []int {
-	if root == nil {
-		return []int{}
-	}
-	left := getAllValues(root.Left)
-	right := getAllValues(root.Right)
-	result := append(left, root.Val)
-	result = append(result, right...)
-	return result
-}
-
-func contains(arr []int, val int) bool {
-	for _, v := range arr {
-		if v == val {
-			return true
-		}
-	}
-	return false
-}
-
-func countValues(root *TreeNode, counts map[int]int) {
-	if root == nil {
-		return
-	}
-	counts[root.Val]++
-	countValues(root.Left, counts)
-	countValues(root.Right, counts)
-}
-
-func createCompleteTree(size int) *TreeNode {
-	if size <= 0 {
-		return nil
-	}
-	
-	// Create nodes
-	nodes := make([]*int, size)
-	for i := range nodes {
-		val := i + 1
-		nodes[i] = &val
-	}
-	
-	return NewTreeFromSlice(nodes)
-}
-
-func createRightSkewedTree(size int) *TreeNode {
-	if size <= 0 {
-		return nil
-	}
-	
-	root := &TreeNode{Val: 1}
-	current := root
-	for i := 2; i <= size; i++ {
-		current.Right = &TreeNode{Val: i}
-		current = current.Right
-	}
-	
-	return root
-}
-
-func createLeftSkewedTree(size int) *TreeNode {
-	if size <= 0 {
-		return nil
-	}
-	
-	root := &TreeNode{Val: size}
-	current := root
-	for i := size - 1; i >= 1; i-- {
-		current.Left = &TreeNode{Val: i}
-		current = current.Left
-	}
-	
-	return root
 }

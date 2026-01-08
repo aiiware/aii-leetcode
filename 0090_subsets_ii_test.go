@@ -2,7 +2,6 @@ package leetcode
 
 import (
 	"fmt"
-	"sort"
 	"testing"
 )
 
@@ -391,94 +390,4 @@ func BenchmarkSubsetsWithDupWorstCase(b *testing.B) {
 			subsetsWithDupIterative(nums)
 		}
 	})
-}
-
-// Helper functions
-
-// sortSubsets sorts a list of subsets for comparison
-func sortSubsets(subsets [][]int) {
-	// Sort each subset
-	for _, subset := range subsets {
-		sort.Ints(subset)
-	}
-	
-	// Sort the list of subsets
-	sort.Slice(subsets, func(i, j int) bool {
-		if len(subsets[i]) != len(subsets[j]) {
-			return len(subsets[i]) < len(subsets[j])
-		}
-		for k := 0; k < len(subsets[i]); k++ {
-			if subsets[i][k] != subsets[j][k] {
-				return subsets[i][k] < subsets[j][k]
-			}
-		}
-		return false
-	})
-}
-
-// subsetsEqual compares two lists of subsets for equality
-func subsetsEqual(a, b [][]int) bool {
-	if len(a) != len(b) {
-		return false
-	}
-	
-	sortSubsets(a)
-	sortSubsets(b)
-	
-	for i := range a {
-		if !slicesEqual(a[i], b[i]) {
-			return false
-		}
-	}
-	return true
-}
-
-// hasDuplicateSubsets checks if a list contains duplicate subsets
-func hasDuplicateSubsets(subsets [][]int) bool {
-	seen := make(map[string]bool)
-	for _, subset := range subsets {
-		// Create a key by sorting and converting to string
-		sorted := make([]int, len(subset))
-		copy(sorted, subset)
-		sort.Ints(sorted)
-		
-		key := fmt.Sprintf("%v", sorted)
-		if seen[key] {
-			return true
-		}
-		seen[key] = true
-	}
-	return false
-}
-
-// isSubset checks if subset is a subset of nums (considering duplicates)
-func isSubset(subset, nums []int) bool {
-	// Count occurrences in nums
-	numsCount := make(map[int]int)
-	for _, num := range nums {
-		numsCount[num]++
-	}
-	
-	// Check if subset can be formed
-	subsetCount := make(map[int]int)
-	for _, num := range subset {
-		subsetCount[num]++
-		if subsetCount[num] > numsCount[num] {
-			return false
-		}
-	}
-	return true
-}
-
-// slicesEqual compares two slices for equality
-func slicesEqual(a, b []int) bool {
-	if len(a) != len(b) {
-		return false
-	}
-	for i := range a {
-		if a[i] != b[i] {
-			return false
-		}
-	}
-	return true
 }

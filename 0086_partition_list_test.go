@@ -122,7 +122,7 @@ func TestPartitionList(t *testing.T) {
 			result := PartitionList(head, tt.x)
 			actual := result.ToSlice()
 			
-			if !slicesEqual(actual, tt.expected) {
+			if !SlicesEqual(actual, tt.expected) {
 				t.Errorf("PartitionList(%v, %d) = %v, expected %v", 
 					tt.input, tt.x, actual, tt.expected)
 			}
@@ -164,7 +164,7 @@ func TestAllPartitionListImplementations(t *testing.T) {
 					result := impl.fn(head, tc.x)
 					actual := result.ToSlice()
 					
-					if !slicesEqual(actual, expected) {
+					if !SlicesEqual(actual, expected) {
 						t.Errorf("%s(%v, %d) = %v, expected %v", 
 							impl.name, tc.input, tc.x, actual, expected)
 					}
@@ -198,7 +198,7 @@ func TestPartitionListEdgeCases(t *testing.T) {
 		actual := result.ToSlice()
 		expected := []int{1, 2, 2, 4, 3, 5}
 		
-		if !slicesEqual(actual, expected) {
+		if !SlicesEqual(actual, expected) {
 			t.Errorf("Expected %v, got %v", expected, actual)
 		}
 		
@@ -222,7 +222,7 @@ func TestPartitionListEdgeCases(t *testing.T) {
 			current = current.Next
 		}
 		
-		if !slicesEqual(resultLess, lessPartition) {
+		if !SlicesEqual(resultLess, lessPartition) {
 			t.Errorf("Less partition order not preserved. Expected %v, got %v", 
 				lessPartition, resultLess)
 		}
@@ -354,17 +354,4 @@ func BenchmarkPartitionListSmall(b *testing.B) {
 			partitionListOptimized(h, x)
 		}
 	})
-}
-
-// Helper function to compare slices
-func slicesEqual(a, b []int) bool {
-	if len(a) != len(b) {
-		return false
-	}
-	for i := range a {
-		if a[i] != b[i] {
-			return false
-		}
-	}
-	return true
 }

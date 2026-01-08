@@ -1,7 +1,6 @@
 package leetcode
 
 import (
-	"fmt"
 	"testing"
 )
 
@@ -443,58 +442,6 @@ func BenchmarkIsSameTreeWorstCase(b *testing.B) {
 			isSameTreeOptimized(p, q)
 		}
 	})
-}
-
-// Helper functions
-
-func intPtr(x int) *int {
-	return &x
-}
-
-func createCompleteTree(n int) *TreeNode {
-	if n <= 0 {
-		return nil
-	}
-	// Create a complete binary tree with values 1..n
-	nodes := make([]*int, n)
-	for i := range nodes {
-		val := i + 1
-		nodes[i] = &val
-	}
-	return NewTreeFromSlice(nodes)
-}
-
-func createCompleteTreeSlice(n int) []*int {
-	nodes := make([]*int, n)
-	for i := range nodes {
-		val := i + 1
-		nodes[i] = &val
-	}
-	return nodes
-}
-
-func createRightSkewedTree(n int) *TreeNode {
-	if n <= 0 {
-		return nil
-	}
-	root := &TreeNode{Val: 1}
-	current := root
-	for i := 2; i <= n; i++ {
-		current.Right = &TreeNode{Val: i}
-		current = current.Right
-	}
-	return root
-}
-
-func cloneTree(root *TreeNode) *TreeNode {
-	if root == nil {
-		return nil
-	}
-	return &TreeNode{
-		Val:   root.Val,
-		Left:  cloneTree(root.Left),
-		Right: cloneTree(root.Right),
-	}
 }
 
 // Test TreeNode.Equal method

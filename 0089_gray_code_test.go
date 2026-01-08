@@ -16,56 +16,56 @@ func TestGrayCode(t *testing.T) {
 			n:    1,
 			validate: func(seq []int) bool {
 				expected := []int{0, 1}
-				return isValidGrayCode(seq, 1) && slicesEqual(seq, expected)
+				return IsValidGrayCode(seq, 1) && SlicesEqual(seq, expected)
 			},
 		},
 		{
 			name: "n = 2",
 			n:    2,
 			validate: func(seq []int) bool {
-				return isValidGrayCode(seq, 2)
+				return IsValidGrayCode(seq, 2)
 			},
 		},
 		{
 			name: "n = 3",
 			n:    3,
 			validate: func(seq []int) bool {
-				return isValidGrayCode(seq, 3)
+				return IsValidGrayCode(seq, 3)
 			},
 		},
 		{
 			name: "n = 4",
 			n:    4,
 			validate: func(seq []int) bool {
-				return isValidGrayCode(seq, 4)
+				return IsValidGrayCode(seq, 4)
 			},
 		},
 		{
 			name: "n = 5",
 			n:    5,
 			validate: func(seq []int) bool {
-				return isValidGrayCode(seq, 5)
+				return IsValidGrayCode(seq, 5)
 			},
 		},
 		{
 			name: "n = 6",
 			n:    6,
 			validate: func(seq []int) bool {
-				return isValidGrayCode(seq, 6)
+				return IsValidGrayCode(seq, 6)
 			},
 		},
 		{
 			name: "n = 7",
 			n:    7,
 			validate: func(seq []int) bool {
-				return isValidGrayCode(seq, 7)
+				return IsValidGrayCode(seq, 7)
 			},
 		},
 		{
 			name: "n = 8",
 			n:    8,
 			validate: func(seq []int) bool {
-				return isValidGrayCode(seq, 8)
+				return IsValidGrayCode(seq, 8)
 			},
 		},
 		{
@@ -113,18 +113,19 @@ func TestAllGrayCodeImplementations(t *testing.T) {
 
 	for _, tc := range testCases {
 		t.Run(tc.name, func(t *testing.T) {
-			expected := GrayCode(tc.n)
+			// Get expected result using default implementation
+			_ = GrayCode(tc.n) // Store in variable to avoid unused variable error
 
 			for _, impl := range implementations {
 				t.Run(impl.name, func(t *testing.T) {
 					result := impl.fn(tc.n)
-					if !isValidGrayCode(result, tc.n) {
+					if !IsValidGrayCode(result, tc.n) {
 						t.Errorf("%s(%d) = %v is not a valid Gray code sequence",
 							impl.name, tc.n, result)
 					}
 
 					// Check that it's a permutation of 0..2^n-1
-					if !isPermutation(result, 1<<tc.n) {
+					if !IsPermutation(result, 1<<tc.n) {
 						t.Errorf("%s(%d) = %v is not a permutation of 0..%d",
 							impl.name, tc.n, result, (1<<tc.n)-1)
 					}
@@ -138,14 +139,14 @@ func TestGrayCodeEdgeCases(t *testing.T) {
 	t.Run("n = 0", func(t *testing.T) {
 		result := GrayCode(0)
 		expected := []int{0}
-		if !slicesEqual(result, expected) {
+		if !SlicesEqual(result, expected) {
 			t.Errorf("GrayCode(0) = %v, expected %v", result, expected)
 		}
 	})
 
 	t.Run("n = 1", func(t *testing.T) {
 		result := GrayCode(1)
-		if !isValidGrayCode(result, 1) {
+		if !IsValidGrayCode(result, 1) {
 			t.Errorf("GrayCode(1) = %v is not valid", result)
 		}
 		// Should be [0, 1] or [1, 0] (but our implementation returns [0, 1])
@@ -157,7 +158,7 @@ func TestGrayCodeEdgeCases(t *testing.T) {
 	t.Run("n = 16 (maximum)", func(t *testing.T) {
 		// This is the maximum allowed by constraints
 		result := GrayCode(16)
-		if !isValidGrayCode(result, 16) {
+		if !IsValidGrayCode(result, 16) {
 			t.Errorf("GrayCode(16) is not valid")
 		}
 		if len(result) != 1<<16 {
@@ -170,7 +171,7 @@ func TestGrayCodeEdgeCases(t *testing.T) {
 		for n := 1; n <= 4; n++ {
 			t.Run(fmt.Sprintf("n=%d", n), func(t *testing.T) {
 				result := grayCodeBacktracking(n)
-				if !isValidGrayCode(result, n) {
+				if !IsValidGrayCode(result, n) {
 					t.Errorf("grayCodeBacktracking(%d) = %v is not valid", n, result)
 				}
 			})
@@ -223,17 +224,17 @@ func TestGrayCodeProperties(t *testing.T) {
 					// Property 3: Adjacent numbers should differ by exactly one bit
 					for i := 0; i < len(result)-1; i++ {
 						diff := result[i] ^ result[i+1]
-						if countBits(diff) != 1 {
+						if CountBits(diff) != 1 {
 							t.Errorf("Adjacent numbers %d and %d differ by %d bits (diff=%d)",
-								result[i], result[i+1], countBits(diff), diff)
+								result[i], result[i+1], CountBits(diff), diff)
 						}
 					}
 
 					// Property 4: First and last should differ by exactly one bit
 					firstLastDiff := result[0] ^ result[len(result)-1]
-					if countBits(firstLastDiff) != 1 {
+					if CountBits(firstLastDiff) != 1 {
 						t.Errorf("First and last numbers differ by %d bits",
-							countBits(firstLastDiff))
+							CountBits(firstLastDiff))
 					}
 
 					// Property 5: Sequence should start with 0
@@ -291,89 +292,4 @@ func BenchmarkGrayCodeBacktracking(b *testing.B) {
 			}
 		})
 	}
-}
-
-// Helper functions
-
-// isValidGrayCode checks if a sequence is a valid n-bit Gray code
-func isValidGrayCode(seq []int, n int) bool {
-	size := 1 << n
-
-	// Check length
-	if len(seq) != size {
-		return false
-	}
-
-	// Check range and uniqueness
-	seen := make([]bool, size)
-	for i, num := range seq {
-		if num < 0 || num >= size {
-			return false
-		}
-		if seen[num] {
-			return false
-		}
-		seen[num] = true
-
-		// Check adjacent difference (except for last element)
-		if i > 0 {
-			diff := seq[i-1] ^ num
-			if countBits(diff) != 1 {
-				return false
-			}
-		}
-	}
-
-	// Check first and last difference
-	firstLastDiff := seq[0] ^ seq[size-1]
-	return countBits(firstLastDiff) == 1
-}
-
-// isPermutation checks if a sequence is a permutation of 0..n-1
-func isPermutation(seq []int, n int) bool {
-	if len(seq) != n {
-		return false
-	}
-
-	seen := make([]bool, n)
-	for _, num := range seq {
-		if num < 0 || num >= n {
-			return false
-		}
-		if seen[num] {
-			return false
-		}
-		seen[num] = true
-	}
-
-	// All numbers should be seen
-	for i := 0; i < n; i++ {
-		if !seen[i] {
-			return false
-		}
-	}
-	return true
-}
-
-// countBits counts the number of 1 bits in an integer
-func countBits(x int) int {
-	count := 0
-	for x > 0 {
-		count += x & 1
-		x >>= 1
-	}
-	return count
-}
-
-// slicesEqual compares two slices for equality
-func slicesEqual(a, b []int) bool {
-	if len(a) != len(b) {
-		return false
-	}
-	for i := range a {
-		if a[i] != b[i] {
-			return false
-		}
-	}
-	return true
 }

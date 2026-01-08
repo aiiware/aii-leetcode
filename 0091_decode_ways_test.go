@@ -219,22 +219,55 @@ func TestNumDecodingsEdgeCases(t *testing.T) {
 
 	t.Run("Valid two-digit numbers", func(t *testing.T) {
 		// Test all valid two-digit combinations (10-26)
-		for i := 10; i <= 26; i++ {
-			s := fmt.Sprintf("%d", i)
-			result := NumDecodings(s)
-			if result != 2 {
-				t.Errorf("'%s' should return 2, got %d", s, result)
+		// But note: numbers ending in 0 (10, 20) only have 1 way
+		// Numbers where both digits are 1-9 have 2 ways
+		testCases := []struct {
+			s        string
+			expected int
+		}{
+			{"10", 1}, // Only "10" works
+			{"11", 2}, // "11" or "1,1"
+			{"12", 2},
+			{"13", 2},
+			{"14", 2},
+			{"15", 2},
+			{"16", 2},
+			{"17", 2},
+			{"18", 2},
+			{"19", 2},
+			{"20", 1}, // Only "20" works
+			{"21", 2}, // "21" or "2,1"
+			{"22", 2},
+			{"23", 2},
+			{"24", 2},
+			{"25", 2},
+			{"26", 2},
+		}
+		
+		for _, tc := range testCases {
+			result := NumDecodings(tc.s)
+			if result != tc.expected {
+				t.Errorf("'%s' should return %d, got %d", tc.s, tc.expected, result)
 			}
 		}
 	})
 
 	t.Run("Invalid two-digit numbers", func(t *testing.T) {
 		// Test some invalid two-digit combinations
-		testCases := []string{"27", "30", "40", "50", "99"}
-		for _, s := range testCases {
-			result := NumDecodings(s)
-			if result != 1 { // Can only decode as two single digits
-				t.Errorf("'%s' should return 1, got %d", s, result)
+		testCases := []struct {
+			s        string
+			expected int
+		}{
+			{"27", 1}, // Only "2,7" works (27 > 26)
+			{"30", 0}, // Cannot decode: "3,0" invalid (0), "30" invalid (>26)
+			{"40", 0}, // Same as 30
+			{"50", 0}, // Same as 30
+			{"99", 1}, // Only "9,9" works (99 > 26)
+		}
+		for _, tc := range testCases {
+			result := NumDecodings(tc.s)
+			if result != tc.expected {
+				t.Errorf("'%s' should return %d, got %d", tc.s, tc.expected, result)
 			}
 		}
 	})

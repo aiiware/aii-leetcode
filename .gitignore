@@ -76,6 +76,7 @@ debug*
 .aii/permissions.json
 .aii/audit.log
 test_tmp
+test_*
 tutorials/
 FINAL_PROJECT_SUMMARY.md
 cmd/brute_force/

@@ -133,7 +133,7 @@ func TestReverseBetween(t *testing.T) {
 			result := ReverseBetween(head, tt.left, tt.right)
 			actual := result.ToSlice()
 
-			if !slicesEqual(actual, tt.expected) {
+			if !SlicesEqual(actual, tt.expected) {
 				t.Errorf("ReverseBetween(%v, %d, %d) = %v, expected %v",
 					tt.input, tt.left, tt.right, actual, tt.expected)
 			}
@@ -203,7 +203,7 @@ func TestAllReverseBetweenImplementations(t *testing.T) {
 					result := impl.fn(head, tc.left, tc.right)
 					actual := result.ToSlice()
 
-					if !slicesEqual(actual, expectedSlice) {
+					if !SlicesEqual(actual, expectedSlice) {
 						t.Errorf("%s(%v, %d, %d) = %v, expected %v",
 							impl.name, tc.input, tc.left, tc.right, actual, expectedSlice)
 					}
@@ -235,7 +235,7 @@ func TestReverseBetweenEdgeCases(t *testing.T) {
 		expected := []int{1, 2, 3, 4, 5}
 		actual := result.ToSlice()
 
-		if !slicesEqual(actual, expected) {
+		if !SlicesEqual(actual, expected) {
 			t.Errorf("When left == right, list should remain unchanged. Got %v, expected %v",
 				actual, expected)
 		}
@@ -247,7 +247,7 @@ func TestReverseBetweenEdgeCases(t *testing.T) {
 		expected := []int{5, 4, 3, 2, 1}
 		actual := result.ToSlice()
 
-		if !slicesEqual(actual, expected) {
+		if !SlicesEqual(actual, expected) {
 			t.Errorf("Reverse entire list failed. Got %v, expected %v",
 				actual, expected)
 		}
@@ -262,7 +262,7 @@ func TestReverseBetweenEdgeCases(t *testing.T) {
 		actual := result.ToSlice()
 		expected := []int{1, 2, 3} // Should remain unchanged or error
 
-		if !slicesEqual(actual, expected) {
+		if !SlicesEqual(actual, expected) {
 			t.Errorf("When left > right, behavior undefined. Got %v", actual)
 		}
 	})
@@ -291,7 +291,7 @@ func TestReverseBetweenEdgeCases(t *testing.T) {
 
 		// Check reversed section
 		for i := 24; i < 75; i++ {
-			expected := input[74 - (i - 24) - 1]
+			expected := input[74 - (i - 24)]
 			if actual[i] != expected {
 				t.Errorf("Reversed section mismatch at index %d: got %d, expected %d",
 					i, actual[i], expected)
@@ -395,11 +395,11 @@ func BenchmarkReverseBetween(b *testing.B) {
 		right int
 	}{
 		{"Small", []int{1, 2, 3, 4, 5}, 2, 4},
-		{"Medium", makeRange(1, 100), 25, 75},
-		{"Large", makeRange(1, 1000), 250, 750},
-		{"Reverse entire", makeRange(1, 100), 1, 100},
-		{"Reverse beginning", makeRange(1, 100), 1, 50},
-		{"Reverse end", makeRange(1, 100), 51, 100},
+		{"Medium", MakeRange(1, 100), 25, 75},
+		{"Large", MakeRange(1, 1000), 250, 750},
+		{"Reverse entire", MakeRange(1, 100), 1, 100},
+		{"Reverse beginning", MakeRange(1, 100), 1, 50},
+		{"Reverse end", MakeRange(1, 100), 51, 100},
 	}
 
 	implementations := []struct {
@@ -431,7 +431,7 @@ func BenchmarkReverseBetween(b *testing.B) {
 func BenchmarkReverseBetweenWorstCase(b *testing.B) {
 	// Worst case: reverse almost entire large list
 	size := 1000
-	input := makeRange(1, size)
+	input := MakeRange(1, size)
 	left, right := 2, size-1
 
 	b.ResetTimer()
@@ -456,28 +456,4 @@ func BenchmarkReverseBetweenWorstCase(b *testing.B) {
 			reverseBetweenRecursive(head, left, right)
 		}
 	})
-}
-
-// Helper functions
-
-// makeRange creates a slice of integers from start to end inclusive
-func makeRange(start, end int) []int {
-	result := make([]int, end-start+1)
-	for i := range result {
-		result[i] = start + i
-	}
-	return result
-}
-
-// slicesEqual compares two slices for equality
-func slicesEqual(a, b []int) bool {
-	if len(a) != len(b) {
-		return false
-	}
-	for i := range a {
-		if a[i] != b[i] {
-			return false
-		}
-	}
-	return true
 }

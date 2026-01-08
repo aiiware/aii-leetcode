@@ -78,7 +78,7 @@ func reverseBetweenTwoPass(head *ListNode, left int, right int) *ListNode {
 	rightNode.Next = nil
 
 	// Reverse the section
-	reversedStart := reverseList(sectionStart)
+	reversedStart := reverseCompleteList(sectionStart)
 
 	// Reconnect
 	beforeLeft.Next = reversedStart
@@ -87,8 +87,8 @@ func reverseBetweenTwoPass(head *ListNode, left int, right int) *ListNode {
 	return dummy.Next
 }
 
-// reverseList reverses a complete linked list
-func reverseList(head *ListNode) *ListNode {
+// reverseCompleteList reverses a complete linked list
+func reverseCompleteList(head *ListNode) *ListNode {
 	var prev *ListNode
 	current := head
 

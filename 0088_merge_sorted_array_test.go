@@ -60,7 +60,7 @@ func TestMergeSortedArray(t *testing.T) {
 			m:        3,
 			nums2:    []int{},
 			n:        0,
-			expected: []int{1, 2, 3},
+			expected: []int{1, 2, 3, 0, 0, 0}, // nums1 unchanged
 		},
 		{
 			name:     "All elements in nums1 smaller",
@@ -144,7 +144,7 @@ func TestMergeSortedArray(t *testing.T) {
 
 			MergeSortedArray(nums1Copy, tt.m, tt.nums2, tt.n)
 
-			if !slicesEqual(nums1Copy, tt.expected) {
+			if !slicesEqualMerge(nums1Copy, tt.expected) {
 				t.Errorf("MergeSortedArray(%v, %d, %v, %d) = %v, expected %v",
 					tt.nums1, tt.m, tt.nums2, tt.n, nums1Copy, tt.expected)
 			}
@@ -216,7 +216,7 @@ func TestAllMergeSortedArrayImplementations(t *testing.T) {
 
 					impl.fn(nums1Copy, tc.m, tc.nums2, tc.n)
 
-					if !slicesEqual(nums1Copy, nums1Expected) {
+					if !slicesEqualMerge(nums1Copy, nums1Expected) {
 						t.Errorf("%s(%v, %d, %v, %d) = %v, expected %v",
 							impl.name, tc.nums1, tc.m, tc.nums2, tc.n, nums1Copy, nums1Expected)
 					}
@@ -241,7 +241,7 @@ func TestMergeSortedArrayEdgeCases(t *testing.T) {
 		nums2 := []int{1}
 		MergeSortedArray(nums1, 1, nums2, 1)
 		expected := []int{1, 2}
-		if !slicesEqual(nums1, expected) {
+		if !slicesEqualMerge(nums1, expected) {
 			t.Errorf("Expected %v, got %v", expected, nums1)
 		}
 	})
@@ -251,7 +251,7 @@ func TestMergeSortedArrayEdgeCases(t *testing.T) {
 		nums2 := []int{}
 		MergeSortedArray(nums1, 3, nums2, 0)
 		expected := []int{1, 2, 3}
-		if !slicesEqual(nums1, expected) {
+		if !slicesEqualMerge(nums1, expected) {
 			t.Errorf("Expected %v, got %v", expected, nums1)
 		}
 	})
@@ -297,7 +297,7 @@ func TestMergeSortedArrayEdgeCases(t *testing.T) {
 		nums2 := []int{5, 5, 5}
 		MergeSortedArray(nums1, 3, nums2, 3)
 		expected := []int{5, 5, 5, 5, 5, 5}
-		if !slicesEqual(nums1, expected) {
+		if !slicesEqualMerge(nums1, expected) {
 			t.Errorf("Expected %v, got %v", expected, nums1)
 		}
 	})
@@ -480,7 +480,7 @@ func BenchmarkMergeSortedArrayWorstCase(b *testing.B) {
 }
 
 // Helper function to compare slices
-func slicesEqual(a, b []int) bool {
+func slicesEqualMerge(a, b []int) bool {
 	if len(a) != len(b) {
 		return false
 	}

@@ -39,7 +39,7 @@ func TestGenerateTrees(t *testing.T) {
 				}
 				// Check all trees are valid BSTs with values 1..n
 				for _, tree := range trees {
-					if !isValidBST(tree, 1, 2) {
+					if !isValidBSTHelper95(tree, 1, 2) {
 						return false
 					}
 					if !containsValues1toN(tree, 2) {
@@ -60,7 +60,7 @@ func TestGenerateTrees(t *testing.T) {
 				}
 				// Check all trees are valid BSTs with values 1..n
 				for _, tree := range trees {
-					if !isValidBST(tree, 1, 3) {
+					if !isValidBSTHelper95(tree, 1, 3) {
 						return false
 					}
 					if !containsValues1toN(tree, 3) {
@@ -81,7 +81,7 @@ func TestGenerateTrees(t *testing.T) {
 				}
 				// Check all trees are valid BSTs with values 1..n
 				for _, tree := range trees {
-					if !isValidBST(tree, 1, 4) {
+					if !isValidBSTHelper95(tree, 1, 4) {
 						return false
 					}
 					if !containsValues1toN(tree, 4) {
@@ -148,7 +148,7 @@ func TestAllGenerateTreesImplementations(t *testing.T) {
 
 					// Check all trees are valid BSTs with values 1..n
 					for _, tree := range result {
-						if !isValidBST(tree, 1, tc.n) {
+						if !isValidBSTHelper95(tree, 1, tc.n) {
 							t.Errorf("%s(%d) produced invalid BST: %v",
 								impl.name, tc.n, tree.ToSlice())
 						}
@@ -200,7 +200,7 @@ func TestGenerateTreesEdgeCases(t *testing.T) {
 		// Check a sample of trees
 		for i := 0; i < min(10, len(result)); i++ {
 			tree := result[i]
-			if !isValidBST(tree, 1, 8) {
+			if !isValidBSTHelper95(tree, 1, 8) {
 				t.Errorf("Tree %d is not a valid BST: %v", i, tree.ToSlice())
 			}
 			if !containsValues1toN(tree, 8) {
@@ -219,7 +219,7 @@ func TestGenerateTreesEdgeCases(t *testing.T) {
 			t.Run(fmt.Sprintf("n=%d", n), func(t *testing.T) {
 				result := GenerateTrees(n)
 				for i, tree := range result {
-					nodeCount := countNodes(tree)
+					nodeCount := countNodesHelper(tree)
 					if nodeCount != n {
 						t.Errorf("Tree %d has %d nodes, expected %d: %v",
 							i, nodeCount, n, tree.ToSlice())
@@ -234,7 +234,7 @@ func TestGenerateTreesEdgeCases(t *testing.T) {
 			t.Run(fmt.Sprintf("n=%d", n), func(t *testing.T) {
 				result := GenerateTrees(n)
 				for i, tree := range result {
-					values := getAllValues(tree)
+					values := getAllValuesHelper(tree)
 					// Check we have exactly n values
 					if len(values) != n {
 						t.Errorf("Tree %d has %d values, expected %d: %v",
@@ -291,7 +291,7 @@ func TestGenerateTreesProperties(t *testing.T) {
 
 					// Property 2: All trees should be valid BSTs
 					for i, tree := range result {
-						if !isValidBST(tree, 1, n) {
+						if !isValidBSTHelper95(tree, 1, n) {
 							t.Errorf("Tree %d is not a valid BST: %v",
 								i, tree.ToSlice())
 						}
@@ -312,7 +312,7 @@ func TestGenerateTreesProperties(t *testing.T) {
 
 					// Property 5: All trees should have exactly n nodes
 					for i, tree := range result {
-						nodeCount := countNodes(tree)
+						nodeCount := countNodesHelper(tree)
 						if nodeCount != n {
 							t.Errorf("Tree %d has %d nodes, expected %d",
 								i, nodeCount, n)
@@ -389,28 +389,21 @@ func BenchmarkGenerateTreesWorstCase(b *testing.B) {
 	})
 }
 
-// Helper functions
+// Helper functions (renamed to avoid conflicts)
 
-func min(a, b int) int {
-	if a < b {
-		return a
-	}
-	return b
-}
-
-func isValidBST(root *TreeNode, minVal, maxVal int) bool {
+func isValidBSTHelper95(root *TreeNode, minVal, maxVal int) bool {
 	if root == nil {
 		return true
 	}
 	if root.Val < minVal || root.Val > maxVal {
 		return false
 	}
-	return isValidBST(root.Left, minVal, root.Val-1) &&
-		isValidBST(root.Right, root.Val+1, maxVal)
+	return isValidBSTHelper95(root.Left, minVal, root.Val-1) &&
+		isValidBSTHelper95(root.Right, root.Val+1, maxVal)
 }
 
 func containsValues1toN(root *TreeNode, n int) bool {
-	values := getAllValues(root)
+	values := getAllValuesHelper(root)
 	if len(values) != n {
 		return false
 	}
@@ -450,19 +443,19 @@ func treeToString(root *TreeNode) string {
 	return fmt.Sprintf("(%d %s %s)", root.Val, treeToString(root.Left), treeToString(root.Right))
 }
 
-func countNodes(root *TreeNode) int {
+func countNodesHelper(root *TreeNode) int {
 	if root == nil {
 		return 0
 	}
-	return 1 + countNodes(root.Left) + countNodes(root.Right)
+	return 1 + countNodesHelper(root.Left) + countNodesHelper(root.Right)
 }
 
-func getAllValues(root *TreeNode) []int {
+func getAllValuesHelper(root *TreeNode) []int {
 	if root == nil {
 		return []int{}
 	}
-	left := getAllValues(root.Left)
-	right := getAllValues(root.Right)
+	left := getAllValuesHelper(root.Left)
+	right := getAllValuesHelper(root.Right)
 	result := append(left, root.Val)
 	result = append(result, right...)
 	return result
@@ -484,7 +477,7 @@ func TestGenerateTreesBacktracking(t *testing.T) {
 			
 			// Check all trees are valid
 			for _, tree := range result {
-				if !isValidBST(tree, 1, n) {
+				if !isValidBSTHelper95(tree, 1, n) {
 					t.Errorf("Invalid BST from backtracking: %v", tree.ToSlice())
 				}
 			}

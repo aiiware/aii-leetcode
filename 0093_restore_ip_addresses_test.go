@@ -3,6 +3,8 @@ package leetcode
 import (
 	"fmt"
 	"sort"
+	"strconv"
+	"strings"
 	"testing"
 )
 
@@ -60,7 +62,7 @@ func TestRestoreIpAddresses(t *testing.T) {
 		{
 			name:     "Mixed valid",
 			s:        "19216811",
-			expected: []string{"19.216.81.1", "192.16.81.1", "192.168.1.1"},
+			expected: []string{"1.92.168.11", "19.2.168.11", "19.21.68.11", "19.216.8.11", "19.216.81.1", "192.1.68.11", "192.16.8.11", "192.16.81.1", "192.168.1.1"},
 		},
 		{
 			name:     "No valid IPs",
@@ -75,17 +77,17 @@ func TestRestoreIpAddresses(t *testing.T) {
 		{
 			name:     "Edge case maximum",
 			s:        "123456789012", // 12 digits
-			expected: []string{"123.456.789.012"}, // But 456, 789, 012 are invalid
+			expected: []string{}, // 456, 789, 012 are invalid
 		},
 		{
 			name:     "With zeros in middle",
 			s:        "100100",
-			expected: []string{"100.1.0.0", "100.10.0.0"},
+			expected: []string{"1.0.0.100", "10.0.10.0", "100.1.0.0"},
 		},
 		{
 			name:     "Complex case 1",
-			s:        "25505011535",
-			expected: []string{"255.50.11.535", "255.50.115.35", "255.0.50.11535"}, // But need to check validity
+			s:        "25505011535", // 11 digits
+			expected: []string{}, // No valid IP: would need segments like 255.50.115.35 (10 digits) or 255.0.50.11535 (11 digits but 11535 > 255)
 		},
 	}
 
@@ -425,19 +427,6 @@ func isValidIPAddress(ip string) bool {
 // removeDots removes all dots from a string
 func removeDots(s string) string {
 	return strings.ReplaceAll(s, ".", "")
-}
-
-// stringSlicesEqual compares two string slices for equality
-func stringSlicesEqual(a, b []string) bool {
-	if len(a) != len(b) {
-		return false
-	}
-	for i := range a {
-		if a[i] != b[i] {
-			return false
-		}
-	}
-	return true
 }
 
 // generateAllPossibleIPs generates all possible dot placements (for testing)

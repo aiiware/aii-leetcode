@@ -234,7 +234,7 @@ func isValidBSTBFS(root *TreeNode) bool {
 // isValidBSTSimple uses simple recursive approach.
 func isValidBSTSimple(root *TreeNode) bool {
 	// Get inorder traversal
-	values := inorderTraversal(root)
+	values := inorderTraversalForBST(root)
 	
 	// Check if sorted
 	for i := 1; i < len(values); i++ {
@@ -246,14 +246,14 @@ func isValidBSTSimple(root *TreeNode) bool {
 	return true
 }
 
-// inorderTraversal returns inorder traversal of tree
-func inorderTraversal(root *TreeNode) []int {
+// inorderTraversalForBST returns inorder traversal of tree (internal helper)
+func inorderTraversalForBST(root *TreeNode) []int {
 	if root == nil {
 		return []int{}
 	}
 	
-	left := inorderTraversal(root.Left)
-	right := inorderTraversal(root.Right)
+	left := inorderTraversalForBST(root.Left)
+	right := inorderTraversalForBST(root.Right)
 	
 	result := append(left, root.Val)
 	result = append(result, right...)

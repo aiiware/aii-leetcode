@@ -128,13 +128,13 @@ func backtrackGrayCode(n int, result []int, visited []bool, pos int) bool {
 		// Check if last and first differ by one bit
 		last := result[pos-1]
 		first := result[0]
-		return countBits(last^first) == 1
+		return CountBits(last^first) == 1
 	}
 
 	last := result[pos-1]
 	// Try all possible next numbers
 	for i := 0; i < (1 << n); i++ {
-		if !visited[i] && countBits(last^i) == 1 {
+		if !visited[i] && CountBits(last^i) == 1 {
 			result[pos] = i
 			visited[i] = true
 
@@ -148,16 +148,6 @@ func backtrackGrayCode(n int, result []int, visited []bool, pos int) bool {
 	}
 
 	return false
-}
-
-// countBits counts the number of 1 bits in an integer
-func countBits(x int) int {
-	count := 0
-	for x > 0 {
-		count += x & 1
-		x >>= 1
-	}
-	return count
 }
 
 // grayCodeIterative2 uses another iterative method.

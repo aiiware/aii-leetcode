@@ -49,10 +49,10 @@ func TestIsScramble(t *testing.T) {
 			expected: true,
 		},
 		{
-			name:     "Not scramble",
+			name:     "Actually a scramble (was incorrectly labeled 'Not scramble')",
 			s1:       "abcd",
 			s2:       "bdca",
-			expected: false,
+			expected: true, // Fixed: "bdca" is actually a scramble of "abcd"
 		},
 		{
 			name:     "Complex scramble 1",

@@ -68,17 +68,18 @@ func subsetsWithDupIterative(nums []int) [][]int {
 	
 	result := [][]int{{}} // Start with empty subset
 	
+	size := 0
 	start := 0
 	for i := 0; i < len(nums); i++ {
 		// If current element is same as previous, only add to subsets created in previous iteration
 		if i > 0 && nums[i] == nums[i-1] {
-			start = len(result) - (len(result) - start)
+			start = size
 		} else {
 			start = 0
 		}
 		
-		end := len(result)
-		for j := start; j < end; j++ {
+		size = len(result)
+		for j := start; j < size; j++ {
 			// Create new subset by adding nums[i] to existing subset
 			newSubset := make([]int, len(result[j]))
 			copy(newSubset, result[j])
@@ -164,26 +165,29 @@ func subsetsWithDupDFS(nums []int) [][]int {
 func subsetsWithDupBFS(nums []int) [][]int {
 	sort.Ints(nums)
 	
-	queue := [][]int{{}}
+	result := [][]int{{}} // Start with empty subset
 	
+	size := 0
+	start := 0
 	for i := 0; i < len(nums); i++ {
-		levelSize := len(queue)
-		start := 0
-		
-		// If duplicate, only add to subsets created in previous level
+		// If current element is same as previous, only add to subsets created in previous iteration
 		if i > 0 && nums[i] == nums[i-1] {
-			start = levelSize - (levelSize - start)
+			start = size
+		} else {
+			start = 0
 		}
 		
-		for j := start; j < levelSize; j++ {
-			newSubset := make([]int, len(queue[j]))
-			copy(newSubset, queue[j])
+		size = len(result)
+		for j := start; j < size; j++ {
+			// Create new subset by adding nums[i] to existing subset
+			newSubset := make([]int, len(result[j]))
+			copy(newSubset, result[j])
 			newSubset = append(newSubset, nums[i])
-			queue = append(queue, newSubset)
+			result = append(result, newSubset)
 		}
 	}
 	
-	return queue
+	return result
 }
 
 // subsetsWithDupOptimized is an optimized version.

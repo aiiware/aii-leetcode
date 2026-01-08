@@ -71,14 +71,15 @@ func numDecodingsOptimized(s string) int {
 	}
 
 	n := len(s)
-	// dp[i-2], dp[i-1], dp[i]
-	prev2, prev1, curr := 0, 1, 0
-
-	// Initialize for first character
-	if s[0] != '0' {
-		curr = 1
+	if n == 1 {
+		return 1
 	}
-	prev2, prev1 = 0, curr
+
+	// dp[i-2], dp[i-1], dp[i]
+	// dp[0] = 1 (empty string)
+	// dp[1] = 1 (first character, which we know is not '0')
+	prev2, prev1 := 1, 1
+	curr := 0
 
 	for i := 2; i <= n; i++ {
 		curr = 0

@@ -196,12 +196,12 @@ func TestNumTreesProperties(t *testing.T) {
 
 	for _, impl := range implementations {
 		t.Run(impl.name+"_properties", func(t *testing.T) {
-			// Test Catalan number property: C(0) = 1 (but our functions return 0 for n=0)
+			// Test that our functions return 0 for n=0 (by design, not mathematically)
 			if impl.fn(0) != 0 {
 				t.Errorf("%s(0) = %d, expected 0", impl.name, impl.fn(0))
 			}
 
-			// Test first few Catalan numbers
+			// Test first few Catalan numbers (for n >= 1)
 			for n := 1; n <= 10; n++ {
 				result := impl.fn(n)
 				expected := catalanNumbers[n]
@@ -212,13 +212,19 @@ func TestNumTreesProperties(t *testing.T) {
 			}
 
 			// Test recurrence relation: C(n+1) = sum(C(i)*C(n-i)) for i=0..n
+			// Note: We need to use C(0)=1 for the recurrence, not impl.fn(0)=0
 			for n := 1; n <= 8; n++ {
-				cN := impl.fn(n)
-				// Compute C(n+1) using recurrence
+				// Compute C(n+1) using recurrence with C(0)=1
 				sum := 0
 				for i := 0; i <= n; i++ {
-					ci := impl.fn(i)
-					cnMinusI := impl.fn(n - i)
+					ci := 1 // C(0) = 1
+					if i > 0 {
+						ci = impl.fn(i)
+					}
+					cnMinusI := 1 // C(0) = 1
+					if n-i > 0 {
+						cnMinusI = impl.fn(n - i)
+					}
 					sum += ci * cnMinusI
 				}
 				cNPlus1 := impl.fn(n + 1)
@@ -228,7 +234,7 @@ func TestNumTreesProperties(t *testing.T) {
 				}
 			}
 
-			// Test monotonic increase: C(n) < C(n+1) for n >= 0
+			// Test monotonic increase: C(n) < C(n+1) for n >= 1
 			for n := 1; n <= 9; n++ {
 				if impl.fn(n) >= impl.fn(n+1) {
 					t.Errorf("Not monotonic: C(%d)=%d >= C(%d)=%d",
