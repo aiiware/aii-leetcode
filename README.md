@@ -4,7 +4,7 @@ A comprehensive collection of LeetCode problem solutions implemented in Go with 
 
 ## Overview
 
-This package contains solutions for LeetCode problems **0001-0100** with:
+This package contains solutions for LeetCode problems **0001-0101** with:
 - ✅ Clean, idiomatic Go implementations
 - ✅ Comprehensive test coverage with edge cases
 - ✅ Performance benchmarks
@@ -150,7 +150,7 @@ This package contains solutions for LeetCode problems **0001-0100** with:
 | 0089 | Gray Code | Medium | Math, Backtracking, Bit Manipulation | `0089_gray_code.go` |
 | 0090 | Subsets II | Medium | Array, Backtracking, Bit Manipulation | `0090_subsets_ii.go` |
 
-### Problems 0091-0100
+### Problems 0091-0101
 
 | # | Problem | Difficulty | Tags | File |
 |---|---------|------------|------|------|
@@ -164,6 +164,7 @@ This package contains solutions for LeetCode problems **0001-0100** with:
 | 0098 | Validate Binary Search Tree | Medium | Tree, Depth-First Search, Binary Search Tree | `0098_validate_binary_search_tree.go` |
 | 0099 | Recover Binary Search Tree | Medium | Tree, Depth-First Search, Binary Search Tree | `0099_recover_binary_search_tree.go` |
 | 0100 | Same Tree | Easy | Tree, Depth-First Search, Breadth-First Search, Binary Tree | `0100_same_tree.go` |
+| 0101 | Symmetric Tree | Easy | Tree, Depth-First Search, Breadth-First Search, Binary Tree | `0101_symmetric_tree.go` |
 
 ## File Structure
 
@@ -305,6 +306,7 @@ leetcode/
 ├── 0098_validate_binary_search_tree.go # Problem 0098 (Medium)
 ├── 0099_recover_binary_search_tree.go # Problem 0099 (Medium)
 ├── 0100_same_tree.go                  # Problem 0100 (Easy)
+├── 0101_symmetric_tree.go               # Problem 0101 (Easy)
 ├── 101 test files (*_test.go)         # Comprehensive tests
 ├── list_node.go                       # Shared ListNode struct
 ├── go.mod                             # Go module
@@ -469,6 +471,7 @@ BenchmarkIsMatch-16                        100   14005923 ns/op    1048576 B/op 
 34. **0097 - Interleaving String**: 2D dynamic programming approach
 35. **0098 - Validate Binary Search Tree**: In-order traversal with bounds checking
 36. **0100 - Same Tree**: Recursive depth-first comparison
+37. **0101 - Symmetric Tree**: Multiple approaches (recursive, iterative with queue/stack, level-order traversal)
 
 ### Reusable Components
 
