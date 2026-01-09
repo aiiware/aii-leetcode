@@ -12,12 +12,12 @@ func TestIsSymmetric(t *testing.T) {
 	}{
 		{
 			name:     "Example 1: Symmetric tree",
-			root:     []*int{intPtr(1), intPtr(2), intPtr(2), intPtr(3), intPtr(4), intPtr(4), intPtr(3)},
+			root:     []*int{IntPtr(1), IntPtr(2), IntPtr(2), IntPtr(3), IntPtr(4), IntPtr(4), IntPtr(3)},
 			expected: true,
 		},
 		{
 			name:     "Example 2: Asymmetric tree",
-			root:     []*int{intPtr(1), intPtr(2), intPtr(2), nil, intPtr(3), nil, intPtr(3)},
+			root:     []*int{IntPtr(1), IntPtr(2), IntPtr(2), nil, IntPtr(3), nil, IntPtr(3)},
 			expected: false,
 		},
 		{
@@ -27,67 +27,72 @@ func TestIsSymmetric(t *testing.T) {
 		},
 		{
 			name:     "Single node",
-			root:     []*int{intPtr(1)},
+			root:     []*int{IntPtr(1)},
 			expected: true,
 		},
 		{
 			name:     "Two nodes symmetric",
-			root:     []*int{intPtr(1), intPtr(2), intPtr(2)},
+			root:     []*int{IntPtr(1), IntPtr(2), IntPtr(2)},
 			expected: true,
 		},
 		{
 			name:     "Two nodes asymmetric",
-			root:     []*int{intPtr(1), intPtr(2), intPtr(3)},
+			root:     []*int{IntPtr(1), IntPtr(2), IntPtr(3)},
 			expected: false,
 		},
 		{
 			name:     "Three levels symmetric",
-			root:     []*int{intPtr(1), intPtr(2), intPtr(2), intPtr(3), intPtr(4), intPtr(4), intPtr(3)},
+			root:     []*int{IntPtr(1), IntPtr(2), IntPtr(2), IntPtr(3), IntPtr(4), IntPtr(4), IntPtr(3)},
 			expected: true,
 		},
 		{
 			name:     "Three levels asymmetric",
-			root:     []*int{intPtr(1), intPtr(2), intPtr(2), intPtr(3), intPtr(4), intPtr(3), intPtr(4)},
+			root:     []*int{IntPtr(1), IntPtr(2), IntPtr(2), IntPtr(3), IntPtr(4), IntPtr(3), IntPtr(4)},
 			expected: false,
 		},
 		{
 			name:     "Tree with nil values symmetric",
-			root:     []*int{intPtr(1), intPtr(2), intPtr(2), nil, intPtr(3), intPtr(3), nil},
+			root:     []*int{IntPtr(1), IntPtr(2), IntPtr(2), nil, IntPtr(3), IntPtr(3), nil},
 			expected: true,
 		},
 		{
 			name:     "Tree with nil values asymmetric",
-			root:     []*int{intPtr(1), intPtr(2), intPtr(2), nil, intPtr(3), nil, intPtr(3)},
+			root:     []*int{IntPtr(1), IntPtr(2), IntPtr(2), nil, IntPtr(3), nil, IntPtr(3)},
 			expected: false,
 		},
 		{
 			name:     "Complex symmetric tree",
-			root:     []*int{intPtr(1), intPtr(2), intPtr(2), intPtr(3), intPtr(4), intPtr(4), intPtr(3), intPtr(5), intPtr(6), intPtr(7), intPtr(7), intPtr(6), intPtr(5)},
+			// Fixed: Correct 15-node symmetric tree
+			// Level 0: [1]
+			// Level 1: [2, 2]
+			// Level 2: [3, 4, 4, 3]
+			// Level 3: [5, 6, 7, 8, 8, 7, 6, 5] - This is symmetric!
+			root:     []*int{IntPtr(1), IntPtr(2), IntPtr(2), IntPtr(3), IntPtr(4), IntPtr(4), IntPtr(3), IntPtr(5), IntPtr(6), IntPtr(7), IntPtr(8), IntPtr(8), IntPtr(7), IntPtr(6), IntPtr(5)},
 			expected: true,
 		},
 		{
 			name:     "Complex asymmetric tree",
-			root:     []*int{intPtr(1), intPtr(2), intPtr(2), intPtr(3), intPtr(4), intPtr(4), intPtr(3), intPtr(5), intPtr(6), intPtr(7), intPtr(7), intPtr(6), intPtr(8)},
+			root:     []*int{IntPtr(1), IntPtr(2), IntPtr(2), IntPtr(3), IntPtr(4), IntPtr(4), IntPtr(3), IntPtr(5), IntPtr(6), IntPtr(7), IntPtr(7), IntPtr(6), IntPtr(8)},
 			expected: false,
 		},
 		{
 			name:     "All same values symmetric structure",
-			root:     []*int{intPtr(1), intPtr(1), intPtr(1), intPtr(1), intPtr(1), intPtr(1), intPtr(1)},
+			root:     []*int{IntPtr(1), IntPtr(1), IntPtr(1), IntPtr(1), IntPtr(1), IntPtr(1), IntPtr(1)},
 			expected: true,
 		},
 		{
 			name:     "All same values asymmetric structure",
-			root:     []*int{intPtr(1), intPtr(1), intPtr(1), intPtr(1), nil, intPtr(1), intPtr(1)},
+			root:     []*int{IntPtr(1), IntPtr(1), IntPtr(1), IntPtr(1), nil, IntPtr(1), IntPtr(1)},
 			expected: false,
 		},
 		{
 			name:     "Negative values symmetric",
-			root:     []*int{intPtr(-1), intPtr(-2), intPtr(-2), intPtr(-3), intPtr(-4), intPtr(-4), intPtr(-3)},
+			root:     []*int{IntPtr(-1), IntPtr(-2), IntPtr(-2), IntPtr(-3), IntPtr(-4), IntPtr(-4), IntPtr(-3)},
 			expected: true,
 		},
 		{
 			name:     "Mixed positive negative symmetric",
-			root:     []*int{intPtr(0), intPtr(-1), intPtr(-1), intPtr(1), intPtr(2), intPtr(2), intPtr(1)},
+			root:     []*int{IntPtr(0), IntPtr(-1), IntPtr(-1), IntPtr(1), IntPtr(2), IntPtr(2), IntPtr(1)},
 			expected: true,
 		},
 	}
@@ -111,11 +116,11 @@ func TestAllIsSymmetricImplementations(t *testing.T) {
 	}{
 		{
 			name: "Symmetric tree",
-			root: []*int{intPtr(1), intPtr(2), intPtr(2), intPtr(3), intPtr(4), intPtr(4), intPtr(3)},
+			root: []*int{IntPtr(1), IntPtr(2), IntPtr(2), IntPtr(3), IntPtr(4), IntPtr(4), IntPtr(3)},
 		},
 		{
 			name: "Asymmetric tree",
-			root: []*int{intPtr(1), intPtr(2), intPtr(2), nil, intPtr(3), nil, intPtr(3)},
+			root: []*int{IntPtr(1), IntPtr(2), IntPtr(2), nil, IntPtr(3), nil, IntPtr(3)},
 		},
 		{
 			name: "Empty tree",
@@ -123,15 +128,16 @@ func TestAllIsSymmetricImplementations(t *testing.T) {
 		},
 		{
 			name: "Single node",
-			root: []*int{intPtr(1)},
+			root: []*int{IntPtr(1)},
 		},
 		{
 			name: "Complex symmetric",
-			root: []*int{intPtr(1), intPtr(2), intPtr(2), intPtr(3), intPtr(4), intPtr(4), intPtr(3), intPtr(5), intPtr(6), intPtr(7), intPtr(7), intPtr(6), intPtr(5)},
+			// Fixed: Correct 15-node symmetric tree
+			root: []*int{IntPtr(1), IntPtr(2), IntPtr(2), IntPtr(3), IntPtr(4), IntPtr(4), IntPtr(3), IntPtr(5), IntPtr(6), IntPtr(7), IntPtr(8), IntPtr(8), IntPtr(7), IntPtr(6), IntPtr(5)},
 		},
 		{
 			name: "Complex asymmetric",
-			root: []*int{intPtr(1), intPtr(2), intPtr(2), intPtr(3), intPtr(4), intPtr(4), intPtr(3), intPtr(5), intPtr(6), intPtr(7), intPtr(7), intPtr(6), intPtr(8)},
+			root: []*int{IntPtr(1), IntPtr(2), IntPtr(2), IntPtr(3), IntPtr(4), IntPtr(4), IntPtr(3), IntPtr(5), IntPtr(6), IntPtr(7), IntPtr(7), IntPtr(6), IntPtr(8)},
 		},
 	}
 
@@ -174,10 +180,12 @@ func TestIsSymmetricEdgeCases(t *testing.T) {
 	})
 
 	t.Run("Large symmetric tree", func(t *testing.T) {
-		// Create a large symmetric tree (complete binary tree)
-		root := createCompleteTree(1023) // 2^10 - 1 nodes
+		// Create a large symmetric tree (complete binary tree with symmetric values)
+		// Use createSymmetricTree instead of createCompleteTree
+		// 10 levels gives us 2^10 - 1 = 1023 nodes
+		root := createSymmetricTree(10) // 2^10 - 1 nodes
 		if !IsSymmetric(root) {
-			t.Error("Large complete tree should be symmetric")
+			t.Error("Large symmetric tree should be symmetric")
 		}
 	})
 
@@ -217,9 +225,9 @@ func TestIsSymmetricEdgeCases(t *testing.T) {
 	t.Run("Mirror values but different structure", func(t *testing.T) {
 		// Values are mirror but structure isn't
 		root := NewTreeFromSlice([]*int{
-			intPtr(1),
-			intPtr(2), intPtr(2),
-			intPtr(3), intPtr(4), intPtr(3), intPtr(4),
+			IntPtr(1),
+			IntPtr(2), IntPtr(2),
+			IntPtr(3), IntPtr(4), IntPtr(3), IntPtr(4),
 		})
 		if IsSymmetric(root) {
 			t.Error("Tree with mirror values but different structure should not be symmetric")
@@ -245,15 +253,15 @@ func TestIsSymmetricProperties(t *testing.T) {
 			}
 
 			// Property 2: Single node tree is symmetric
-			singleNode := NewTreeFromSlice([]*int{intPtr(1)})
+			singleNode := NewTreeFromSlice([]*int{IntPtr(1)})
 			if !impl.fn(singleNode) {
 				t.Error("Single node tree should be symmetric")
 			}
 
 			// Property 3: Mirror of a symmetric tree is symmetric
 			symmetricTree := NewTreeFromSlice([]*int{
-				intPtr(1), intPtr(2), intPtr(2),
-				intPtr(3), intPtr(4), intPtr(4), intPtr(3),
+				IntPtr(1), IntPtr(2), IntPtr(2),
+				IntPtr(3), IntPtr(4), IntPtr(4), IntPtr(3),
 			})
 			if !impl.fn(symmetricTree) {
 				t.Error("Symmetric tree should be symmetric")
@@ -274,20 +282,20 @@ func BenchmarkIsSymmetric(b *testing.B) {
 		{
 			name: "Small symmetric",
 			root: NewTreeFromSlice([]*int{
-				intPtr(1), intPtr(2), intPtr(2),
-				intPtr(3), intPtr(4), intPtr(4), intPtr(3),
+				IntPtr(1), IntPtr(2), IntPtr(2),
+				IntPtr(3), IntPtr(4), IntPtr(4), IntPtr(3),
 			}),
 		},
 		{
 			name: "Small asymmetric",
 			root: NewTreeFromSlice([]*int{
-				intPtr(1), intPtr(2), intPtr(2),
-				nil, intPtr(3), nil, intPtr(3),
+				IntPtr(1), IntPtr(2), IntPtr(2),
+				nil, IntPtr(3), nil, IntPtr(3),
 			}),
 		},
 		{
 			name: "Medium symmetric",
-			root: createCompleteTree(511), // 2^9 - 1 nodes
+			root: createSymmetricTree(9), // 2^9 - 1 = 511 nodes
 		},
 		{
 			name: "Medium asymmetric",
@@ -295,7 +303,7 @@ func BenchmarkIsSymmetric(b *testing.B) {
 		},
 		{
 			name: "Large symmetric",
-			root: createCompleteTree(4095), // 2^12 - 1 nodes
+			root: createSymmetricTree(12), // 2^12 - 1 = 4095 nodes
 		},
 		{
 			name: "Large asymmetric",
@@ -330,7 +338,7 @@ func BenchmarkIsSymmetric(b *testing.B) {
 
 func BenchmarkIsSymmetricWorstCase(b *testing.B) {
 	// Worst case: large symmetric tree (must check all nodes)
-	root := createCompleteTree(16383) // 2^14 - 1 nodes
+	root := createSymmetricTree(14) // 2^14 - 1 = 16383 nodes
 
 	b.ResetTimer()
 

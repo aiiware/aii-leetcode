@@ -12,7 +12,7 @@ func TestInorderTraversal(t *testing.T) {
 	}{
 		{
 			name:     "Example 1",
-			root:     NewTreeFromSlice([]*int{intPtr(1), nil, intPtr(2), intPtr(3)}),
+			root:     NewTreeFromSlice([]*int{IntPtr(1), nil, IntPtr(2), IntPtr(3)}),
 			expected: []int{1, 3, 2},
 		},
 		{
@@ -22,27 +22,27 @@ func TestInorderTraversal(t *testing.T) {
 		},
 		{
 			name:     "Example 3",
-			root:     NewTreeFromSlice([]*int{intPtr(1)}),
+			root:     NewTreeFromSlice([]*int{IntPtr(1)}),
 			expected: []int{1},
 		},
 		{
 			name:     "Complete binary tree",
-			root:     NewTreeFromSlice([]*int{intPtr(1), intPtr(2), intPtr(3), intPtr(4), intPtr(5), intPtr(6), intPtr(7)}),
+			root:     NewTreeFromSlice([]*int{IntPtr(1), IntPtr(2), IntPtr(3), IntPtr(4), IntPtr(5), IntPtr(6), IntPtr(7)}),
 			expected: []int{4, 2, 5, 1, 6, 3, 7},
 		},
 		{
 			name:     "Left skewed tree",
-			root:     NewTreeFromSlice([]*int{intPtr(1), intPtr(2), nil, intPtr(3), nil, intPtr(4)}),
+			root:     NewTreeFromSlice([]*int{IntPtr(1), IntPtr(2), nil, IntPtr(3), nil, IntPtr(4)}),
 			expected: []int{4, 3, 2, 1},
 		},
 		{
 			name:     "Right skewed tree",
-			root:     NewTreeFromSlice([]*int{intPtr(1), nil, intPtr(2), nil, intPtr(3), nil, intPtr(4)}),
+			root:     NewTreeFromSlice([]*int{IntPtr(1), nil, IntPtr(2), nil, IntPtr(3), nil, IntPtr(4)}),
 			expected: []int{1, 2, 3, 4},
 		},
 		{
 			name:     "Tree with negative values",
-			root:     NewTreeFromSlice([]*int{intPtr(-10), intPtr(5), intPtr(-20), intPtr(-3), intPtr(0)}),
+			root:     NewTreeFromSlice([]*int{IntPtr(-10), IntPtr(5), IntPtr(-20), IntPtr(-3), IntPtr(0)}),
 			expected: []int{-3, 5, 0, -10, -20},
 		},
 		{
@@ -57,22 +57,22 @@ func TestInorderTraversal(t *testing.T) {
 		},
 		{
 			name:     "Balanced tree",
-			root:     NewTreeFromSlice([]*int{intPtr(10), intPtr(5), intPtr(15), intPtr(3), intPtr(7), intPtr(12), intPtr(18)}),
+			root:     NewTreeFromSlice([]*int{IntPtr(10), IntPtr(5), IntPtr(15), IntPtr(3), IntPtr(7), IntPtr(12), IntPtr(18)}),
 			expected: []int{3, 5, 7, 10, 12, 15, 18},
 		},
 		{
 			name:     "Tree with duplicates",
-			root:     NewTreeFromSlice([]*int{intPtr(2), intPtr(1), intPtr(2), intPtr(1), intPtr(2)}),
+			root:     NewTreeFromSlice([]*int{IntPtr(2), IntPtr(1), IntPtr(2), IntPtr(1), IntPtr(2)}),
 			expected: []int{1, 1, 2, 2, 2},
 		},
 		{
 			name:     "Complex tree 1",
-			root:     NewTreeFromSlice([]*int{intPtr(5), intPtr(3), intPtr(8), intPtr(2), intPtr(4), intPtr(6), intPtr(9), intPtr(1), nil, nil, nil, nil, nil, intPtr(7)}),
+			root:     NewTreeFromSlice([]*int{IntPtr(5), IntPtr(3), IntPtr(8), IntPtr(2), IntPtr(4), IntPtr(6), IntPtr(9), IntPtr(1), nil, nil, nil, nil, nil, IntPtr(7)}),
 			expected: []int{1, 2, 3, 4, 5, 6, 8, 7, 9}, // Fixed: 7 is left child of 9, so order is 6, 8, 7, 9
 		},
 		{
 			name:     "Tree with null values in middle",
-			root:     NewTreeFromSlice([]*int{intPtr(1), intPtr(2), intPtr(3), nil, intPtr(4), nil, intPtr(5)}),
+			root:     NewTreeFromSlice([]*int{IntPtr(1), IntPtr(2), IntPtr(3), nil, IntPtr(4), nil, IntPtr(5)}),
 			expected: []int{2, 4, 1, 3, 5},
 		},
 	}
@@ -80,7 +80,7 @@ func TestInorderTraversal(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			result := InorderTraversal(tt.root)
-			if !slicesEqual(result, tt.expected) {
+			if !SlicesEqual(result, tt.expected) {
 				t.Errorf("InorderTraversal() = %v, expected %v", result, tt.expected)
 			}
 		})
@@ -94,19 +94,19 @@ func TestAllInorderTraversalImplementations(t *testing.T) {
 	}{
 		{
 			name: "Example 1",
-			root: NewTreeFromSlice([]*int{intPtr(1), nil, intPtr(2), intPtr(3)}),
+			root: NewTreeFromSlice([]*int{IntPtr(1), nil, IntPtr(2), IntPtr(3)}),
 		},
 		{
 			name: "Complete tree",
-			root: NewTreeFromSlice([]*int{intPtr(1), intPtr(2), intPtr(3), intPtr(4), intPtr(5), intPtr(6), intPtr(7)}),
+			root: NewTreeFromSlice([]*int{IntPtr(1), IntPtr(2), IntPtr(3), IntPtr(4), IntPtr(5), IntPtr(6), IntPtr(7)}),
 		},
 		{
 			name: "Left skewed",
-			root: NewTreeFromSlice([]*int{intPtr(1), intPtr(2), nil, intPtr(3)}),
+			root: NewTreeFromSlice([]*int{IntPtr(1), IntPtr(2), nil, IntPtr(3)}),
 		},
 		{
 			name: "Right skewed",
-			root: NewTreeFromSlice([]*int{intPtr(1), nil, intPtr(2), nil, intPtr(3)}),
+			root: NewTreeFromSlice([]*int{IntPtr(1), nil, IntPtr(2), nil, IntPtr(3)}),
 		},
 		{
 			name: "Single node",
@@ -137,7 +137,7 @@ func TestAllInorderTraversalImplementations(t *testing.T) {
 			for _, impl := range implementations {
 				t.Run(impl.name, func(t *testing.T) {
 					result := impl.fn(tc.root)
-					if !slicesEqual(result, expected) {
+					if !SlicesEqual(result, expected) {
 						t.Errorf("%s() = %v, expected %v",
 							impl.name, result, expected)
 					}
@@ -159,7 +159,7 @@ func TestInorderTraversalEdgeCases(t *testing.T) {
 		root := &TreeNode{Val: 100}
 		result := InorderTraversal(root)
 		expected := []int{100}
-		if !slicesEqual(result, expected) {
+		if !SlicesEqual(result, expected) {
 			t.Errorf("InorderTraversal(single node) = %v, expected %v", result, expected)
 		}
 	})
@@ -197,8 +197,8 @@ func TestInorderTraversalEdgeCases(t *testing.T) {
 
 	t.Run("Tree with all same values", func(t *testing.T) {
 		root := NewTreeFromSlice([]*int{
-			intPtr(5), intPtr(5), intPtr(5),
-			intPtr(5), intPtr(5), intPtr(5), intPtr(5),
+			IntPtr(5), IntPtr(5), IntPtr(5),
+			IntPtr(5), IntPtr(5), IntPtr(5), IntPtr(5),
 		})
 		result := InorderTraversal(root)
 		
@@ -255,22 +255,22 @@ func TestInorderTraversalProperties(t *testing.T) {
 	}{
 		{
 			name: "Simple tree",
-			root: NewTreeFromSlice([]*int{intPtr(2), intPtr(1), intPtr(3)}),
+			root: NewTreeFromSlice([]*int{IntPtr(2), IntPtr(1), IntPtr(3)}),
 		},
 		{
 			name: "Larger tree",
 			root: NewTreeFromSlice([]*int{
-				intPtr(4), intPtr(2), intPtr(6),
-				intPtr(1), intPtr(3), intPtr(5), intPtr(7),
+				IntPtr(4), IntPtr(2), IntPtr(6),
+				IntPtr(1), IntPtr(3), IntPtr(5), IntPtr(7),
 			}),
 		},
 		{
 			name: "Skewed left",
-			root: NewTreeFromSlice([]*int{intPtr(3), intPtr(2), nil, intPtr(1)}),
+			root: NewTreeFromSlice([]*int{IntPtr(3), IntPtr(2), nil, IntPtr(1)}),
 		},
 		{
 			name: "Skewed right",
-			root: NewTreeFromSlice([]*int{intPtr(1), nil, intPtr(2), nil, intPtr(3)}),
+			root: NewTreeFromSlice([]*int{IntPtr(1), nil, IntPtr(2), nil, IntPtr(3)}),
 		},
 	}
 
@@ -334,8 +334,8 @@ func BenchmarkInorderTraversal(b *testing.B) {
 		{
 			name: "Small balanced",
 			root: NewTreeFromSlice([]*int{
-				intPtr(4), intPtr(2), intPtr(6),
-				intPtr(1), intPtr(3), intPtr(5), intPtr(7),
+				IntPtr(4), IntPtr(2), IntPtr(6),
+				IntPtr(1), IntPtr(3), IntPtr(5), IntPtr(7),
 			}),
 		},
 		{

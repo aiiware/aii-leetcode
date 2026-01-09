@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"leetcode"
+	"leetcode/data_structures"
 )
 
 func main() {
@@ -14,11 +14,11 @@ func main() {
 	fmt.Println("---------------------------")
 	
 	// Create a QuadTree covering area from (0,0) to (100,100)
-	bounds := leetcode.Bounds{X: 0, Y: 0, Width: 100, Height: 100}
-	qt := leetcode.NewQuadTree(bounds, 4, 5) // capacity 4, max depth 5
+	bounds := quadtree.Bounds{X: 0, Y: 0, Width: 100, Height: 100}
+	qt := quadtree.NewQuadTree(bounds, 4, 5) // capacity 4, max depth 5
 	
 	// Insert some points
-	points := []leetcode.Point{
+	points := []quadtree.Point{
 		{X: 10, Y: 10},
 		{X: 20, Y: 20},
 		{X: 30, Y: 30},
@@ -36,7 +36,7 @@ func main() {
 	fmt.Printf("Inserted %d points into QuadTree\n", qt.Count())
 	
 	// Query a region
-	queryBounds := leetcode.Bounds{X: 0, Y: 0, Width: 40, Height: 40}
+	queryBounds := quadtree.Bounds{X: 0, Y: 0, Width: 40, Height: 40}
 	queriedPoints := qt.Query(queryBounds)
 	fmt.Printf("Points in region (0,0) to (40,40): %d points\n", len(queriedPoints))
 	for _, p := range queriedPoints {
@@ -48,10 +48,10 @@ func main() {
 	fmt.Println("------------------------------")
 	
 	// Create a QuadTree with small capacity to force subdivision
-	qt2 := leetcode.NewQuadTree(bounds, 2, 4)
+	qt2 := quadtree.NewQuadTree(bounds, 2, 4)
 	
 	// Insert points that will cause subdivision
-	subdivisionPoints := []leetcode.Point{
+	subdivisionPoints := []quadtree.Point{
 		{X: 10, Y: 10}, // NW quadrant
 		{X: 10, Y: 60}, // SW quadrant  
 		{X: 60, Y: 10}, // NE quadrant
@@ -66,19 +66,19 @@ func main() {
 	fmt.Printf("QuadTree with subdivision has %d points\n", qt2.Count())
 	
 	// Query each quadrant
-	nwBounds := leetcode.Bounds{X: 0, Y: 0, Width: 50, Height: 50}
+	nwBounds := quadtree.Bounds{X: 0, Y: 0, Width: 50, Height: 50}
 	nwPoints := qt2.Query(nwBounds)
 	fmt.Printf("Points in NW quadrant: %d\n", len(nwPoints))
 	
-	neBounds := leetcode.Bounds{X: 50, Y: 0, Width: 50, Height: 50}
+	neBounds := quadtree.Bounds{X: 50, Y: 0, Width: 50, Height: 50}
 	nePoints := qt2.Query(neBounds)
 	fmt.Printf("Points in NE quadrant: %d\n", len(nePoints))
 	
-	swBounds := leetcode.Bounds{X: 0, Y: 50, Width: 50, Height: 50}
+	swBounds := quadtree.Bounds{X: 0, Y: 50, Width: 50, Height: 50}
 	swPoints := qt2.Query(swBounds)
 	fmt.Printf("Points in SW quadrant: %d\n", len(swPoints))
 	
-	seBounds := leetcode.Bounds{X: 50, Y: 50, Width: 50, Height: 50}
+	seBounds := quadtree.Bounds{X: 50, Y: 50, Width: 50, Height: 50}
 	sePoints := qt2.Query(seBounds)
 	fmt.Printf("Points in SE quadrant: %d\n", len(sePoints))
 	
@@ -87,8 +87,8 @@ func main() {
 	fmt.Println("---------------------------")
 	
 	// Create a larger QuadTree
-	largeBounds := leetcode.Bounds{X: 0, Y: 0, Width: 1000, Height: 1000}
-	qt3 := leetcode.NewQuadTree(largeBounds, 10, 8)
+	largeBounds := quadtree.Bounds{X: 0, Y: 0, Width: 1000, Height: 1000}
+	qt3 := quadtree.NewQuadTree(largeBounds, 10, 8)
 	
 	// Insert many points
 	pointCount := 500
@@ -97,18 +97,18 @@ func main() {
 		// Distribute points somewhat randomly
 		x := float64((i*37)%1000) * 0.1
 		y := float64((i*73)%1000) * 0.1
-		qt3.Insert(leetcode.Point{X: x, Y: y})
+		qt3.Insert(quadtree.Point{X: x, Y: y})
 	}
 	
 	fmt.Printf("Total points in QuadTree: %d\n", qt3.Count())
 	
 	// Query a small region - this is efficient with QuadTree
-	smallQuery := leetcode.Bounds{X: 450, Y: 450, Width: 10, Height: 10}
+	smallQuery := quadtree.Bounds{X: 450, Y: 450, Width: 10, Height: 10}
 	pointsInSmallRegion := qt3.Query(smallQuery)
 	fmt.Printf("Points in small region (450,450) to (460,460): %d points\n", len(pointsInSmallRegion))
 	
 	// Query a large region
-	largeQuery := leetcode.Bounds{X: 0, Y: 0, Width: 500, Height: 500}
+	largeQuery := quadtree.Bounds{X: 0, Y: 0, Width: 500, Height: 500}
 	pointsInLargeRegion := qt3.Query(largeQuery)
 	fmt.Printf("Points in large region (0,0) to (500,500): %d points\n", len(pointsInLargeRegion))
 	
@@ -117,17 +117,17 @@ func main() {
 	fmt.Println("--------------------------")
 	
 	// Try to insert point outside bounds
-	outsidePoint := leetcode.Point{X: 150, Y: 150}
+	outsidePoint := quadtree.Point{X: 150, Y: 150}
 	inserted := qt.Insert(outsidePoint)
 	fmt.Printf("Inserting point at (150,150) into bounds (0,0)-(100,100): %v\n", inserted)
 	
 	// Insert point on boundary
-	boundaryPoint := leetcode.Point{X: 100, Y: 100}
+	boundaryPoint := quadtree.Point{X: 100, Y: 100}
 	inserted = qt.Insert(boundaryPoint)
 	fmt.Printf("Inserting point on boundary at (100,100): %v\n", inserted)
 	
 	// Query with no intersection
-	noIntersectQuery := leetcode.Bounds{X: 200, Y: 200, Width: 50, Height: 50}
+	noIntersectQuery := quadtree.Bounds{X: 200, Y: 200, Width: 50, Height: 50}
 	noIntersectPoints := qt.Query(noIntersectQuery)
 	fmt.Printf("Points in non-intersecting query region: %d\n", len(noIntersectPoints))
 	
@@ -136,12 +136,12 @@ func main() {
 	fmt.Println("--------------------")
 	
 	// Create a simple QuadTree to show structure
-	simpleBounds := leetcode.Bounds{X: 0, Y: 0, Width: 100, Height: 100}
-	simpleQt := leetcode.NewQuadTree(simpleBounds, 2, 3)
+	simpleBounds := quadtree.Bounds{X: 0, Y: 0, Width: 100, Height: 100}
+	simpleQt := quadtree.NewQuadTree(simpleBounds, 2, 3)
 	
-	simpleQt.Insert(leetcode.Point{X: 10, Y: 10})
-	simpleQt.Insert(leetcode.Point{X: 60, Y: 60})
-	simpleQt.Insert(leetcode.Point{X: 20, Y: 20}) // Will cause subdivision
+	simpleQt.Insert(quadtree.Point{X: 10, Y: 10})
+	simpleQt.Insert(quadtree.Point{X: 60, Y: 60})
+	simpleQt.Insert(quadtree.Point{X: 20, Y: 20}) // Will cause subdivision
 	
 	fmt.Println("QuadTree structure (indented by depth):")
 	fmt.Print(simpleQt.String())

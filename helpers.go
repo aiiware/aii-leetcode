@@ -1,5 +1,9 @@
 package leetcode
 
+import (
+	"sort"
+)
+
 // Helper functions for LeetCode solutions and tests
 
 // SlicesEqual compares two integer slices for equality
@@ -177,4 +181,90 @@ func IntPtr(x int) *int {
 // StringSlicesEqual compares two string slices for equality (alias for StringsEqual)
 func StringSlicesEqual(a, b []string) bool {
 	return StringsEqual(a, b)
+}
+
+// Helper functions for subsets testing
+
+// sortSubsets sorts a slice of subsets for comparison
+func sortSubsets(subsets [][]int) {
+	// Sort each subset
+	for _, subset := range subsets {
+		sort.Ints(subset)
+	}
+	
+	// Sort the list of subsets
+	sort.Slice(subsets, func(i, j int) bool {
+		// First by length
+		if len(subsets[i]) != len(subsets[j]) {
+			return len(subsets[i]) < len(subsets[j])
+		}
+		// Then lexicographically
+		for k := 0; k < len(subsets[i]); k++ {
+			if subsets[i][k] != subsets[j][k] {
+				return subsets[i][k] < subsets[j][k]
+			}
+		}
+		return false
+	})
+}
+
+// subsetsEqual compares two sets of subsets for equality
+func subsetsEqual(a, b [][]int) bool {
+	if len(a) != len(b) {
+		return false
+	}
+	
+	// Sort both sets
+	sortSubsets(a)
+	sortSubsets(b)
+	
+	// Compare each subset
+	for i := range a {
+		if !SlicesEqual(a[i], b[i]) {
+			return false
+		}
+	}
+	return true
+}
+
+// hasDuplicateSubsets checks if a set of subsets contains duplicates
+func hasDuplicateSubsets(subsets [][]int) bool {
+	seen := make(map[string]bool)
+	
+	for _, subset := range subsets {
+		// Sort the subset for consistent key
+		sorted := make([]int, len(subset))
+		copy(sorted, subset)
+		sort.Ints(sorted)
+		
+		// Create a string key
+		key := ""
+		for _, num := range sorted {
+			key += string(rune(num + '0')) + ","
+		}
+		
+		if seen[key] {
+			return true
+		}
+		seen[key] = true
+	}
+	return false
+}
+
+// isSubset checks if slice b is a subset of slice a (all elements of b appear in a)
+func isSubset(b, a []int) bool {
+	// Count occurrences in a
+	countA := make(map[int]int)
+	for _, num := range a {
+		countA[num]++
+	}
+	
+	// Check if all elements of b are in a with sufficient count
+	for _, num := range b {
+		if countA[num] == 0 {
+			return false
+		}
+		countA[num]--
+	}
+	return true
 }

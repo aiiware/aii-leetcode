@@ -42,7 +42,7 @@ func TestLetterCombinations(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			result := LetterCombinations(tt.digits)
-			if !stringSlicesEqual(result, tt.expected) {
+			if !StringSlicesEqual(result, tt.expected) {
 				t.Errorf("LetterCombinations(%q) = %v, expected %v", tt.digits, result, tt.expected)
 			}
 		})
@@ -70,7 +70,7 @@ func TestLetterCombinationsIterative(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			result := LetterCombinationsIterative(tt.digits)
-			if !stringSlicesEqual(result, tt.expected) {
+			if !StringSlicesEqual(result, tt.expected) {
 				t.Errorf("LetterCombinationsIterative(%q) = %v, expected %v", tt.digits, result, tt.expected)
 			}
 		})

@@ -13,20 +13,20 @@ func TestIsSameTree(t *testing.T) {
 	}{
 		{
 			name:     "Example 1: Same trees",
-			p:        []*int{intPtr(1), intPtr(2), intPtr(3)},
-			q:        []*int{intPtr(1), intPtr(2), intPtr(3)},
+			p:        []*int{IntPtr(1), IntPtr(2), IntPtr(3)},
+			q:        []*int{IntPtr(1), IntPtr(2), IntPtr(3)},
 			expected: true,
 		},
 		{
 			name:     "Example 2: Different structure",
-			p:        []*int{intPtr(1), intPtr(2)},
-			q:        []*int{intPtr(1), nil, intPtr(2)},
+			p:        []*int{IntPtr(1), IntPtr(2)},
+			q:        []*int{IntPtr(1), nil, IntPtr(2)},
 			expected: false,
 		},
 		{
 			name:     "Example 3: Same structure different values",
-			p:        []*int{intPtr(1), intPtr(2), intPtr(1)},
-			q:        []*int{intPtr(1), intPtr(1), intPtr(2)},
+			p:        []*int{IntPtr(1), IntPtr(2), IntPtr(1)},
+			q:        []*int{IntPtr(1), IntPtr(1), IntPtr(2)},
 			expected: false,
 		},
 		{
@@ -37,74 +37,74 @@ func TestIsSameTree(t *testing.T) {
 		},
 		{
 			name:     "One empty tree",
-			p:        []*int{intPtr(1)},
+			p:        []*int{IntPtr(1)},
 			q:        []*int{},
 			expected: false,
 		},
 		{
 			name:     "Single node same value",
-			p:        []*int{intPtr(5)},
-			q:        []*int{intPtr(5)},
+			p:        []*int{IntPtr(5)},
+			q:        []*int{IntPtr(5)},
 			expected: true,
 		},
 		{
 			name:     "Single node different value",
-			p:        []*int{intPtr(5)},
-			q:        []*int{intPtr(6)},
+			p:        []*int{IntPtr(5)},
+			q:        []*int{IntPtr(6)},
 			expected: false,
 		},
 		{
 			name:     "Complex same trees",
-			p:        []*int{intPtr(1), intPtr(2), intPtr(3), intPtr(4), intPtr(5), intPtr(6), intPtr(7)},
-			q:        []*int{intPtr(1), intPtr(2), intPtr(3), intPtr(4), intPtr(5), intPtr(6), intPtr(7)},
+			p:        []*int{IntPtr(1), IntPtr(2), IntPtr(3), IntPtr(4), IntPtr(5), IntPtr(6), IntPtr(7)},
+			q:        []*int{IntPtr(1), IntPtr(2), IntPtr(3), IntPtr(4), IntPtr(5), IntPtr(6), IntPtr(7)},
 			expected: true,
 		},
 		{
 			name:     "Complex different trees",
-			p:        []*int{intPtr(1), intPtr(2), intPtr(3), intPtr(4), intPtr(5), intPtr(6), intPtr(7)},
-			q:        []*int{intPtr(1), intPtr(2), intPtr(3), intPtr(4), intPtr(5), intPtr(6), nil},
+			p:        []*int{IntPtr(1), IntPtr(2), IntPtr(3), IntPtr(4), IntPtr(5), IntPtr(6), IntPtr(7)},
+			q:        []*int{IntPtr(1), IntPtr(2), IntPtr(3), IntPtr(4), IntPtr(5), IntPtr(6), nil},
 			expected: false,
 		},
 		{
 			name:     "Same values different structure 1",
-			p:        []*int{intPtr(1), intPtr(2), intPtr(3)},
-			q:        []*int{intPtr(1), intPtr(3), intPtr(2)},
+			p:        []*int{IntPtr(1), IntPtr(2), IntPtr(3)},
+			q:        []*int{IntPtr(1), IntPtr(3), IntPtr(2)},
 			expected: false,
 		},
 		{
 			name:     "Same values different structure 2",
-			p:        []*int{intPtr(1), nil, intPtr(2), nil, intPtr(3)},
-			q:        []*int{intPtr(1), intPtr(2), nil, intPtr(3)},
+			p:        []*int{IntPtr(1), nil, IntPtr(2), nil, IntPtr(3)},
+			q:        []*int{IntPtr(1), IntPtr(2), nil, IntPtr(3)},
 			expected: false,
 		},
 		{
 			name:     "Trees with negative values",
-			p:        []*int{intPtr(-1), intPtr(-2), intPtr(-3)},
-			q:        []*int{intPtr(-1), intPtr(-2), intPtr(-3)},
+			p:        []*int{IntPtr(-1), IntPtr(-2), IntPtr(-3)},
+			q:        []*int{IntPtr(-1), IntPtr(-2), IntPtr(-3)},
 			expected: true,
 		},
 		{
 			name:     "Trees with zero values",
-			p:        []*int{intPtr(0), intPtr(0), intPtr(0)},
-			q:        []*int{intPtr(0), intPtr(0), intPtr(0)},
+			p:        []*int{IntPtr(0), IntPtr(0), IntPtr(0)},
+			q:        []*int{IntPtr(0), IntPtr(0), IntPtr(0)},
 			expected: true,
 		},
 		{
 			name:     "Large same trees",
-			p:        createCompleteTreeSlice(7),
-			q:        createCompleteTreeSlice(7),
+			p:        []*int{IntPtr(1), IntPtr(2), IntPtr(3), IntPtr(4), IntPtr(5), IntPtr(6), IntPtr(7)},
+			q:        []*int{IntPtr(1), IntPtr(2), IntPtr(3), IntPtr(4), IntPtr(5), IntPtr(6), IntPtr(7)},
 			expected: true,
 		},
 		{
 			name:     "Mirror trees",
-			p:        []*int{intPtr(1), intPtr(2), intPtr(3)},
-			q:        []*int{intPtr(1), intPtr(3), intPtr(2)},
+			p:        []*int{IntPtr(1), IntPtr(2), IntPtr(3)},
+			q:        []*int{IntPtr(1), IntPtr(3), IntPtr(2)},
 			expected: false,
 		},
 		{
 			name:     "Subtree difference",
-			p:        []*int{intPtr(1), intPtr(2), intPtr(3), nil, intPtr(4)},
-			q:        []*int{intPtr(1), intPtr(2), intPtr(3), intPtr(4)},
+			p:        []*int{IntPtr(1), IntPtr(2), IntPtr(3), nil, IntPtr(4)},
+			q:        []*int{IntPtr(1), IntPtr(2), IntPtr(3), IntPtr(4)},
 			expected: false,
 		},
 	}
@@ -132,18 +132,18 @@ func TestAllIsSameTreeImplementations(t *testing.T) {
 	}{
 		{
 			name: "Same trees",
-			p:    []*int{intPtr(1), intPtr(2), intPtr(3)},
-			q:    []*int{intPtr(1), intPtr(2), intPtr(3)},
+			p:    []*int{IntPtr(1), IntPtr(2), IntPtr(3)},
+			q:    []*int{IntPtr(1), IntPtr(2), IntPtr(3)},
 		},
 		{
 			name: "Different structure",
-			p:    []*int{intPtr(1), intPtr(2)},
-			q:    []*int{intPtr(1), nil, intPtr(2)},
+			p:    []*int{IntPtr(1), IntPtr(2)},
+			q:    []*int{IntPtr(1), nil, IntPtr(2)},
 		},
 		{
 			name: "Different values",
-			p:    []*int{intPtr(1), intPtr(2), intPtr(1)},
-			q:    []*int{intPtr(1), intPtr(1), intPtr(2)},
+			p:    []*int{IntPtr(1), IntPtr(2), IntPtr(1)},
+			q:    []*int{IntPtr(1), IntPtr(1), IntPtr(2)},
 		},
 		{
 			name: "Both empty",
@@ -152,8 +152,8 @@ func TestAllIsSameTreeImplementations(t *testing.T) {
 		},
 		{
 			name: "Complex same",
-			p:    []*int{intPtr(1), intPtr(2), intPtr(3), intPtr(4), intPtr(5), intPtr(6), intPtr(7)},
-			q:    []*int{intPtr(1), intPtr(2), intPtr(3), intPtr(4), intPtr(5), intPtr(6), intPtr(7)},
+			p:    []*int{IntPtr(1), IntPtr(2), IntPtr(3), IntPtr(4), IntPtr(5), IntPtr(6), IntPtr(7)},
+			q:    []*int{IntPtr(1), IntPtr(2), IntPtr(3), IntPtr(4), IntPtr(5), IntPtr(6), IntPtr(7)},
 		},
 	}
 
@@ -229,12 +229,12 @@ func TestIsSameTreeEdgeCases(t *testing.T) {
 	t.Run("Trees with all same values but different structure", func(t *testing.T) {
 		// Both trees have all nodes with value 1, but different structure
 		p := NewTreeFromSlice([]*int{
-			intPtr(1), intPtr(1), intPtr(1),
-			intPtr(1), intPtr(1), intPtr(1), intPtr(1),
+			IntPtr(1), IntPtr(1), IntPtr(1),
+			IntPtr(1), IntPtr(1), IntPtr(1), IntPtr(1),
 		})
 		q := NewTreeFromSlice([]*int{
-			intPtr(1), intPtr(1), intPtr(1),
-			nil, intPtr(1), intPtr(1), intPtr(1),
+			IntPtr(1), IntPtr(1), IntPtr(1),
+			nil, IntPtr(1), IntPtr(1), IntPtr(1),
 		})
 		
 		if IsSameTree(p, q) {
@@ -269,7 +269,7 @@ func TestIsSameTreeEdgeCases(t *testing.T) {
 	})
 
 	t.Run("Self comparison", func(t *testing.T) {
-		p := NewTreeFromSlice([]*int{intPtr(1), intPtr(2), intPtr(3)})
+		p := NewTreeFromSlice([]*int{IntPtr(1), IntPtr(2), IntPtr(3)})
 		if !IsSameTree(p, p) {
 			t.Error("Tree should equal itself")
 		}
@@ -297,18 +297,18 @@ func TestIsSameTreeProperties(t *testing.T) {
 	}{
 		{
 			name: "Same tree",
-			p:    NewTreeFromSlice([]*int{intPtr(1), intPtr(2), intPtr(3)}),
-			q:    NewTreeFromSlice([]*int{intPtr(1), intPtr(2), intPtr(3)}),
+			p:    NewTreeFromSlice([]*int{IntPtr(1), IntPtr(2), IntPtr(3)}),
+			q:    NewTreeFromSlice([]*int{IntPtr(1), IntPtr(2), IntPtr(3)}),
 		},
 		{
 			name: "Different values",
-			p:    NewTreeFromSlice([]*int{intPtr(1), intPtr(2), intPtr(3)}),
-			q:    NewTreeFromSlice([]*int{intPtr(1), intPtr(2), intPtr(4)}),
+			p:    NewTreeFromSlice([]*int{IntPtr(1), IntPtr(2), IntPtr(3)}),
+			q:    NewTreeFromSlice([]*int{IntPtr(1), IntPtr(2), IntPtr(4)}),
 		},
 		{
 			name: "Different structure",
-			p:    NewTreeFromSlice([]*int{intPtr(1), intPtr(2)}),
-			q:    NewTreeFromSlice([]*int{intPtr(1), nil, intPtr(2)}),
+			p:    NewTreeFromSlice([]*int{IntPtr(1), IntPtr(2)}),
+			q:    NewTreeFromSlice([]*int{IntPtr(1), nil, IntPtr(2)}),
 		},
 		{
 			name: "Both nil",
@@ -357,8 +357,8 @@ func BenchmarkIsSameTree(b *testing.B) {
 	}{
 		{
 			name: "Small trees same",
-			p:    NewTreeFromSlice([]*int{intPtr(1), intPtr(2), intPtr(3)}),
-			q:    NewTreeFromSlice([]*int{intPtr(1), intPtr(2), intPtr(3)}),
+			p:    NewTreeFromSlice([]*int{IntPtr(1), IntPtr(2), IntPtr(3)}),
+			q:    NewTreeFromSlice([]*int{IntPtr(1), IntPtr(2), IntPtr(3)}),
 		},
 		{
 			name: "Medium trees same",
@@ -454,14 +454,14 @@ func TestTreeNodeEqualMethod(t *testing.T) {
 	}{
 		{
 			name:     "Same trees",
-			p:        []*int{intPtr(1), intPtr(2), intPtr(3)},
-			q:        []*int{intPtr(1), intPtr(2), intPtr(3)},
+			p:        []*int{IntPtr(1), IntPtr(2), IntPtr(3)},
+			q:        []*int{IntPtr(1), IntPtr(2), IntPtr(3)},
 			expected: true,
 		},
 		{
 			name:     "Different trees",
-			p:        []*int{intPtr(1), intPtr(2), intPtr(3)},
-			q:        []*int{intPtr(1), intPtr(3), intPtr(2)},
+			p:        []*int{IntPtr(1), IntPtr(2), IntPtr(3)},
+			q:        []*int{IntPtr(1), IntPtr(3), IntPtr(2)},
 			expected: false,
 		},
 	}

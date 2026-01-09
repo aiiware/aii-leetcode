@@ -12,17 +12,17 @@ func TestIsValidBST(t *testing.T) {
 	}{
 		{
 			name:     "Example 1: Valid BST",
-			root:     NewTreeFromSlice([]*int{intPtr(2), intPtr(1), intPtr(3)}),
+			root:     NewTreeFromSlice([]*int{IntPtr(2), IntPtr(1), IntPtr(3)}),
 			expected: true,
 		},
 		{
 			name:     "Example 2: Invalid BST",
-			root:     NewTreeFromSlice([]*int{intPtr(5), intPtr(1), intPtr(4), nil, nil, intPtr(3), intPtr(6)}),
+			root:     NewTreeFromSlice([]*int{IntPtr(5), IntPtr(1), IntPtr(4), nil, nil, IntPtr(3), IntPtr(6)}),
 			expected: false,
 		},
 		{
 			name:     "Single node",
-			root:     NewTreeFromSlice([]*int{intPtr(1)}),
+			root:     NewTreeFromSlice([]*int{IntPtr(1)}),
 			expected: true,
 		},
 		{
@@ -32,32 +32,32 @@ func TestIsValidBST(t *testing.T) {
 		},
 		{
 			name:     "Left child equal to parent",
-			root:     NewTreeFromSlice([]*int{intPtr(2), intPtr(2), intPtr(3)}),
+			root:     NewTreeFromSlice([]*int{IntPtr(2), IntPtr(2), IntPtr(3)}),
 			expected: false,
 		},
 		{
 			name:     "Right child equal to parent",
-			root:     NewTreeFromSlice([]*int{intPtr(2), intPtr(1), intPtr(2)}),
+			root:     NewTreeFromSlice([]*int{IntPtr(2), IntPtr(1), IntPtr(2)}),
 			expected: false,
 		},
 		{
 			name:     "Left child greater than parent",
-			root:     NewTreeFromSlice([]*int{intPtr(2), intPtr(3), intPtr(1)}),
+			root:     NewTreeFromSlice([]*int{IntPtr(2), IntPtr(3), IntPtr(1)}),
 			expected: false,
 		},
 		{
 			name:     "Right child less than parent",
-			root:     NewTreeFromSlice([]*int{intPtr(2), intPtr(1), intPtr(1)}),
+			root:     NewTreeFromSlice([]*int{IntPtr(2), IntPtr(1), IntPtr(1)}),
 			expected: false,
 		},
 		{
 			name:     "Valid BST with negative values",
-			root:     NewTreeFromSlice([]*int{intPtr(0), intPtr(-1), intPtr(1)}),
+			root:     NewTreeFromSlice([]*int{IntPtr(0), IntPtr(-1), IntPtr(1)}),
 			expected: true,
 		},
 		{
 			name:     "Invalid BST in right subtree",
-			root:     NewTreeFromSlice([]*int{intPtr(10), intPtr(5), intPtr(15), nil, nil, intPtr(6), intPtr(20)}),
+			root:     NewTreeFromSlice([]*int{IntPtr(10), IntPtr(5), IntPtr(15), nil, nil, IntPtr(6), IntPtr(20)}),
 			expected: false, // 6 < 10 but in right subtree
 		},
 		{
@@ -71,46 +71,46 @@ func TestIsValidBST(t *testing.T) {
 			//        / \   /
 			//       4   7 13
 			root:     NewTreeFromSlice([]*int{
-				intPtr(8), 
-				intPtr(3), intPtr(10), 
-				intPtr(1), intPtr(6), nil, intPtr(14),
-				nil, nil, intPtr(4), intPtr(7), intPtr(13), nil, nil, nil,
+				IntPtr(8), 
+				IntPtr(3), IntPtr(10), 
+				IntPtr(1), IntPtr(6), nil, IntPtr(14),
+				nil, nil, IntPtr(4), IntPtr(7), IntPtr(13), nil, nil, nil,
 			}),
 			expected: true,
 		},
 		{
 			name:     "Invalid: right child of left subtree greater than root",
-			root:     NewTreeFromSlice([]*int{intPtr(3), intPtr(1), intPtr(5), intPtr(0), intPtr(2), intPtr(4), intPtr(6), nil, nil, nil, intPtr(3)}),
+			root:     NewTreeFromSlice([]*int{IntPtr(3), IntPtr(1), IntPtr(5), IntPtr(0), IntPtr(2), IntPtr(4), IntPtr(6), nil, nil, nil, IntPtr(3)}),
 			expected: false, // 3 in left subtree equals root
 		},
 		{
 			name:     "Skewed right valid BST",
-			root:     NewTreeFromSlice([]*int{intPtr(1), nil, intPtr(2), nil, intPtr(3), nil, intPtr(4)}),
+			root:     NewTreeFromSlice([]*int{IntPtr(1), nil, IntPtr(2), nil, IntPtr(3), nil, IntPtr(4)}),
 			expected: true,
 		},
 		{
 			name:     "Skewed left valid BST",
-			root:     NewTreeFromSlice([]*int{intPtr(4), intPtr(3), nil, intPtr(2), nil, intPtr(1)}),
+			root:     NewTreeFromSlice([]*int{IntPtr(4), IntPtr(3), nil, IntPtr(2), nil, IntPtr(1)}),
 			expected: true,
 		},
 		{
 			name:     "Complete valid BST",
-			root:     NewTreeFromSlice([]*int{intPtr(4), intPtr(2), intPtr(6), intPtr(1), intPtr(3), intPtr(5), intPtr(7)}),
+			root:     NewTreeFromSlice([]*int{IntPtr(4), IntPtr(2), IntPtr(6), IntPtr(1), IntPtr(3), IntPtr(5), IntPtr(7)}),
 			expected: true,
 		},
 		{
 			name:     "Tree with duplicate values",
-			root:     NewTreeFromSlice([]*int{intPtr(2), intPtr(2), intPtr(2)}),
+			root:     NewTreeFromSlice([]*int{IntPtr(2), IntPtr(2), IntPtr(2)}),
 			expected: false,
 		},
 		{
 			name:     "Minimum integer values",
-			root:     NewTreeFromSlice([]*int{intPtr(-2147483648), nil, intPtr(2147483647)}),
+			root:     NewTreeFromSlice([]*int{IntPtr(-2147483648), nil, IntPtr(2147483647)}),
 			expected: true,
 		},
 		{
 			name:     "Invalid: node in left subtree greater than ancestor",
-			root:     NewTreeFromSlice([]*int{intPtr(10), intPtr(5), intPtr(15), intPtr(1), intPtr(8), intPtr(12), intPtr(20), nil, nil, nil, intPtr(11)}),
+			root:     NewTreeFromSlice([]*int{IntPtr(10), IntPtr(5), IntPtr(15), IntPtr(1), IntPtr(8), IntPtr(12), IntPtr(20), nil, nil, nil, IntPtr(11)}),
 			expected: false,
 		},
 	}

@@ -99,7 +99,7 @@ func TestRestoreIpAddresses(t *testing.T) {
 			sort.Strings(result)
 			sort.Strings(tt.expected)
 			
-			if !stringSlicesEqual(result, tt.expected) {
+			if !StringSlicesEqual(result, tt.expected) {
 				t.Errorf("RestoreIpAddresses(%q) = %v, expected %v",
 					tt.s, result, tt.expected)
 			}
@@ -148,7 +148,7 @@ func TestAllRestoreIpAddressesImplementations(t *testing.T) {
 					result := impl.fn(tc.s)
 					sort.Strings(result)
 
-					if !stringSlicesEqual(result, expected) {
+					if !StringSlicesEqual(result, expected) {
 						t.Errorf("%s(%q) = %v, expected %v",
 							impl.name, tc.s, result, expected)
 					}
@@ -210,7 +210,7 @@ func TestRestoreIpAddressesEdgeCases(t *testing.T) {
 		}
 		for _, tc := range testCases {
 			result := RestoreIpAddresses(tc.s)
-			if !stringSlicesEqual(result, tc.expected) {
+			if !StringSlicesEqual(result, tc.expected) {
 				t.Errorf("RestoreIpAddresses(%q) = %v, expected %v",
 					tc.s, result, tc.expected)
 			}
@@ -236,7 +236,7 @@ func TestRestoreIpAddressesEdgeCases(t *testing.T) {
 		s := "255255255255"
 		result := RestoreIpAddresses(s)
 		expected := []string{"255.255.255.255"}
-		if !stringSlicesEqual(result, expected) {
+		if !StringSlicesEqual(result, expected) {
 			t.Errorf("RestoreIpAddresses(%q) = %v, expected %v",
 				s, result, expected)
 		}
@@ -472,7 +472,7 @@ func TestRestoreIpAddressesMatchesAllPossible(t *testing.T) {
 			sort.Strings(allPossible)
 			sort.Strings(ourResult)
 
-			if !stringSlicesEqual(allPossible, ourResult) {
+			if !StringSlicesEqual(allPossible, ourResult) {
 				t.Errorf("Mismatch for %q:\nAll possible: %v\nOur result: %v",
 					s, allPossible, ourResult)
 			}
