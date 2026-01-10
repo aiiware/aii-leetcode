@@ -1,6 +1,7 @@
 package leetcode
 
 import (
+	"strconv"
 	"testing"
 )
 
@@ -30,16 +31,18 @@ func TestBuildTree(t *testing.T) {
 			expected: []*int{},
 		},
 		{
-			name:     "Left-skewed tree",
+			name:     "Left-skewed tree (4 nodes)",
 			preorder: []int{1, 2, 3, 4},
 			inorder:  []int{4, 3, 2, 1},
-			expected: []*int{IntPtr(1), IntPtr(2), nil, IntPtr(3), nil, nil, nil, IntPtr(4)},
+			// Updated to match actual output from buildTree
+			expected: []*int{IntPtr(1), IntPtr(2), nil, IntPtr(3), nil, IntPtr(4)},
 		},
 		{
-			name:     "Right-skewed tree",
+			name:     "Right-skewed tree (4 nodes)",
 			preorder: []int{1, 2, 3, 4},
 			inorder:  []int{1, 2, 3, 4},
-			expected: []*int{IntPtr(1), nil, IntPtr(2), nil, nil, nil, IntPtr(3), nil, nil, nil, nil, nil, nil, nil, IntPtr(4)},
+			// Updated to match actual output from buildTree
+			expected: []*int{IntPtr(1), nil, IntPtr(2), nil, IntPtr(3), nil, IntPtr(4)},
 		},
 		{
 			name:     "Complete binary tree",
@@ -60,17 +63,18 @@ func TestBuildTree(t *testing.T) {
 			expected: []*int{IntPtr(1), IntPtr(2), IntPtr(5), IntPtr(3), IntPtr(4), IntPtr(6), IntPtr(7)},
 		},
 		{
-			name:     "Unbalanced tree",
+			name:     "Unbalanced tree (5 nodes)",
 			preorder: []int{1, 2, 3, 4, 5},
 			inorder:  []int{5, 4, 3, 2, 1},
-			expected: []*int{IntPtr(1), IntPtr(2), nil, IntPtr(3), nil, nil, nil, IntPtr(4), nil, nil, nil, nil, nil, nil, nil, IntPtr(5)},
+			// Updated to match actual output from buildTree
+			expected: []*int{IntPtr(1), IntPtr(2), nil, IntPtr(3), nil, IntPtr(4), nil, IntPtr(5)},
 		},
 	}
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			root := buildTree(tt.preorder, tt.inorder)
-			actual := treeToSlice(root)
+			actual := root.ToSlice()
 			
 			// Compare slices by converting to comparable format
 			if !slicesEqualPtr(actual, tt.expected) {
@@ -107,12 +111,12 @@ func TestAllBuildTreeImplementations(t *testing.T) {
 			inorder:  []int{4, 2, 5, 1, 6, 3, 7},
 		},
 		{
-			name:     "Right-skewed tree",
+			name:     "Right-skewed tree (4 nodes)",
 			preorder: []int{1, 2, 3, 4},
 			inorder:  []int{1, 2, 3, 4},
 		},
 		{
-			name:     "Left-skewed tree",
+			name:     "Left-skewed tree (4 nodes)",
 			preorder: []int{1, 2, 3, 4},
 			inorder:  []int{4, 3, 2, 1},
 		},
@@ -124,9 +128,9 @@ func TestAllBuildTreeImplementations(t *testing.T) {
 			optimizedResult := buildTreeOptimized(tc.preorder, tc.inorder)
 			iterativeResult := buildTreeIterative(tc.preorder, tc.inorder)
 
-			recursiveSlice := treeToSlice(recursiveResult)
-			optimizedSlice := treeToSlice(optimizedResult)
-			iterativeSlice := treeToSlice(iterativeResult)
+			recursiveSlice := recursiveResult.ToSlice()
+			optimizedSlice := optimizedResult.ToSlice()
+			iterativeSlice := iterativeResult.ToSlice()
 
 			if !slicesEqualPtr(recursiveSlice, optimizedSlice) || !slicesEqualPtr(optimizedSlice, iterativeSlice) {
 				t.Errorf("Implementations disagree:\nRecursive: %v\nOptimized: %v\nIterative: %v",
@@ -171,14 +175,15 @@ func TestBuildTreeEdgeCases(t *testing.T) {
 			name:     "Large tree (10 nodes)",
 			preorder: []int{1, 2, 4, 8, 9, 5, 10, 3, 6, 7},
 			inorder:  []int{8, 4, 9, 2, 5, 10, 1, 6, 3, 7},
-			expected: []*int{IntPtr(1), IntPtr(2), IntPtr(3), IntPtr(4), IntPtr(5), IntPtr(6), IntPtr(7), IntPtr(8), IntPtr(9), IntPtr(10)},
+			// Updated to match actual output from buildTree
+			expected: []*int{IntPtr(1), IntPtr(2), IntPtr(3), IntPtr(4), IntPtr(5), IntPtr(6), IntPtr(7), IntPtr(8), IntPtr(9), nil, IntPtr(10)},
 		},
 	}
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			root := buildTree(tt.preorder, tt.inorder)
-			actual := treeToSlice(root)
+			actual := root.ToSlice()
 			
 			if !slicesEqualPtr(actual, tt.expected) {
 				t.Errorf("buildTree() = %v, expected %v", sliceToStringPtr(actual), sliceToStringPtr(tt.expected))
@@ -216,49 +221,6 @@ func TestBuildTreePerformance(t *testing.T) {
 	}
 }
 
-// Helper function to convert a tree to level-order slice representation
-func treeToSlice(root *TreeNode) []*int {
-	if root == nil {
-		return []*int{}
-	}
-
-	result := []*int{}
-	queue := []*TreeNode{root}
-
-	for len(queue) > 0 {
-		levelSize := len(queue)
-		levelHasNodes := false
-		
-		for i := 0; i < levelSize; i++ {
-			node := queue[0]
-			queue = queue[1:]
-			
-			if node == nil {
-				result = append(result, nil)
-				queue = append(queue, nil, nil)
-				continue
-			}
-			
-			result = append(result, IntPtr(node.Val))
-			levelHasNodes = true
-			
-			queue = append(queue, node.Left, node.Right)
-		}
-		
-		// If entire level was nil, we're done
-		if !levelHasNodes {
-			break
-		}
-	}
-
-	// Remove trailing nil values
-	for len(result) > 0 && result[len(result)-1] == nil {
-		result = result[:len(result)-1]
-	}
-
-	return result
-}
-
 // Helper function to compare two slices of *int
 func slicesEqualPtr(a, b []*int) bool {
 	if len(a) != len(b) {
@@ -288,7 +250,8 @@ func sliceToStringPtr(slice []*int) string {
 		if val == nil {
 			result += "nil"
 		} else {
-			result += string(rune('0' + *val)) // Simple conversion for single digits
+			// Use strconv.Itoa to properly convert any integer to string
+			result += strconv.Itoa(*val)
 		}
 	}
 	result += "]"
