@@ -5,6 +5,11 @@ import (
 	"testing"
 )
 
+// Helper function to create int pointer
+func intPtr(x int) *int {
+	return &x
+}
+
 func TestLevelOrderBottomBFS(t *testing.T) {
 	tests := []struct {
 		name     string
