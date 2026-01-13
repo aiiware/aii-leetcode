@@ -4,7 +4,7 @@ A comprehensive collection of LeetCode problem solutions implemented in Go with 
 
 ## Overview
 
-This package contains solutions for LeetCode problems **0001-0120** with:
+This package contains solutions for LeetCode problems **0001-0130** with:
 - ✅ Clean, idiomatic Go implementations
 - ✅ Comprehensive test coverage with edge cases
 - ✅ Performance benchmarks
@@ -84,7 +84,7 @@ This package contains solutions for LeetCode problems **0001-0120** with:
 | 0043 | Multiply Strings | Medium | Math, String, Simulation | `0043_multiply_strings.go` |
 | 0044 | Wildcard Matching | Hard | String, Dynamic Programming, Greedy, Recursion | `0044_wildcard_matching.go` |
 | 0045 | Jump Game II | Medium | Array, Dynamic Programming, Greedy | `0045_jump_game_ii.go` |
-| 0046 | Permutations | Medium | Array, Backtracking | `0046_permutations.go` |
+| 0046 | Permutations | Medium | Array, Backtracking | `00446_permutations.go` |
 | 0047 | Permutations II | Medium | Array, Backtracking | `0047_permutations_ii.go` |
 | 0048 | Rotate Image | Medium | Array, Math, Matrix | `0048_rotate_image.go` |
 | 0049 | Group Anagrams | Medium | Array, Hash Table, String, Sorting | `0049_group_anagrams.go` |
@@ -195,6 +195,21 @@ This package contains solutions for LeetCode problems **0001-0120** with:
 | 0119 | Pascal's Triangle II | Easy | Array, Dynamic Programming | `0119_pascals_triangle_ii.go` |
 | 0120 | Triangle | Medium | Array, Dynamic Programming | `0120_triangle.go` |
 
+### Problems 0121-0130
+
+| # | Problem | Difficulty | Tags | File |
+|---|---------|------------|------|------|
+| 0121 | Best Time to Buy and Sell Stock | Easy | Array, Dynamic Programming | `0121_best_time_to_buy_and_sell_stock.go` |
+| 0122 | Best Time to Buy and Sell Stock II | Medium | Array, Dynamic Programming, Greedy | `0122_best_time_to_buy_and_sell_stock_ii.go` |
+| 0123 | Best Time to Buy and Sell Stock III | Hard | Array, Dynamic Programming | `0123_best_time_to_buy_and_sell_stock_iii.go` |
+| 0124 | Binary Tree Maximum Path Sum | Hard | Tree, Depth-First Search, Dynamic Programming | `0124_binary_tree_maximum_path_sum.go` |
+| 0125 | Valid Palindrome | Easy | Two Pointers, String | `0125_valid_palindrome.go` |
+| 0126 | Word Ladder II | Hard | Breadth-First Search, Hash Table, String, Backtracking | `0126_word_ladder_ii.go` |
+| 0127 | Word Ladder | Hard | Breadth-First Search, Hash Table, String | `0127_word_ladder.go` |
+| 0128 | Longest Consecutive Sequence | Medium | Array, Hash Table, Union Find | `0128_longest_consecutive_sequence.go` |
+| 0129 | Sum Root to Leaf Numbers | Medium | Tree, Depth-First Search, Binary Tree | `0129_sum_root_to_leaf_numbers.go` |
+| 0130 | Surrounded Regions | Medium | Array, Depth-First Search, Breadth-First Search, Union Find, Matrix | `0130_surrounded_regions.go` |
+
 ## File Structure
 
 ```
@@ -241,8 +256,8 @@ leetcode/
 ├── 0008_string_to_integer.go      # Problem 0008 (Medium)
 ├── 0009_palindrome_number.go      # Problem 0009 (Easy)
 ├── 0010_regular_expression_matching.go # Problem 0010 (Hard)
-├── ... (120 implementation files)
-├── 120 test files (*_test.go)     # Comprehensive tests
+├── ... (130 implementation files)
+├── 130 test files (*_test.go)     # Comprehensive tests
 ├── helpers.go                     # Shared helper functions
 ├── list_node.go                   # Shared ListNode struct
 ├── tree_node.go                   # Shared TreeNode struct
@@ -420,6 +435,16 @@ BenchmarkIsMatch-16                        100   14005923 ns/op    1048576 B/op 
 54. **0118 - Pascal's Triangle**: Dynamic programming with triangular array construction
 55. **0119 - Pascal's Triangle II**: Space-optimized DP using single array
 56. **0120 - Triangle**: Bottom-up dynamic programming for minimum path sum
+57. **0121 - Best Time to Buy and Sell Stock**: Single-pass algorithm for maximum profit
+58. **0122 - Best Time to Buy and Sell Stock II**: Greedy approach capturing all upward movements
+59. **0123 - Best Time to Buy and Sell Stock III**: Dynamic programming for at most two transactions
+60. **0124 - Binary Tree Maximum Path Sum**: DFS with global maximum tracking
+61. **0125 - Valid Palindrome**: Two-pointer approach with alphanumeric character handling
+62. **0126 - Word Ladder II**: BFS with path reconstruction for all shortest transformation sequences
+63. **0127 - Word Ladder**: BFS for shortest transformation sequence length
+64. **0128 - Longest Consecutive Sequence**: Hash set approach for O(n) time complexity
+65. **0129 - Sum Root to Leaf Numbers**: DFS with path sum accumulation
+66. **0130 - Surrounded Regions**: DFS/BFS from borders to identify regions not surrounded
 
 ### Reusable Components
 
@@ -429,11 +454,11 @@ BenchmarkIsMatch-16                        100   14005923 ns/op    1048576 B/op 
 
 - **TreeNode**: Shared data structure for binary tree problems
   - Helper functions: `NewTreeFromSlice()`, `TreeToSlice()`, `IntPtr()`
-  - Used by problems: 0094, 0095, 0096, 0098, 0099, 0100, 0101, 0102, 0103, 0104, 0105, 0106, 0107, 0108, 0109, 0110, 0111, 0112, 0113, 0114, 0116, 0117
+  - Used by problems: 0094, 0095, 0096, 0098, 0099, 0100, 0101, 0102, 0103, 0104, 0105, 0106, 0107, 0108, 0109, 0110, 0111, 0112, 0113, 0114, 0116, 0117, 0124, 0129
 
 ## Future Improvements
 
-- [ ] Add more LeetCode problems (0121-0200, etc.)
+- [ ] Add more LeetCode problems (0131-0200, etc.)
 - [ ] Interactive problem selector
 - [ ] Performance comparison tool
 - [ ] Algorithm visualization
@@ -460,14 +485,14 @@ To add more problems:
 
 | Metric | Count |
 |--------|-------|
-| Problems Implemented | 120 |
-| Implementation Files | 120 |
-| Test Files | 120 |
-| Total Go Files | 265 |
+| Problems Implemented | 130 |
+| Implementation Files | 130 |
+| Test Files | 130 |
+| Total Go Files | 291 |
 | Documentation Files | 16 |
-| Total Files | 281 |
-| Lines of Code | ~47,000 |
-| Test Cases | 1,200+ |
+| Total Files | 307 |
+| Lines of Code | ~52,000 |
+| Test Cases | 1,300+ |
 | Test Pass Rate | 100% ✅ |
 
 ## License
