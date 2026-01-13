@@ -4,7 +4,7 @@ A comprehensive collection of LeetCode problem solutions implemented in Go with 
 
 ## Overview
 
-This package contains solutions for LeetCode problems **0001-0101** with:
+This package contains solutions for LeetCode problems **0001-0120** with:
 - ✅ Clean, idiomatic Go implementations
 - ✅ Comprehensive test coverage with edge cases
 - ✅ Performance benchmarks
@@ -53,7 +53,7 @@ This package contains solutions for LeetCode problems **0001-0101** with:
 | 0022 | Generate Parentheses | Medium | String, Backtracking, Dynamic Programming | `0022_generate_parentheses.go` |
 | 0023 | Merge k Sorted Lists | Hard | Linked List, Divide and Conquer, Heap | `0023_merge_k_sorted_lists.go` |
 | 0024 | Swap Nodes in Pairs | Medium | Linked List, Recursion | `0024_swap_nodes_in_pairs.go` |
-| 0025 | Reverse Nodes in k-Group | Hard | Linked List, Recursion | `00225_reverse_nodes_in_k_group.go` |
+| 0025 | Reverse Nodes in k-Group | Hard | Linked List, Recursion | `0025_reverse_nodes_in_k_group.go` |
 | 0026 | Remove Duplicates from Sorted Array | Easy | Array, Two Pointers | `0026_remove_duplicates_from_sorted_array.go` |
 | 0027 | Remove Element | Easy | Array, Two Pointers | `0027_remove_element.go` |
 | 0028 | Find the Index of the First Occurrence in a String | Easy | String, Two Pointers, String Matching | `0028_str_str.go` |
@@ -166,152 +166,89 @@ This package contains solutions for LeetCode problems **0001-0101** with:
 | 0100 | Same Tree | Easy | Tree, Depth-First Search, Breadth-First Search, Binary Tree | `0100_same_tree.go` |
 | 0101 | Symmetric Tree | Easy | Tree, Depth-First Search, Breadth-First Search, Binary Tree | `0101_symmetric_tree.go` |
 
+### Problems 0102-0110
+
+| # | Problem | Difficulty | Tags | File |
+|---|---------|------------|------|------|
+| 0102 | Binary Tree Level Order Traversal | Medium | Tree, Breadth-First Search, Binary Tree | `0102_binary_tree_level_order_traversal.go` |
+| 0103 | Binary Tree Zigzag Level Order Traversal | Medium | Tree, Breadth-First Search, Binary Tree | `0103_binary_tree_zigzag_level_order_traversal.go` |
+| 0104 | Maximum Depth of Binary Tree | Easy | Tree, Depth-First Search, Breadth-First Search, Binary Tree | `0104_maximum_depth_of_binary_tree.go` |
+| 0105 | Construct Binary Tree from Preorder and Inorder Traversal | Medium | Array, Hash Table, Divide and Conquer, Tree, Binary Tree | `0105_construct_binary_tree_from_preorder_and_inorder_traversal.go` |
+| 0106 | Construct Binary Tree from Inorder and Postorder Traversal | Medium | Array, Hash Table, Divide and Conquer, Tree, Binary Tree | `0106_construct_binary_tree_from_inorder_and_postorder_traversal.go` |
+| 0107 | Binary Tree Level Order Traversal II | Medium | Tree, Breadth-First Search, Binary Tree | `0107_binary_tree_level_order_traversal_ii.go` |
+| 0108 | Convert Sorted Array to Binary Search Tree | Easy | Array, Divide and Conquer, Tree, Binary Search Tree | `0108_convert_sorted_array_to_binary_search_tree.go` |
+| 0109 | Convert Sorted List to Binary Search Tree | Medium | Linked List, Divide and Conquer, Tree, Binary Search Tree | `0109_convert_sorted_list_to_binary_search_tree.go` |
+| 0110 | Balanced Binary Tree | Easy | Tree, Depth-First Search, Binary Tree | `0110_balanced_binary_tree.go` |
+
+### Problems 0111-0120
+
+| # | Problem | Difficulty | Tags | File |
+|---|---------|------------|------|------|
+| 0111 | Minimum Depth of Binary Tree | Easy | Tree, Depth-First Search, Breadth-First Search, Binary Tree | `0111_minimum_depth_of_binary_tree.go` |
+| 0112 | Path Sum | Easy | Tree, Depth-First Search, Breadth-First Search, Binary Tree | `0112_path_sum.go` |
+| 0113 | Path Sum II | Medium | Backtracking, Tree, Depth-First Search, Binary Tree | `0113_path_sum_ii.go` |
+| 0114 | Flatten Binary Tree to Linked List | Medium | Linked List, Stack, Tree, Depth-First Search, Binary Tree | `0114_flatten_binary_tree_to_linked_list.go` |
+| 0115 | Distinct Subsequences | Hard | String, Dynamic Programming | `0115_distinct_subsequences.go` |
+| 0116 | Populating Next Right Pointers in Each Node | Medium | Linked List, Tree, Depth-First Search, Breadth-First Search, Binary Tree | `0116_populating_next_right_pointers_in_each_node.go` |
+| 0117 | Populating Next Right Pointers in Each Node II | Medium | Linked List, Tree, Depth-First Search, Breadth-First Search, Binary Tree | `0117_populating_next_right_pointers_in_each_node_ii.go` |
+| 0118 | Pascal's Triangle | Easy | Array, Dynamic Programming | `0118_pascals_triangle.go` |
+| 0119 | Pascal's Triangle II | Easy | Array, Dynamic Programming | `0119_pascals_triangle_ii.go` |
+| 0120 | Triangle | Medium | Array, Dynamic Programming | `0120_triangle.go` |
+
 ## File Structure
 
 ```
 leetcode/
-├── cmd/
-│   ├── demo/                          # Demo program with all examples
+├── cmd/                           # Command-line tools and demos
+│   ├── analyze/                   # Analysis tools
 │   │   └── main.go
-│   ├── nqueens_demo/                  # N-Queens demo
+│   ├── debug_complete_tree/       # Debug complete tree
 │   │   └── main.go
-│   ├── nqueens_ii_demo/               # N-Queens II demo
+│   ├── debug_tree/                # Debug tree utilities
 │   │   └── main.go
-│   ├── quadtree_demo/                 # QuadTree demo
+│   ├── debug_tree2/               # Additional tree debugging
 │   │   └── main.go
-│   ├── analyze/                       # Analysis tools
-│   │   └── analyze.go
-│   ├── brute_force/                   # Brute force testing tools
-│   │   ├── brute_force.go
-│   │   └── brute_check.go
-│   └── debug_tests/                   # Debug and testing utilities
-│       ├── debug_tests
-│       ├── debug_test.go
-│       ├── test_debug.go
-│       └── ...
-├── debug/                             # Debug utilities and test cases
+│   ├── demo/                      # Demo program with all examples
+│   │   └── main.go
+│   ├── nqueens_demo/              # N-Queens demo
+│   │   └── main.go
+│   ├── nqueens_ii_demo/           # N-Queens II demo
+│   │   └── main.go
+│   ├── quadtree_demo/             # QuadTree demo
+│   │   └── main.go
+│   └── tree_debug/                # Tree debugging utilities
+│       └── main.go
+├── data_structures/               # Data structure implementations
+│   ├── quadtree.go
+│   └── quadtree_test.go
+├── debug/                         # Debug utilities and test cases
 │   ├── debug_interleave.go
 │   ├── debug_minwindow.go
 │   ├── test_debug.go
 │   └── ...
-├── tutorials/                         # Interactive learning tutorials
-│   ├── README.md                      # Tutorials overview
-│   ├── categories/                    # Algorithm category tutorials
-│   │   ├── 01_array_string_algorithms.md
-│   │   ├── 02_linked_list_algorithms.md
-│   │   └── 03_dynamic_programming.md
-│   ├── guides/                        # Problem-solving guides
-│   │   └── 01_two_sum_variations.md
-│   ├── exercises/                     # Interactive exercises
-│   │   └── 01_array_string_exercises.md
-│   └── visualizations/                # Algorithm visualizations
-│       └── 01_algorithm_visualizations.md
-├── 0001_two_sum.go                    # Problem 0001 (Easy)
-├── 0002_add_two_numbers.go            # Problem 0002 (Medium)
-├── 0003_longest_substring.go          # Problem 0003 (Medium)
-├── 0004_median_sorted_arrays.go       # Problem 0004 (Hard)
+├── testutils/                     # Testing utilities
+│   ├── test_helpers.go
+│   └── test_utils.go
+├── utils/                         # Utility functions
+│   └── helpers.go
+├── 0001_two_sum.go                # Problem 0001 (Easy)
+├── 0002_add_two_numbers.go        # Problem 0002 (Medium)
+├── 0003_longest_substring.go      # Problem 0003 (Medium)
+├── 0004_median_sorted_arrays.go   # Problem 0004 (Hard)
 ├── 0005_longest_palindromic_substring.go # Problem 0005 (Medium)
-├── 0006_zigzag_conversion.go          # Problem 0006 (Medium)
-├── 0007_reverse_integer.go            # Problem 0007 (Medium)
-├── 0008_string_to_integer.go          # Problem 0008 (Medium)
-├── 0009_palindrome_number.go          # Problem 0009 (Easy)
+├── 0006_zigzag_conversion.go      # Problem 0006 (Medium)
+├── 0007_reverse_integer.go        # Problem 0007 (Medium)
+├── 0008_string_to_integer.go      # Problem 0008 (Medium)
+├── 0009_palindrome_number.go      # Problem 0009 (Easy)
 ├── 0010_regular_expression_matching.go # Problem 0010 (Hard)
-├── 0011_container_with_most_water.go  # Problem 0011 (Hard)
-├── 0012_integer_to_roman.go           # Problem 0012 (Medium)
-├── 0013_roman_to_integer.go           # Problem 0013 (Easy)
-├── 0014_longest_common_prefix.go      # Problem 0014 (Easy)
-├── 0015_3sum.go                       # Problem 0015 (Medium)
-├── 0016_3sum_closest.go               # Problem 0016 (Medium)
-├── 0017_letter_combinations.go        # Problem 0017 (Medium)
-├── 0018_4sum.go                       # Problem 0018 (Medium)
-├── 0019_remove_nth_node.go            # Problem 0019 (Medium)
-├── 0020_valid_parentheses.go          # Problem 0020 (Easy)
-├── 0021_merge_two_sorted_lists.go     # Problem 0021 (Easy)
-├── 0022_generate_parentheses.go       # Problem 0022 (Medium)
-├── 0023_merge_k_sorted_lists.go       # Problem 0023 (Hard)
-├── 0024_swap_nodes_in_pairs.go        # Problem 0024 (Medium)
-├── 0025_reverse_nodes_in_k_group.go   # Problem 0025 (Hard)
-├── 0026_remove_duplicates_from_sorted_array.go # Problem 0026 (Easy)
-├── 0027_remove_element.go             # Problem 0027 (Easy)
-├── 0028_str_str.go                    # Problem 0028 (Easy)
-├── 0029_divide_two_integers.go        # Problem 0029 (Medium)
-├── 0030_substring_with_concatenation_of_all_words.go # Problem 0030 (Hard)
-├── 0031_next_permutation.go           # Problem 0031 (Medium)
-├── 0032_longest_valid_parentheses.go  # Problem 0032 (Hard)
-├── 0033_search_in_rotated_sorted_array.go # Problem 0033 (Medium)
-├── 0034_find_first_and_last_position.go # Problem 0034 (Medium)
-├── 0035_search_insert_position.go     # Problem 0035 (Easy)
-├── 0036_valid_sudoku.go               # Problem 0036 (Medium)
-├── 0037_sudoku_solver.go              # Problem 0037 (Hard)
-├── 0038_count_and_say.go              # Problem 0038 (Medium)
-├── 0039_combination_sum.go            # Problem 0039 (Medium)
-├── 0040_combination_sum_ii.go         # Problem 0040 (Medium)
-├── 0041_first_missing_positive.go     # Problem 0041 (Hard)
-├── 0042_trapping_rain_water.go        # Problem 0042 (Hard)
-├── 0043_multiply_strings.go           # Problem 0043 (Medium)
-├── 0044_wildcard_matching.go          # Problem 0044 (Hard)
-├── 0045_jump_game_ii.go               # Problem 0045 (Medium)
-├── 0046_permutations.go               # Problem 0046 (Medium)
-├── 0047_permutations_ii.go            # Problem 0047 (Medium)
-├── 0048_rotate_image.go               # Problem 0048 (Medium)
-├── 0049_group_anagrams.go             # Problem 0049 (Medium)
-├── 0050_pow_x_n.go                    # Problem 0050 (Medium)
-├── 0051_n_queens.go                   # Problem 0051 (Hard)
-├── 0052_n_queens_ii.go                # Problem 0052 (Hard)
-├── 0053_maximum_subarray.go           # Problem 0053 (Medium)
-├── 0054_spiral_matrix.go              # Problem 0054 (Medium)
-├── 0055_jump_game.go                  # Problem 0055 (Medium)
-├── 0056_merge_intervals.go            # Problem 0056 (Medium)
-├── 0057_insert_interval.go            # Problem 0057 (Medium)
-├── 0058_length_of_last_word.go        # Problem 0058 (Easy)
-├── 0059_spiral_matrix_ii.go           # Problem 0059 (Medium)
-├── 0060_permutation_sequence.go       # Problem 0060 (Hard)
-├── 0061_rotate_list.go                # Problem 0061 (Medium)
-├── 0062_unique_paths.go               # Problem 0062 (Medium)
-├── 0063_unique_paths_ii.go            # Problem 0063 (Medium)
-├── 0064_minimum_path_sum.go           # Problem 0064 (Medium)
-├── 0065_valid_number.go               # Problem 0065 (Hard)
-├── 0066_plus_one.go                   # Problem 0066 (Easy)
-├── 0067_add_binary.go                 # Problem 0067 (Easy)
-├── 0068_text_justification.go         # Problem 0068 (Hard)
-├── 0069_sqrt_x.go                     # Problem 0069 (Easy)
-├── 0070_climbing_stairs.go            # Problem 0070 (Easy)
-├── 0071_simplify_path.go              # Problem 0071 (Medium)
-├── 0072_edit_distance.go              # Problem 0072 (Hard)
-├── 0073_set_matrix_zeroes.go          # Problem 0073 (Medium)
-├── 0074_search_a_2d_matrix.go         # Problem 0074 (Medium)
-├── 0075_sort_colors.go                # Problem 0075 (Medium)
-├── 0076_minimum_window_substring.go   # Problem 0076 (Hard)
-├── 0077_combinations.go               # Problem 0077 (Medium)
-├── 0078_subsets.go                    # Problem 0078 (Medium)
-├── 0079_word_search.go                # Problem 0079 (Medium)
-├── 0080_remove_duplicates_ii.go       # Problem 0080 (Medium)
-├── 0081_search_in_rotated_sorted_array_ii.go # Problem 0081 (Medium)
-├── 0082_remove_duplicates_from_sorted_list_ii.go # Problem 0082 (Medium)
-├── 0083_remove_duplicates_from_sorted_list.go # Problem 0083 (Easy)
-├── 0084_largest_rectangle_in_histogram.go # Problem 0084 (Hard)
-├── 0085_maximal_rectangle.go          # Problem 0085 (Hard)
-├── 0086_partition_list.go             # Problem 0086 (Medium)
-├── 0087_scramble_string.go            # Problem 0087 (Hard)
-├── 0088_merge_sorted_array.go         # Problem 0088 (Easy)
-├── 0089_gray_code.go                  # Problem 0089 (Medium)
-├── 0090_subsets_ii.go                 # Problem 0090 (Medium)
-├── 0091_decode_ways.go                # Problem 0091 (Medium)
-├── 0092_reverse_linked_list_ii.go     # Problem 0092 (Medium)
-├── 0093_restore_ip_addresses.go       # Problem 0093 (Medium)
-├── 0094_binary_tree_inorder_traversal.go # Problem 0094 (Easy)
-├── 0095_unique_binary_search_trees_ii.go # Problem 0095 (Medium)
-├── 0096_unique_binary_search_trees.go # Problem 0096 (Medium)
-├── 0097_interleaving_string.go        # Problem 0097 (Medium)
-├── 0098_validate_binary_search_tree.go # Problem 0098 (Medium)
-├── 0099_recover_binary_search_tree.go # Problem 0099 (Medium)
-├── 0100_same_tree.go                  # Problem 0100 (Easy)
-├── 0101_symmetric_tree.go               # Problem 0101 (Easy)
-├── 101 test files (*_test.go)         # Comprehensive tests
-├── list_node.go                       # Shared ListNode struct
-├── go.mod                             # Go module
-├── go.sum                             # Dependencies
-└── 16 documentation files (*.md)      # Complete documentation
+├── ... (120 implementation files)
+├── 120 test files (*_test.go)     # Comprehensive tests
+├── helpers.go                     # Shared helper functions
+├── list_node.go                   # Shared ListNode struct
+├── tree_node.go                   # Shared TreeNode struct
+├── go.mod                         # Go module
+├── go.sum                         # Dependencies
+└── 16 documentation files (*.md)  # Complete documentation
 ```
 
 ## Usage
@@ -339,14 +276,6 @@ go test -bench=. -benchmem -count=3 # Run benchmarks 3 times
 ```bash
 cd leetcode
 go run cmd/demo/main.go
-```
-
-### Interactive Tutorials
-
-```bash
-# Explore the tutorials directory for interactive learning resources
-cd tutorials
-# Open README.md to get started with learning paths
 ```
 
 ### Using in Your Code
@@ -472,37 +401,39 @@ BenchmarkIsMatch-16                        100   14005923 ns/op    1048576 B/op 
 35. **0098 - Validate Binary Search Tree**: In-order traversal with bounds checking
 36. **0100 - Same Tree**: Recursive depth-first comparison
 37. **0101 - Symmetric Tree**: Multiple approaches (recursive, iterative with queue/stack, level-order traversal)
+38. **0102 - Binary Tree Level Order Traversal**: Multiple BFS and DFS implementations
+39. **0103 - Binary Tree Zigzag Level Order Traversal**: Direction-aware traversal with stack optimization
+40. **0104 - Maximum Depth of Binary Tree**: Both recursive and iterative solutions
+41. **0105 - Construct Binary Tree from Preorder and Inorder Traversal**: Hash map optimization for O(n) time
+42. **0106 - Construct Binary Tree from Inorder and Postorder Traversal**: Similar optimization as 0105
+43. **0107 - Binary Tree Level Order Traversal II**: Reverse level order with efficient slice operations
+44. **0108 - Convert Sorted Array to Binary Search Tree**: Divide and conquer with middle element selection
+45. **0109 - Convert Sorted List to Binary Search Tree**: Fast and slow pointer approach for middle finding
+46. **0110 - Balanced Binary Tree**: Height-checking with early termination
+47. **0111 - Minimum Depth of Binary Tree**: BFS optimization for early exit
+48. **0112 - Path Sum**: DFS with sum tracking and early termination
+49. **0113 - Path Sum II**: Backtracking with path reconstruction
+50. **0114 - Flatten Binary Tree to Linked List**: Morris traversal for O(1) space
+51. **0115 - Distinct Subsequences**: Dynamic programming with space optimization
+52. **0116 - Populating Next Right Pointers in Each Node**: Level-order traversal with next pointer linking
+53. **0117 - Populating Next Right Pointers in Each Node II**: General solution for any binary tree
+54. **0118 - Pascal's Triangle**: Dynamic programming with triangular array construction
+55. **0119 - Pascal's Triangle II**: Space-optimized DP using single array
+56. **0120 - Triangle**: Bottom-up dynamic programming for minimum path sum
 
 ### Reusable Components
 
 - **ListNode**: Shared data structure for linked list problems
   - Helper functions: `NewListFromSlice()`, `ToSlice()`, `Equal()`
-  - Used by problems: 0002, 0019, 0021, 0023, 0024, 0025, 0061, 0082, 0083, 0086, 0092
+  - Used by problems: 0002, 0019, 0021, 0023, 0024, 0025, 0061, 0082, 0083, 0086, 0092, 0109
 
-### Interactive Learning Resources
-
-The project includes comprehensive tutorials in the `tutorials/` directory:
-
-1. **Algorithm Categories**: Learn by category with step-by-step explanations
-   - Array & String algorithms
-   - Linked List operations
-   - Dynamic Programming patterns
-
-2. **Problem-Solving Guides**: Step-by-step guides for solving specific problem types
-   - How to approach Two Sum problems
-   - Mastering Dynamic Programming
-
-3. **Interactive Exercises**: Hands-on exercises with hints and solutions
-   - Code completion exercises
-   - Algorithm tracing exercises
-
-4. **Visualizations**: Visual explanations of algorithms
-   - Algorithm animations
-   - Data structure visualizations
+- **TreeNode**: Shared data structure for binary tree problems
+  - Helper functions: `NewTreeFromSlice()`, `TreeToSlice()`, `IntPtr()`
+  - Used by problems: 0094, 0095, 0096, 0098, 0099, 0100, 0101, 0102, 0103, 0104, 0105, 0106, 0107, 0108, 0109, 0110, 0111, 0112, 0113, 0114, 0116, 0117
 
 ## Future Improvements
 
-- [ ] Add more LeetCode problems (0101-0200, etc.)
+- [ ] Add more LeetCode problems (0121-0200, etc.)
 - [ ] Interactive problem selector
 - [ ] Performance comparison tool
 - [ ] Algorithm visualization
@@ -529,14 +460,14 @@ To add more problems:
 
 | Metric | Count |
 |--------|-------|
-| Problems Implemented | 101 |
-| Implementation Files | 101 |
-| Test Files | 103 |
-| Total Go Files | 269 |
+| Problems Implemented | 120 |
+| Implementation Files | 120 |
+| Test Files | 120 |
+| Total Go Files | 265 |
 | Documentation Files | 16 |
-| Total Files | 285 |
-| Lines of Code | ~41,000 |
-| Test Cases | 1,000+ |
+| Total Files | 281 |
+| Lines of Code | ~47,000 |
+| Test Cases | 1,200+ |
 | Test Pass Rate | 100% ✅ |
 
 ## License
