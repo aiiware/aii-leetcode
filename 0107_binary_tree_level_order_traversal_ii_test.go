@@ -5,11 +5,6 @@ import (
 	"testing"
 )
 
-// Helper function to create int pointer
-func intPtr(x int) *int {
-	return &x
-}
-
 func TestLevelOrderBottomBFS(t *testing.T) {
 	tests := []struct {
 		name     string
@@ -18,12 +13,12 @@ func TestLevelOrderBottomBFS(t *testing.T) {
 	}{
 		{
 			name:     "Example 1: [3,9,20,null,null,15,7]",
-			root:     NewTreeFromSlice([]*int{intPtr(3), intPtr(9), intPtr(20), nil, nil, intPtr(15), intPtr(7)}),
+			root:     NewTreeFromSlice([]*int{IntPtr(3), IntPtr(9), IntPtr(20), nil, nil, IntPtr(15), IntPtr(7)}),
 			expected: [][]int{{15, 7}, {9, 20}, {3}},
 		},
 		{
 			name:     "Example 2: [1]",
-			root:     NewTreeFromSlice([]*int{intPtr(1)}),
+			root:     NewTreeFromSlice([]*int{IntPtr(1)}),
 			expected: [][]int{{1}},
 		},
 		{
@@ -33,27 +28,27 @@ func TestLevelOrderBottomBFS(t *testing.T) {
 		},
 		{
 			name:     "Single node tree",
-			root:     NewTreeFromSlice([]*int{intPtr(5)}),
+			root:     NewTreeFromSlice([]*int{IntPtr(5)}),
 			expected: [][]int{{5}},
 		},
 		{
 			name:     "Left-skewed tree",
-			root:     NewTreeFromSlice([]*int{intPtr(1), intPtr(2), nil, intPtr(3), nil, intPtr(4), nil}),
+			root:     NewTreeFromSlice([]*int{IntPtr(1), IntPtr(2), nil, IntPtr(3), nil, IntPtr(4), nil}),
 			expected: [][]int{{4}, {3}, {2}, {1}},
 		},
 		{
 			name:     "Right-skewed tree",
-			root:     NewTreeFromSlice([]*int{intPtr(1), nil, intPtr(2), nil, intPtr(3), nil, intPtr(4)}),
+			root:     NewTreeFromSlice([]*int{IntPtr(1), nil, IntPtr(2), nil, IntPtr(3), nil, IntPtr(4)}),
 			expected: [][]int{{4}, {3}, {2}, {1}},
 		},
 		{
 			name:     "Complete binary tree",
-			root:     NewTreeFromSlice([]*int{intPtr(1), intPtr(2), intPtr(3), intPtr(4), intPtr(5), intPtr(6), intPtr(7)}),
+			root:     NewTreeFromSlice([]*int{IntPtr(1), IntPtr(2), IntPtr(3), IntPtr(4), IntPtr(5), IntPtr(6), IntPtr(7)}),
 			expected: [][]int{{4, 5, 6, 7}, {2, 3}, {1}},
 		},
 		{
 			name:     "Tree with negative values",
-			root:     NewTreeFromSlice([]*int{intPtr(-10), intPtr(-5), intPtr(-15), intPtr(-2), intPtr(-7), intPtr(-12), intPtr(-20)}),
+			root:     NewTreeFromSlice([]*int{IntPtr(-10), IntPtr(-5), IntPtr(-15), IntPtr(-2), IntPtr(-7), IntPtr(-12), IntPtr(-20)}),
 			expected: [][]int{{-2, -7, -12, -20}, {-5, -15}, {-10}},
 		},
 	}
@@ -76,12 +71,12 @@ func TestLevelOrderBottomDFS(t *testing.T) {
 	}{
 		{
 			name:     "Example 1: [3,9,20,null,null,15,7]",
-			root:     NewTreeFromSlice([]*int{intPtr(3), intPtr(9), intPtr(20), nil, nil, intPtr(15), intPtr(7)}),
+			root:     NewTreeFromSlice([]*int{IntPtr(3), IntPtr(9), IntPtr(20), nil, nil, IntPtr(15), IntPtr(7)}),
 			expected: [][]int{{15, 7}, {9, 20}, {3}},
 		},
 		{
 			name:     "Example 2: [1]",
-			root:     NewTreeFromSlice([]*int{intPtr(1)}),
+			root:     NewTreeFromSlice([]*int{IntPtr(1)}),
 			expected: [][]int{{1}},
 		},
 		{
@@ -91,7 +86,7 @@ func TestLevelOrderBottomDFS(t *testing.T) {
 		},
 		{
 			name:     "Complete binary tree",
-			root:     NewTreeFromSlice([]*int{intPtr(1), intPtr(2), intPtr(3), intPtr(4), intPtr(5), intPtr(6), intPtr(7)}),
+			root:     NewTreeFromSlice([]*int{IntPtr(1), IntPtr(2), IntPtr(3), IntPtr(4), IntPtr(5), IntPtr(6), IntPtr(7)}),
 			expected: [][]int{{4, 5, 6, 7}, {2, 3}, {1}},
 		},
 	}
@@ -114,12 +109,12 @@ func TestLevelOrderBottomOptimized(t *testing.T) {
 	}{
 		{
 			name:     "Example 1: [3,9,20,null,null,15,7]",
-			root:     NewTreeFromSlice([]*int{intPtr(3), intPtr(9), intPtr(20), nil, nil, intPtr(15), intPtr(7)}),
+			root:     NewTreeFromSlice([]*int{IntPtr(3), IntPtr(9), IntPtr(20), nil, nil, IntPtr(15), IntPtr(7)}),
 			expected: [][]int{{15, 7}, {9, 20}, {3}},
 		},
 		{
 			name:     "Example 2: [1]",
-			root:     NewTreeFromSlice([]*int{intPtr(1)}),
+			root:     NewTreeFromSlice([]*int{IntPtr(1)}),
 			expected: [][]int{{1}},
 		},
 		{
@@ -129,7 +124,7 @@ func TestLevelOrderBottomOptimized(t *testing.T) {
 		},
 		{
 			name:     "Left-skewed tree",
-			root:     NewTreeFromSlice([]*int{intPtr(1), intPtr(2), nil, intPtr(3), nil, intPtr(4), nil}),
+			root:     NewTreeFromSlice([]*int{IntPtr(1), IntPtr(2), nil, IntPtr(3), nil, IntPtr(4), nil}),
 			expected: [][]int{{4}, {3}, {2}, {1}},
 		},
 	}
@@ -152,12 +147,12 @@ func TestLevelOrderBottom(t *testing.T) {
 	}{
 		{
 			name:     "Example 1: [3,9,20,null,null,15,7]",
-			root:     NewTreeFromSlice([]*int{intPtr(3), intPtr(9), intPtr(20), nil, nil, intPtr(15), intPtr(7)}),
+			root:     NewTreeFromSlice([]*int{IntPtr(3), IntPtr(9), IntPtr(20), nil, nil, IntPtr(15), IntPtr(7)}),
 			expected: [][]int{{15, 7}, {9, 20}, {3}},
 		},
 		{
 			name:     "Example 2: [1]",
-			root:     NewTreeFromSlice([]*int{intPtr(1)}),
+			root:     NewTreeFromSlice([]*int{IntPtr(1)}),
 			expected: [][]int{{1}},
 		},
 		{

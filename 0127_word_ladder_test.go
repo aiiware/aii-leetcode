@@ -89,7 +89,7 @@ func TestLadderLength(t *testing.T) {
 			beginWord: "aaaaa",
 			endWord:   "bbbbb",
 			wordList: []string{
-				"aaaab", "aaabb", "aabbb", "abbbb",
+				"aaaab", "aaabb", "aabbb", "abbbb", "bbbbb",
 				"baaaa", "bbaaa", "bbbaa", "bbbba",
 			},
 			expected: 6, // aaaaa -> aaaab -> aaabb -> aabbb -> abbbb -> bbbbb
@@ -129,7 +129,7 @@ func TestLadderLength_EdgeCases(t *testing.T) {
 		wordList := []string{"abc", "abd", "abe", "abf", "abg"}
 
 		result := LadderLength(beginWord, endWord, wordList)
-		assert.Equal(t, 0, "Should return 0 when endWord not in list")
+		assert.Equal(t, 0, result, "Should return 0 when endWord not in list")
 	})
 
 	t.Run("Maximum word length", func(t *testing.T) {

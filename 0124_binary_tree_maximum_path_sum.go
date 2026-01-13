@@ -42,8 +42,8 @@ func MaxPathSum(root *TreeNode) int {
 		}
 
 		// Recursively get max path sum from left and right children
-		leftSum := max(0, dfs(node.Left))  // Only take positive contributions
-		rightSum := max(0, dfs(node.Right)) // Only take positive contributions
+		leftSum := Max(0, dfs(node.Left))  // Only take positive contributions
+		rightSum := Max(0, dfs(node.Right)) // Only take positive contributions
 
 		// Current path sum if we use current node as the "root" of the path
 		currentPathSum := node.Val + leftSum + rightSum
@@ -55,16 +55,9 @@ func MaxPathSum(root *TreeNode) int {
 
 		// Return the maximum path sum that can be extended to parent
 		// We can only extend one side (left or right) to parent
-		return node.Val + max(leftSum, rightSum)
+		return node.Val + Max(leftSum, rightSum)
 	}
 
 	dfs(root)
 	return maxSum
-}
-
-func max(a, b int) int {
-	if a > b {
-		return a
-	}
-	return b
 }

@@ -5,7 +5,7 @@ import (
 	"unicode"
 )
 
-// IsPalindrome solves LeetCode problem 0125: Valid Palindrome
+// IsValidPalindrome solves LeetCode problem 0125: Valid Palindrome
 // Difficulty: Easy
 // Tags: Two Pointers, String
 //
@@ -36,7 +36,7 @@ import (
 // s consists only of printable ASCII characters.
 //
 // Time complexity: O(n), Space complexity: O(1)
-func IsPalindrome(s string) bool {
+func IsValidPalindrome(s string) bool {
 	if len(s) == 0 {
 		return true
 	}

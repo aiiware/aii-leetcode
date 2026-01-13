@@ -12,12 +12,12 @@ func TestIsBalancedTopDown(t *testing.T) {
 	}{
 		{
 			name:     "Example 1: Balanced tree [3,9,20,null,null,15,7]",
-			root:     NewTreeFromSlice([]*int{intPtr(3), intPtr(9), intPtr(20), nil, nil, intPtr(15), intPtr(7)}),
+			root:     NewTreeFromSlice([]*int{IntPtr(3), IntPtr(9), IntPtr(20), nil, nil, IntPtr(15), IntPtr(7)}),
 			expected: true,
 		},
 		{
 			name:     "Example 2: Unbalanced tree [1,2,2,3,3,null,null,4,4]",
-			root:     NewTreeFromSlice([]*int{intPtr(1), intPtr(2), intPtr(2), intPtr(3), intPtr(3), nil, nil, intPtr(4), intPtr(4)}),
+			root:     NewTreeFromSlice([]*int{IntPtr(1), IntPtr(2), IntPtr(2), IntPtr(3), IntPtr(3), nil, nil, IntPtr(4), IntPtr(4)}),
 			expected: false,
 		},
 		{
@@ -27,32 +27,32 @@ func TestIsBalancedTopDown(t *testing.T) {
 		},
 		{
 			name:     "Single node",
-			root:     NewTreeFromSlice([]*int{intPtr(1)}),
+			root:     NewTreeFromSlice([]*int{IntPtr(1)}),
 			expected: true,
 		},
 		{
 			name:     "Left-skewed tree (unbalanced)",
-			root:     NewTreeFromSlice([]*int{intPtr(1), intPtr(2), nil, intPtr(3), nil, intPtr(4), nil}),
+			root:     NewTreeFromSlice([]*int{IntPtr(1), IntPtr(2), nil, IntPtr(3), nil, IntPtr(4), nil}),
 			expected: false,
 		},
 		{
 			name:     "Right-skewed tree (unbalanced)",
-			root:     NewTreeFromSlice([]*int{intPtr(1), nil, intPtr(2), nil, intPtr(3), nil, intPtr(4)}),
+			root:     NewTreeFromSlice([]*int{IntPtr(1), nil, IntPtr(2), nil, IntPtr(3), nil, IntPtr(4)}),
 			expected: false,
 		},
 		{
 			name:     "Complete binary tree (balanced)",
-			root:     NewTreeFromSlice([]*int{intPtr(1), intPtr(2), intPtr(3), intPtr(4), intPtr(5), intPtr(6), intPtr(7)}),
+			root:     NewTreeFromSlice([]*int{IntPtr(1), IntPtr(2), IntPtr(3), IntPtr(4), IntPtr(5), IntPtr(6), IntPtr(7)}),
 			expected: true,
 		},
 		{
 			name:     "Almost balanced tree (difference of 1)",
-			root:     NewTreeFromSlice([]*int{intPtr(1), intPtr(2), intPtr(3), intPtr(4), nil, nil, nil}),
+			root:     NewTreeFromSlice([]*int{IntPtr(1), IntPtr(2), IntPtr(3), IntPtr(4), nil, nil, nil}),
 			expected: true,
 		},
 		{
 			name:     "Unbalanced at root",
-			root:     NewTreeFromSlice([]*int{intPtr(1), intPtr(2), nil, intPtr(3), intPtr(4), nil, nil, intPtr(5), nil}),
+			root:     NewTreeFromSlice([]*int{IntPtr(1), IntPtr(2), nil, IntPtr(3), IntPtr(4), nil, nil, IntPtr(5), nil}),
 			expected: false,
 		},
 	}
@@ -75,12 +75,12 @@ func TestIsBalancedBottomUp(t *testing.T) {
 	}{
 		{
 			name:     "Example 1: Balanced tree [3,9,20,null,null,15,7]",
-			root:     NewTreeFromSlice([]*int{intPtr(3), intPtr(9), intPtr(20), nil, nil, intPtr(15), intPtr(7)}),
+			root:     NewTreeFromSlice([]*int{IntPtr(3), IntPtr(9), IntPtr(20), nil, nil, IntPtr(15), IntPtr(7)}),
 			expected: true,
 		},
 		{
 			name:     "Example 2: Unbalanced tree [1,2,2,3,3,null,null,4,4]",
-			root:     NewTreeFromSlice([]*int{intPtr(1), intPtr(2), intPtr(2), intPtr(3), intPtr(3), nil, nil, intPtr(4), intPtr(4)}),
+			root:     NewTreeFromSlice([]*int{IntPtr(1), IntPtr(2), IntPtr(2), IntPtr(3), IntPtr(3), nil, nil, IntPtr(4), IntPtr(4)}),
 			expected: false,
 		},
 		{
@@ -90,32 +90,32 @@ func TestIsBalancedBottomUp(t *testing.T) {
 		},
 		{
 			name:     "Single node",
-			root:     NewTreeFromSlice([]*int{intPtr(1)}),
+			root:     NewTreeFromSlice([]*int{IntPtr(1)}),
 			expected: true,
 		},
 		{
 			name:     "Left-skewed tree (unbalanced)",
-			root:     NewTreeFromSlice([]*int{intPtr(1), intPtr(2), nil, intPtr(3), nil, intPtr(4), nil}),
+			root:     NewTreeFromSlice([]*int{IntPtr(1), IntPtr(2), nil, IntPtr(3), nil, IntPtr(4), nil}),
 			expected: false,
 		},
 		{
 			name:     "Right-skewed tree (unbalanced)",
-			root:     NewTreeFromSlice([]*int{intPtr(1), nil, intPtr(2), nil, intPtr(3), nil, intPtr(4)}),
+			root:     NewTreeFromSlice([]*int{IntPtr(1), nil, IntPtr(2), nil, IntPtr(3), nil, IntPtr(4)}),
 			expected: false,
 		},
 		{
 			name:     "Complete binary tree (balanced)",
-			root:     NewTreeFromSlice([]*int{intPtr(1), intPtr(2), intPtr(3), intPtr(4), intPtr(5), intPtr(6), intPtr(7)}),
+			root:     NewTreeFromSlice([]*int{IntPtr(1), IntPtr(2), IntPtr(3), IntPtr(4), IntPtr(5), IntPtr(6), IntPtr(7)}),
 			expected: true,
 		},
 		{
 			name:     "Almost balanced tree (difference of 1)",
-			root:     NewTreeFromSlice([]*int{intPtr(1), intPtr(2), intPtr(3), intPtr(4), nil, nil, nil}),
+			root:     NewTreeFromSlice([]*int{IntPtr(1), IntPtr(2), IntPtr(3), IntPtr(4), nil, nil, nil}),
 			expected: true,
 		},
 		{
 			name:     "Unbalanced at root",
-			root:     NewTreeFromSlice([]*int{intPtr(1), intPtr(2), nil, intPtr(3), intPtr(4), nil, nil, intPtr(5), nil}),
+			root:     NewTreeFromSlice([]*int{IntPtr(1), IntPtr(2), nil, IntPtr(3), IntPtr(4), nil, nil, IntPtr(5), nil}),
 			expected: false,
 		},
 	}
@@ -138,12 +138,12 @@ func TestIsBalancedIterative(t *testing.T) {
 	}{
 		{
 			name:     "Example 1: Balanced tree [3,9,20,null,null,15,7]",
-			root:     NewTreeFromSlice([]*int{intPtr(3), intPtr(9), intPtr(20), nil, nil, intPtr(15), intPtr(7)}),
+			root:     NewTreeFromSlice([]*int{IntPtr(3), IntPtr(9), IntPtr(20), nil, nil, IntPtr(15), IntPtr(7)}),
 			expected: true,
 		},
 		{
 			name:     "Example 2: Unbalanced tree [1,2,2,3,3,null,null,4,4]",
-			root:     NewTreeFromSlice([]*int{intPtr(1), intPtr(2), intPtr(2), intPtr(3), intPtr(3), nil, nil, intPtr(4), intPtr(4)}),
+			root:     NewTreeFromSlice([]*int{IntPtr(1), IntPtr(2), IntPtr(2), IntPtr(3), IntPtr(3), nil, nil, IntPtr(4), IntPtr(4)}),
 			expected: false,
 		},
 		{
@@ -153,22 +153,22 @@ func TestIsBalancedIterative(t *testing.T) {
 		},
 		{
 			name:     "Single node",
-			root:     NewTreeFromSlice([]*int{intPtr(1)}),
+			root:     NewTreeFromSlice([]*int{IntPtr(1)}),
 			expected: true,
 		},
 		{
 			name:     "Left-skewed tree (unbalanced)",
-			root:     NewTreeFromSlice([]*int{intPtr(1), intPtr(2), nil, intPtr(3), nil, intPtr(4), nil}),
+			root:     NewTreeFromSlice([]*int{IntPtr(1), IntPtr(2), nil, IntPtr(3), nil, IntPtr(4), nil}),
 			expected: false,
 		},
 		{
 			name:     "Right-skewed tree (unbalanced)",
-			root:     NewTreeFromSlice([]*int{intPtr(1), nil, intPtr(2), nil, intPtr(3), nil, intPtr(4)}),
+			root:     NewTreeFromSlice([]*int{IntPtr(1), nil, IntPtr(2), nil, IntPtr(3), nil, IntPtr(4)}),
 			expected: false,
 		},
 		{
 			name:     "Complete binary tree (balanced)",
-			root:     NewTreeFromSlice([]*int{intPtr(1), intPtr(2), intPtr(3), intPtr(4), intPtr(5), intPtr(6), intPtr(7)}),
+			root:     NewTreeFromSlice([]*int{IntPtr(1), IntPtr(2), IntPtr(3), IntPtr(4), IntPtr(5), IntPtr(6), IntPtr(7)}),
 			expected: true,
 		},
 	}
@@ -191,12 +191,12 @@ func TestIsBalanced(t *testing.T) {
 	}{
 		{
 			name:     "Example 1: Balanced tree [3,9,20,null,null,15,7]",
-			root:     NewTreeFromSlice([]*int{intPtr(3), intPtr(9), intPtr(20), nil, nil, intPtr(15), intPtr(7)}),
+			root:     NewTreeFromSlice([]*int{IntPtr(3), IntPtr(9), IntPtr(20), nil, nil, IntPtr(15), IntPtr(7)}),
 			expected: true,
 		},
 		{
 			name:     "Example 2: Unbalanced tree [1,2,2,3,3,null,null,4,4]",
-			root:     NewTreeFromSlice([]*int{intPtr(1), intPtr(2), intPtr(2), intPtr(3), intPtr(3), nil, nil, intPtr(4), intPtr(4)}),
+			root:     NewTreeFromSlice([]*int{IntPtr(1), IntPtr(2), IntPtr(2), IntPtr(3), IntPtr(3), nil, nil, IntPtr(4), IntPtr(4)}),
 			expected: false,
 		},
 		{
@@ -206,7 +206,7 @@ func TestIsBalanced(t *testing.T) {
 		},
 		{
 			name:     "Single node",
-			root:     NewTreeFromSlice([]*int{intPtr(1)}),
+			root:     NewTreeFromSlice([]*int{IntPtr(1)}),
 			expected: true,
 		},
 	}
@@ -234,32 +234,32 @@ func TestHeight(t *testing.T) {
 		},
 		{
 			name:     "Single node",
-			root:     NewTreeFromSlice([]*int{intPtr(1)}),
+			root:     NewTreeFromSlice([]*int{IntPtr(1)}),
 			expected: 1,
 		},
 		{
 			name:     "Tree with left child only",
-			root:     NewTreeFromSlice([]*int{intPtr(1), intPtr(2), nil}),
+			root:     NewTreeFromSlice([]*int{IntPtr(1), IntPtr(2), nil}),
 			expected: 2,
 		},
 		{
 			name:     "Tree with right child only",
-			root:     NewTreeFromSlice([]*int{intPtr(1), nil, intPtr(2)}),
+			root:     NewTreeFromSlice([]*int{IntPtr(1), nil, IntPtr(2)}),
 			expected: 2,
 		},
 		{
 			name:     "Balanced tree height 3",
-			root:     NewTreeFromSlice([]*int{intPtr(1), intPtr(2), intPtr(3), intPtr(4), intPtr(5), intPtr(6), intPtr(7)}),
+			root:     NewTreeFromSlice([]*int{IntPtr(1), IntPtr(2), IntPtr(3), IntPtr(4), IntPtr(5), IntPtr(6), IntPtr(7)}),
 			expected: 3,
 		},
 		{
 			name:     "Left-skewed tree height 4",
-			root:     NewTreeFromSlice([]*int{intPtr(1), intPtr(2), nil, intPtr(3), nil, intPtr(4), nil}),
+			root:     NewTreeFromSlice([]*int{IntPtr(1), IntPtr(2), nil, IntPtr(3), nil, IntPtr(4), nil}),
 			expected: 4,
 		},
 		{
 			name:     "Right-skewed tree height 4",
-			root:     NewTreeFromSlice([]*int{intPtr(1), nil, intPtr(2), nil, intPtr(3), nil, intPtr(4)}),
+			root:     NewTreeFromSlice([]*int{IntPtr(1), nil, IntPtr(2), nil, IntPtr(3), nil, IntPtr(4)}),
 			expected: 4,
 		},
 	}
@@ -289,19 +289,19 @@ func TestCheckBalance(t *testing.T) {
 		},
 		{
 			name:          "Single node",
-			root:          NewTreeFromSlice([]*int{intPtr(1)}),
+			root:          NewTreeFromSlice([]*int{IntPtr(1)}),
 			expectedHeight: 1,
 			expectedBalanced: true,
 		},
 		{
 			name:          "Balanced tree",
-			root:          NewTreeFromSlice([]*int{intPtr(1), intPtr(2), intPtr(3)}),
+			root:          NewTreeFromSlice([]*int{IntPtr(1), IntPtr(2), IntPtr(3)}),
 			expectedHeight: 2,
 			expectedBalanced: true,
 		},
 		{
 			name:          "Unbalanced tree",
-			root:          NewTreeFromSlice([]*int{intPtr(1), intPtr(2), nil, intPtr(3), nil, intPtr(4), nil}),
+			root:          NewTreeFromSlice([]*int{IntPtr(1), IntPtr(2), nil, IntPtr(3), nil, IntPtr(4), nil}),
 			expectedHeight: 0, // Returns 0 when unbalanced
 			expectedBalanced: false,
 		},
@@ -331,19 +331,19 @@ func TestAllImplementationsAgree(t *testing.T) {
 		},
 		{
 			name: "Single node",
-			root: NewTreeFromSlice([]*int{intPtr(1)}),
+			root: NewTreeFromSlice([]*int{IntPtr(1)}),
 		},
 		{
 			name: "Balanced tree",
-			root: NewTreeFromSlice([]*int{intPtr(1), intPtr(2), intPtr(3)}),
+			root: NewTreeFromSlice([]*int{IntPtr(1), IntPtr(2), IntPtr(3)}),
 		},
 		{
 			name: "Unbalanced tree",
-			root: NewTreeFromSlice([]*int{intPtr(1), intPtr(2), nil, intPtr(3), nil, intPtr(4), nil}),
+			root: NewTreeFromSlice([]*int{IntPtr(1), IntPtr(2), nil, IntPtr(3), nil, IntPtr(4), nil}),
 		},
 		{
 			name: "Complex balanced tree",
-			root: NewTreeFromSlice([]*int{intPtr(1), intPtr(2), intPtr(3), intPtr(4), intPtr(5), intPtr(6), intPtr(7)}),
+			root: NewTreeFromSlice([]*int{IntPtr(1), IntPtr(2), IntPtr(3), IntPtr(4), IntPtr(5), IntPtr(6), IntPtr(7)}),
 		},
 	}
 

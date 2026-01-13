@@ -15,7 +15,7 @@ func TestPathSum(t *testing.T) {
 	}{
 		{
 			name:   "Example 1: Multiple valid paths",
-			root:   NewTreeFromSlice([]*int{intPtr(5), intPtr(4), intPtr(8), intPtr(11), nil, intPtr(13), intPtr(4), intPtr(7), intPtr(2), nil, nil, intPtr(5), intPtr(1)}),
+			root:   NewTreeFromSlice([]*int{IntPtr(5), IntPtr(4), IntPtr(8), IntPtr(11), nil, IntPtr(13), IntPtr(4), IntPtr(7), IntPtr(2), nil, nil, IntPtr(5), IntPtr(1)}),
 			target: 22,
 			expected: [][]int{
 				{5, 4, 11, 2},
@@ -24,19 +24,19 @@ func TestPathSum(t *testing.T) {
 		},
 		{
 			name:     "Example 2: No valid paths",
-			root:     NewTreeFromSlice([]*int{intPtr(1), intPtr(2), intPtr(3)}),
+			root:     NewTreeFromSlice([]*int{IntPtr(1), IntPtr(2), IntPtr(3)}),
 			target:   5,
 			expected: [][]int{},
 		},
 		{
 			name:     "Example 3: Single node tree with matching value",
-			root:     NewTreeFromSlice([]*int{intPtr(1)}),
+			root:     NewTreeFromSlice([]*int{IntPtr(1)}),
 			target:   1,
 			expected: [][]int{{1}},
 		},
 		{
 			name:     "Example 4: Single node tree with non-matching value",
-			root:     NewTreeFromSlice([]*int{intPtr(1)}),
+			root:     NewTreeFromSlice([]*int{IntPtr(1)}),
 			target:   2,
 			expected: [][]int{},
 		},
@@ -48,7 +48,7 @@ func TestPathSum(t *testing.T) {
 		},
 		{
 			name:   "Example 6: Complex tree with multiple paths",
-			root:   NewTreeFromSlice([]*int{intPtr(1), intPtr(2), intPtr(3), intPtr(4), intPtr(5), intPtr(6), intPtr(7)}),
+			root:   NewTreeFromSlice([]*int{IntPtr(1), IntPtr(2), IntPtr(3), IntPtr(4), IntPtr(5), IntPtr(6), IntPtr(7)}),
 			target: 8,
 			expected: [][]int{
 				{1, 2, 5},
@@ -56,7 +56,7 @@ func TestPathSum(t *testing.T) {
 		},
 		{
 			name:   "Example 7: Negative values",
-			root:   NewTreeFromSlice([]*int{intPtr(-2), nil, intPtr(-3)}),
+			root:   NewTreeFromSlice([]*int{IntPtr(-2), nil, IntPtr(-3)}),
 			target: -5,
 			expected: [][]int{
 				{-2, -3},
@@ -64,7 +64,7 @@ func TestPathSum(t *testing.T) {
 		},
 		{
 			name:   "Example 8: Zero values",
-			root:   NewTreeFromSlice([]*int{intPtr(0), intPtr(1), intPtr(0), intPtr(1), intPtr(0), intPtr(1)}),
+			root:   NewTreeFromSlice([]*int{IntPtr(0), IntPtr(1), IntPtr(0), IntPtr(1), IntPtr(0), IntPtr(1)}),
 			target: 2,
 			expected: [][]int{
 				{0, 1, 1},
@@ -98,19 +98,19 @@ func TestPathSum_EdgeCases(t *testing.T) {
 	}{
 		{
 			name:     "Large target sum",
-			root:     NewTreeFromSlice([]*int{intPtr(1000), intPtr(1000), intPtr(1000)}),
+			root:     NewTreeFromSlice([]*int{IntPtr(1000), IntPtr(1000), IntPtr(1000)}),
 			target:   2000,
 			expected: [][]int{{1000, 1000}, {1000, 1000}},
 		},
 		{
 			name:     "All paths valid in complete binary tree",
-			root:     NewTreeFromSlice([]*int{intPtr(1), intPtr(1), intPtr(1), intPtr(1), intPtr(1), intPtr(1), intPtr(1)}),
+			root:     NewTreeFromSlice([]*int{IntPtr(1), IntPtr(1), IntPtr(1), IntPtr(1), IntPtr(1), IntPtr(1), IntPtr(1)}),
 			target:   3,
 			expected: [][]int{{1, 1, 1}, {1, 1, 1}, {1, 1, 1}, {1, 1, 1}},
 		},
 		{
 			name:     "Skewed tree with single path",
-			root:     NewTreeFromSlice([]*int{intPtr(1), intPtr(2), nil, intPtr(3), nil, intPtr(4)}),
+			root:     NewTreeFromSlice([]*int{IntPtr(1), IntPtr(2), nil, IntPtr(3), nil, IntPtr(4)}),
 			target:   10,
 			expected: [][]int{{1, 2, 3, 4}},
 		},
@@ -136,7 +136,7 @@ func TestPathSum_Performance(t *testing.T) {
 	// All values are 1, target is 4 (paths of length 4)
 	vals := make([]*int, 15)
 	for i := range vals {
-		vals[i] = intPtr(1)
+		vals[i] = IntPtr(1)
 	}
 	root := NewTreeFromSlice(vals)
 	target := 4

@@ -89,7 +89,8 @@ func TestMaxProfit_EdgeCases(t *testing.T) {
 		// Create a large array where profit should be 9999
 		prices := make([]int, 100000)
 		for i := range prices {
-			prices[i] = 10000 - i // Decreasing prices
+			// Create decreasing prices from 10000 down to 1
+			prices[i] = 10000 - (i % 10000)
 		}
 		prices[0] = 1
 		prices[99999] = 10000

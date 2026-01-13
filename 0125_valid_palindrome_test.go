@@ -6,7 +6,7 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestIsPalindrome(t *testing.T) {
+func TestIsValidPalindrome(t *testing.T) {
 	tests := []struct {
 		name     string
 		s        string
@@ -101,15 +101,15 @@ func TestIsPalindrome(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			result := IsPalindrome(tt.s)
+			result := IsValidPalindrome(tt.s)
 			assert.Equal(t, tt.expected, result,
-				"IsPalindrome(%q) = %v, expected %v",
+				"IsValidPalindrome(%q) = %v, expected %v",
 				tt.s, result, tt.expected)
 		})
 	}
 }
 
-func TestIsPalindrome_EdgeCases(t *testing.T) {
+func TestIsValidPalindrome_EdgeCases(t *testing.T) {
 	t.Run("Very long palindrome", func(t *testing.T) {
 		// Create a very long palindrome
 		half := make([]byte, 50000)
@@ -126,7 +126,7 @@ func TestIsPalindrome_EdgeCases(t *testing.T) {
 		}
 		s += string(reversed)
 
-		result := IsPalindrome(s)
+		result := IsValidPalindrome(s)
 		assert.True(t, result, "Very long palindrome should return true")
 	})
 
@@ -141,24 +141,24 @@ func TestIsPalindrome_EdgeCases(t *testing.T) {
 			s[len(s)-1] = 'z'
 		}
 
-		result := IsPalindrome(string(s))
+		result := IsValidPalindrome(string(s))
 		assert.False(t, result, "Very long non-palindrome should return false")
 	})
 
 	t.Run("String with only non-alphanumeric at ends", func(t *testing.T) {
 		s := "!!!abc!!!"
-		result := IsPalindrome(s)
-		assert.True(t, result, "!!!abc!!! should be palindrome (abc is palindrome)")
+		result := IsValidPalindrome(s)
+		assert.False(t, result, "!!!abc!!! should NOT be palindrome (abc is NOT palindrome)")
 	})
 
 	t.Run("String with mixed non-alphanumeric", func(t *testing.T) {
 		s := "a!!!b!!!c!!!b!!!a"
-		result := IsPalindrome(s)
+		result := IsValidPalindrome(s)
 		assert.True(t, result, "Should handle mixed non-alphanumeric characters")
 	})
 }
 
-func BenchmarkIsPalindrome(b *testing.B) {
+func BenchmarkIsValidPalindrome(b *testing.B) {
 	// Create a long string for benchmarking
 	s := make([]byte, 100000)
 	for i := range s {
@@ -172,6 +172,6 @@ func BenchmarkIsPalindrome(b *testing.B) {
 
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
-		IsPalindrome(string(s))
+		IsValidPalindrome(string(s))
 	}
 }

@@ -14,43 +14,43 @@ func TestMaxPathSum(t *testing.T) {
 	}{
 		{
 			name:     "Example 1",
-			root:     NewTreeFromSlice([]*int{intPtr(1), intPtr(2), intPtr(3)}),
+			root:     NewTreeFromSlice([]*int{IntPtr(1), IntPtr(2), IntPtr(3)}),
 			expected: 6,
 		},
 		{
 			name:     "Example 2",
-			root:     NewTreeFromSlice([]*int{intPtr(-10), intPtr(9), intPtr(20), nil, nil, intPtr(15), intPtr(7)}),
+			root:     NewTreeFromSlice([]*int{IntPtr(-10), IntPtr(9), IntPtr(20), nil, nil, IntPtr(15), IntPtr(7)}),
 			expected: 42,
 		},
 		{
 			name:     "Single node positive",
-			root:     NewTreeFromSlice([]*int{intPtr(5)}),
+			root:     NewTreeFromSlice([]*int{IntPtr(5)}),
 			expected: 5,
 		},
 		{
 			name:     "Single node negative",
-			root:     NewTreeFromSlice([]*int{intPtr(-5)}),
+			root:     NewTreeFromSlice([]*int{IntPtr(-5)}),
 			expected: -5,
 		},
 		{
 			name:     "All negative values",
-			root:     NewTreeFromSlice([]*int{intPtr(-1), intPtr(-2), intPtr(-3)}),
+			root:     NewTreeFromSlice([]*int{IntPtr(-1), IntPtr(-2), IntPtr(-3)}),
 			expected: -1, // Best path is just the root
 		},
 		{
 			name:     "Path through root",
-			root:     NewTreeFromSlice([]*int{intPtr(1), intPtr(2), intPtr(3), intPtr(4), intPtr(5)}),
+			root:     NewTreeFromSlice([]*int{IntPtr(1), IntPtr(2), IntPtr(3), IntPtr(4), IntPtr(5)}),
 			expected: 11, // 4 + 2 + 1 + 3 + (can't include 5 because only one side)
 			// Actually: max path could be 4->2->1->3 = 10 or 5->2->1->3 = 11
 		},
 		{
 			name:     "Complex tree",
-			root:     NewTreeFromSlice([]*int{intPtr(10), intPtr(9), intPtr(20), nil, nil, intPtr(15), intPtr(7), nil, nil, nil, nil, intPtr(-5), intPtr(8)}),
+			root:     NewTreeFromSlice([]*int{IntPtr(10), IntPtr(9), IntPtr(20), nil, nil, IntPtr(15), IntPtr(7), nil, nil, nil, nil, IntPtr(-5), IntPtr(8)}),
 			expected: 54, // 15 + 20 + 7 + (maybe more)
 		},
 		{
 			name:     "Tree with zeros",
-			root:     NewTreeFromSlice([]*int{intPtr(0), intPtr(-1), intPtr(2)}),
+			root:     NewTreeFromSlice([]*int{IntPtr(0), IntPtr(-1), IntPtr(2)}),
 			expected: 2, // Best path is just node 2
 		},
 		{
@@ -126,9 +126,4 @@ func BenchmarkMaxPathSum(b *testing.B) {
 	for i := 0; i < b.N; i++ {
 		MaxPathSum(root)
 	}
-}
-
-// Helper function to create int pointers
-func intPtr(x int) *int {
-	return &x
 }

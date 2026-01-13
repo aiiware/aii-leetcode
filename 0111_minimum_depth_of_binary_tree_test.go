@@ -12,12 +12,12 @@ func TestMinDepth(t *testing.T) {
 	}{
 		{
 			name:     "Example 1: Balanced tree",
-			root:     NewTreeFromSlice([]*int{intPtr(3), intPtr(9), intPtr(20), nil, nil, intPtr(15), intPtr(7)}),
+			root:     NewTreeFromSlice([]*int{IntPtr(3), IntPtr(9), IntPtr(20), nil, nil, IntPtr(15), IntPtr(7)}),
 			expected: 2,
 		},
 		{
 			name:     "Example 2: Right-skewed tree",
-			root:     NewTreeFromSlice([]*int{intPtr(2), nil, intPtr(3), nil, intPtr(4), nil, intPtr(5), nil, intPtr(6)}),
+			root:     NewTreeFromSlice([]*int{IntPtr(2), nil, IntPtr(3), nil, IntPtr(4), nil, IntPtr(5), nil, IntPtr(6)}),
 			expected: 5,
 		},
 		{
@@ -27,37 +27,37 @@ func TestMinDepth(t *testing.T) {
 		},
 		{
 			name:     "Single node tree",
-			root:     NewTreeFromSlice([]*int{intPtr(1)}),
+			root:     NewTreeFromSlice([]*int{IntPtr(1)}),
 			expected: 1,
 		},
 		{
 			name:     "Left-skewed tree",
-			root:     NewTreeFromSlice([]*int{intPtr(1), intPtr(2), nil, intPtr(3), nil, intPtr(4)}),
+			root:     NewTreeFromSlice([]*int{IntPtr(1), IntPtr(2), nil, IntPtr(3), nil, IntPtr(4)}),
 			expected: 4,
 		},
 		{
 			name:     "Tree with only left child",
-			root:     NewTreeFromSlice([]*int{intPtr(1), intPtr(2), nil}),
+			root:     NewTreeFromSlice([]*int{IntPtr(1), IntPtr(2), nil}),
 			expected: 2,
 		},
 		{
 			name:     "Tree with only right child",
-			root:     NewTreeFromSlice([]*int{intPtr(1), nil, intPtr(2)}),
+			root:     NewTreeFromSlice([]*int{IntPtr(1), nil, IntPtr(2)}),
 			expected: 2,
 		},
 		{
 			name:     "Complete binary tree",
-			root:     NewTreeFromSlice([]*int{intPtr(1), intPtr(2), intPtr(3), intPtr(4), intPtr(5), intPtr(6), intPtr(7)}),
+			root:     NewTreeFromSlice([]*int{IntPtr(1), IntPtr(2), IntPtr(3), IntPtr(4), IntPtr(5), IntPtr(6), IntPtr(7)}),
 			expected: 3,
 		},
 		{
 			name:     "Tree with negative values",
-			root:     NewTreeFromSlice([]*int{intPtr(-10), intPtr(-20), intPtr(-30)}),
+			root:     NewTreeFromSlice([]*int{IntPtr(-10), IntPtr(-20), IntPtr(-30)}),
 			expected: 2,
 		},
 		{
 			name:     "Tree with zero values",
-			root:     NewTreeFromSlice([]*int{intPtr(0), intPtr(0), intPtr(0)}),
+			root:     NewTreeFromSlice([]*int{IntPtr(0), IntPtr(0), IntPtr(0)}),
 			expected: 2,
 		},
 	}
@@ -120,7 +120,7 @@ func TestMinDepth_EdgeCases(t *testing.T) {
 		},
 		{
 			name:     "Tree where left subtree is deeper but right has leaf earlier",
-			root:     NewTreeFromSlice([]*int{intPtr(1), intPtr(2), intPtr(3), intPtr(4), nil, nil, nil, intPtr(5), nil}),
+			root:     NewTreeFromSlice([]*int{IntPtr(1), IntPtr(2), IntPtr(3), IntPtr(4), nil, nil, nil, IntPtr(5), nil}),
 			expected: 2,
 		},
 	}

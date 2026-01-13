@@ -34,6 +34,11 @@ package leetcode
 // Time complexity: O(N * L^2) where N is number of words, L is word length
 // Space complexity: O(N * L)
 func FindLadders(beginWord string, endWord string, wordList []string) [][]string {
+	// Special case: beginWord equals endWord
+	if beginWord == endWord {
+		return [][]string{{beginWord}}
+	}
+
 	// Convert wordList to set for O(1) lookups
 	wordSet := make(map[string]bool)
 	for _, word := range wordList {

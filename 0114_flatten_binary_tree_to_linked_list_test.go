@@ -14,12 +14,12 @@ func TestFlatten(t *testing.T) {
 		{
 			name: "Example 1: Complex tree",
 			root: NewTreeFromSlice([]*int{
-				intPtr(1), intPtr(2), intPtr(5),
-				intPtr(3), intPtr(4), nil, intPtr(6),
+				IntPtr(1), IntPtr(2), IntPtr(5),
+				IntPtr(3), IntPtr(4), nil, IntPtr(6),
 			}),
 			expected: NewTreeFromSlice([]*int{
-				intPtr(1), nil, intPtr(2), nil, intPtr(3),
-				nil, intPtr(4), nil, intPtr(5), nil, intPtr(6),
+				IntPtr(1), nil, IntPtr(2), nil, IntPtr(3),
+				nil, IntPtr(4), nil, IntPtr(5), nil, IntPtr(6),
 			}),
 		},
 		{
@@ -29,17 +29,17 @@ func TestFlatten(t *testing.T) {
 		},
 		{
 			name:     "Example 3: Single node",
-			root:     NewTreeFromSlice([]*int{intPtr(0)}),
-			expected: NewTreeFromSlice([]*int{intPtr(0)}),
+			root:     NewTreeFromSlice([]*int{IntPtr(0)}),
+			expected: NewTreeFromSlice([]*int{IntPtr(0)}),
 		},
 		{
 			name: "Example 4: Left-skewed tree",
 			root: NewTreeFromSlice([]*int{
-				intPtr(1), intPtr(2), nil,
-				intPtr(3), nil,
+				IntPtr(1), IntPtr(2), nil,
+				IntPtr(3), nil,
 			}),
 			expected: NewTreeFromSlice([]*int{
-				intPtr(1), nil, intPtr(2), nil, intPtr(3),
+				IntPtr(1), nil, IntPtr(2), nil, IntPtr(3),
 			}),
 		},
 		{
@@ -64,23 +64,23 @@ func TestFlatten(t *testing.T) {
 		{
 			name: "Example 6: Complete binary tree",
 			root: NewTreeFromSlice([]*int{
-				intPtr(1), intPtr(2), intPtr(3),
-				intPtr(4), intPtr(5), intPtr(6), intPtr(7),
+				IntPtr(1), IntPtr(2), IntPtr(3),
+				IntPtr(4), IntPtr(5), IntPtr(6), IntPtr(7),
 			}),
 			expected: NewTreeFromSlice([]*int{
-				intPtr(1), nil, intPtr(2), nil, intPtr(4),
-				nil, intPtr(5), nil, intPtr(3), nil, intPtr(6), nil, intPtr(7),
+				IntPtr(1), nil, IntPtr(2), nil, IntPtr(4),
+				nil, IntPtr(5), nil, IntPtr(3), nil, IntPtr(6), nil, IntPtr(7),
 			}),
 		},
 		{
 			name: "Example 7: Tree with negative values",
 			root: NewTreeFromSlice([]*int{
-				intPtr(-1), intPtr(-2), intPtr(-3),
-				intPtr(-4), intPtr(-5), intPtr(-6), intPtr(-7),
+				IntPtr(-1), IntPtr(-2), IntPtr(-3),
+				IntPtr(-4), IntPtr(-5), IntPtr(-6), IntPtr(-7),
 			}),
 			expected: NewTreeFromSlice([]*int{
-				intPtr(-1), nil, intPtr(-2), nil, intPtr(-4),
-				nil, intPtr(-5), nil, intPtr(-3), nil, intPtr(-6), nil, intPtr(-7),
+				IntPtr(-1), nil, IntPtr(-2), nil, IntPtr(-4),
+				nil, IntPtr(-5), nil, IntPtr(-3), nil, IntPtr(-6), nil, IntPtr(-7),
 			}),
 		},
 	}
@@ -131,20 +131,20 @@ func TestFlatten_EdgeCases(t *testing.T) {
 		{
 			name: "Already flattened tree",
 			root: NewTreeFromSlice([]*int{
-				intPtr(1), nil, intPtr(2), nil, intPtr(3),
+				IntPtr(1), nil, IntPtr(2), nil, IntPtr(3),
 			}),
 			expected: NewTreeFromSlice([]*int{
-				intPtr(1), nil, intPtr(2), nil, intPtr(3),
+				IntPtr(1), nil, IntPtr(2), nil, IntPtr(3),
 			}),
 		},
 		{
 			name: "Tree with only left children",
 			root: NewTreeFromSlice([]*int{
-				intPtr(3), intPtr(2), nil,
-				intPtr(1), nil,
+				IntPtr(3), IntPtr(2), nil,
+				IntPtr(1), nil,
 			}),
 			expected: NewTreeFromSlice([]*int{
-				intPtr(3), nil, intPtr(2), nil, intPtr(1),
+				IntPtr(3), nil, IntPtr(2), nil, IntPtr(1),
 			}),
 		},
 		{
@@ -168,7 +168,7 @@ func TestFlatten_EdgeCases(t *testing.T) {
 				// Create a tree with 15 nodes
 				vals := make([]*int, 15)
 				for i := range vals {
-					vals[i] = intPtr(i + 1)
+					vals[i] = IntPtr(i + 1)
 				}
 				return NewTreeFromSlice(vals)
 			}(),
@@ -176,10 +176,10 @@ func TestFlatten_EdgeCases(t *testing.T) {
 				// Expected flattened list: 1,2,4,8,9,5,10,11,3,6,12,13,7,14,15
 				// This is the pre-order traversal of a complete binary tree
 				vals := []*int{
-					intPtr(1), nil, intPtr(2), nil, intPtr(4), nil, intPtr(8),
-					nil, intPtr(9), nil, intPtr(5), nil, intPtr(10), nil, intPtr(11),
-					nil, intPtr(3), nil, intPtr(6), nil, intPtr(12), nil, intPtr(13),
-					nil, intPtr(7), nil, intPtr(14), nil, intPtr(15),
+					IntPtr(1), nil, IntPtr(2), nil, IntPtr(4), nil, IntPtr(8),
+					nil, IntPtr(9), nil, IntPtr(5), nil, IntPtr(10), nil, IntPtr(11),
+					nil, IntPtr(3), nil, IntPtr(6), nil, IntPtr(12), nil, IntPtr(13),
+					nil, IntPtr(7), nil, IntPtr(14), nil, IntPtr(15),
 				}
 				return NewTreeFromSlice(vals)
 			}(),
@@ -214,9 +214,9 @@ func TestFlatten_EdgeCases(t *testing.T) {
 func TestFlatten_PreservesValues(t *testing.T) {
 	// Create a complex tree
 	root := NewTreeFromSlice([]*int{
-		intPtr(5), intPtr(4), intPtr(8),
-		intPtr(11), nil, intPtr(13), intPtr(4),
-		intPtr(7), intPtr(2), nil, nil, intPtr(5), intPtr(1),
+		IntPtr(5), IntPtr(4), IntPtr(8),
+		IntPtr(11), nil, IntPtr(13), IntPtr(4),
+		IntPtr(7), IntPtr(2), nil, nil, IntPtr(5), IntPtr(1),
 	})
 
 	// Get pre-order traversal before flattening

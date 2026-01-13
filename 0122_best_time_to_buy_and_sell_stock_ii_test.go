@@ -55,8 +55,7 @@ func TestMaxProfitII(t *testing.T) {
 		{
 			name:     "Large fluctuations",
 			prices:   []int{1, 5, 3, 8, 2, 10},
-			expected: 14, // (5-1) + (8-3) + (10-2) = 4 + 5 + 8 = 17? Wait, let's calculate: Actually (5-1)=4, (8-3)=5, (10-2)=8, total=17
-			// Correction: The greedy approach captures every upward movement: 1→5=4, 3→8=5, 2→10=8, total=17
+			expected: 17, // (5-1)=4, (8-3)=5, (10-2)=8, total=17
 		},
 		{
 			name:     "Empty prices",
@@ -94,10 +93,11 @@ func TestMaxProfitII_EdgeCases(t *testing.T) {
 
 		result := MaxProfitII(prices)
 		// Each even->odd transition gives profit of 1
-		// There are 29999 transitions, half of them (14999.5) are even->odd
-		// Actually, with 30000 elements, there are 29999 transitions
-		// Half of those (14999) are even->odd (profit 1 each)
-		expected := 14999
+		// With 30000 elements, indices 0-29999
+		// Transitions: 0→1, 1→2, 2→3, ..., 29998→29999
+		// Even→odd transitions: 0→1, 2→3, ..., 29998→29999
+		// That's 15000 transitions (0, 2, 4, ..., 29998)
+		expected := 15000
 		assert.Equal(t, expected, result)
 	})
 

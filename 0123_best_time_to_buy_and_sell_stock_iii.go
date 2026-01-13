@@ -42,8 +42,8 @@ func MaxProfitIII(prices []int) int {
 	minPrice := prices[0]
 
 	for i := 1; i < n; i++ {
-		minPrice = min(minPrice, prices[i])
-		leftProfits[i] = max(leftProfits[i-1], prices[i]-minPrice)
+		minPrice = Min(minPrice, prices[i])
+		leftProfits[i] = Max(leftProfits[i-1], prices[i]-minPrice)
 	}
 
 	// rightProfits[i] = max profit with one transaction in prices[i..n-1]
@@ -51,8 +51,8 @@ func MaxProfitIII(prices []int) int {
 	maxPrice := prices[n-1]
 
 	for i := n - 2; i >= 0; i-- {
-		maxPrice = max(maxPrice, prices[i])
-		rightProfits[i] = max(rightProfits[i+1], maxPrice-prices[i])
+		maxPrice = Max(maxPrice, prices[i])
+		rightProfits[i] = Max(rightProfits[i+1], maxPrice-prices[i])
 	}
 
 	// Find the best combination of two transactions
@@ -63,22 +63,8 @@ func MaxProfitIII(prices []int) int {
 		if i+1 < n {
 			profit += rightProfits[i+1]
 		}
-		maxProfit = max(maxProfit, profit)
+		maxProfit = Max(maxProfit, profit)
 	}
 
 	return maxProfit
-}
-
-func min(a, b int) int {
-	if a < b {
-		return a
-	}
-	return b
-}
-
-func max(a, b int) int {
-	if a > b {
-		return a
-	}
-	return b
 }

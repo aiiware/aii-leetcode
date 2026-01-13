@@ -130,7 +130,7 @@ func TestSolve(t *testing.T) {
 				{'X', 'X', 'X', 'X', 'X'},
 				{'X', 'X', 'X', 'X', 'X'},
 				{'X', 'X', 'X', 'X', 'X'},
-				{'X', 'O', 'O', 'X', 'X'},
+				{'X', 'X', 'X', 'X', 'X'},
 				{'X', 'X', 'X', 'X', 'X'},
 			},
 		},
@@ -221,12 +221,12 @@ func TestSolve_EdgeCases(t *testing.T) {
 			{'X', 'O', 'X', 'O', 'X'},
 			{'O', 'X', 'O', 'X', 'O'},
 		}
-		// All O's on border or connected to border, so none should be flipped
+		// Only O's on border should remain, interior O's should be flipped
 		expected := [][]byte{
 			{'O', 'X', 'O', 'X', 'O'},
-			{'X', 'O', 'X', 'O', 'X'},
-			{'O', 'X', 'O', 'X', 'O'},
-			{'X', 'O', 'X', 'O', 'X'},
+			{'X', 'X', 'X', 'X', 'X'},
+			{'O', 'X', 'X', 'X', 'O'},
+			{'X', 'X', 'X', 'X', 'X'},
 			{'O', 'X', 'O', 'X', 'O'},
 		}
 
@@ -254,9 +254,9 @@ func BenchmarkSolve(b *testing.B) {
 	for i := 0; i < b.N; i++ {
 		// Create a copy for each benchmark iteration
 		testBoard := make([][]byte, m)
-		for i := range board {
-			testBoard[i] = make([]byte, n)
-			copy(testBoard[i], board[i])
+		for idx := range board {
+			testBoard[idx] = make([]byte, n)
+			copy(testBoard[idx], board[idx])
 		}
 		Solve(testBoard)
 	}

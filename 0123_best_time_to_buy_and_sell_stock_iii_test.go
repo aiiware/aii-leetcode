@@ -45,12 +45,12 @@ func TestMaxProfitIII(t *testing.T) {
 		{
 			name:     "One big transaction is best",
 			prices:   []int{1, 5, 3, 8},
-			expected: 7, // Buy at 1, sell at 8 = 7
+			expected: 9, // Actually two transactions are better: (5-1) + (8-3) = 4 + 5 = 9
 		},
 		{
 			name:     "Two transactions better than one",
 			prices:   []int{1, 5, 3, 8, 2, 10},
-			expected: 12, // (5-1) + (10-2) = 4 + 8 = 12
+			expected: 15, // (8-1) + (10-2) = 7 + 8 = 15
 		},
 		{
 			name:     "All same prices",
@@ -65,7 +65,7 @@ func TestMaxProfitIII(t *testing.T) {
 		{
 			name:     "Three peaks",
 			prices:   []int{1, 4, 2, 5, 3, 6},
-			expected: 8, // (4-1) + (6-3) = 3 + 5 = 8
+			expected: 7, // (5-1) + (6-3) = 4 + 3 = 7 OR (4-1) + (6-2) = 3 + 4 = 7
 		},
 		{
 			name:     "Complex pattern",
@@ -101,12 +101,12 @@ func TestMaxProfitIII_EdgeCases(t *testing.T) {
 		prices := make([]int, 100000)
 		for i := range prices {
 			if i < 50000 {
-				prices[i] = i
+				prices[i] = i // First half: 0 to 49999
 			} else {
-				prices[i] = 100000 - i
+				prices[i] = i - 25000 // Second half: 25000 to 74999
 			}
 		}
-		// Best: (49999-0) + (49999-0) = 49999 + 49999 = 99998
+		// Best: (49999-0) + (74999-25000) = 49999 + 49999 = 99998
 		result := MaxProfitIII(prices)
 		assert.Equal(t, 99998, result)
 	})

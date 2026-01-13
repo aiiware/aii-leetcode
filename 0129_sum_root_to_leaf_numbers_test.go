@@ -14,22 +14,22 @@ func TestSumNumbers(t *testing.T) {
 	}{
 		{
 			name:     "Example 1",
-			root:     NewTreeFromSlice([]*int{intPtr(1), intPtr(2), intPtr(3)}),
+			root:     NewTreeFromSlice([]*int{IntPtr(1), IntPtr(2), IntPtr(3)}),
 			expected: 25,
 		},
 		{
 			name:     "Example 2",
-			root:     NewTreeFromSlice([]*int{intPtr(4), intPtr(9), intPtr(0), intPtr(5), intPtr(1)}),
+			root:     NewTreeFromSlice([]*int{IntPtr(4), IntPtr(9), IntPtr(0), IntPtr(5), IntPtr(1)}),
 			expected: 1026,
 		},
 		{
 			name:     "Single node",
-			root:     NewTreeFromSlice([]*int{intPtr(5)}),
+			root:     NewTreeFromSlice([]*int{IntPtr(5)}),
 			expected: 5,
 		},
 		{
 			name:     "Complete binary tree",
-			root:     NewTreeFromSlice([]*int{intPtr(1), intPtr(2), intPtr(3), intPtr(4), intPtr(5), intPtr(6), intPtr(7)}),
+			root:     NewTreeFromSlice([]*int{IntPtr(1), IntPtr(2), IntPtr(3), IntPtr(4), IntPtr(5), IntPtr(6), IntPtr(7)}),
 			expected: 522, // Paths: 124 + 125 + 136 + 137 = 522
 		},
 		{
@@ -44,7 +44,7 @@ func TestSumNumbers(t *testing.T) {
 		},
 		{
 			name:     "Tree with zeros",
-			root:     NewTreeFromSlice([]*int{intPtr(1), intPtr(0), intPtr(2)}),
+			root:     NewTreeFromSlice([]*int{IntPtr(1), IntPtr(0), IntPtr(2)}),
 			expected: 22, // Paths: 10 + 12 = 22
 		},
 		{
@@ -54,14 +54,13 @@ func TestSumNumbers(t *testing.T) {
 		},
 		{
 			name:     "Tree with all same digits",
-			root:     NewTreeFromSlice([]*int{intPtr(9), intPtr(9), intPtr(9)}),
+			root:     NewTreeFromSlice([]*int{IntPtr(9), IntPtr(9), IntPtr(9)}),
 			expected: 198, // Paths: 99 + 99 = 198
 		},
 		{
 			name:     "Unbalanced tree",
-			root:     NewTreeFromSlice([]*int{intPtr(1), intPtr(2), nil, intPtr(3), intPtr(4)}),
-			expected: 137, // Paths: 123 + 124 = 247? Wait, let's calculate: Actually 123 + 124 = 247
-			// Correction: The tree is: 1 -> 2 -> (3,4), so paths: 123 and 124 = 247
+			root:     NewTreeFromSlice([]*int{IntPtr(1), IntPtr(2), nil, IntPtr(3), IntPtr(4)}),
+			expected: 247, // Paths: 123 + 124 = 247
 		},
 	}
 
@@ -155,9 +154,4 @@ func BenchmarkSumNumbers(b *testing.B) {
 	for i := 0; i < b.N; i++ {
 		SumNumbers(root)
 	}
-}
-
-// Helper function to create int pointers
-func intPtr(x int) *int {
-	return &x
 }
