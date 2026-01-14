@@ -1,4 +1,4 @@
-package main
+package leetcode
 
 /*
 0140. Word Break II

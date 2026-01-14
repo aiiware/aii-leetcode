@@ -146,10 +146,10 @@ func TestCopyRandomList(t *testing.T) {
 			copied := CopyRandomList(original)
 			values, randomIndices := listToSlices(copied)
 			
-			if !equalSlices(values, tt.expectedValues) {
+			if !equalIntSlices(values, tt.expectedValues) {
 				t.Errorf("CopyRandomList() values = %v, expected %v", values, tt.expectedValues)
 			}
-			if !equalSlices(randomIndices, tt.expectedRandom) {
+			if !equalIntSlices(randomIndices, tt.expectedRandom) {
 				t.Errorf("CopyRandomList() random indices = %v, expected %v", randomIndices, tt.expectedRandom)
 			}
 			
@@ -158,17 +158,17 @@ func TestCopyRandomList(t *testing.T) {
 			copied2 := CopyRandomListOptimized(original2)
 			values2, randomIndices2 := listToSlices(copied2)
 			
-			if !equalSlices(values2, tt.expectedValues) {
+			if !equalIntSlices(values2, tt.expectedValues) {
 				t.Errorf("CopyRandomListOptimized() values = %v, expected %v", values2, tt.expectedValues)
 			}
-			if !equalSlices(randomIndices2, tt.expectedRandom) {
+			if !equalIntSlices(randomIndices2, tt.expectedRandom) {
 				t.Errorf("CopyRandomListOptimized() random indices = %v, expected %v", randomIndices2, tt.expectedRandom)
 			}
 		})
 	}
 }
 
-func equalSlices(a, b []int) bool {
+func equalIntSlices(a, b []int) bool {
 	if len(a) != len(b) {
 		return false
 	}

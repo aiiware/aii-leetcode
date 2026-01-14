@@ -46,32 +46,32 @@ Time Complexity: O(V + E) where V is vertices and E is edges
 Space Complexity: O(V) for the hash map and recursion stack/BFS queue
 */
 
-// Node represents a node in an undirected graph
-type Node struct {
+// GraphNode represents a node in an undirected graph
+type GraphNode struct {
 	Val       int
-	Neighbors []*Node
+	Neighbors []*GraphNode
 }
 
-// NewNode creates a new Node with the given value
-func NewNode(val int) *Node {
-	return &Node{
+// NewGraphNode creates a new GraphNode with the given value
+func NewGraphNode(val int) *GraphNode {
+	return &GraphNode{
 		Val:       val,
-		Neighbors: []*Node{},
+		Neighbors: []*GraphNode{},
 	}
 }
 
 // CloneGraph returns a deep copy of the graph starting from the given node
-func CloneGraph(node *Node) *Node {
+func CloneGraph(node *GraphNode) *GraphNode {
 	if node == nil {
 		return nil
 	}
 	
 	// Map to store mapping from original nodes to cloned nodes
-	visited := make(map[*Node]*Node)
+	visited := make(map[*GraphNode]*GraphNode)
 	
 	// Use BFS to traverse the graph
-	queue := []*Node{node}
-	visited[node] = NewNode(node.Val)
+	queue := []*GraphNode{node}
+	visited[node] = NewGraphNode(node.Val)
 	
 	for len(queue) > 0 {
 		current := queue[0]
@@ -82,7 +82,7 @@ func CloneGraph(node *Node) *Node {
 			// If neighbor hasn't been visited/cloned yet
 			if _, exists := visited[neighbor]; !exists {
 				// Create clone of neighbor
-				visited[neighbor] = NewNode(neighbor.Val)
+				visited[neighbor] = NewGraphNode(neighbor.Val)
 				// Add to queue for BFS
 				queue = append(queue, neighbor)
 			}

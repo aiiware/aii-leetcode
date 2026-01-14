@@ -6,15 +6,15 @@ import (
 
 func TestCloneGraph(t *testing.T) {
 	// Helper function to create a graph from adjacency list
-	createGraph := func(adjList [][]int) *Node {
+	createGraph := func(adjList [][]int) *GraphNode {
 		if len(adjList) == 0 {
 			return nil
 		}
 		
 		// Create all nodes
-		nodes := make([]*Node, len(adjList))
+		nodes := make([]*GraphNode, len(adjList))
 		for i := range nodes {
-			nodes[i] = NewNode(i + 1) // Node values are 1-indexed
+			nodes[i] = NewGraphNode(i + 1) // Node values are 1-indexed
 		}
 		
 		// Connect neighbors
@@ -29,32 +29,55 @@ func TestCloneGraph(t *testing.T) {
 	}
 	
 	// Helper function to convert graph to adjacency list
-	graphToAdjList := func(node *Node) [][]int {
+	graphToAdjList := func(node *GraphNode) [][]int {
 		if node == nil {
 			return [][]int{}
 		}
 		
-		// Use BFS to traverse the graph
-		visited := make(map[*Node]int)
-		queue := []*Node{node}
-		visited[node] = 1
-		adjList := [][]int{}
+		// Use BFS to traverse the graph and collect all nodes
+		visited := make(map[*GraphNode]bool)
+		queue := []*GraphNode{node}
+		visited[node] = true
+		allNodes := []*GraphNode{}
 		
 		for len(queue) > 0 {
 			current := queue[0]
 			queue = queue[1:]
+			allNodes = append(allNodes, current)
 			
-			// Get neighbors indices
-			neighbors := []int{}
 			for _, neighbor := range current.Neighbors {
-				neighbors = append(neighbors, neighbor.Val)
-				// If neighbor hasn't been visited, add to queue
-				if _, exists := visited[neighbor]; !exists {
-					visited[neighbor] = neighbor.Val
+				if !visited[neighbor] {
+					visited[neighbor] = true
 					queue = append(queue, neighbor)
 				}
 			}
-			adjList = append(adjList, neighbors)
+		}
+		
+		// Sort nodes by value (1, 2, 3, ...)
+		// Since values are unique and from 1 to n, we can create a slice
+		// indexed by value
+		maxVal := 0
+		for _, n := range allNodes {
+			if n.Val > maxVal {
+				maxVal = n.Val
+			}
+		}
+		
+		// Create a map from value to node for quick lookup
+		valueToNode := make(map[int]*GraphNode, maxVal)
+		for _, n := range allNodes {
+			valueToNode[n.Val] = n
+		}
+		
+		// Build adjacency list in order of node values (1, 2, 3, ...)
+		adjList := make([][]int, maxVal)
+		for i := 1; i <= maxVal; i++ {
+			node := valueToNode[i]
+			neighbors := []int{}
+			for _, neighbor := range node.Neighbors {
+				neighbors = append(neighbors, neighbor.Val)
+			}
+			adjList[i-1] = neighbors
 		}
 		
 		return adjList
@@ -190,15 +213,15 @@ func TestCloneGraph(t *testing.T) {
 
 func BenchmarkCloneGraph(b *testing.B) {
 	// Create a complex graph for benchmarking
-	createComplexGraph := func(nodes int) *Node {
+	createComplexGraph := func(nodes int) *GraphNode {
 		if nodes == 0 {
 			return nil
 		}
 		
 		// Create all nodes
-		graphNodes := make([]*Node, nodes)
+		graphNodes := make([]*GraphNode, nodes)
 		for i := range graphNodes {
-			graphNodes[i] = NewNode(i + 1)
+			graphNodes[i] = NewGraphNode(i + 1)
 		}
 		
 		// Connect each node to its next 3 neighbors (circular)
