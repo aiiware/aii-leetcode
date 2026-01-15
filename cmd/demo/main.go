@@ -6,165 +6,133 @@ import (
 )
 
 func main() {
-	fmt.Println("=== LeetCode Solutions Demo (Problems 0001-0084) ===")
-	fmt.Println()
+	fmt.Println("=== LeetCode Solutions Demo ===")
 
-	// Two Sum examples
-	fmt.Println("1. Two Sum (Problem 0001)")
-	fmt.Println("---------------------------")
-	
-	// Example 1 from LeetCode
-	nums1 := []int{2, 7, 11, 15}
-	target1 := 9
-	result1 := leetcode.TwoSum(nums1, target1)
-	fmt.Printf("Example 1: nums = %v, target = %d\n", nums1, target1)
-	fmt.Printf("  Result: indices %v → %d + %d = %d\n\n", 
-		result1, nums1[result1[0]], nums1[result1[1]], target1)
+	// Problem 0141: Linked List Cycle
+	fmt.Println("\n--- Problem 0141: Linked List Cycle ---")
+	head1 := leetcode.IntsToList([]int{3, 2, 0, -4})
+	// Create a cycle: -4 -> 2
+	if head1 != nil && head1.Next != nil && head1.Next.Next != nil {
+		head1.Next.Next.Next.Next = head1.Next
+	}
+	fmt.Printf("Has cycle: %v\n", leetcode.HasCycle(head1))
 
-	// Example 2 from LeetCode
-	nums2 := []int{3, 2, 4}
-	target2 := 6
-	result2 := leetcode.TwoSum(nums2, target2)
-	fmt.Printf("Example 2: nums = %v, target = %d\n", nums2, target2)
-	fmt.Printf("  Result: indices %v → %d + %d = %d\n\n", 
-		result2, nums2[result2[0]], nums2[result2[1]], target2)
+	// Problem 0142: Linked List Cycle II
+	fmt.Println("\n--- Problem 0142: Linked List Cycle II ---")
+	head2 := leetcode.IntsToList([]int{3, 2, 0, -4})
+	// Create a cycle: -4 -> 2
+	if head2 != nil && head2.Next != nil && head2.Next.Next != nil {
+		head2.Next.Next.Next.Next = head2.Next
+	}
+	cycleStart := leetcode.DetectCycle(head2)
+	if cycleStart != nil {
+		fmt.Printf("Cycle starts at node with value: %d\n", cycleStart.Val)
+	} else {
+		fmt.Println("No cycle detected")
+	}
 
-	// Add Two Numbers examples
-	fmt.Println("\n2. Add Two Numbers (Problem 0002)")
-	fmt.Println("----------------------------------")
+	// Problem 0143: Reorder List
+	fmt.Println("\n--- Problem 0143: Reorder List ---")
+	head3 := leetcode.IntsToList([]int{1, 2, 3, 4})
+	head3Copy := leetcode.CopyList(head3)
+	leetcode.ReorderList(head3Copy)
+	fmt.Printf("Original: %s\n", leetcode.PrintList(head3))
+	fmt.Printf("Reordered: %s\n", leetcode.PrintList(head3Copy))
 
-	// Example 1 from LeetCode: 342 + 465 = 807
-	l1a := leetcode.NewListFromSlice([]int{2, 4, 3})  // 342
-	l2a := leetcode.NewListFromSlice([]int{5, 6, 4})  // 465
-	resultA := leetcode.AddTwoNumbers(l1a, l2a)       // 807
-	fmt.Printf("Example 1: 342 + 465 = 807\n")
-	fmt.Printf("  Result: [2, 4, 3] + [5, 6, 4] = %v (807)\n\n", resultA.ToSlice())
+	head3b := leetcode.IntsToList([]int{1, 2, 3, 4, 5})
+	head3bCopy := leetcode.CopyList(head3b)
+	leetcode.ReorderListStack(head3bCopy)
+	fmt.Printf("Original: %s\n", leetcode.PrintList(head3b))
+	fmt.Printf("Reordered (stack): %s\n", leetcode.PrintList(head3bCopy))
 
-	// Longest Substring Without Repeating Characters examples
-	fmt.Println("\n3. Longest Substring Without Repeating Characters (Problem 0003)")
-	fmt.Println("------------------------------------------------------------------")
+	head3c := leetcode.IntsToList([]int{1, 2, 3, 4})
+	head3cCopy := leetcode.CopyList(head3c)
+	leetcode.ReorderListArray(head3cCopy)
+	fmt.Printf("Original: %s\n", leetcode.PrintList(head3c))
+	fmt.Printf("Reordered (array): %s\n", leetcode.PrintList(head3cCopy))
 
-	// Example 1 from LeetCode: "abcabcbb" → 3 ("abc")
-	str1 := "abcabcbb"
-	resultStr1 := leetcode.LengthOfLongestSubstring(str1)
-	fmt.Printf("Example 1: s = %q\n", str1)
-	fmt.Printf("  Result: %d (substring: \"abc\")\n\n", resultStr1)
+	// Problem 0144: Binary Tree Preorder Traversal
+	fmt.Println("\n--- Problem 0144: Binary Tree Preorder Traversal ---")
+	root4 := &leetcode.TreeNode{
+		Val: 1,
+		Right: &leetcode.TreeNode{
+			Val: 2,
+			Left: &leetcode.TreeNode{
+				Val: 3,
+			},
+		},
+	}
+	fmt.Printf("Recursive: %v\n", leetcode.PreorderTraversal(root4))
+	fmt.Printf("Iterative: %v\n", leetcode.PreorderTraversalIterative(root4))
+	fmt.Printf("Morris: %v\n", leetcode.PreorderTraversalMorris(root4))
 
-	// Example 2 from LeetCode: "bbbbb" → 1 ("b")
-	str2 := "bbbbb"
-	resultStr2 := leetcode.LengthOfLongestSubstring(str2)
-	fmt.Printf("Example 2: s = %q\n", str2)
-	fmt.Printf("  Result: %d (substring: \"b\")\n\n", resultStr2)
+	// Problem 0145: Binary Tree Postorder Traversal
+	fmt.Println("\n--- Problem 0145: Binary Tree Postorder Traversal ---")
+	root5 := &leetcode.TreeNode{
+		Val: 1,
+		Right: &leetcode.TreeNode{
+			Val: 2,
+			Left: &leetcode.TreeNode{
+				Val: 3,
+			},
+		},
+	}
+	fmt.Printf("Recursive: %v\n", leetcode.PostorderTraversal(root5))
+	fmt.Printf("Iterative: %v\n", leetcode.PostorderTraversalIterative(root5))
+	fmt.Printf("Two Stacks: %v\n", leetcode.PostorderTraversalTwoStacks(root5))
 
-	// ... (keeping all existing problems 0001-0050 as they are)
-	// For brevity, I'll skip the middle part and add the new problems at the end
+	// Problem 0146: LRU Cache
+	fmt.Println("\n--- Problem 0146: LRU Cache ---")
+	lru := leetcode.Constructor(2)
+	lru.Put(1, 1)
+	lru.Put(2, 2)
+	fmt.Printf("Get(1): %d\n", lru.Get(1))
+	lru.Put(3, 3) // evicts key 2
+	fmt.Printf("Get(2): %d\n", lru.Get(2))
+	lru.Put(4, 4) // evicts key 1
+	fmt.Printf("Get(1): %d\n", lru.Get(1))
+	fmt.Printf("Get(3): %d\n", lru.Get(3))
+	fmt.Printf("Get(4): %d\n", lru.Get(4))
 
-	// Remove Duplicates from Sorted Array II examples
-	fmt.Println("\n80. Remove Duplicates from Sorted Array II (Problem 0080)")
-	fmt.Println("----------------------------------------------------------")
+	// Problem 0147: Insertion Sort List
+	fmt.Println("\n--- Problem 0147: Insertion Sort List ---")
+	head7 := leetcode.IntsToList([]int{4, 2, 1, 3})
+	head7Copy := leetcode.CopyList(head7)
+	sorted7 := leetcode.InsertionSortList(head7Copy)
+	fmt.Printf("Original: %s\n", leetcode.PrintList(head7))
+	fmt.Printf("Sorted: %s\n", leetcode.PrintList(sorted7))
 
-	// Example 1 from LeetCode
-	nums80a := []int{1, 1, 1, 2, 2, 3}
-	k80a := leetcode.RemoveDuplicatesII(nums80a)
-	fmt.Printf("Example 1: nums = [1, 1, 1, 2, 2, 3]\n")
-	fmt.Printf("  Result: k = %d, nums = %v\n\n", k80a, nums80a[:k80a])
+	// Problem 0148: Sort List
+	fmt.Println("\n--- Problem 0148: Sort List ---")
+	head8 := leetcode.IntsToList([]int{4, 2, 1, 3})
+	head8Copy := leetcode.CopyList(head8)
+	sorted8 := leetcode.SortList(head8Copy)
+	fmt.Printf("Original: %s\n", leetcode.PrintList(head8))
+	fmt.Printf("Sorted: %s\n", leetcode.PrintList(sorted8))
 
-	// Example 2 from LeetCode
-	nums80b := []int{0, 0, 1, 1, 1, 1, 2, 3, 3}
-	k80b := leetcode.RemoveDuplicatesII(nums80b)
-	fmt.Printf("Example 2: nums = [0, 0, 1, 1, 1, 1, 2, 3, 3]\n")
-	fmt.Printf("  Result: k = %d, nums = %v\n\n", k80b, nums80b[:k80b])
+	// Problem 0149: Max Points on a Line
+	fmt.Println("\n--- Problem 0149: Max Points on a Line ---")
+	points9 := [][]int{{1, 1}, {2, 2}, {3, 3}}
+	fmt.Printf("Points: %v\n", points9)
+	fmt.Printf("Max points on a line: %d\n", leetcode.MaxPoints(points9))
 
-	// Search in Rotated Sorted Array II examples
-	fmt.Println("\n81. Search in Rotated Sorted Array II (Problem 0081)")
-	fmt.Println("-----------------------------------------------------")
+	points9b := [][]int{{1, 1}, {3, 2}, {5, 3}, {4, 1}, {2, 3}, {1, 4}}
+	fmt.Printf("Points: %v\n", points9b)
+	fmt.Printf("Max points on a line: %d\n", leetcode.MaxPoints(points9b))
 
-	// Example 1 from LeetCode
-	nums81a := []int{2, 5, 6, 0, 0, 1, 2}
-	target81a := 0
-	result81a := leetcode.SearchInRotatedSortedArrayII(nums81a, target81a)
-	fmt.Printf("Example 1: nums = %v, target = %d\n", nums81a, target81a)
-	fmt.Printf("  Found: %v\n\n", result81a)
+	// Problem 0150: Evaluate Reverse Polish Notation
+	fmt.Println("\n--- Problem 0150: Evaluate Reverse Polish Notation ---")
+	tokens10 := []string{"2", "1", "+", "3", "*"}
+	fmt.Printf("Tokens: %v\n", tokens10)
+	fmt.Printf("Result: %d\n", leetcode.EvalRPN(tokens10))
 
-	// Example 2 from LeetCode
-	target81b := 3
-	result81b := leetcode.SearchInRotatedSortedArrayII(nums81a, target81b)
-	fmt.Printf("Example 2: nums = %v, target = %d\n", nums81a, target81b)
-	fmt.Printf("  Found: %v\n\n", result81b)
+	tokens10b := []string{"4", "13", "5", "/", "+"}
+	fmt.Printf("Tokens: %v\n", tokens10b)
+	fmt.Printf("Result: %d\n", leetcode.EvalRPN(tokens10b))
 
-	// Remove Duplicates from Sorted List II examples
-	fmt.Println("\n82. Remove Duplicates from Sorted List II (Problem 0082)")
-	fmt.Println("--------------------------------------------------------")
-
-	// Example 1 from LeetCode
-	head82a := leetcode.NewListFromSlice([]int{1, 2, 3, 3, 4, 4, 5})
-	result82a := leetcode.DeleteDuplicatesII(head82a)
-	fmt.Printf("Example 1: head = [1, 2, 3, 3, 4, 4, 5]\n")
-	fmt.Printf("  Result: %v\n\n", result82a.ToSlice())
-
-	// Example 2 from LeetCode
-	head82b := leetcode.NewListFromSlice([]int{1, 1, 1, 2, 3})
-	result82b := leetcode.DeleteDuplicatesII(head82b)
-	fmt.Printf("Example 2: head = [1, 1, 1, 2, 3]\n")
-	fmt.Printf("  Result: %v\n\n", result82b.ToSlice())
-
-	// Remove Duplicates from Sorted List examples
-	fmt.Println("\n83. Remove Duplicates from Sorted List (Problem 0083)")
-	fmt.Println("-----------------------------------------------------")
-
-	// Example 1 from LeetCode
-	head83a := leetcode.NewListFromSlice([]int{1, 1, 2})
-	result83a := leetcode.DeleteDuplicates(head83a)
-	fmt.Printf("Example 1: head = [1, 1, 2]\n")
-	fmt.Printf("  Result: %v\n\n", result83a.ToSlice())
-
-	// Example 2 from LeetCode
-	head83b := leetcode.NewListFromSlice([]int{1, 1, 2, 3, 3})
-	result83b := leetcode.DeleteDuplicates(head83b)
-	fmt.Printf("Example 2: head = [1, 1, 2, 3, 3]\n")
-	fmt.Printf("  Result: %v\n\n", result83b.ToSlice())
-
-	// Largest Rectangle in Histogram examples
-	fmt.Println("\n84. Largest Rectangle in Histogram (Problem 0084)")
-	fmt.Println("-------------------------------------------------")
-
-	// Example 1 from LeetCode
-	heights84a := []int{2, 1, 5, 6, 2, 3}
-	result84a := leetcode.LargestRectangleArea(heights84a)
-	fmt.Printf("Example 1: heights = %v\n", heights84a)
-	fmt.Printf("  Result: %d (largest rectangle area)\n\n", result84a)
-
-	// Example 2 from LeetCode
-	heights84b := []int{2, 4}
-	result84b := leetcode.LargestRectangleArea(heights84b)
-	fmt.Printf("Example 2: heights = %v\n", heights84b)
-	fmt.Printf("  Result: %d (largest rectangle area)\n\n", result84b)
-
-	// Additional test cases
-	heights84c := []int{1, 2, 3, 4, 5}
-	result84c := leetcode.LargestRectangleArea(heights84c)
-	fmt.Printf("Additional test: heights = %v (increasing)\n", heights84c)
-	fmt.Printf("  Result: %d\n\n", result84c)
-
-	heights84d := []int{5, 4, 3, 2, 1}
-	result84d := leetcode.LargestRectangleArea(heights84d)
-	fmt.Printf("Additional test: heights = %v (decreasing)\n", heights84d)
-	fmt.Printf("  Result: %d\n\n", result84d)
-
-	heights84e := []int{3, 3, 3, 3, 3}
-	result84e := leetcode.LargestRectangleArea(heights84e)
-	fmt.Printf("Additional test: heights = %v (all same)\n", heights84e)
-	fmt.Printf("  Result: %d\n\n", result84e)
-
-	// Test different implementations for consistency
-	fmt.Println("Implementation consistency check:")
-	heightsTest := []int{2, 1, 5, 6, 2, 3}
-	resultStd := leetcode.LargestRectangleArea(heightsTest)
-	resultOpt := leetcode.LargestRectangleAreaOptimized(heightsTest)
-	resultDP := leetcode.LargestRectangleAreaDP(heightsTest)
-	fmt.Printf("  Standard: %d, Optimized: %d, DP: %d\n", resultStd, resultOpt, resultDP)
-	fmt.Println("  All implementations return the same result: ✓")
+	tokens10c := []string{"10", "6", "9", "3", "+", "-11", "*", "/", "*", "17", "+", "5", "+"}
+	fmt.Printf("Tokens: %v\n", tokens10c)
+	fmt.Printf("Result: %d\n", leetcode.EvalRPN(tokens10c))
 
 	fmt.Println("\n=== Demo Complete ===")
-	fmt.Println("\nAll LeetCode problems 0001-0084 implemented successfully!")
 }

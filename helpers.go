@@ -1,6 +1,7 @@
 package leetcode
 
 import (
+	"fmt"
 	"sort"
 )
 
@@ -181,6 +182,69 @@ func IntPtr(x int) *int {
 // StringSlicesEqual compares two string slices for equality (alias for StringsEqual)
 func StringSlicesEqual(a, b []string) bool {
 	return StringsEqual(a, b)
+}
+
+// IntsToList creates a linked list from a slice of integers
+func IntsToList(nums []int) *ListNode {
+	if len(nums) == 0 {
+		return nil
+	}
+	
+	head := &ListNode{Val: nums[0]}
+	current := head
+	
+	for i := 1; i < len(nums); i++ {
+		current.Next = &ListNode{Val: nums[i]}
+		current = current.Next
+	}
+	
+	return head
+}
+
+// CopyList creates a deep copy of a linked list
+func CopyList(head *ListNode) *ListNode {
+	if head == nil {
+		return nil
+	}
+	
+	// Create a map to store mapping from original nodes to new nodes
+	nodeMap := make(map[*ListNode]*ListNode)
+	
+	// First pass: create all new nodes
+	current := head
+	for current != nil {
+		nodeMap[current] = &ListNode{Val: current.Val}
+		current = current.Next
+	}
+	
+	// Second pass: set up next pointers
+	current = head
+	for current != nil {
+		if current.Next != nil {
+			nodeMap[current].Next = nodeMap[current.Next]
+		}
+		current = current.Next
+	}
+	
+	return nodeMap[head]
+}
+
+// PrintList prints a linked list in a readable format
+func PrintList(head *ListNode) string {
+	if head == nil {
+		return "nil"
+	}
+	
+	result := ""
+	current := head
+	for current != nil {
+		result += fmt.Sprintf("%d", current.Val)
+		if current.Next != nil {
+			result += " -> "
+		}
+		current = current.Next
+	}
+	return result
 }
 
 // Helper functions for subsets testing
