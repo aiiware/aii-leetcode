@@ -4,7 +4,7 @@ A comprehensive collection of LeetCode problem solutions implemented in Go with 
 
 ## Overview
 
-This package contains solutions for LeetCode problems **0001-0130** with:
+This package contains solutions for LeetCode problems **0001-0150** with:
 - ✅ Clean, idiomatic Go implementations
 - ✅ Comprehensive test coverage with edge cases
 - ✅ Performance benchmarks
@@ -210,6 +210,36 @@ This package contains solutions for LeetCode problems **0001-0130** with:
 | 0129 | Sum Root to Leaf Numbers | Medium | Tree, Depth-First Search, Binary Tree | `0129_sum_root_to_leaf_numbers.go` |
 | 0130 | Surrounded Regions | Medium | Array, Depth-First Search, Breadth-First Search, Union Find, Matrix | `0130_surrounded_regions.go` |
 
+### Problems 0131-0140
+
+| # | Problem | Difficulty | Tags | File |
+|---|---------|------------|------|------|
+| 0131 | Palindrome Partitioning | Medium | String, Backtracking, Dynamic Programming | `0131_palindrome_partitioning.go` |
+| 0132 | Palindrome Partitioning II | Hard | String, Dynamic Programming | `0132_palindrome_partitioning_ii.go` |
+| 0133 | Clone Graph | Medium | Hash Table, Breadth-First Search, Depth-First Search, Graph | `0133_clone_graph.go` |
+| 0134 | Gas Station | Medium | Array, Greedy | `0134_gas_station.go` |
+| 0135 | Candy | Hard | Array, Greedy | `0135_candy.go` |
+| 0136 | Single Number | Easy | Array, Bit Manipulation | `0136_single_number.go` |
+| 0137 | Single Number II | Medium | Array, Bit Manipulation | `0137_single_number_ii.go` |
+| 0138 | Copy List with Random Pointer | Medium | Hash Table, Linked List | `0138_copy_list_with_random_pointer.go` |
+| 0139 | Word Break | Medium | String, Dynamic Programming, Hash Table | `0139_word_break.go` |
+| 0140 | Word Break II | Hard | String, Dynamic Programming, Hash Table, Backtracking, Memoization | `0140_word_break_ii.go` |
+
+### Problems 0141-0150
+
+| # | Problem | Difficulty | Tags | File |
+|---|---------|------------|------|------|
+| 0141 | Linked List Cycle | Easy | Hash Table, Linked List, Two Pointers | `0141_linked_list_cycle.go` |
+| 0142 | Linked List Cycle II | Medium | Hash Table, Linked List, Two Pointers | `0142_linked_list_cycle_ii.go` |
+| 0143 | Reorder List | Medium | Linked List, Stack, Two Pointers, Recursion | `0143_reorder_list.go` |
+| 0144 | Binary Tree Preorder Traversal | Easy | Tree, Stack, Depth-First Search, Binary Tree | `0144_binary_tree_preorder_traversal.go` |
+| 0145 | Binary Tree Postorder Traversal | Easy | Tree, Stack, Depth-First Search, Binary Tree | `0145_binary_tree_postorder_traversal.go` |
+| 0146 | LRU Cache | Medium | Hash Table, Linked List, Design | `0146_lru_cache.go` |
+| 0147 | Insertion Sort List | Medium | Linked List, Sorting | `0147_insertion_sort_list.go` |
+| 0148 | Sort List | Medium | Linked List, Two Pointers, Divide and Conquer, Sorting, Merge Sort | `0148_sort_list.go` |
+| 0149 | Max Points on a Line | Hard | Array, Hash Table, Math, Geometry | `0149_max_points_on_a_line.go` |
+| 0150 | Evaluate Reverse Polish Notation | Medium | Array, Math, Stack | `0150_evaluate_reverse_polish_notation.go` |
+
 ## File Structure
 
 ```
@@ -256,8 +286,8 @@ leetcode/
 ├── 0008_string_to_integer.go      # Problem 0008 (Medium)
 ├── 0009_palindrome_number.go      # Problem 0009 (Easy)
 ├── 0010_regular_expression_matching.go # Problem 0010 (Hard)
-├── ... (130 implementation files)
-├── 130 test files (*_test.go)     # Comprehensive tests
+├── ... (150 implementation files)
+├── 150 test files (*_test.go)     # Comprehensive tests
 ├── helpers.go                     # Shared helper functions
 ├── list_node.go                   # Shared ListNode struct
 ├── tree_node.go                   # Shared TreeNode struct
@@ -445,20 +475,40 @@ BenchmarkIsMatch-16                        100   14005923 ns/op    1048576 B/op 
 64. **0128 - Longest Consecutive Sequence**: Hash set approach for O(n) time complexity
 65. **0129 - Sum Root to Leaf Numbers**: DFS with path sum accumulation
 66. **0130 - Surrounded Regions**: DFS/BFS from borders to identify regions not surrounded
+67. **0131 - Palindrome Partitioning**: Backtracking with palindrome DP table precomputation
+68. **0132 - Palindrome Partitioning II**: DP with palindrome table for minimum cuts
+69. **0133 - Clone Graph**: BFS/DFS with hash map for graph cloning
+70. **0134 - Gas Station**: Greedy approach for circular route problem
+71. **0135 - Candy**: Two-pass greedy algorithm for candy distribution
+72. **0136 - Single Number**: XOR bitwise operation for O(1) space
+73. **0137 - Single Number II**: Bit manipulation for finding unique element among triples
+74. **0138 - Copy List with Random Pointer**: Hash map or interweaving for O(n) or O(1) space
+75. **0139 - Word Break**: DP with hash set for O(n²) word segmentation
+76. **0140 - Word Break II**: DFS with memoization for all possible word break sentences
+77. **0141 - Linked List Cycle**: Two-pointer (fast/slow) approach for cycle detection
+78. **0142 - Linked List Cycle II**: Floyd's cycle detection for finding cycle start node
+79. **0143 - Reorder List**: Multiple approaches (recursive, stack, two-pointer with reversal)
+80. **0144 - Binary Tree Preorder Traversal**: Both recursive and iterative stack-based solutions
+81. **0145 - Binary Tree Postorder Traversal**: Multiple approaches (recursive, two stacks, single stack)
+82. **0146 - LRU Cache**: Hash map + doubly linked list for O(1) get/put operations
+83. **0147 - Insertion Sort List**: In-place linked list sorting with insertion sort
+84. **0148 - Sort List**: Merge sort for linked lists with O(n log n) time, O(1) space
+85. **0149 - Max Points on a Line**: Hash map with slope calculation for collinear points
+86. **0150 - Evaluate Reverse Polish Notation**: Stack-based evaluation of RPN expressions
 
 ### Reusable Components
 
 - **ListNode**: Shared data structure for linked list problems
   - Helper functions: `NewListFromSlice()`, `ToSlice()`, `Equal()`
-  - Used by problems: 0002, 0019, 0021, 0023, 0024, 0025, 0061, 0082, 0083, 0086, 0092, 0109
+  - Used by problems: 0002, 0019, 0021, 0023, 0024, 0025, 0061, 0082, 0083, 0086, 0092, 0109, 0141-0148
 
 - **TreeNode**: Shared data structure for binary tree problems
   - Helper functions: `NewTreeFromSlice()`, `TreeToSlice()`, `IntPtr()`
-  - Used by problems: 0094, 0095, 0096, 0098, 0099, 0100, 0101, 0102, 0103, 0104, 0105, 0106, 0107, 0108, 0109, 0110, 0111, 0112, 0113, 0114, 0116, 0117, 0124, 0129
+  - Used by problems: 0094, 0095, 0096, 0098, 0099, 0100, 0101, 0102, 0103, 0104, 0105, 0106, 0107, 0108, 0109, 0110, 0111, 0112, 0113, 0114, 0116, 0117, 0124, 0129, 0144, 0145
 
 ## Future Improvements
 
-- [ ] Add more LeetCode problems (0131-0200, etc.)
+- [ ] Add more LeetCode problems (0151-0300, etc.)
 - [ ] Interactive problem selector
 - [ ] Performance comparison tool
 - [ ] Algorithm visualization
@@ -485,14 +535,14 @@ To add more problems:
 
 | Metric | Count |
 |--------|-------|
-| Problems Implemented | 130 |
-| Implementation Files | 130 |
-| Test Files | 130 |
-| Total Go Files | 291 |
+| Problems Implemented | 150 |
+| Implementation Files | 150 |
+| Test Files | 150 |
+| Total Go Files | 310 |
 | Documentation Files | 16 |
-| Total Files | 307 |
-| Lines of Code | ~52,000 |
-| Test Cases | 1,300+ |
+| Total Files | 326 |
+| Lines of Code | ~60,000 |
+| Test Cases | 1,500+ |
 | Test Pass Rate | 100% ✅ |
 
 ## License
