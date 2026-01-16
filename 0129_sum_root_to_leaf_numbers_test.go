@@ -34,12 +34,12 @@ func TestSumNumbers(t *testing.T) {
 		},
 		{
 			name:     "Right skewed tree",
-			root:     createRightSkewedTree(3),
+			root:     CreateRightSkewedTree(3),
 			expected: 123, // Only path: 1->2->3 = 123
 		},
 		{
 			name:     "Left skewed tree",
-			root:     createLeftSkewedTree(3),
+			root:     CreateLeftSkewedTree(3),
 			expected: 123, // Only path: 1->2->3 = 123
 		},
 		{
@@ -93,7 +93,7 @@ func TestSumNumbers_EdgeCases(t *testing.T) {
 		// Create a complete tree with 1000 nodes (maximum per constraints)
 		// A complete binary tree with 10 levels has 1023 nodes
 		// Let's create 10 levels but only 1000 nodes
-		root := createCompleteTree(1000)
+		root := CreateCompleteTree(1000)
 		// All nodes have values 1-1000, but we need digits 0-9
 		// Let's modify values to be 0-9
 		var modifyValues func(node *TreeNode)
@@ -113,7 +113,7 @@ func TestSumNumbers_EdgeCases(t *testing.T) {
 	})
 
 	t.Run("All zeros tree", func(t *testing.T) {
-		root := createCompleteTree(7) // 7 nodes
+		root := CreateCompleteTree(7) // 7 nodes
 		// Set all values to 0
 		var setZero func(node *TreeNode)
 		setZero = func(node *TreeNode) {
@@ -148,7 +148,7 @@ func TestSumNumbers_EdgeCases(t *testing.T) {
 
 func BenchmarkSumNumbers(b *testing.B) {
 	// Create a tree for benchmarking
-	root := createCompleteTree(1000)
+	root := CreateCompleteTree(1000)
 
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {

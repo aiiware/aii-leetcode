@@ -130,25 +130,27 @@ func TestReorderListEdgeCases(t *testing.T) {
 
 	t.Run("Already reordered list", func(t *testing.T) {
 		// Test that reordering an already reordered list doesn't change it
+		// Note: The reorder operation is not idempotent for lists with 3+ nodes
+		// For 2 nodes it is idempotent, but for 4+ nodes it changes the list
 		tests := []struct {
-			name  string
-			input []int
+			name     string
+			input    []int
+			expected []int
 		}{
-			{"Two nodes", []int{1, 2}},
-			{"Four nodes", []int{1, 4, 2, 3}},
-			{"Five nodes", []int{1, 5, 2, 4, 3}},
+			{"Two nodes", []int{1, 2}, []int{1, 2}},
+			{"Four nodes", []int{1, 4, 2, 3}, []int{1, 3, 4, 2}},
+			{"Five nodes", []int{1, 5, 2, 4, 3}, []int{1, 3, 5, 4, 2}},
 		}
 
 		for _, tt := range tests {
 			t.Run(tt.name, func(t *testing.T) {
 				head := NewListFromSlice(tt.input)
-				expected := tt.input
 				
 				ReorderList(head)
 				result := head.ToSlice()
 				
-				if !reflect.DeepEqual(result, expected) {
-					t.Errorf("ReorderList() changed already reordered list: got %v, expected %v", result, expected)
+				if !reflect.DeepEqual(result, tt.expected) {
+					t.Errorf("ReorderList() changed already reordered list: got %v, expected %v", result, tt.expected)
 				}
 			})
 		}

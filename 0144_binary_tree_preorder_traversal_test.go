@@ -186,7 +186,7 @@ func TestPreorderTraversalEdgeCases(t *testing.T) {
 		root.Left.Right = &TreeNode{Val: 5}
 
 		// Save original structure
-		original := cloneTree(root)
+		original := CloneTree(root)
 
 		// Run all traversal methods
 		PreorderTraversal(root)

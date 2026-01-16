@@ -212,8 +212,8 @@ func TestIsSameTreeEdgeCases(t *testing.T) {
 
 	t.Run("Large trees (1000 nodes)", func(t *testing.T) {
 		// Create two identical large trees
-		p := createCompleteTree(1000)
-		q := cloneTree(p)
+		p := CreateCompleteTree(1000)
+		q := CloneTree(p)
 		
 		if !IsSameTree(p, q) {
 			t.Error("Large identical trees should be equal")
@@ -244,8 +244,8 @@ func TestIsSameTreeEdgeCases(t *testing.T) {
 
 	t.Run("Deeply nested trees", func(t *testing.T) {
 		// Create deeply nested right-skewed trees
-		p := createRightSkewedTree(100)
-		q := createRightSkewedTree(100)
+		p := CreateRightSkewedTree(100)
+		q := CreateRightSkewedTree(100)
 		
 		if !IsSameTree(p, q) {
 			t.Error("Identical deeply nested trees should be equal")
@@ -260,8 +260,8 @@ func TestIsSameTreeEdgeCases(t *testing.T) {
 
 	t.Run("Trees with maximum depth", func(t *testing.T) {
 		// Test with trees at maximum reasonable depth
-		p := createRightSkewedTree(1000)
-		q := createRightSkewedTree(1000)
+		p := CreateRightSkewedTree(1000)
+		q := CreateRightSkewedTree(1000)
 		
 		if !IsSameTree(p, q) {
 			t.Error("Identical maximum depth trees should be equal")
@@ -362,24 +362,24 @@ func BenchmarkIsSameTree(b *testing.B) {
 		},
 		{
 			name: "Medium trees same",
-			p:    createCompleteTree(100),
-			q:    cloneTree(createCompleteTree(100)),
+			p:    CreateCompleteTree(100),
+			q:    CloneTree(CreateCompleteTree(100)),
 		},
 		{
 			name: "Large trees same",
-			p:    createCompleteTree(1000),
-			q:    cloneTree(createCompleteTree(1000)),
+			p:    CreateCompleteTree(1000),
+			q:    CloneTree(CreateCompleteTree(1000)),
 		},
 		{
 			name: "Skewed trees same",
-			p:    createRightSkewedTree(1000),
-			q:    createRightSkewedTree(1000),
+			p:    CreateRightSkewedTree(1000),
+			q:    CreateRightSkewedTree(1000),
 		},
 		{
 			name: "Trees different at root",
-			p:    createCompleteTree(100),
+			p:    CreateCompleteTree(100),
 			q:    func() *TreeNode {
-				t := cloneTree(createCompleteTree(100))
+				t := CloneTree(CreateCompleteTree(100))
 				t.Val = -1
 				return t
 			}(),
@@ -414,8 +414,8 @@ func BenchmarkIsSameTree(b *testing.B) {
 
 func BenchmarkIsSameTreeWorstCase(b *testing.B) {
 	// Worst case: large identical trees (must traverse all nodes)
-	p := createCompleteTree(10000)
-	q := cloneTree(p)
+	p := CreateCompleteTree(10000)
+	q := CloneTree(p)
 
 	b.ResetTimer()
 

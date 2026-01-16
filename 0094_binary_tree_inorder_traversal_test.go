@@ -340,19 +340,19 @@ func BenchmarkInorderTraversal(b *testing.B) {
 		},
 		{
 			name: "Medium balanced",
-			root: createCompleteTree(31), // 2^5 - 1 nodes
+			root: CreateCompleteTree(31), // 2^5 - 1 nodes
 		},
 		{
 			name: "Large balanced",
-			root: createCompleteTree(127), // 2^7 - 1 nodes
+			root: CreateCompleteTree(127), // 2^7 - 1 nodes
 		},
 		{
 			name: "Skewed right",
-			root: createRightSkewedTree(100),
+			root: CreateRightSkewedTree(100),
 		},
 		{
 			name: "Skewed left",
-			root: createLeftSkewedTree(100),
+			root: CreateLeftSkewedTree(100),
 		},
 	}
 
@@ -382,7 +382,7 @@ func BenchmarkInorderTraversal(b *testing.B) {
 
 func BenchmarkInorderTraversalWorstCase(b *testing.B) {
 	// Worst case: skewed tree (linked list)
-	root := createRightSkewedTree(1000)
+	root := CreateRightSkewedTree(1000)
 
 	b.ResetTimer()
 
@@ -409,4 +409,68 @@ func BenchmarkInorderTraversalWorstCase(b *testing.B) {
 			inorderTraversalOptimized(root)
 		}
 	})
+}
+
+// Helper functions for property-based testing
+
+func countNodes(root *TreeNode) int {
+	if root == nil {
+		return 0
+	}
+	return 1 + countNodes(root.Left) + countNodes(root.Right)
+}
+
+func isBST(root *TreeNode) bool {
+	return isBSTHelper(root, nil, nil)
+}
+
+func isBSTHelper(node *TreeNode, min, max *int) bool {
+	if node == nil {
+		return true
+	}
+	
+	if min != nil && node.Val <= *min {
+		return false
+	}
+	if max != nil && node.Val >= *max {
+		return false
+	}
+	
+	return isBSTHelper(node.Left, min, &node.Val) && 
+	       isBSTHelper(node.Right, &node.Val, max)
+}
+
+func getAllValues(root *TreeNode) []int {
+	if root == nil {
+		return []int{}
+	}
+	
+	left := getAllValues(root.Left)
+	right := getAllValues(root.Right)
+	
+	result := make([]int, 0, len(left)+1+len(right))
+	result = append(result, left...)
+	result = append(result, root.Val)
+	result = append(result, right...)
+	
+	return result
+}
+
+func contains(slice []int, val int) bool {
+	for _, v := range slice {
+		if v == val {
+			return true
+		}
+	}
+	return false
+}
+
+func countValues(root *TreeNode, counts map[int]int) {
+	if root == nil {
+		return
+	}
+	
+	counts[root.Val]++
+	countValues(root.Left, counts)
+	countValues(root.Right, counts)
 }

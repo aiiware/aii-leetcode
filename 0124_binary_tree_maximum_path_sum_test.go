@@ -55,12 +55,12 @@ func TestMaxPathSum(t *testing.T) {
 		},
 		{
 			name:     "Right skewed tree",
-			root:     createRightSkewedTree(5),
+			root:     CreateRightSkewedTree(5),
 			expected: 15, // Sum of all nodes: 1+2+3+4+5 = 15
 		},
 		{
 			name:     "Left skewed tree",
-			root:     createLeftSkewedTree(5),
+			root:     CreateLeftSkewedTree(5),
 			expected: 15, // Sum of all nodes: 1+2+3+4+5 = 15
 		},
 		{
@@ -83,7 +83,7 @@ func TestMaxPathSum(t *testing.T) {
 func TestMaxPathSum_EdgeCases(t *testing.T) {
 	t.Run("Large tree with positive values", func(t *testing.T) {
 		// Create a perfect binary tree with 3 levels (7 nodes)
-		root := createSymmetricTree(3)
+		root := CreateSymmetricTree(3)
 		// All nodes have values from 1 to 7
 		// Best path would be through root: 7 + 6 + 4 + 5 + 3? Let's calculate
 		result := MaxPathSum(root)
@@ -120,7 +120,7 @@ func TestMaxPathSum_EdgeCases(t *testing.T) {
 
 func BenchmarkMaxPathSum(b *testing.B) {
 	// Create a large tree for benchmarking
-	root := createCompleteTree(10000)
+	root := CreateCompleteTree(10000)
 
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {

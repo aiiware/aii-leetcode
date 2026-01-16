@@ -172,7 +172,7 @@ func TestMaxDepthEdgeCases(t *testing.T) {
 			if tt.name == "Very deep left-skewed tree (10 levels)" {
 				// Create a deep left-skewed tree with 10 levels
 				// Using the helper from tree_node.go
-				root = createLeftSkewedTree(10)
+				root = CreateLeftSkewedTree(10)
 			} else {
 				root = NewTreeFromSlice(tt.root)
 			}

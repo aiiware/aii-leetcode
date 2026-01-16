@@ -125,12 +125,27 @@ func reverseListHelper(head *ListNode) *ListNode {
 
 // Helper function to merge two lists in alternating fashion
 func mergeLists(first, second *ListNode) {
+	// Keep track of the last node to append remaining nodes
+	var last *ListNode
+	
 	for second != nil {
+		// If first is nil, we've exhausted the first list
+		// Append all remaining second nodes to the end
+		if first == nil {
+			if last != nil {
+				last.Next = second
+			}
+			return
+		}
+		
 		nextFirst := first.Next
 		nextSecond := second.Next
 
 		first.Next = second
 		second.Next = nextFirst
+		
+		// Update last node to the newly added second node
+		last = second
 
 		first = nextFirst
 		second = nextSecond

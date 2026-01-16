@@ -114,27 +114,27 @@ func TestLevelOrderWithHelperFunctions(t *testing.T) {
 	}{
 		{
 			name:     "Left-skewed tree with 3 nodes",
-			root:     createLeftSkewedTree(3),
+			root:     CreateLeftSkewedTree(3),
 			expected: [][]int{{1}, {2}, {3}},
 		},
 		{
 			name:     "Right-skewed tree with 3 nodes",
-			root:     createRightSkewedTree(3),
+			root:     CreateRightSkewedTree(3),
 			expected: [][]int{{1}, {2}, {3}},
 		},
 		{
 			name:     "Left-skewed tree with 4 nodes",
-			root:     createLeftSkewedTree(4),
+			root:     CreateLeftSkewedTree(4),
 			expected: [][]int{{1}, {2}, {3}, {4}},
 		},
 		{
 			name:     "Right-skewed tree with 4 nodes",
-			root:     createRightSkewedTree(4),
+			root:     CreateRightSkewedTree(4),
 			expected: [][]int{{1}, {2}, {3}, {4}},
 		},
 		{
 			name:     "Complete tree with 7 nodes",
-			root:     createCompleteTree(7),
+			root:     CreateCompleteTree(7),
 			expected: [][]int{{1}, {2, 3}, {4, 5, 6, 7}},
 		},
 	}

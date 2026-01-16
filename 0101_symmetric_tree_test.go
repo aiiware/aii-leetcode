@@ -181,9 +181,9 @@ func TestIsSymmetricEdgeCases(t *testing.T) {
 
 	t.Run("Large symmetric tree", func(t *testing.T) {
 		// Create a large symmetric tree (complete binary tree with symmetric values)
-		// Use createSymmetricTree instead of createCompleteTree
+		// Use CreateSymmetricTree instead of createCompleteTree
 		// 10 levels gives us 2^10 - 1 = 1023 nodes
-		root := createSymmetricTree(10) // 2^10 - 1 nodes
+		root := CreateSymmetricTree(10) // 2^10 - 1 nodes
 		if !IsSymmetric(root) {
 			t.Error("Large symmetric tree should be symmetric")
 		}
@@ -191,14 +191,14 @@ func TestIsSymmetricEdgeCases(t *testing.T) {
 
 	t.Run("Large asymmetric tree", func(t *testing.T) {
 		// Create a right-skewed tree (definitely not symmetric)
-		root := createRightSkewedTree(100)
+		root := CreateRightSkewedTree(100)
 		if IsSymmetric(root) {
 			t.Error("Right-skewed tree should not be symmetric")
 		}
 	})
 
 	t.Run("Left-skewed tree", func(t *testing.T) {
-		root := createLeftSkewedTree(100)
+		root := CreateLeftSkewedTree(100)
 		if IsSymmetric(root) {
 			t.Error("Left-skewed tree should not be symmetric")
 		}
@@ -295,19 +295,19 @@ func BenchmarkIsSymmetric(b *testing.B) {
 		},
 		{
 			name: "Medium symmetric",
-			root: createSymmetricTree(9), // 2^9 - 1 = 511 nodes
+			root: CreateSymmetricTree(9), // 2^9 - 1 = 511 nodes
 		},
 		{
 			name: "Medium asymmetric",
-			root: createRightSkewedTree(500),
+			root: CreateRightSkewedTree(500),
 		},
 		{
 			name: "Large symmetric",
-			root: createSymmetricTree(12), // 2^12 - 1 = 4095 nodes
+			root: CreateSymmetricTree(12), // 2^12 - 1 = 4095 nodes
 		},
 		{
 			name: "Large asymmetric",
-			root: createRightSkewedTree(4000),
+			root: CreateRightSkewedTree(4000),
 		},
 	}
 
@@ -338,7 +338,7 @@ func BenchmarkIsSymmetric(b *testing.B) {
 
 func BenchmarkIsSymmetricWorstCase(b *testing.B) {
 	// Worst case: large symmetric tree (must check all nodes)
-	root := createSymmetricTree(14) // 2^14 - 1 = 16383 nodes
+	root := CreateSymmetricTree(14) // 2^14 - 1 = 16383 nodes
 
 	b.ResetTimer()
 
