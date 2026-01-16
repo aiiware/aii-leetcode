@@ -28,7 +28,7 @@ func TestPostorderTraversal(t *testing.T) {
 		},
 		{
 			name:     "Right skewed tree",
-			tree:     []*int{IntPtr(1), nil, IntPtr(2), nil, nil, nil, IntPtr(3), nil, nil, nil, nil, nil, nil, nil, IntPtr(4)},
+			tree:     []*int{IntPtr(1), nil, IntPtr(2), nil, IntPtr(3), nil, IntPtr(4)},
 			expected: []int{4, 3, 2, 1},
 		},
 		{
@@ -38,12 +38,12 @@ func TestPostorderTraversal(t *testing.T) {
 		},
 		{
 			name:     "Example 1 from LeetCode",
-			tree:     []*int{IntPtr(1), nil, IntPtr(2), nil, nil, IntPtr(3)},
+			tree:     []*int{IntPtr(1), nil, IntPtr(2), nil, IntPtr(3)},
 			expected: []int{3, 2, 1},
 		},
 		{
 			name:     "Complex tree",
-			tree:     []*int{IntPtr(1), IntPtr(2), IntPtr(3), nil, IntPtr(4), IntPtr(5), IntPtr(6), nil, nil, IntPtr(7), IntPtr(8)},
+			tree:     []*int{IntPtr(1), IntPtr(2), IntPtr(3), nil, IntPtr(4), IntPtr(5), IntPtr(6), IntPtr(7), IntPtr(8)},
 			expected: []int{7, 8, 4, 2, 5, 6, 3, 1},
 		},
 		{
