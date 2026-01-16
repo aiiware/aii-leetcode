@@ -52,7 +52,14 @@ func MaxPoints(points [][]int) int {
 			g := gcd(dx, dy)
 			dx /= g
 			dy /= g
-			
+
+			// Normalize to canonical form: ensure consistent direction
+			// Make dx positive, or if dx == 0, make dy positive
+			if dx < 0 || (dx == 0 && dy < 0) {
+				dx = -dx
+				dy = -dy
+			}
+
 			// Use a tuple to represent the slope
 			slope := [2]int{dx, dy}
 			slopeCount[slope]++
