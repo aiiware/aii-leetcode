@@ -39,6 +39,14 @@ package leetcode
 // - The number of nodes in the tree is in the range [0, 5000].
 // - -10^4 <= Node.val <= 10^4
 
+// Helper function
+func abs(x int) int {
+	if x < 0 {
+		return -x
+	}
+	return x
+}
+
 // isBalancedTopDown is the top-down recursive solution.
 // This approach checks balance at each node by calculating heights of left and right subtrees,
 // then recursively checks balance for left and right subtrees.

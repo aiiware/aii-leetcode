@@ -1,5 +1,7 @@
 package leetcode
 
+import "leetcode/utils"
+
 // MinDistance solves LeetCode problem 0072: Edit Distance
 // Difficulty: Hard
 // Tags: String, Dynamic Programming
@@ -66,7 +68,7 @@ func MinDistance(word1 string, word2 string) int {
 				// 1. Delete: dp[i-1][j] + 1
 				// 2. Insert: dp[i][j-1] + 1
 				// 3. Replace: dp[i-1][j-1] + 1
-				dp[j] = min(temp, min(dp[j-1], prev)) + 1
+				dp[j] = utils.Min(temp, utils.Min(dp[j-1], prev)) + 1
 			}
 
 			prev = temp // Update prev for next iteration
@@ -74,12 +76,4 @@ func MinDistance(word1 string, word2 string) int {
 	}
 
 	return dp[n]
-}
-
-// Helper function to find minimum of two integers
-func min(a, b int) int {
-	if a < b {
-		return a
-	}
-	return b
 }

@@ -2,6 +2,7 @@ package leetcode
 
 import (
 	"sort"
+	"leetcode/utils"
 )
 
 // ThreeSumClosest solves LeetCode problem 0016: 3Sum Closest
@@ -20,7 +21,7 @@ func ThreeSumClosest(nums []int, target int) int {
 	sort.Ints(nums)
 
 	closestSum := nums[0] + nums[1] + nums[2]
-	minDiff := abs(closestSum - target)
+	minDiff := utils.Abs(closestSum - target)
 
 	// Iterate through array using two pointers for remaining two numbers
 	for i := 0; i < len(nums)-2; i++ {
@@ -29,7 +30,7 @@ func ThreeSumClosest(nums []int, target int) int {
 
 		for left < right {
 			currentSum := nums[i] + nums[left] + nums[right]
-			diff := abs(currentSum - target)
+			diff := utils.Abs(currentSum - target)
 
 			// Update closest sum if current sum is closer to target
 			if diff < minDiff {
@@ -52,12 +53,4 @@ func ThreeSumClosest(nums []int, target int) int {
 	}
 
 	return closestSum
-}
-
-// Helper function to get absolute value
-func abs(n int) int {
-	if n < 0 {
-		return -n
-	}
-	return n
 }
