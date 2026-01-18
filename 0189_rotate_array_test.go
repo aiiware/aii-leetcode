@@ -5,7 +5,7 @@ import (
 	"testing"
 )
 
-func TestRotate(t *testing.T) {
+func TestRotateArray(t *testing.T) {
 	tests := []struct {
 		name     string
 		nums     []int
@@ -234,7 +234,7 @@ func TestRotateConsistency(t *testing.T) {
 	}
 }
 
-func BenchmarkRotate(b *testing.B) {
+func BenchmarkRotateArray(b *testing.B) {
 	benchmarks := []struct {
 		name string
 		f    func([]int, int)
@@ -259,7 +259,7 @@ func BenchmarkRotate(b *testing.B) {
 		{"Medium", make([]int, 1000), 300},
 		{"Large", make([]int, 10000), 3000},
 	}
-	
+
 	for _, tc := range testCases {
 		b.Run(tc.name, func(b *testing.B) {
 			for _, bm := range benchmarks {

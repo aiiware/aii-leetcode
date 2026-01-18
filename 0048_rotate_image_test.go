@@ -5,7 +5,7 @@ import (
     "testing"
 )
 
-func TestRotate(t *testing.T) {
+func TestRotateImage(t *testing.T) {
     tests := []struct {
         matrix   [][]int
         expected [][]int
@@ -72,7 +72,7 @@ func TestRotate(t *testing.T) {
     }
 }
 
-func BenchmarkRotate(b *testing.B) {
+func BenchmarkRotateImage(b *testing.B) {
     matrix := [][]int{
         {1, 2, 3, 4, 5},
         {6, 7, 8, 9, 10},

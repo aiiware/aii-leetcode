@@ -1,6 +1,6 @@
 package leetcode
 
-import "leetcode/utils"
+import "sort"
 
 // 0169. Majority Element
 // https://leetcode.com/problems/majority-element
@@ -98,7 +98,7 @@ func majorityElementSorting(nums []int) int {
 	copy(sorted, nums)
 	
 	// Sort the array
-	utils.SortInts(sorted)
+	sort.Ints(sorted)
 	
 	// Majority element will be at the middle
 	return sorted[len(sorted)/2]
@@ -253,12 +253,12 @@ func majorityElementWithVerification(nums []int) int {
 
 func majorityElementBuiltinSort(nums []int) int {
 	// Note: This modifies the input array
-	// utils.SortInts(nums)
+	// sort.Ints(nums)
 	// return nums[len(nums)/2]
 	
 	// To avoid modifying input, create a copy
 	copyNums := make([]int, len(nums))
 	copy(copyNums, nums)
-	utils.SortInts(copyNums)
+	sort.Ints(copyNums)
 	return copyNums[len(copyNums)/2]
 }
