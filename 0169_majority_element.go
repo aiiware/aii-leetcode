@@ -155,17 +155,17 @@ func countInRange(nums []int, target int, left, right int) int {
 // Count bits position by position
 
 func majorityElementBitManipulation(nums []int) int {
-	majority := 0
+	var majority int32
 	n := len(nums)
 
 	// Consider each bit position (for 32-bit integers)
 	for bit := 0; bit < 32; bit++ {
 		count := 0
-		mask := 1 << bit
+		mask := int32(1) << bit
 
 		// Count numbers with this bit set
 		for _, num := range nums {
-			if num&mask != 0 {
+			if int32(num)&mask != 0 {
 				count++
 			}
 		}
@@ -176,7 +176,7 @@ func majorityElementBitManipulation(nums []int) int {
 		}
 	}
 
-	return majority
+	return int(majority)
 }
 
 // ===== Solution 6: Randomization =====

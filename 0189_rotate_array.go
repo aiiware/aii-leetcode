@@ -197,6 +197,9 @@ func rotateBlockSwap(nums []int, k int) {
 	if k == 0 {
 		return
 	}
+
+	// Convert right rotation to left rotation distance.
+	d := n - k
 	
 	// Helper function to swap two blocks
 	swap := func(start1, start2, length int) {
@@ -206,24 +209,24 @@ func rotateBlockSwap(nums []int, k int) {
 	}
 	
 	// If k is exactly half the array length
-	if k == n-k {
-		swap(0, n-k, k)
+	if d == n-d {
+		swap(0, n-d, d)
 		return
 	}
 	
 	// Handle general case
-	i, j := k, n-k
+	i, j := d, n-d
 	for i != j {
 		if i < j {
-			swap(k-i, k+j-i, i)
+			swap(d-i, d+j-i, i)
 			j -= i
 		} else {
-			swap(k-i, k, j)
+			swap(d-i, d, j)
 			i -= j
 		}
 	}
 	
-	swap(k-i, k, i)
+	swap(d-i, d, i)
 }
 
 // Solution 7: Using GCD for Cycle Detection
@@ -269,8 +272,8 @@ func rotateGCD(nums []int, k int) {
 }
 
 // Solution 8: Using Recursive Approach
-// Time: O(n), Space: O(k) for recursion stack
-// Demonstrates a recursive solution (not optimal for large k)
+// Time: O(n), Space: O(n) for recursion stack during reversal
+// Demonstrates a recursive version of the reverse method
 func rotateRecursive(nums []int, k int) {
 	n := len(nums)
 	if n == 0 || k == 0 {
@@ -282,25 +285,16 @@ func rotateRecursive(nums []int, k int) {
 		return
 	}
 	
-	// Helper recursive function
-	var rotateHelper func(start, k int)
-	rotateHelper = func(start, k int) {
-		if k == 0 || start >= n {
+	var reverse func(start, end int)
+	reverse = func(start, end int) {
+		if start >= end {
 			return
 		}
-		
-		// Rotate the last k elements to the front of current segment
-		for i := n - k; i < n; i++ {
-			// Move each element to its correct position
-			for j := i; j > start; j-- {
-				nums[j], nums[j-1] = nums[j-1], nums[j]
-			}
-			start++
-		}
-		
-		// Recursively handle the remaining part
-		rotateHelper(start, k)
+		nums[start], nums[end] = nums[end], nums[start]
+		reverse(start+1, end-1)
 	}
-	
-	rotateHelper(0, k)
+
+	reverse(0, n-1)
+	reverse(0, k-1)
+	reverse(k, n-1)
 }

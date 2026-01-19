@@ -33,7 +33,7 @@ func TestMajorityElement(t *testing.T) {
 		},
 		{
 			name:     "Majority at beginning",
-			nums:     []int{4, 4, 4, 1, 2, 3},
+			nums:     []int{4, 4, 4, 4, 1, 2},
 			expected: 4,
 		},
 		{
@@ -58,7 +58,7 @@ func TestMajorityElement(t *testing.T) {
 		},
 		{
 			name:     "Mixed positive and negative",
-			nums:     []int{-5, -5, -5, 1, 2, 3, 4},
+			nums:     []int{-5, -5, -5, -5, 1, 2, 3},
 			expected: -5,
 		},
 		{
