@@ -1,0 +1,58 @@
+{
+  "$schema": "https://aiiware.com/schemas/hooks-v1.json",
+  "hooks": {
+    "PreToolUse": [
+      {
+        "type": "script",
+        "command": "echo \"BLOCKED: Tool: $AII_TOOL_NAME not allowed\" >&2; exit 2",
+        "tools": [
+          "Glob",
+          "Bash"
+        ],
+        "timeout": 5000,
+        "enabled": false
+      },
+      {
+        "type": "script",
+        "command": "# Log tool usage to .aii/audit.log\necho \"[$(date -Iseconds)] Tool: $AII_TOOL_NAME, Event: $AII_HOOK_EVENT\" >> .aii/audit.log",
+        "tools": [
+          "Bash",
+          "Write",
+          "Edit"
+        ],
+        "timeout": 5000,
+        "enabled": false
+      },
+      {
+        "type": "script",
+        "command": "# Block modifications to protected files\n# Exit code 2 = block the action\nif [[ \"$AII_TOOL_ARGS\" == *\".env\"* ]]; then\n  echo \"Protected file - requires manual approval\"\n  exit 2\nfi\nexit 0",
+        "tools": [
+          "Write",
+          "Edit"
+        ],
+        "timeout": 5000,
+        "enabled": false
+      }
+    ],
+    "PostToolUse": [
+      {
+        "type": "script",
+        "command": "# Notification on file changes - customize as needed\n# Example: notify-send \"File modified\" \"$AII_TOOL_ARGS\"",
+        "tools": [
+          "Write",
+          "Edit"
+        ],
+        "timeout": 5000,
+        "enabled": false
+      }
+    ],
+    "Stop": [
+      {
+        "type": "script",
+        "command": "# Pre-completion verification hook\n# Uncomment checks you want to enforce before agent stops\n#\n# Available environment variables:\n#   $AII_SESSION_ID - Current session ID\n#   $AII_ITERATION_COUNT - Number of agent iterations\n#   $AII_EXIT_REASON - Why agent is stopping\n#   $AII_STOP_HOOK_ACTIVE - Whether stop hook is already active\n#\n# Exit codes:\n#   0 = Allow stop\n#   2 = Block stop and continue\n\n# Verify tests pass before stopping\n# go test ./... || exit 2\n\n# Verify build succeeds before stopping\n# go build ./... || exit 2\n\n# Allow stop by default\nexit 0",
+        "timeout": 30000,
+        "enabled": false
+      }
+    ]
+  }
+}
