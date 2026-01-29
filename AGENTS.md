@@ -3,252 +3,79 @@
 <!-- AGENTS.md - Universal AI Agent Instructions -->
 
 ## Project Overview
-
-A **Go** project, using **go test** for testing, managed with **go**.
-
-This project uses Git for version control.
-
-**Existing instruction files found:**
-- `AGENTS.md` (130 lines)
+This is a LeetCode problem solutions repository written in Go. It contains implementations of various algorithms, data structures, and SQL problems, likely for practice and reference. The project uses the standard Go toolchain for building and testing.
 
 ## Directory Structure
-
 ```
-├── utils/ # Utility functions
-├── cmd/ # CLI entrypoints (Go)
-├── data_structures/
-├── tutorials/
-└── testutils/
+cmd/ — Command entrypoints (Go)
+utils/ — Utility functions
+data_structures/
+temp_debug/
+testutils/
+tutorials/
 ```
 
 ## File Patterns
-
-### Naming Convention: camelCase
-
-This project uses **camelCase** for file naming (68% of files).
-
-### Numbered File Patterns
-
-**Four-digit prefix with underscore (e.g., 0001_problem_name)**
-- Pattern: `####_snake_case`
-- Count: 315 files
-- Examples: `0001_two_sum.go`, `0001_two_sum_test.go`, `0002_add_two_numbers.go`
-
-### Test Files
-
-Test files follow the pattern: *_test.{ext} (e.g., handler_test.go)
+*   **Naming Convention:** Source files primarily use `camelCase`.
+*   **Test Files:** Follow the standard Go pattern: `*_test.go` (e.g., `handler_test.go`).
+*   **Organization:** Code is organized by domain:
+    *   `cmd/` for command-line entry points.
+    *   `utils/` for shared utility functions.
+    *   `data_structures/` for data structure implementations.
+    *   `tutorials/` for tutorial content.
+    *   `testutils/` for testing utilities.
+    *   `temp_debug/` for temporary debugging files.
 
 ## Core Commands
-
-- **Build**: `go build ./...`
-- **Test**: `go test ./...`
+*   **Build:** `go build ./...`
+*   **Test:** `go test ./...`
 
 ## Git Conventions
+*   **Convention:** Conventional Commits.
+*   **Default Branch:** `main`.
+*   **Common Commit Types & Scopes:**
+    *   `feat(leetcode)`: Implement new LeetCode problems.
+    *   `feat(aii)` / `feat(demo)`: Add features for AI or demos.
+    *   `refactor(test)` / `refactor(leetcode)` / `refactor(graph)`: Refactor test code, problem solutions, or graph-related code.
+    *   `docs(readme)`: Update project documentation.
+    *   `fix(bit-manipulation)` / `fix(algorithm)` / `fix(binary)`: Correct bugs in specific algorithm categories.
+    *   `test(binary-tree)` / `test(leetcode)`: Add or modify tests.
+    *   `chore(gitignore)`: Update project maintenance files.
 
-### Commit Messages
-
-This project uses **Conventional Commits** format (98% of commits).
-
-**Common commit types:**
-- `feat`: 27 commits (scopes: leetcode, demo)
-- `refactor`: 10 commits (scopes: test, leetcode, tests)
-- `docs`: 6 commits (scopes: readme)
-- `fix`: 3 commits (scopes: bit-manipulation, algorithm, binary)
-- `test`: 2 commits (scopes: binary-tree, leetcode)
-- `chore`: 1 commits (scopes: gitignore)
-
-**Common scopes:**
-`leetcode`, `readme`, `tests`, `test`, `bit-manipulation`, `algorithm`, `binary-tree`, `graph`
-
-**Example commits:**
-```
-fix(bit-manipulation): correct bitwise operations for negative numbers
-refactor(test): rename test functions for clarity and update imports
-feat(leetcode): implement LeetCode 189 Rotate Array with multiple solutions
-test(binary-tree): simplify test case tree representations
-docs(readme): update documentation for problems 0131-0150
-```
+**Example Commit Messages:**
+*   `feat(leetcode): implement LeetCode 0176-0178 SQL problems`
+*   `fix(bit-manipulation): correct bitwise operations for negative numbers`
+*   `refactor(test): rename test functions for clarity and update imports`
+*   `test(binary-tree): simplify test case tree representations`
+*   `docs(readme): update documentation for problems 0131-0150`
 
 ## Coding Standards
-
-### Language: Go
-
-- Follow Go formatting conventions (use `gofmt`)
-- Handle errors explicitly, avoid panic
-- Use meaningful variable names
-- Keep functions focused and small
-
-### File Naming
-
-- Use **camelCase** for file names
-- Example: `myComponent.ts`, `userService.ts`
-- Test files: *_test.{ext} (e.g., handler_test.go)
-
-## LeetCode Problem Implementation Workflow
-
-### Standard File Structure
-
-Each LeetCode problem should have:
-1. **Implementation File**: `####_problem_name.go`
-2. **Test File**: `####_problem_name_test.go`
-
-### File Content Template
-
-#### Implementation File (`####_problem_name.go`):
-```go
-package leetcode
-
-/*
-###. Problem Name
-
-[Problem description from LeetCode]
-
-Example 1:
-Input: [example input]
-Output: [example output]
-Explanation: [explanation]
-
-Example 2:
-Input: [example input]
-Output: [example output]
-Explanation: [explanation]
-
-Constraints:
-- [constraint 1]
-- [constraint 2]
-
-Difficulty: [Easy/Medium/Hard]
-Tags: [tag1, tag2, tag3]
-Companies: [Company1, Company2, Company3]
-*/
-
-// Implementation code here
-```
-
-#### Test File (`####_problem_name_test.go`):
-```go
-package leetcode
-
-import (
-    "fmt"
-    "testing"
-)
-
-func TestFunctionName(t *testing.T) {
-    tests := []struct {
-        input    [type]
-        expected [type]
-    }{
-        // Test cases from LeetCode examples
-        // Additional edge cases
-        // Large input cases
-    }
-
-    for i, tt := range tests {
-        t.Run(fmt.Sprintf("Test case %d", i), func(t *testing.T) {
-            result := functionName(tt.input)
-            if result != tt.expected {
-                t.Errorf("functionName(%v) = %v, want %v", tt.input, result, tt.expected)
-            }
-        })
-    }
-}
-
-// Benchmark tests for performance
-func BenchmarkFunctionName(b *testing.B) {
-    // Benchmark code
-}
-```
-
-### Metadata Collection
-
-When implementing new LeetCode problems, gather:
-1. **Problem Description**: Full problem statement
-2. **Examples**: All provided examples with explanations
-3. **Constraints**: All constraints
-4. **Difficulty**: Easy, Medium, or Hard
-5. **Tags**: Algorithm/data structure tags
-6. **Companies**: Companies that have asked this problem (if available)
-
-### Implementation Guidelines
-
-1. **Read existing files** to understand patterns before creating new ones
-2. **Use proper Go idioms** and error handling
-3. **Include comprehensive tests** covering:
-   - LeetCode examples
-   - Edge cases
-   - Large inputs
-   - Performance benchmarks
-4. **Add comments** for complex algorithms
-5. **Follow naming conventions**:
-   - Function names: camelCase
-   - Test names: TestFunctionName (ensure unique names across files)
-   - Benchmark names: BenchmarkFunctionName (ensure unique names across files)
-6. **Package declaration**: Always use `package leetcode` (not `package main`)
-
-### Automatic Testing Rule
-
-**CRITICAL**: After implementing or modifying any code, ALWAYS run tests to verify correctness:
-
-1. **Immediate verification**: Run `go test -v .` after creating/updating files
-2. **Comprehensive testing**: Run `go test ./...` to test all packages
-3. **Specific test verification**: For new implementations, run `go test -v -run "TestFunctionName" .`
-4. **Fix issues immediately**: If tests fail, fix the issues before proceeding
-
-### Commit Message Format
-
-For LeetCode implementations:
-```
-feat(leetcode): implement LeetCode ### Problem Name
-
-- Add solution with [algorithm/data structure]
-- Include comprehensive test cases
-- Add performance benchmarks
-```
+*   **Language:** Go.
+*   **File Naming:** Use `camelCase` for source files.
+*   **Testing:** All tests must be in `*_test.go` files and runnable via `go test`.
+*   **Structure:** Follow the established directory pattern for organizing different types of code (algorithms in root, utilities in `utils/`, etc.).
 
 ## Safety Rules
-
-### Never Modify Without Approval
-
-- `.env` files and environment configurations
-- Secrets, API keys, or credentials
-- Database migration files
-- CI/CD configuration (`.github/`, `.gitlab-ci.yml`, etc.)
-
-### Always Ask Before
-
-- Deleting any file or directory
-- Running commands with `sudo` or elevated privileges
-- Installing new dependencies
-- Making breaking API changes
-- Modifying authentication or authorization logic
-- Changing database schemas
+*   **Do not modify** the root `go.mod` file without explicit approval, as it manages all dependencies.
+*   **Do not delete or significantly alter** the structure of the `data_structures/` or `tutorials/` directories without confirmation, as they contain core learning content.
+*   **Require confirmation** before creating or modifying files in `temp_debug/`, as this directory is for transient files.
+*   **Require confirmation** before altering the `cmd/` directory, as it contains application entry points.
 
 ## Permissions
-
-### Allowed Without Prompt
-
-- Read any file in the repository
-- Explore directory structure
-- Run `go test ./...`
-- Run `go build ./...`
-
-### Requires Confirmation
-
-- File writes outside of `src/` directory
-- Git operations (commit, push, branch, merge)
-- Network requests to external services
-- Running arbitrary shell commands
-- Modifying configuration files
-
-### Never Allowed
-
-- Exposing secrets or credentials
-- Pushing directly to main/master branch
-- Force pushing to any branch
-- Accessing files outside the project directory
+*   **Allowed Without Prompt:**
+    *   Create new `.go` solution files in the project root or appropriate subdirectories (e.g., `data_structures/`).
+    *   Create or update `*_test.go` files.
+    *   Update utility functions in `utils/`.
+    *   Update code within `testutils/`.
+*   **Requires Confirmation:**
+    *   Modifying the `go.mod` file.
+    *   Changing the structure or core files in `cmd/`, `data_structures/`, or `tutorials/`.
+    *   Operations in the `temp_debug/` directory.
+    *   Changing established file naming conventions.
+*   **Never Allowed:**
+    *   Deleting the `go.mod` file.
+    *   Changing the project's fundamental organization (e.g., merging `utils/` into root).
+    *   Modifying git history or force-pushing.
 ---
 
-*Generated by Aii CLI /init command (~878 tokens, 127 lines)*
-*Updated with LeetCode workflow on 2026-01-21*
-*Updated with automatic testing rule and package fix on 2026-01-21*
+*Generated by Aii CLI /init command with LLM enhancement (~1036 tokens, 78 lines)*
