@@ -2,25 +2,26 @@ package main
 
 import (
 	"fmt"
+    "leetcode/utils"
 )
 
-type TreeNode struct {
+type utils.TreeNode struct {
 	Val   int
-	Left  *TreeNode
-	Right *TreeNode
+	Left  *utils.TreeNode
+	Right *utils.TreeNode
 }
 
 func intPtr(x int) *int {
 	return &x
 }
 
-func NewTreeFromSlice(vals []*int) *TreeNode {
+func NewTreeFromSlice(vals []*int) *utils.TreeNode {
 	if len(vals) == 0 || vals[0] == nil {
 		return nil
 	}
 
-	root := &TreeNode{Val: *vals[0]}
-	queue := []*TreeNode{root}
+	root := &utils.TreeNode{Val: *vals[0]}
+	queue := []*utils.TreeNode{root}
 	i := 1
 
 	for len(queue) > 0 && i < len(vals) {
@@ -29,14 +30,14 @@ func NewTreeFromSlice(vals []*int) *TreeNode {
 
 		// Left child
 		if i < len(vals) && vals[i] != nil {
-			node.Left = &TreeNode{Val: *vals[i]}
+			node.Left = &utils.TreeNode{Val: *vals[i]}
 			queue = append(queue, node.Left)
 		}
 		i++
 
 		// Right child
 		if i < len(vals) && vals[i] != nil {
-			node.Right = &TreeNode{Val: *vals[i]}
+			node.Right = &utils.TreeNode{Val: *vals[i]}
 			queue = append(queue, node.Right)
 		}
 		i++
@@ -45,7 +46,7 @@ func NewTreeFromSlice(vals []*int) *TreeNode {
 	return root
 }
 
-func printTree(root *TreeNode, prefix string, isLeft bool) {
+func printTree(root *utils.TreeNode, prefix string, isLeft bool) {
 	if root == nil {
 		return
 	}
