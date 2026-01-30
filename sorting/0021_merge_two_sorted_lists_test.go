@@ -2,6 +2,7 @@ package sorting
 
 import (
 	"testing"
+    "leetcode/utils"
 )
 
 func TestMergeTwoLists(t *testing.T) {

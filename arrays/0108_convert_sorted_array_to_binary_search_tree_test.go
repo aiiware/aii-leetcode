@@ -4,6 +4,7 @@ import (
 	"reflect"
 	"testing"
     "leetcode/utils"
+    "leetcode/trees"
 )
 
 func TestSortedArrayToBSTRecursive(t *testing.T) {
@@ -17,15 +18,15 @@ func TestSortedArrayToBSTRecursive(t *testing.T) {
 			nums: []int{-10, -3, 0, 5, 9},
 			validate: func(root *utils.TreeNode) bool {
 				// Check if it's a valid BST
-				if !isValidBST(root) {
+				if !trees.IsValidBST(root) {
 					return false
 				}
 				// Check if it's height-balanced
-				if !isBalancedBottomUp(root) {
+				if !trees.IsBalancedBottomUp(root) {
 					return false
 				}
 				// Check if inorder traversal gives sorted array
-				inorder := inorderTraversal(root)
+				inorder := trees.InorderTraversal(root)
 				return reflect.DeepEqual(inorder, []int{-10, -3, 0, 5, 9})
 			},
 		},
@@ -33,13 +34,13 @@ func TestSortedArrayToBSTRecursive(t *testing.T) {
 			name: "Example 2: [1,3]",
 			nums: []int{1, 3},
 			validate: func(root *utils.TreeNode) bool {
-				if !isValidBST(root) {
+				if !trees.IsValidBST(root) {
 					return false
 				}
-				if !isBalancedBottomUp(root) {
+				if !trees.IsBalancedBottomUp(root) {
 					return false
 				}
-				inorder := inorderTraversal(root)
+				inorder := trees.InorderTraversal(root)
 				return reflect.DeepEqual(inorder, []int{1, 3})
 			},
 		},
@@ -70,13 +71,13 @@ func TestSortedArrayToBSTRecursive(t *testing.T) {
 			name: "Two elements",
 			nums: []int{1, 2},
 			validate: func(root *utils.TreeNode) bool {
-				if !isValidBST(root) {
+				if !trees.IsValidBST(root) {
 					return false
 				}
-				if !isBalancedBottomUp(root) {
+				if !trees.IsBalancedBottomUp(root) {
 					return false
 				}
-				inorder := inorderTraversal(root)
+				inorder := trees.InorderTraversal(root)
 				return reflect.DeepEqual(inorder, []int{1, 2})
 			},
 		},
@@ -84,13 +85,13 @@ func TestSortedArrayToBSTRecursive(t *testing.T) {
 			name: "Three elements",
 			nums: []int{1, 2, 3},
 			validate: func(root *utils.TreeNode) bool {
-				if !isValidBST(root) {
+				if !trees.IsValidBST(root) {
 					return false
 				}
-				if !isBalancedBottomUp(root) {
+				if !trees.IsBalancedBottomUp(root) {
 					return false
 				}
-				inorder := inorderTraversal(root)
+				inorder := trees.InorderTraversal(root)
 				return reflect.DeepEqual(inorder, []int{1, 2, 3})
 			},
 		},
@@ -98,13 +99,13 @@ func TestSortedArrayToBSTRecursive(t *testing.T) {
 			name: "Four elements",
 			nums: []int{1, 2, 3, 4},
 			validate: func(root *utils.TreeNode) bool {
-				if !isValidBST(root) {
+				if !trees.IsValidBST(root) {
 					return false
 				}
-				if !isBalancedBottomUp(root) {
+				if !trees.IsBalancedBottomUp(root) {
 					return false
 				}
-				inorder := inorderTraversal(root)
+				inorder := trees.InorderTraversal(root)
 				return reflect.DeepEqual(inorder, []int{1, 2, 3, 4})
 			},
 		},
@@ -112,13 +113,13 @@ func TestSortedArrayToBSTRecursive(t *testing.T) {
 			name: "Negative values",
 			nums: []int{-5, -4, -3, -2, -1},
 			validate: func(root *utils.TreeNode) bool {
-				if !isValidBST(root) {
+				if !trees.IsValidBST(root) {
 					return false
 				}
-				if !isBalancedBottomUp(root) {
+				if !trees.IsBalancedBottomUp(root) {
 					return false
 				}
-				inorder := inorderTraversal(root)
+				inorder := trees.InorderTraversal(root)
 				return reflect.DeepEqual(inorder, []int{-5, -4, -3, -2, -1})
 			},
 		},
@@ -126,13 +127,13 @@ func TestSortedArrayToBSTRecursive(t *testing.T) {
 			name: "Mixed positive and negative",
 			nums: []int{-10, -5, 0, 5, 10},
 			validate: func(root *utils.TreeNode) bool {
-				if !isValidBST(root) {
+				if !trees.IsValidBST(root) {
 					return false
 				}
-				if !isBalancedBottomUp(root) {
+				if !trees.IsBalancedBottomUp(root) {
 					return false
 				}
-				inorder := inorderTraversal(root)
+				inorder := trees.InorderTraversal(root)
 				return reflect.DeepEqual(inorder, []int{-10, -5, 0, 5, 10})
 			},
 		},
@@ -158,13 +159,13 @@ func TestSortedArrayToBSTIterative(t *testing.T) {
 			name: "Example 1: [-10,-3,0,5,9]",
 			nums: []int{-10, -3, 0, 5, 9},
 			validate: func(root *utils.TreeNode) bool {
-				if !isValidBST(root) {
+				if !trees.IsValidBST(root) {
 					return false
 				}
-				if !isBalancedBottomUp(root) {
+				if !trees.IsBalancedBottomUp(root) {
 					return false
 				}
-				inorder := inorderTraversal(root)
+				inorder := trees.InorderTraversal(root)
 				return reflect.DeepEqual(inorder, []int{-10, -3, 0, 5, 9})
 			},
 		},
@@ -172,13 +173,13 @@ func TestSortedArrayToBSTIterative(t *testing.T) {
 			name: "Example 2: [1,3]",
 			nums: []int{1, 3},
 			validate: func(root *utils.TreeNode) bool {
-				if !isValidBST(root) {
+				if !trees.IsValidBST(root) {
 					return false
 				}
-				if !isBalancedBottomUp(root) {
+				if !trees.IsBalancedBottomUp(root) {
 					return false
 				}
-				inorder := inorderTraversal(root)
+				inorder := trees.InorderTraversal(root)
 				return reflect.DeepEqual(inorder, []int{1, 3})
 			},
 		},
@@ -209,13 +210,13 @@ func TestSortedArrayToBSTIterative(t *testing.T) {
 			name: "Three elements",
 			nums: []int{1, 2, 3},
 			validate: func(root *utils.TreeNode) bool {
-				if !isValidBST(root) {
+				if !trees.IsValidBST(root) {
 					return false
 				}
-				if !isBalancedBottomUp(root) {
+				if !trees.IsBalancedBottomUp(root) {
 					return false
 				}
-				inorder := inorderTraversal(root)
+				inorder := trees.InorderTraversal(root)
 				return reflect.DeepEqual(inorder, []int{1, 2, 3})
 			},
 		},
@@ -241,13 +242,13 @@ func TestSortedArrayToBST(t *testing.T) {
 			name: "Example 1: [-10,-3,0,5,9]",
 			nums: []int{-10, -3, 0, 5, 9},
 			validate: func(root *utils.TreeNode) bool {
-				if !isValidBST(root) {
+				if !trees.IsValidBST(root) {
 					return false
 				}
-				if !isBalancedBottomUp(root) {
+				if !trees.IsBalancedBottomUp(root) {
 					return false
 				}
-				inorder := inorderTraversal(root)
+				inorder := trees.InorderTraversal(root)
 				return reflect.DeepEqual(inorder, []int{-10, -3, 0, 5, 9})
 			},
 		},
@@ -255,13 +256,13 @@ func TestSortedArrayToBST(t *testing.T) {
 			name: "Example 2: [1,3]",
 			nums: []int{1, 3},
 			validate: func(root *utils.TreeNode) bool {
-				if !isValidBST(root) {
+				if !trees.IsValidBST(root) {
 					return false
 				}
-				if !isBalancedBottomUp(root) {
+				if !trees.IsBalancedBottomUp(root) {
 					return false
 				}
-				inorder := inorderTraversal(root)
+				inorder := trees.InorderTraversal(root)
 				return reflect.DeepEqual(inorder, []int{1, 3})
 			},
 		},
@@ -302,8 +303,8 @@ func TestRecursiveAndIterativeProduceSameStructure(t *testing.T) {
 			iterativeRoot := sortedArrayToBSTIterative(nums)
 
 			// Compare inorder traversals
-			recursiveInorder := inorderTraversal(recursiveRoot)
-			iterativeInorder := inorderTraversal(iterativeRoot)
+			recursiveInorder := trees.InorderTraversal(recursiveRoot)
+			iterativeInorder := trees.InorderTraversal(iterativeRoot)
 
 			if !reflect.DeepEqual(recursiveInorder, iterativeInorder) {
 				t.Errorf("For nums = %v: recursive inorder = %v, iterative inorder = %v",
@@ -311,18 +312,18 @@ func TestRecursiveAndIterativeProduceSameStructure(t *testing.T) {
 			}
 
 			// Both should be valid BSTs
-			if !isValidBST(recursiveRoot) {
+			if !trees.IsValidBST(recursiveRoot) {
 				t.Errorf("Recursive result not a valid BST for nums = %v", nums)
 			}
-			if !isValidBST(iterativeRoot) {
+			if !trees.IsValidBST(iterativeRoot) {
 				t.Errorf("Iterative result not a valid BST for nums = %v", nums)
 			}
 
 			// Both should be balanced
-			if !isBalancedBottomUp(recursiveRoot) {
+			if !trees.IsBalancedBottomUp(recursiveRoot) {
 				t.Errorf("Recursive result not balanced for nums = %v", nums)
 			}
-			if !isBalancedBottomUp(iterativeRoot) {
+			if !trees.IsBalancedBottomUp(iterativeRoot) {
 				t.Errorf("Iterative result not balanced for nums = %v", nums)
 			}
 		})

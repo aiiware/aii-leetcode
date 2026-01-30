@@ -3,6 +3,7 @@ package dp
 import (
 	"testing"
     "leetcode/utils"
+    "leetcode/trees"
 )
 
 func TestHasPathSum(t *testing.T) {
@@ -136,19 +137,19 @@ func TestHasPathSum_EdgeCases(t *testing.T) {
 	}{
 		{
 			name:     "Large tree with path",
-			root:     createChainTree(1000, 1),
+			root:     trees.CreateChainTree(1000, 1),
 			target:   (1000 * 1001) / 2, // Sum of 1 to 1000
 			expected: true,
 		},
 		{
 			name:     "Large tree without path",
-			root:     createChainTree(1000, 1),
+			root:     trees.CreateChainTree(1000, 1),
 			target:   (1000 * 1001) / 2 + 1, // One more than sum
 			expected: false,
 		},
 		{
 			name:     "Perfect binary tree with path",
-			root:     createPerfectBinaryTree(4, 1),
+			root:     trees.CreatePerfectBinaryTree(4, 1),
 			target:   10, // Arbitrary target that should exist
 			expected: true,
 		},
@@ -185,7 +186,7 @@ func TestHasPathSum_EdgeCases(t *testing.T) {
 func TestHasPathSum_Performance(t *testing.T) {
 	// Test with a large balanced tree (2^12 - 1 = 4095 nodes)
 	height := 12
-	root := createPerfectBinaryTree(height, 1)
+	root := trees.CreatePerfectBinaryTree(height, 1)
 	
 	// Target sum that should exist (sum of values along some path)
 	// Since values are sequential from 1 to 4095, we can pick a reasonable target

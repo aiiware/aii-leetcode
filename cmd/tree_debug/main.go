@@ -5,12 +5,6 @@ import (
     "leetcode/utils"
 )
 
-type utils.TreeNode struct {
-	Val   int
-	Left  *utils.TreeNode
-	Right *utils.TreeNode
-}
-
 func intPtr(x int) *int {
 	return &x
 }

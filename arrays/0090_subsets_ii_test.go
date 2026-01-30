@@ -92,23 +92,23 @@ func TestSubsetsWithDup(t *testing.T) {
 			result := SubsetsWithDup(tt.nums)
 			
 			// Sort both result and expected for comparison
-			utils.sortSubsets(result)
-			utils.sortSubsets(tt.expected)
+			utils.SortSubsets(result)
+			utils.SortSubsets(tt.expected)
 			
-			if !utils.subsetsEqual(result, tt.expected) {
+			if !utils.SubsetsEqual(result, tt.expected) {
 				t.Errorf("SubsetsWithDup(%v) = %v, expected %v", 
 					tt.nums, result, tt.expected)
 			}
 			
 			// Additional check: no duplicates in result
-			if utils.hasDuplicateSubsets(result) {
+			if utils.HasDuplicateSubsets(result) {
 				t.Errorf("SubsetsWithDup(%v) contains duplicate subsets: %v", 
 					tt.nums, result)
 			}
 			
 			// Check that all subsets are valid
 			for _, subset := range result {
-				if !utils.isSubset(subset, tt.nums) {
+				if !utils.IsSubset(subset, tt.nums) {
 					t.Errorf("Subset %v is not a valid subset of %v", subset, tt.nums)
 				}
 			}
@@ -143,20 +143,20 @@ func TestAllSubsetsWithDupImplementations(t *testing.T) {
 	for _, tc := range testCases {
 		t.Run(tc.name, func(t *testing.T) {
 			expected := SubsetsWithDup(tc.nums)
-			utils.sortSubsets(expected)
+			utils.SortSubsets(expected)
 
 			for _, impl := range implementations {
 				t.Run(impl.name, func(t *testing.T) {
 					result := impl.fn(tc.nums)
-					utils.sortSubsets(result)
+					utils.SortSubsets(result)
 
-					if !utils.subsetsEqual(result, expected) {
+					if !utils.SubsetsEqual(result, expected) {
 						t.Errorf("%s(%v) = %v, expected %v",
 							impl.name, tc.nums, result, expected)
 					}
 
 					// Check for duplicates
-					if utils.hasDuplicateSubsets(result) {
+					if utils.HasDuplicateSubsets(result) {
 						t.Errorf("%s(%v) contains duplicate subsets",
 							impl.name, tc.nums)
 					}
@@ -170,7 +170,7 @@ func TestSubsetsWithDupEdgeCases(t *testing.T) {
 	t.Run("Empty array", func(t *testing.T) {
 		result := SubsetsWithDup([]int{})
 		expected := [][]int{{}}
-		if !utils.subsetsEqual(result, expected) {
+		if !utils.SubsetsEqual(result, expected) {
 			t.Errorf("Expected %v, got %v", expected, result)
 		}
 	})
@@ -178,9 +178,9 @@ func TestSubsetsWithDupEdgeCases(t *testing.T) {
 	t.Run("Single element", func(t *testing.T) {
 		result := SubsetsWithDup([]int{5})
 		expected := [][]int{{}, {5}}
-		utils.sortSubsets(result)
-		utils.sortSubsets(expected)
-		if !utils.subsetsEqual(result, expected) {
+		utils.SortSubsets(result)
+		utils.SortSubsets(expected)
+		if !utils.SubsetsEqual(result, expected) {
 			t.Errorf("Expected %v, got %v", expected, result)
 		}
 	})
@@ -202,7 +202,7 @@ func TestSubsetsWithDupEdgeCases(t *testing.T) {
 		}
 		
 		// Check no duplicates
-		if utils.hasDuplicateSubsets(result) {
+		if utils.HasDuplicateSubsets(result) {
 			t.Errorf("Contains duplicate subsets: %v", result)
 		}
 	})
@@ -218,7 +218,7 @@ func TestSubsetsWithDupEdgeCases(t *testing.T) {
 		}
 		
 		// Check no duplicates
-		if utils.hasDuplicateSubsets(result) {
+		if utils.HasDuplicateSubsets(result) {
 			t.Errorf("Contains duplicate subsets")
 		}
 	})
@@ -234,13 +234,13 @@ func TestSubsetsWithDupEdgeCases(t *testing.T) {
 		
 		// Check all subsets are valid
 		for _, subset := range result {
-			if !utils.isSubset(subset, nums) {
+			if !utils.IsSubset(subset, nums) {
 				t.Errorf("Invalid subset %v for nums %v", subset, nums)
 			}
 		}
 		
 		// Check no duplicates
-		if utils.hasDuplicateSubsets(result) {
+		if utils.HasDuplicateSubsets(result) {
 			t.Errorf("Contains duplicate subsets: %v", result)
 		}
 	})
@@ -289,13 +289,13 @@ func TestSubsetsWithDupProperties(t *testing.T) {
 					}
 
 					// Property 2: No duplicate subsets
-					if utils.hasDuplicateSubsets(result) {
+					if utils.HasDuplicateSubsets(result) {
 						t.Errorf("Contains duplicate subsets: %v", result)
 					}
 
 					// Property 3: All subsets are valid
 					for _, subset := range result {
-						if !utils.isSubset(subset, nums) {
+						if !utils.IsSubset(subset, nums) {
 							t.Errorf("Invalid subset %v for nums %v", subset, nums)
 						}
 					}

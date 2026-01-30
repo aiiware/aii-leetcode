@@ -106,17 +106,17 @@ func TestMinDepth_EdgeCases(t *testing.T) {
 	}{
 		{
 			name:     "Large tree (1000 nodes in a chain)",
-			root:     createChainTree(1000, 1),
+			root:     CreateChainTree(1000, 1),
 			expected: 1000,
 		},
 		{
 			name:     "Perfect binary tree height 3 (7 nodes)",
-			root:     createPerfectBinaryTree(3, 1),
+			root:     CreatePerfectBinaryTree(3, 1),
 			expected: 3,
 		},
 		{
 			name:     "Perfect binary tree height 4 (15 nodes)",
-			root:     createPerfectBinaryTree(4, 1),
+			root:     CreatePerfectBinaryTree(4, 1),
 			expected: 4,
 		},
 		{
@@ -139,7 +139,7 @@ func TestMinDepth_EdgeCases(t *testing.T) {
 func TestMinDepth_Performance(t *testing.T) {
 	// Test with a large balanced tree (2^10 - 1 = 1023 nodes)
 	height := 10
-	root := createPerfectBinaryTree(height, 1)
+	root := CreatePerfectBinaryTree(height, 1)
 	
 	// The minimum depth should be the height of the tree
 	expected := height

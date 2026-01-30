@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"time"
 
-	"leetcode"
+	"leetcode/arrays"
 )
 
 func main() {
@@ -19,9 +19,9 @@ func main() {
 	
 	for n := 1; n <= 9; n++ {
 		// Get counts using different implementations
-		count1 := leetcode.TotalNQueens(n)
-		count2 := leetcode.TotalNQueensDFS(n)
-		count3 := leetcode.SolveNQueensCount(n)
+		count1 := arrays.TotalNQueens(n)
+		count2 := arrays.TotalNQueensDFS(n)
+		count3 := arrays.SolveNQueensCount(n)
 		
 		fmt.Printf("%d | %13d | %15d | %16d\n", n, count1, count2, count3)
 		
@@ -42,7 +42,7 @@ func main() {
 	// Test TotalNQueens (bit manipulation)
 	start := time.Now()
 	for i := 0; i < iterations; i++ {
-		_ = leetcode.TotalNQueens(n)
+		_ = arrays.TotalNQueens(n)
 	}
 	time1 := time.Since(start).Nanoseconds() / int64(iterations)
 	fmt.Printf("TotalNQueens    | %17d\n", time1)
@@ -50,7 +50,7 @@ func main() {
 	// Test TotalNQueensDFS
 	start = time.Now()
 	for i := 0; i < iterations; i++ {
-		_ = leetcode.TotalNQueensDFS(n)
+		_ = arrays.TotalNQueensDFS(n)
 	}
 	time2 := time.Since(start).Nanoseconds() / int64(iterations)
 	fmt.Printf("TotalNQueensDFS | %17d\n", time2)
@@ -58,7 +58,7 @@ func main() {
 	// Test SolveNQueensCount (from problem 51)
 	start = time.Now()
 	for i := 0; i < iterations; i++ {
-		_ = leetcode.SolveNQueensCount(n)
+		_ = arrays.SolveNQueensCount(n)
 	}
 	time3 := time.Since(start).Nanoseconds() / int64(iterations)
 	fmt.Printf("SolveNQueensCount | %15d\n", time3)

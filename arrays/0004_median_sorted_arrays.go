@@ -86,7 +86,7 @@ func FindMedianSortedArrays(nums1 []int, nums2 []int) float64 {
 }
 
 // Max returns the maximum of two integers
-func utils.Max(a, b int) int {
+func Max(a, b int) int {
 	if a > b {
 		return a
 	}
@@ -94,7 +94,7 @@ func utils.Max(a, b int) int {
 }
 
 // Min returns the minimum of two integers
-func utils.Min(a, b int) int {
+func Min(a, b int) int {
 	if a < b {
 		return a
 	}

@@ -69,8 +69,8 @@ func sortedListToBSTArray(head *utils.ListNode) *utils.TreeNode {
 		head = head.Next
 	}
 
-	// Use sortedArrayToBST function
-	return sortedArrayToBST(nums)
+	// Use local sortedArrayToBST function
+	return sortedArrayToBSTLocal(nums)
 }
 
 // sortedListToBSTInorder is the inorder simulation solution.

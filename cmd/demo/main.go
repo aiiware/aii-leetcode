@@ -5,7 +5,7 @@ import (
 	
 	"leetcode/arrays"
 	"leetcode/design"
-	"leetcode/linkedlists"
+	"leetcode/linked-lists"
 	"leetcode/trees"
 	"leetcode/utils"
 )

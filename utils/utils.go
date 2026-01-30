@@ -599,8 +599,8 @@ func PrintList(head *ListNode) string {
 
 // Helper functions for subsets testing
 
-// sortSubsets sorts a slice of subsets for comparison
-func sortSubsets(subsets [][]int) {
+// SortSubsets sorts a slice of subsets for comparison
+func SortSubsets(subsets [][]int) {
 	// Sort each subset
 	for _, subset := range subsets {
 		sort.Ints(subset)
@@ -629,8 +629,8 @@ func SubsetsEqual(a, b [][]int) bool {
 	}
 	
 	// Sort both sets
-	sortSubsets(a)
-	sortSubsets(b)
+	SortSubsets(a)
+	SortSubsets(b)
 	
 	// Compare each subset
 	for i := range a {

@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"time"
 
-	"leetcode"
+	"leetcode/arrays"
 )
 
 func main() {
@@ -15,7 +15,7 @@ func main() {
 		fmt.Printf("\n=== n = %d ===\n", n)
 		
 		// Get all solutions
-		solutions := leetcode.SolveNQueens(n)
+		solutions := arrays.SolveNQueens(n)
 		fmt.Printf("Number of solutions: %d\n", len(solutions))
 		
 		// Show first solution if it exists
@@ -27,11 +27,11 @@ func main() {
 		}
 		
 		// Compare with optimized version
-		optimizedSolutions := leetcode.SolveNQueensOptimized(n)
+		optimizedSolutions := arrays.SolveNQueensOptimized(n)
 		fmt.Printf("Optimized version found: %d solutions\n", len(optimizedSolutions))
 		
 		// Show count
-		count := leetcode.SolveNQueensCount(n)
+		count := arrays.SolveNQueensCount(n)
 		fmt.Printf("Count-only version: %d solutions\n", count)
 	}
 	
@@ -48,21 +48,21 @@ func main() {
 		// Basic
 		start := time.Now()
 		for i := 0; i < iterations; i++ {
-			_ = leetcode.SolveNQueens(n)
+			_ = arrays.SolveNQueens(n)
 		}
 		basicTime := time.Since(start).Nanoseconds() / int64(iterations)
 		
 		// Optimized
 		start = time.Now()
 		for i := 0; i < iterations; i++ {
-			_ = leetcode.SolveNQueensOptimized(n)
+			_ = arrays.SolveNQueensOptimized(n)
 		}
 		optimizedTime := time.Since(start).Nanoseconds() / int64(iterations)
 		
 		// Count
 		start = time.Now()
 		for i := 0; i < iterations; i++ {
-			_ = leetcode.SolveNQueensCount(n)
+			_ = arrays.SolveNQueensCount(n)
 		}
 		countTime := time.Since(start).Nanoseconds() / int64(iterations)
 		
@@ -71,7 +71,7 @@ func main() {
 	
 	// Show all solutions for n=4
 	fmt.Println("\n=== All Solutions for n=4 ===")
-	solutions := leetcode.SolveNQueens(4)
+	solutions := arrays.SolveNQueens(4)
 	for i, solution := range solutions {
 		fmt.Printf("\nSolution %d:\n", i+1)
 		for _, row := range solution {
