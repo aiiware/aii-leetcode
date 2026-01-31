@@ -4,7 +4,7 @@ A comprehensive collection of LeetCode problem solutions implemented in Go with 
 
 ## Overview
 
-This package contains solutions for **210+ LeetCode problems** organized by algorithmic category with:
+This package contains solutions for **214+ LeetCode problems** organized by algorithmic category with:
 - ✅ Clean, idiomatic Go implementations
 - ✅ Comprehensive test coverage with edge cases
 - ✅ Performance benchmarks
@@ -17,12 +17,12 @@ This package contains solutions for **210+ LeetCode problems** organized by algo
 
 | Metric | Count |
 |--------|-------|
-| **Total Problems** | 210+ |
-| **Implementation Files** | 210+ |
-| **Test Files** | 210+ |
-| **Total Go Files** | 420+ |
+| **Total Problems** | 214+ |
+| **Implementation Files** | 232 |
+| **Test Files** | 191 |
+| **Total Go Files** | 423 |
 | **Documentation Files** | 30+ |
-| **Lines of Code** | ~85,000 |
+| **Lines of Code** | ~86,000 |
 | **Test Cases** | 2,500+ |
 | **Test Pass Rate** | 100% ✅ |
 | **Solution Explanations** | 5 completed (25% of Phase 2 target) |
@@ -31,12 +31,12 @@ This package contains solutions for **210+ LeetCode problems** organized by algo
 
 ```
 leetcode/
-├── arrays/                    # Array problems (58 problems)
+├── arrays/                    # Array problems (59 problems)
 ├── binary-tree/              # Binary tree problems (20 problems)
-├── data_structures/          # Data structure problems (3 problems)
-├── design/                   # Design problems (10 problems)
+├── data_structures/          # Data structure problems (4 problems)
+├── design/                   # Design problems (11 problems)
 ├── dp/                       # Dynamic programming (28 problems)
-├── graphs/                   # Graph problems (10 problems)
+├── graphs/                   # Graph problems (13 problems)
 ├── linked-lists/             # Linked list problems (14 problems)
 ├── math/                     # Math problems (17 problems)
 ├── sorting/                  # Sorting problems (10 problems)
@@ -72,27 +72,27 @@ leetcode/
 
 | Category | Count | Percentage |
 |----------|-------|------------|
-| Arrays | 58 | 27.6% |
-| Strings | 30 | 14.3% |
-| Dynamic Programming | 28 | 13.3% |
-| Math | 17 | 8.1% |
-| Binary Tree | 20 | 9.5% |
-| Linked Lists | 14 | 6.7% |
-| Sorting | 10 | 4.8% |
-| Design | 10 | 4.8% |
-| Graphs | 10 | 4.8% |
-| SQL | 9 | 4.3% |
-| Data Structures | 3 | 1.4% |
-| **Total** | **210** | **100%** |
+| Arrays | 59 | 27.6% |
+| Strings | 30 | 14.0% |
+| Dynamic Programming | 28 | 13.1% |
+| Math | 17 | 7.9% |
+| Binary Tree | 20 | 9.3% |
+| Linked Lists | 14 | 6.5% |
+| Sorting | 10 | 4.7% |
+| Design | 11 | 5.1% |
+| Graphs | 13 | 6.1% |
+| SQL | 9 | 4.2% |
+| Data Structures | 4 | 1.9% |
+| **Total** | **214** | **100%** |
 
 ## 📈 Problem Distribution by Difficulty
 
 | Difficulty | Count | Percentage |
 |------------|-------|------------|
-| Easy | 49 | 23.3% |
-| Medium | 118 | 56.2% |
-| Hard | 42 | 20.0% |
-| **Total** | **210** | **100%** |
+| Easy | 49 | 22.9% |
+| Medium | 118 | 55.1% |
+| Hard | 47 | 22.0% |
+| **Total** | **214** | **100%** |
 
 ## 🔗 Quick Navigation
 
@@ -233,12 +233,16 @@ func main() {
 
 ## Recent Improvements
 
-✅ **Completed**: Added difficulty tags to all 210 solution files  
-✅ **Completed**: Strengthened Graphs category (now 10 problems)  
-✅ **Completed**: Strengthened Design category (now 10 problems)  
-✅ **Completed**: Created Data Structures category (3 problems)  
+✅ **Completed**: Added difficulty tags to all 214 solution files  
+✅ **Completed**: Strengthened Graphs category (now 13 problems, +3 new)  
+✅ **Completed**: Strengthened Design category (now 11 problems, +1 new)  
+✅ **Completed**: Created Data Structures category (4 problems)  
 ✅ **Completed**: Strengthened Sorting category (now 10 problems)  
 ✅ **In Progress**: Creating solution explanations for complex problems (5/20 completed)  
+
+### New Solutions Added (January 31, 2026):
+- **Graphs**: 0785 (Is Graph Bipartite), 0417 (Pacific Atlantic Water Flow), 0547 (Number of Provinces)
+- **Design**: 0380 (Insert Delete GetRandom O(1))
 
 ## Project Planning
 
