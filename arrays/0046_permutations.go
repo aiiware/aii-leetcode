@@ -4,6 +4,13 @@
 
 package arrays
 
+
+/*
+Difficulty: Medium
+Tags: [Add relevant tags]
+Companies: [Add company names]
+*/
+
 // Permute generates all permutations of distinct integers.
 // Time Complexity: O(n * n!) where n is length of nums
 // Space Complexity: O(n!) for storing results

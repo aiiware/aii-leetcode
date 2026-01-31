@@ -1,5 +1,12 @@
 package linkedlists
 
+
+/*
+Difficulty: Medium
+Tags: [Add relevant tags]
+Companies: [Add company names]
+*/
+
 /*
 # 0138 - Copy List with Random Pointer
 ## Problem Description

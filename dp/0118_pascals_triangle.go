@@ -1,5 +1,12 @@
 package dp
 
+
+/*
+Difficulty: Easy
+Tags: [Add relevant tags]
+Companies: [Add company names]
+*/
+
 import "fmt"
 
 // Problem 118: Pascal's Triangle

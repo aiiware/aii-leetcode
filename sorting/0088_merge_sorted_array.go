@@ -1,5 +1,12 @@
 package sorting
 
+
+/*
+Difficulty: Easy
+Tags: [Add relevant tags]
+Companies: [Add company names]
+*/
+
 // Problem 0088: Merge Sorted Array
 //
 // You are given two integer arrays nums1 and nums2, sorted in non-decreasing order, 

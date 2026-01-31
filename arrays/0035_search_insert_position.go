@@ -4,6 +4,13 @@
 
 package arrays
 
+
+/*
+Difficulty: Easy
+Tags: [Add relevant tags]
+Companies: [Add company names]
+*/
+
 // SearchInsert finds the index where target should be inserted in sorted array.
 // Time Complexity: O(log n) binary search
 // Space Complexity: O(1)

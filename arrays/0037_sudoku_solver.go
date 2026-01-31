@@ -4,6 +4,13 @@
 
 package arrays
 
+
+/*
+Difficulty: Medium
+Tags: [Add relevant tags]
+Companies: [Add company names]
+*/
+
 // SolveSudoku solves a Sudoku puzzle by filling the empty cells.
 // Time Complexity: O(9^(n*n)) in worst case, but much better with pruning
 // Space Complexity: O(n*n) for recursion stack

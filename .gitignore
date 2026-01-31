@@ -48,6 +48,8 @@ desktop.ini
 *.tmp
 *.log
 logs/
+cmd/demo/demo
+cmd/quadtree_demo/quadtree_demo
 
 # Leetcode specific
 solution
@@ -64,13 +66,9 @@ output/
 dist/
 
 # Debugging
-
 debug/
-
 .dlv/
-
 debug*
-
 
 # Aii Agent local permissions (do not commit)
 .aii/permissions.json
@@ -84,3 +82,96 @@ tutorials/
 FINAL_PROJECT_SUMMARY.md
 cmd/brute_force/
 cmd/test_*
+
+# Python cache and virtual environments
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+cover/
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pyre type checker
+.pyre/
+
+# pytype static type analyzer
+.pytype/
+
+# Cython debug symbols
+cython_debug/
+
+# Temporary directories
+temp_debug/
+
+# JetBrains IDEs
+.idea/
+*.iws
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows thumbnail cache files
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+
+# Windows shortcuts
+*.lnk
+
+# End of .gitignore

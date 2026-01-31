@@ -2,30 +2,37 @@ package strings
 
 import "leetcode/utils"
 
-// Problem 0103: Binary Tree Zigzag Level Order Traversal
-//
-// Given the root of a binary tree, return the zigzag level order traversal of its nodes' values.
-// (i.e., from left to right, then right to left for the next level and alternate between).
-//
-// Example 1:
-// Input: root = [3,9,20,null,null,15,7]
-// Output: [[3],[20,9],[15,7]]
-// Explanation:
-// Level 0: [3] (left to right)
-// Level 1: [20,9] (right to left)
-// Level 2: [15,7] (left to right)
-//
-// Example 2:
-// Input: root = [1]
-// Output: [[1]]
-//
-// Example 3:
-// Input: root = []
-// Output: []
-//
-// Constraints:
-// - The number of nodes in the tree is in the range [0, 2000].
-// - -1000 <= Node.val <= 1000
+/*
+103. Binary Tree Zigzag Level Order Traversal
+https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/
+
+Given the root of a binary tree, return the zigzag level order traversal of its nodes' values.
+(i.e., from left to right, then right to left for the next level and alternate between).
+
+Example 1:
+Input: root = [3,9,20,null,null,15,7]
+Output: [[3],[20,9],[15,7]]
+Explanation:
+Level 0: [3] (left to right)
+Level 1: [20,9] (right to left)
+Level 2: [15,7] (left to right)
+
+Example 2:
+Input: root = [1]
+Output: [[1]]
+
+Example 3:
+Input: root = []
+Output: []
+
+Constraints:
+- The number of nodes in the tree is in the range [0, 2000].
+- -1000 <= Node.val <= 1000
+
+Difficulty: Medium
+Tags: Tree, Breadth-First Search, Binary Tree
+Companies: Amazon, Microsoft, Google, Facebook, Bloomberg, Apple, Uber, Oracle
+*/
 
 // zigzagLevelOrderBFS is the standard BFS solution using a queue with direction flag.
 // This approach performs level order traversal and reverses the order of nodes

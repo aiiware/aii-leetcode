@@ -1,5 +1,12 @@
 package dp
 
+
+/*
+Difficulty: Medium
+Tags: [Add relevant tags]
+Companies: [Add company names]
+*/
+
 import "leetcode/utils"
 
 // Problem 0112: Path Sum

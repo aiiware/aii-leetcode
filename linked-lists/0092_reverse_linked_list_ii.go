@@ -1,5 +1,12 @@
 package linkedlists
 
+
+/*
+Difficulty: Medium
+Tags: [Add relevant tags]
+Companies: [Add company names]
+*/
+
 import "leetcode/utils"
 
 // Problem 0092: Reverse Linked List II

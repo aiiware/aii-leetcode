@@ -4,6 +4,13 @@
 
 package dp
 
+
+/*
+Difficulty: Hard
+Tags: [Add relevant tags]
+Companies: [Add company names]
+*/
+
 // Trap calculates how much water can be trapped after raining.
 // Time Complexity: O(n)
 // Space Complexity: O(1) (two pointers) or O(n) (DP/stack)

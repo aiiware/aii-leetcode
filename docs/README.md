@@ -16,7 +16,7 @@ Project status and progress reports.
 - `PROJECT_COMPLETION_REPORT.md` - Completion report
 - `REORGANIZATION_STATUS.md` - Reorganization status
 - `REORGANIZATION_SUMMARY.md` - Reorganization summary
-- `CLEANUP_SUMMARY.md` - Folder structure cleanup summary
+- `CLEANUP_SUMMARY.md` - Cleanup summary
 
 ### [Indexes](./indexes/)
 Problem and solution indexes.
@@ -36,10 +36,6 @@ Implementation details and summaries.
 - `IMPLEMENTATION_SUMMARY.md` - Implementation summary
 - `FINAL_PROJECT_SUMMARY.md` - Final project summary
 
-### [Backlog](./backlog/)
-Project planning and backlog.
-- `BACKLOG.md` - Project backlog and TODO items
-
 ### [Plans](./plans/)
 Project plans and roadmaps.
 - Various planning documents
@@ -54,7 +50,6 @@ docs/
 ├── indexes/              # Problem indexes
 ├── dp/                   # DP documentation
 ├── implementation/       # Implementation docs
-├── backlog/             # Backlog and planning
 └── plans/               # Project plans
 ```
 
@@ -64,7 +59,7 @@ docs/
 - [Quick Start](./project/QUICK_START.md)
 - [Problem Index](./indexes/INDEX.md)
 - [Project Status](./status/PROJECT_STATUS.md)
-- [Backlog](./backlog/BACKLOG.md)
+- [Backlog](../BACKLOG.md) - *Now in root directory*
 - [Cleanup Summary](./status/CLEANUP_SUMMARY.md)
 
 ---

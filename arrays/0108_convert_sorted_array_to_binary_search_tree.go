@@ -1,5 +1,12 @@
 package arrays
 
+
+/*
+Difficulty: Medium
+Tags: [Add relevant tags]
+Companies: [Add company names]
+*/
+
 import "leetcode/utils"
 
 // Problem 0108: Convert Sorted Array to Binary Search Tree

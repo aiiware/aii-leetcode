@@ -1,5 +1,12 @@
 package dp
 
+
+/*
+Difficulty: Medium
+Tags: [Add relevant tags]
+Companies: [Add company names]
+*/
+
 // Problem 0096: Unique Binary Search Trees
 //
 // Given an integer n, return the number of structurally unique BST's 

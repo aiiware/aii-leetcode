@@ -1,5 +1,12 @@
 package trees
 
+
+/*
+Difficulty: Medium
+Tags: [Add relevant tags]
+Companies: [Add company names]
+*/
+
 // Node117 definition for problem 117 (Populating Next Right Pointers in Each Node II)
 type Node117 struct {
 	Val   int

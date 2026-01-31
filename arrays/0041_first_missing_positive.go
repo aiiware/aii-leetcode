@@ -4,6 +4,13 @@
 
 package arrays
 
+
+/*
+Difficulty: Hard
+Tags: [Add relevant tags]
+Companies: [Add company names]
+*/
+
 // FirstMissingPositive finds the smallest missing positive integer.
 // Time Complexity: O(n)
 // Space Complexity: O(1)

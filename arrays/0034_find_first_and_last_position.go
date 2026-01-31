@@ -4,6 +4,13 @@
 
 package arrays
 
+
+/*
+Difficulty: Medium
+Tags: [Add relevant tags]
+Companies: [Add company names]
+*/
+
 // SearchRange finds the starting and ending position of a given target value.
 // Time Complexity: O(log n) binary search
 // Space Complexity: O(1)

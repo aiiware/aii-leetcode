@@ -4,6 +4,13 @@
 
 package arrays
 
+
+/*
+Difficulty: Medium
+Tags: [Add relevant tags]
+Companies: [Add company names]
+*/
+
 // NextPermutation rearranges numbers into the lexicographically next greater permutation.
 // Time Complexity: O(n) where n is length of nums
 // Space Complexity: O(1) in-place modification

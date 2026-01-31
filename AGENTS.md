@@ -3,7 +3,7 @@
 <!-- AGENTS.md - Universal AI Agent Instructions -->
 
 ## Project Overview
-This is a LeetCode solutions repository written primarily in Go, with a small number of Python files. The project organizes solutions by algorithmic category (e.g., arrays, graphs, dynamic programming) and includes command-line entrypoints, utilities, and documentation.
+This is a LeetCode solutions repository written in Go. The project organizes coding challenge solutions by algorithm and data structure categories (e.g., arrays, graphs, dynamic programming). It includes command-line entrypoints, utilities, documentation, and build scripts.
 
 ## Directory Structure
 ```
@@ -16,19 +16,19 @@ data/
 data_structures/
 design/
 dp/
+explanations/
 graphs/
 indexes/
 linked-lists/
 math/
 sorting/
-sql/
 ```
 
 ## File Patterns
 *   **Naming Convention:** Source files primarily use `snake_case`.
-*   **Test Files:** Follow the Go convention of `*_test.go` (e.g., `handler_test.go`).
-*   **Organization:** Solutions are grouped into directories by problem category (e.g., `arrays/`, `dp/`, `graphs/`).
-*   **Extensions:** `.go` (392 files), `.py` (13 files).
+*   **Test Files:** Follow the Go pattern `*_test.go` (e.g., `handler_test.go`).
+*   **Organization:** Solutions are grouped into thematic directories (e.g., `arrays/`, `graphs/`, `dp/`).
+*   **Extensions:** The codebase is predominantly Go (`.go`) with a small number of Python (`.py`) files.
 
 ## Core Commands
 *   **Build:** `go build ./...`
@@ -38,51 +38,51 @@ sql/
 *   **Convention:** Conventional Commits.
 *   **Default Branch:** `main`.
 *   **Common Commit Types & Scopes:**
-    *   `feat`: Used for new solutions or features (scopes: `organization`, `leetcode`, `skills`).
-    *   `refactor`: Used for code restructuring (scopes: `test`, `leetcode`, `tests`).
-    *   `docs`: Used for documentation updates (scopes: `plan`, `agents`, `readme`).
-    *   `fix`: Used for correcting bugs or dependencies (scopes: `reorganization`, `algorithm`).
-    *   `test`: Used for adding or modifying tests (scopes: `binary-tree`, `leetcode`).
-    *   `chore`: Used for maintenance tasks (scope: `gitignore`).
+    *   `feat`: organization, leetcode, skills, aii, demo
+    *   `refactor`: organization, test, leetcode, tests, graph
+    *   `docs`: plan, agents, readme
+    *   `fix`: reorganization, bit-manipulation, algorithm, binary
+    *   `test`: binary-tree, leetcode
+    *   `chore`: gitignore
 *   **Examples:**
-    *   `feat(organization): update package declarations and imports`
-    *   `refactor(test): rename test functions for clarity and update imports`
+    *   `refactor(organization): Refactor folder structure for better organization`
     *   `fix(reorganization): Fix cross-package dependencies and test failures after reorganization`
+    *   `feat(organization): update package declarations and imports`
     *   `docs(plan): add comprehensive design for advanced graph algorithms library`
+    *   `test(binary-tree): simplify test case tree representations`
 
 ## Coding Standards
-*   **Language:** Follow standard Go conventions (`gofmt` style).
-*   **File Naming:** Use `snake_case.go` for source files.
-*   **Testing:** All Go tests must reside in `*_test.go` files adjacent to the source code they test.
-*   **Imports:** Standard library imports first, followed by third-party and local project imports.
+*   **Language:** Go.
+*   **Linting/Formatting:** Use `go fmt` and follow standard Go style. The `go test ./...` command should pass.
+*   **Imports:** Organize imports according to Go conventions (standard library, external, internal).
+*   **File Naming:** Use `snake_case.go` for source files and `snake_case_test.go` for test files.
 
 ## Safety Rules
-*   **Never Modify Without Approval:**
-    *   `go.mod` and `go.sum` files.
-    *   `.gitignore` file.
-    *   `LICENSE` file.
-    *   CI/CD configuration files (if present in `scripts/` or root).
-*   **Requires Confirmation:**
-    *   Modifying the root `main.go` or entrypoints in `cmd/`.
-    *   Changing the project's core directory structure (e.g., renaming category folders like `dp/` or `graphs/`).
-    *   Altering build or test commands in `scripts/`.
-    *   Deleting or significantly refactoring utility functions in `utils/`.
+*   **Do NOT modify:**
+    *   `go.mod` or `go.sum` files without explicit approval.
+    *   The root `LICENSE` file.
+    *   The existing `AGENTS.md` instruction file.
+    *   CI/CD configuration files (e.g., in `.github/` or `scripts/`).
+*   **Require confirmation for:**
+    *   Changing the project's directory structure or moving large groups of files.
+    *   Modifying dependencies or the Go module version.
+    *   Altering core utility functions in `utils/` or entrypoints in `cmd/`.
 
 ## Permissions
-*   **Allowed Without Prompt:**
-    *   Creating new solution files within the appropriate category directory (e.g., `arrays/`, `dp/`).
-    *   Updating existing solution code and its corresponding `*_test.go` file.
-    *   Adding or updating documentation in the `docs/` directory.
-    *   Making minor refactors that don't change public APIs or dependencies.
-*   **Requires Confirmation:**
-    *   Operations listed in the "Safety Rules" section above.
-    *   Adding new third-party dependencies.
-    *   Changing the project's primary build or test workflow.
-    *   Modifying files in the `cmd/` directory.
-*   **Never Allowed:**
-    *   Modifying the `LICENSE` file.
-    *   Deleting the entire repository history or performing destructive git operations (e.g., `force push`).
-    *   Disabling or removing test suites.
+*   **Allowed without prompt:**
+    *   Creating new solution files within the appropriate category directories (e.g., `graphs/`, `dp/`).
+    *   Writing and updating Go test files (`*_test.go`).
+    *   Updating documentation in `docs/`.
+    *   Running `go build ./...` and `go test ./...`.
+*   **Requires confirmation:**
+    *   Modifying the `scripts/` directory.
+    *   Refactoring across multiple packages or directories.
+    *   Changing the `utils/` package or `cmd/` entrypoints.
+    *   Adding or removing top-level directories.
+*   **Never allowed:**
+    *   Deleting or fundamentally altering the `AGENTS.md` file.
+    *   Modifying `go.mod`/`go.sum` or the project's license.
+    *   Changing the established Git commit convention.
 ---
 
-*Generated by Aii CLI /init command with LLM enhancement (~1040 tokens, 85 lines)*
+*Generated by Aii CLI /init command with LLM enhancement (~977 tokens, 85 lines)*

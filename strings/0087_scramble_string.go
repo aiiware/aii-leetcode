@@ -1,43 +1,50 @@
 package strings
 
-// Problem 0087: Scramble String
-//
-// We can scramble a string s to get a string t using the following algorithm:
-// 1. If the length of the string is 1, stop.
-// 2. If the length of the string is > 1, do the following:
-//    - Split the string into two non-empty substrings at a random index, i.e., 
-//      if the string is s, divide it into x and y where s = x + y.
-//    - Randomly decide to swap the two substrings or to keep them in the same order. 
-//      i.e., after this step, s may become s = x + y or s = y + x.
-//    - Apply step 1 recursively on each of the two substrings x and y.
-//
-// Given two strings s1 and s2 of the same length, return true if s2 is a scrambled 
-// string of s1, otherwise return false.
-//
-// Example 1:
-// Input: s1 = "great", s2 = "rgeat"
-// Output: true
-// Explanation: One possible scenario applied on s1 is:
-// "great" --> "gr/eat" // divide at random index.
-// "gr/eat" --> "gr/eat" // random decision is not to swap the two substrings.
-// "gr/eat" --> "g/r" + "e/at" // apply recursively on both substrings. divide at random index each.
-// "g/r" --> "r/g" // random decision was to swap the first substring and to keep the second substring in the same order.
-// "e/at" --> "e/at" // random decision is not to swap the two substrings.
-// "r/g" + "e/at" --> "rgeat" // after merging: "rgeat".
-// "rgeat" is scrambled string of "great".
-//
-// Example 2:
-// Input: s1 = "abcde", s2 = "caebd"
-// Output: false
-//
-// Example 3:
-// Input: s1 = "a", s2 = "a"
-// Output: true
-//
-// Constraints:
-// - s1.length == s2.length
-// - 1 <= s1.length <= 30
-// - s1 and s2 consist of lowercase English letters.
+/*
+87. Scramble String
+https://leetcode.com/problems/scramble-string/
+
+We can scramble a string s to get a string t using the following algorithm:
+1. If the length of the string is 1, stop.
+2. If the length of the string is > 1, do the following:
+   - Split the string into two non-empty substrings at a random index, i.e., 
+     if the string is s, divide it into x and y where s = x + y.
+   - Randomly decide to swap the two substrings or to keep them in the same order. 
+     i.e., after this step, s may become s = x + y or s = y + x.
+   - Apply step 1 recursively on each of the two substrings x and y.
+
+Given two strings s1 and s2 of the same length, return true if s2 is a scrambled 
+string of s1, otherwise return false.
+
+Example 1:
+Input: s1 = "great", s2 = "rgeat"
+Output: true
+Explanation: One possible scenario applied on s1 is:
+"great" --> "gr/eat" // divide at random index.
+"gr/eat" --> "gr/eat" // random decision is not to swap the two substrings.
+"gr/eat" --> "g/r" + "e/at" // apply recursively on both substrings. divide at random index each.
+"g/r" --> "r/g" // random decision was to swap the first substring and to keep the second substring in the same order.
+"e/at" --> "e/at" // random decision is not to swap the two substrings.
+"r/g" + "e/at" --> "rgeat" // after merging: "rgeat".
+"rgeat" is scrambled string of "great".
+
+Example 2:
+Input: s1 = "abcde", s2 = "caebd"
+Output: false
+
+Example 3:
+Input: s1 = "a", s2 = "a"
+Output: true
+
+Constraints:
+- s1.length == s2.length
+- 1 <= s1.length <= 30
+- s1 and s2 consist of lowercase English letters.
+
+Difficulty: Hard
+Tags: String, Dynamic Programming
+Companies: Google, Amazon, Microsoft
+*/
 
 // isScramble is the main solution function using memoization.
 // Time complexity: O(n^4), Space complexity: O(n^3)

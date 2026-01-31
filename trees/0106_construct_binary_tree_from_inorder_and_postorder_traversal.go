@@ -1,5 +1,12 @@
 package trees
 
+
+/*
+Difficulty: Medium
+Tags: [Add relevant tags]
+Companies: [Add company names]
+*/
+
 import "leetcode/utils"
 
 // Problem 0106: Construct Binary Tree from Inorder and Postorder Traversal

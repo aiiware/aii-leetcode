@@ -1,5 +1,12 @@
 package dp
 
+
+/*
+Difficulty: Easy
+Tags: [Add relevant tags]
+Companies: [Add company names]
+*/
+
 // Problem 119: Pascal's Triangle II
 // Given an integer rowIndex, return the rowIndex-th (0-indexed) row of Pascal's triangle.
 // Could you optimize your algorithm to use only O(rowIndex) extra space?

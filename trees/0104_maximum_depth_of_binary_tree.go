@@ -1,5 +1,12 @@
 package trees
 
+
+/*
+Difficulty: Easy
+Tags: [Add relevant tags]
+Companies: [Add company names]
+*/
+
 import "leetcode/utils"
 
 // Problem 0104: Maximum Depth of Binary Tree

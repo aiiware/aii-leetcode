@@ -1,5 +1,12 @@
 package arrays
 
+
+/*
+Difficulty: Hard
+Tags: [Add relevant tags]
+Companies: [Add company names]
+*/
+
 /*
 # 0134 - Gas Station
 ## Problem Description

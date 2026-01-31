@@ -1,5 +1,12 @@
 package arrays
 
+
+/*
+Difficulty: Hard
+Tags: [Add relevant tags]
+Companies: [Add company names]
+*/
+
 // 154. Find Minimum in Rotated Sorted Array II
 // https://leetcode.com/problems/find-minimum-in-rotated-sorted-array-ii/
 

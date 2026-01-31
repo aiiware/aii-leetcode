@@ -4,6 +4,13 @@
 
 package arrays
 
+
+/*
+Difficulty: Easy
+Tags: [Add relevant tags]
+Companies: [Add company names]
+*/
+
 // SolveNQueens returns all distinct solutions to the n-queens puzzle.
 // Each solution contains a distinct board configuration of the n-queens' placement,
 // where 'Q' and '.' indicate a queen and an empty space respectively.

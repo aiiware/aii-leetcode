@@ -1,10 +1,14 @@
-// 0045 - Jump Game II
-// https://leetcode.com/problems/jump-game-ii/
-// Medium - Array, Dynamic Programming, Greedy
-
 package arrays
 
-// Jump calculates the minimum number of jumps to reach the last index.
+// Jump solves LeetCode problem 0045: Jump Game II
+// Difficulty: Medium
+// Tags: Array, Dynamic Programming, Greedy
+//
+// Given an array of non-negative integers nums, you are initially positioned at the first index of the array.
+// Each element in the array represents your maximum jump length at that position.
+// Return the minimum number of jumps to reach the last index.
+// You can assume that you can always reach the last index.
+//
 // Time Complexity: O(n)
 // Space Complexity: O(1)
 func Jump(nums []int) int {

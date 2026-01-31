@@ -1,10 +1,14 @@
-// 0036 - Valid Sudoku
-// https://leetcode.com/problems/valid-sudoku/
-// Medium - Array, Hash Table, Matrix
-
 package arrays
 
-// IsValidSudoku checks if a 9x9 Sudoku board is valid.
+// IsValidSudoku solves LeetCode problem 0036: Valid Sudoku
+// Difficulty: Medium
+// Tags: Array, Hash Table, Matrix
+//
+// Determine if a 9x9 Sudoku board is valid. Only the filled cells need to be validated according to the following rules:
+// 1. Each row must contain the digits 1-9 without repetition.
+// 2. Each column must contain the digits 1-9 without repetition.
+// 3. Each of the nine 3x3 sub-boxes of the grid must contain the digits 1-9 without repetition.
+//
 // Time Complexity: O(1) since board is fixed 9x9, or O(n²) for n x n board
 // Space Complexity: O(1) or O(n) for tracking seen numbers
 func IsValidSudoku(board [][]byte) bool {

@@ -1,5 +1,12 @@
 package linkedlists
 
+
+/*
+Difficulty: Easy
+Tags: [Add relevant tags]
+Companies: [Add company names]
+*/
+
 import "leetcode/utils"
 
 // 0160. Intersection of Two Linked Lists

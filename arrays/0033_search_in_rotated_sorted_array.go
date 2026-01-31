@@ -4,6 +4,13 @@
 
 package arrays
 
+
+/*
+Difficulty: Medium
+Tags: [Add relevant tags]
+Companies: [Add company names]
+*/
+
 // SearchInRotatedSortedArray searches for target in rotated sorted array.
 // Time Complexity: O(log n) binary search
 // Space Complexity: O(1)

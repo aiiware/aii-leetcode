@@ -1,5 +1,12 @@
 package arrays
 
+
+/*
+Difficulty: Medium
+Tags: [Add relevant tags]
+Companies: [Add company names]
+*/
+
 import (
 	"fmt"
 	"sort"

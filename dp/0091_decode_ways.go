@@ -1,5 +1,12 @@
 package dp
 
+
+/*
+Difficulty: Medium
+Tags: [Add relevant tags]
+Companies: [Add company names]
+*/
+
 // Problem 0091: Decode Ways
 //
 // A message containing letters from A-Z can be encoded into numbers using the following mapping:

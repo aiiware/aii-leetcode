@@ -1,5 +1,12 @@
 package dp
 
+
+/*
+Difficulty: Medium
+Tags: [Add relevant tags]
+Companies: [Add company names]
+*/
+
 /*
 # 0139 - Word Break
 ## Problem Description

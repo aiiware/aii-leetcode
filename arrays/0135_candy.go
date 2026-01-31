@@ -1,5 +1,12 @@
 package arrays
 
+
+/*
+Difficulty: Hard
+Tags: [Add relevant tags]
+Companies: [Add company names]
+*/
+
 /*
 # 0135 - Candy
 ## Problem Description

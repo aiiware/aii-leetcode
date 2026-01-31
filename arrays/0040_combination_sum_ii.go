@@ -4,6 +4,13 @@
 
 package arrays
 
+
+/*
+Difficulty: Medium
+Tags: [Add relevant tags]
+Companies: [Add company names]
+*/
+
 import "sort"
 
 // CombinationSum2 finds all unique combinations where candidate numbers sum to target.

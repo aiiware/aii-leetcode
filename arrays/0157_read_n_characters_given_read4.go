@@ -2,8 +2,17 @@ package arrays
 
 import "leetcode/utils"
 
-// 157. Read N Characters Given Read4
-// https://leetcode.com/problems/read-n-characters-given-read4/
+// read solves LeetCode problem 0157: Read N Characters Given Read4
+// Difficulty: Easy
+// Tags: Array, String, Simulation
+//
+// Given a file and assume that you can only read the file using a given method read4,
+// implement a method to read n characters.
+//
+// The API read4 reads 4 consecutive characters from the file, then writes those characters into the buffer array buf4.
+// The return value is the number of actual characters read.
+//
+// Time Complexity: O(n), Space Complexity: O(1)
 
 // read4 is a mock API that reads 4 characters from a file into buf4
 // This is provided by the system, we just need to implement the read function

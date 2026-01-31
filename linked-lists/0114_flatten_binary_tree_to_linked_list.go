@@ -1,5 +1,12 @@
 package linkedlists
 
+
+/*
+Difficulty: Hard
+Tags: [Add relevant tags]
+Companies: [Add company names]
+*/
+
 import "leetcode/utils"
 
 // Problem 0114: Flatten Binary Tree to Linked List

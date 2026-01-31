@@ -1,5 +1,12 @@
 package dp
 
+
+/*
+Difficulty: Hard
+Tags: [Add relevant tags]
+Companies: [Add company names]
+*/
+
 /*
 # 0132 - Palindrome Partitioning II
 ## Problem Description

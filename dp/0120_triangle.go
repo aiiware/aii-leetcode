@@ -1,5 +1,12 @@
 package dp
 
+
+/*
+Difficulty: Medium
+Tags: [Add relevant tags]
+Companies: [Add company names]
+*/
+
 // Problem 120: Triangle
 // Given a triangle array, return the minimum path sum from top to bottom.
 // For each step, you may move to an adjacent number on the row below.

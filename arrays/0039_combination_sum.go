@@ -4,6 +4,13 @@
 
 package arrays
 
+
+/*
+Difficulty: Medium
+Tags: [Add relevant tags]
+Companies: [Add company names]
+*/
+
 // CombinationSum finds all unique combinations where candidate numbers sum to target.
 // Time Complexity: O(N^(T/M + 1)) where N is candidates length, T is target, M is min candidate
 // Space Complexity: O(T/M) for recursion depth

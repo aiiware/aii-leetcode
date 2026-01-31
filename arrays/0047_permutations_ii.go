@@ -4,6 +4,13 @@
 
 package arrays
 
+
+/*
+Difficulty: Medium
+Tags: [Add relevant tags]
+Companies: [Add company names]
+*/
+
 import "sort"
 
 // PermuteUnique generates all unique permutations of integers that may contain duplicates.

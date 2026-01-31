@@ -4,6 +4,13 @@
 
 package arrays
 
+
+/*
+Difficulty: Hard
+Tags: [Add relevant tags]
+Companies: [Add company names]
+*/
+
 // LongestValidParentheses finds the length of the longest valid parentheses substring.
 // Time Complexity: O(n) where n is length of s
 // Space Complexity: O(n) for stack or DP array

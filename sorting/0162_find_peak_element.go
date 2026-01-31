@@ -1,5 +1,12 @@
 package sorting
 
+
+/*
+Difficulty: Medium
+Tags: [Add relevant tags]
+Companies: [Add company names]
+*/
+
 // 0162. Find Peak Element
 // https://leetcode.com/problems/find-peak-element
 

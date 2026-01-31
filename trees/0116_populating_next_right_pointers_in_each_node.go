@@ -1,5 +1,12 @@
 package trees
 
+
+/*
+Difficulty: Medium
+Tags: [Add relevant tags]
+Companies: [Add company names]
+*/
+
 // Node represents a node in a perfect binary tree with next pointer.
 // This is the definition used in LeetCode problem 116.
 type Node struct {
