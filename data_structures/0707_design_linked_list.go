@@ -44,15 +44,15 @@ Tags: Linked List, Design
 Companies: Amazon, Microsoft, Google, Apple, Bloomberg
 */
 
-// Node represents a node in a singly linked list
-type Node struct {
+// ListNode represents a node in a singly linked list
+type ListNode struct {
     val  int
-    next *Node
+    next *ListNode
 }
 
 // MyLinkedListSingly implements a singly linked list
 type MyLinkedListSingly struct {
-    head *Node
+    head *ListNode
     size int
 }
 
@@ -76,7 +76,7 @@ func (this *MyLinkedListSingly) Get(index int) int {
 }
 
 func (this *MyLinkedListSingly) AddAtHead(val int) {
-    newNode := &Node{
+    newNode := &ListNode{
         val:  val,
         next: this.head,
     }
@@ -85,7 +85,7 @@ func (this *MyLinkedListSingly) AddAtHead(val int) {
 }
 
 func (this *MyLinkedListSingly) AddAtTail(val int) {
-    newNode := &Node{val: val}
+    newNode := &ListNode{val: val}
     
     if this.head == nil {
         this.head = newNode
@@ -120,7 +120,7 @@ func (this *MyLinkedListSingly) AddAtIndex(index int, val int) {
         prev = prev.next
     }
     
-    newNode := &Node{
+    newNode := &ListNode{
         val:  val,
         next: prev.next,
     }
@@ -146,22 +146,22 @@ func (this *MyLinkedListSingly) DeleteAtIndex(index int) {
 }
 
 // Doubly linked list implementation
-type DoublyNode struct {
+type DoublyListNode struct {
     val  int
-    prev *DoublyNode
-    next *DoublyNode
+    prev *DoublyListNode
+    next *DoublyListNode
 }
 
 // MyLinkedListDoubly implements a doubly linked list with sentinel nodes
 type MyLinkedListDoubly struct {
-    head *DoublyNode // sentinel head
-    tail *DoublyNode // sentinel tail
+    head *DoublyListNode // sentinel head
+    tail *DoublyListNode // sentinel tail
     size int
 }
 
 func ConstructorLinkedListDoubly() MyLinkedListDoubly {
-    head := &DoublyNode{val: -1}
-    tail := &DoublyNode{val: -1}
+    head := &DoublyListNode{val: -1}
+    tail := &DoublyListNode{val: -1}
     head.next = tail
     tail.prev = head
     
@@ -178,7 +178,7 @@ func (this *MyLinkedListDoubly) Get(index int) int {
     }
     
     // Choose the closer end to start from
-    var curr *DoublyNode
+    var curr *DoublyListNode
     if index < this.size/2 {
         // Start from head
         curr = this.head.next
@@ -197,7 +197,7 @@ func (this *MyLinkedListDoubly) Get(index int) int {
 }
 
 func (this *MyLinkedListDoubly) AddAtHead(val int) {
-    newNode := &DoublyNode{
+    newNode := &DoublyListNode{
         val:  val,
         prev: this.head,
         next: this.head.next,
@@ -209,7 +209,7 @@ func (this *MyLinkedListDoubly) AddAtHead(val int) {
 }
 
 func (this *MyLinkedListDoubly) AddAtTail(val int) {
-    newNode := &DoublyNode{
+    newNode := &DoublyListNode{
         val:  val,
         prev: this.tail.prev,
         next: this.tail,
@@ -236,7 +236,7 @@ func (this *MyLinkedListDoubly) AddAtIndex(index int, val int) {
     }
     
     // Find the node at the index
-    var curr *DoublyNode
+    var curr *DoublyListNode
     if index < this.size/2 {
         curr = this.head.next
         for i := 0; i < index; i++ {
@@ -249,7 +249,7 @@ func (this *MyLinkedListDoubly) AddAtIndex(index int, val int) {
         }
     }
     
-    newNode := &DoublyNode{
+    newNode := &DoublyListNode{
         val:  val,
         prev: curr.prev,
         next: curr,
@@ -266,7 +266,7 @@ func (this *MyLinkedListDoubly) DeleteAtIndex(index int) {
     }
     
     // Find the node to delete
-    var curr *DoublyNode
+    var curr *DoublyListNode
     if index < this.size/2 {
         curr = this.head.next
         for i := 0; i < index; i++ {

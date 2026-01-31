@@ -60,8 +60,8 @@ type Trie struct {
     root *TrieNode
 }
 
-// Constructor initializes your data structure here
-func Constructor() Trie {
+// ConstructorTrie initializes your data structure here
+func ConstructorTrie() Trie {
     return Trie{
         root: NewTrieNode(),
     }

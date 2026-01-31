@@ -59,8 +59,8 @@ type LRUCache struct {
 	tail     *LRUNode // dummy tail (least recently used)
 }
 
-// Constructor creates a new LRUCache with the given capacity
-func Constructor(capacity int) LRUCache {
+// ConstructorLRUCache creates a new LRUCache with the given capacity
+func ConstructorLRUCache(capacity int) LRUCache {
 	// Create dummy head and tail nodes
 	head := &LRUNode{}
 	tail := &LRUNode{}

@@ -88,7 +88,7 @@ func main() {
 
 	// Problem 0146: LRU Cache
 	fmt.Println("\n--- Problem 0146: LRU Cache ---")
-	lru := design.Constructor(2)
+	lru := design.ConstructorLRUCache(2)
 	lru.Put(1, 1)
 	lru.Put(2, 2)
 	fmt.Printf("Get(1): %d\n", lru.Get(1))

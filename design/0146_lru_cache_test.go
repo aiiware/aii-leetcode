@@ -6,7 +6,7 @@ import (
 
 func TestLRUCache(t *testing.T) {
 	t.Run("Basic operations", func(t *testing.T) {
-		lru := Constructor(2)
+		lru := ConstructorLRUCache(2)
 
 		// Put (1,1)
 		lru.Put(1, 1)
@@ -47,7 +47,7 @@ func TestLRUCache(t *testing.T) {
 	})
 
 	t.Run("Example from LeetCode", func(t *testing.T) {
-		lru := Constructor(2)
+		lru := ConstructorLRUCache(2)
 		
 		operations := []struct {
 			op       string
@@ -79,7 +79,7 @@ func TestLRUCache(t *testing.T) {
 	})
 
 	t.Run("Update existing key", func(t *testing.T) {
-		lru := Constructor(2)
+		lru := ConstructorLRUCache(2)
 		
 		lru.Put(1, 1)
 		lru.Put(2, 2)
@@ -99,7 +99,7 @@ func TestLRUCache(t *testing.T) {
 	})
 
 	t.Run("Capacity 1", func(t *testing.T) {
-		lru := Constructor(1)
+		lru := ConstructorLRUCache(1)
 		
 		lru.Put(1, 1)
 		
@@ -120,7 +120,7 @@ func TestLRUCache(t *testing.T) {
 
 	t.Run("Large capacity", func(t *testing.T) {
 		capacity := 1000
-		lru := Constructor(capacity)
+		lru := ConstructorLRUCache(capacity)
 		
 		// Fill cache
 		for i := 0; i < capacity; i++ {
@@ -151,7 +151,7 @@ func TestLRUCache(t *testing.T) {
 	})
 
 	t.Run("Get updates LRU order", func(t *testing.T) {
-		lru := Constructor(3)
+		lru := ConstructorLRUCache(3)
 		
 		lru.Put(1, 1)
 		lru.Put(2, 2)
@@ -236,7 +236,7 @@ func BenchmarkLRUCache(b *testing.B) {
 	
 	b.Run("Standard implementation", func(b *testing.B) {
 		for i := 0; i < b.N; i++ {
-			lru := Constructor(capacity)
+			lru := ConstructorLRUCache(capacity)
 			
 			// Fill cache
 			for j := 0; j < capacity; j++ {
@@ -290,7 +290,7 @@ func BenchmarkLRUCache(b *testing.B) {
 func TestLRUCacheEdgeCases(t *testing.T) {
 	t.Run("Zero capacity (should handle gracefully)", func(t *testing.T) {
 		// Note: LeetCode constraints say capacity >= 1, but we should handle edge case
-		lru := Constructor(0)
+		lru := ConstructorLRUCache(0)
 		
 		// Put should not panic
 		lru.Put(1, 1)
@@ -302,7 +302,7 @@ func TestLRUCacheEdgeCases(t *testing.T) {
 	})
 
 	t.Run("Negative key or value", func(t *testing.T) {
-		lru := Constructor(2)
+		lru := ConstructorLRUCache(2)
 		
 		// Put negative key and value
 		lru.Put(-1, -10)
@@ -320,7 +320,7 @@ func TestLRUCacheEdgeCases(t *testing.T) {
 	})
 
 	t.Run("Same key multiple times", func(t *testing.T) {
-		lru := Constructor(3)
+		lru := ConstructorLRUCache(3)
 		
 		// Put same key multiple times
 		for i := 0; i < 10; i++ {
@@ -349,7 +349,7 @@ func TestLRUCacheEdgeCases(t *testing.T) {
 	})
 
 	t.Run("Consecutive gets", func(t *testing.T) {
-		lru := Constructor(2)
+		lru := ConstructorLRUCache(2)
 		
 		lru.Put(1, 1)
 		lru.Put(2, 2)

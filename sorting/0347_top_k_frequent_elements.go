@@ -29,7 +29,14 @@ Companies: Amazon, Facebook, Google, Microsoft, Apple, Bloomberg, Uber, Oracle, 
 
 import (
     "container/heap"
+    "math/rand"
 )
+
+// Element represents a number with its frequency
+type Element struct {
+    num   int
+    count int
+}
 
 // topKFrequentHeap uses a min-heap to track top k frequent elements
 func topKFrequentHeap(nums []int, k int) []int {
@@ -40,11 +47,6 @@ func topKFrequentHeap(nums []int, k int) []int {
     }
     
     // Define a min-heap based on frequency
-    type Element struct {
-        num   int
-        count int
-    }
-    
     minHeap := &MinHeapFreq{}
     heap.Init(minHeap)
     

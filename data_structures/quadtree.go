@@ -1,4 +1,4 @@
-package quadtree
+package data_structures
 
 import (
 	"fmt"
