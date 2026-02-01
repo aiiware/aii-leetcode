@@ -3,9 +3,9 @@
 This index organizes all LeetCode solutions by their algorithmic category.
 
 ## 📊 Statistics
-- **Total Problems**: 210
+- **Total Problems**: 214
 - **Categories**: 11
-- **Last Updated**: January 31, 2026
+- **Last Updated**: February 2, 2026
 
 ## 📁 Categories
 
@@ -39,19 +39,19 @@ This index organizes all LeetCode solutions by their algorithmic category.
 - **Medium**: 10 problems
 - **Hard**: 2 problems
 
-### Design (10 problems)
+### Design (15 problems)
 - **Easy**: 4 problems
 - **Medium**: 5 problems
-- **Hard**: 1 problems
+- **Hard**: 6 problems
 
 ### Sorting (10 problems)
 - **Easy**: 3 problems
 - **Medium**: 6 problems
 - **Hard**: 1 problems
 
-### Graphs (10 problems)
+### Graphs (20 problems)
 - **Medium**: 8 problems
-- **Hard**: 2 problems
+- **Hard**: 12 problems
 
 ### Sql (9 problems)
 - **Easy**: 4 problems
