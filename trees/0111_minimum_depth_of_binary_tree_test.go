@@ -3,6 +3,7 @@ package trees
 import (
 	"testing"
     "leetcode/utils"
+    "leetcode/testutils"
 )
 
 func TestMinDepth(t *testing.T) {
@@ -106,17 +107,17 @@ func TestMinDepth_EdgeCases(t *testing.T) {
 	}{
 		{
 			name:     "Large tree (1000 nodes in a chain)",
-			root:     CreateChainTree(1000, 1),
+			root:     testutils.CreateChainTree(1000, 1),
 			expected: 1000,
 		},
 		{
 			name:     "Perfect binary tree height 3 (7 nodes)",
-			root:     CreatePerfectBinaryTree(3, 1),
+			root:     testutils.CreatePerfectBinaryTree(3, 1),
 			expected: 3,
 		},
 		{
 			name:     "Perfect binary tree height 4 (15 nodes)",
-			root:     CreatePerfectBinaryTree(4, 1),
+			root:     testutils.CreatePerfectBinaryTree(4, 1),
 			expected: 4,
 		},
 		{
@@ -139,7 +140,7 @@ func TestMinDepth_EdgeCases(t *testing.T) {
 func TestMinDepth_Performance(t *testing.T) {
 	// Test with a large balanced tree (2^10 - 1 = 1023 nodes)
 	height := 10
-	root := CreatePerfectBinaryTree(height, 1)
+	root := testutils.CreatePerfectBinaryTree(height, 1)
 	
 	// The minimum depth should be the height of the tree
 	expected := height
@@ -148,44 +149,4 @@ func TestMinDepth_Performance(t *testing.T) {
 	if result != expected {
 		t.Errorf("minDepth() = %v, expected %v for perfect binary tree of height %d", result, expected, height)
 	}
-}
-
-// Helper function to create a chain tree (completely skewed)
-func createChainTree(n int, startVal int) *utils.TreeNode {
-	if n <= 0 {
-		return nil
-	}
-	
-	root := &utils.TreeNode{Val: startVal}
-	current := root
-	for i := 1; i < n; i++ {
-		current.Right = &utils.TreeNode{Val: startVal + i}
-		current = current.Right
-	}
-	return root
-}
-
-// Helper function to create a perfect binary tree
-func createPerfectBinaryTree(height int, startVal int) *utils.TreeNode {
-	if height <= 0 {
-		return nil
-	}
-	
-	var build func(depth int, val *int) *utils.TreeNode
-	build = func(depth int, val *int) *utils.TreeNode {
-		if depth > height {
-			return nil
-		}
-		
-		node := &utils.TreeNode{Val: *val}
-		*val++
-		
-		node.Left = build(depth+1, val)
-		node.Right = build(depth+1, val)
-		
-		return node
-	}
-	
-	val := startVal
-	return build(1, &val)
 }

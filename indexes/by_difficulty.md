@@ -3,24 +3,24 @@
 This index organizes all LeetCode solutions by their difficulty level.
 
 ## 📊 Statistics
-- **Total Problems**: 210
-- **Easy Problems**: 49
-- **Medium Problems**: 118
-- **Hard Problems**: 42
+- **Total Problems**: 257
+- **Easy Problems**: 59
+- **Medium Problems**: 139
+- **Hard Problems**: 53
 - **Last Updated**: January 31, 2026
 
 ## 📈 Difficulty Distribution
 
 | Difficulty | Count | Percentage |
 |------------|-------|------------|
-| Easy | 49 | 23.3% |
-| Medium | 118 | 56.2% |
-| Hard | 42 | 20.0% |
-| **Total** | **210** | **100%** |
+| Easy | 59 | 23.0% |
+| Medium | 139 | 54.1% |
+| Hard | 53 | 20.6% |
+| **Total** | **257** | **100%** |
 
 ## 📁 Problems by Difficulty
 
-### Easy (49 problems)
+### Easy (59 problems)
 - 0001_two_sum.go (Arrays)
 - 0009_palindrome_number.go (Strings)
 - 0013_roman_to_integer.go (Strings)
@@ -66,12 +66,22 @@ This index organizes all LeetCode solutions by their difficulty level.
 - 0182_duplicate_emails.go (Sql)
 - 0183_customers_who_never_order.go (Sql)
 - 0190_reverse_bits.go (Arrays)
+- 0205_isomorphic_strings.go (Strings)
+- 0206_reverse_linked_list.go (Linked Lists)
+- 0217_contains_duplicate.go (Arrays)
 - 0225_implement_stack_using_queues.go (Design)
+- 0226_invert_binary_tree.go (Binary Tree)
 - 0232_implement_queue_using_stacks.go (Design)
+- 0234_palindrome_linked_list.go (Linked Lists)
+- 0242_valid_anagram.go (Strings)
+- 0252_meeting_rooms.go (Arrays)
+- 0543_diameter_of_binary_tree.go (Binary Tree)
+- 0572_subtree_of_another_tree.go (Binary Tree)
+- 0704_binary_search.go (Arrays)
 - 0705_design_hashset.go (Data Structures)
 - 0706_design_hashmap.go (Data Structures)
 
-### Medium (118 problems)
+### Medium (139 problems)
 - 0002_add_two_numbers.go (Linked Lists)
 - 0003_longest_substring.go (Strings)
 - 0005_longest_palindromic_substring.go (Strings)
@@ -178,20 +188,41 @@ This index organizes all LeetCode solutions by their difficulty level.
 - 0187_repeated_dna_sequences.go (Strings)
 - 0189_rotate_array.go (Arrays)
 - 0200_number_of_islands.go (Graphs)
+- 0204_count_primes.go (Math)
 - 0207_course_schedule.go (Graphs)
 - 0208_implement_trie_prefix_tree.go (Design)
 - 0210_course_schedule_ii.go (Graphs)
 - 0211_design_add_and_search_words_data_structure.go (Design)
 - 0215_kth_largest_element_in_an_array.go (Sorting)
+- 0230_kth_smallest_element_in_bst.go (Binary Tree)
+- 0235_lowest_common_ancestor_of_bst.go (Binary Tree)
+- 0236_lowest_common_ancestor.go (Binary Tree)
+- 0238_product_of_array_except_self.go (Arrays)
+- 0240_search_a_2d_matrix_ii.go (Arrays)
+- 0253_meeting_rooms_ii.go (Arrays)
 - 0261_graph_valid_tree.go (Graphs)
+- 0268_missing_number.go (Math)
 - 0284_peeking_iterator.go (Design)
+- 0310_minimum_height_trees.go (Graphs)
 - 0323_number_of_connected_components_in_an_undirected_graph.go (Graphs)
 - 0347_top_k_frequent_elements.go (Sorting)
+- 0381_insert_delete_getrandom_o1_duplicates_allowed.go (Design)
 - 0399_evaluate_division.go (Graphs)
+- 0417_pacific_atlantic_water_flow.go (Graphs)
+- 0432_all_o1_data_structure.go (Design)
+- 0547_number_of_provinces.go (Graphs)
+- 0659_encode_and_decode_strings.go (Strings)
+- 0684_redundant_connection.go (Graphs)
 - 0695_max_area_of_island.go (Graphs)
+- 0703_kth_largest_element_in_an_array.go (Arrays)
 - 0707_design_linked_list.go (Data Structures)
+- 0716_max_stack.go (Design)
+- 0733_flood_fill.go (Graphs)
+- 0739_daily_temperatures.go (Arrays)
+- 0743_network_delay_time.go (Graphs)
+- 0994_rotting_oranges.go (Graphs)
 
-### Hard (42 problems)
+### Hard (53 problems)
 - 0004_median_sorted_arrays.go (Arrays)
 - 0010_regular_expression_matching.go (Strings)
 - 0023_merge_k_sorted_lists.go (Sorting)
@@ -233,7 +264,18 @@ This index organizes all LeetCode solutions by their difficulty level.
 - 0174_dungeon_game.go (Arrays)
 - 0185_department_top_three_salaries.go (Sql)
 - 0188_best_time_to_buy_and_sell_stock_iv.go (DP)
+- 0201_bitwise_and_of_numbers_range.go (Math)
+- 0202_happy_number.go (Math)
+- 0209_minimum_size_subarray_sum.go (Arrays)
+- 0219_contains_duplicate_ii.go (Arrays)
+- 0239_sliding_window_maximum.go (Arrays)
+- 0269_alien_dictionary.go (Graphs)
 - 0295_find_median_from_data_stream.go (Design)
+- 0297_serialize_and_deserialize_binary_tree.go (Binary Tree)
+- 0332_reconstruct_itinerary.go (Graphs)
+- 0380_insert_delete_getrandom_o1.go (Design)
+- 0460_lfu_cache.go (Design)
+- 0785_is_graph_bipartite.go (Graphs)
 
 ## 📝 Notes
 - Some problems may appear in multiple categories

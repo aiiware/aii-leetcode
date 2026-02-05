@@ -97,3 +97,45 @@ func CompareSlicesUnordered[T comparable](s1, s2 []T) bool {
 	}
 	return true
 }
+
+// CreateChainTree creates a chain tree (completely skewed) with n nodes
+// starting from startVal. This is exported for use in other packages.
+func CreateChainTree(n int, startVal int) *utils.TreeNode {
+	if n <= 0 {
+		return nil
+	}
+	
+	root := &utils.TreeNode{Val: startVal}
+	current := root
+	for i := 1; i < n; i++ {
+		current.Right = &utils.TreeNode{Val: startVal + i}
+		current = current.Right
+	}
+	return root
+}
+
+// CreatePerfectBinaryTree creates a perfect binary tree of given height
+// starting from startVal. This is exported for use in other packages.
+func CreatePerfectBinaryTree(height int, startVal int) *utils.TreeNode {
+	if height <= 0 {
+		return nil
+	}
+	
+	var build func(depth int, val *int) *utils.TreeNode
+	build = func(depth int, val *int) *utils.TreeNode {
+		if depth > height {
+			return nil
+		}
+		
+		node := &utils.TreeNode{Val: *val}
+		*val++
+		
+		node.Left = build(depth+1, val)
+		node.Right = build(depth+1, val)
+		
+		return node
+	}
+	
+	val := startVal
+	return build(1, &val)
+}

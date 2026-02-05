@@ -3,20 +3,20 @@
 This index organizes all LeetCode solutions by their algorithmic category.
 
 ## 📊 Statistics
-- **Total Problems**: 214
+- **Total Problems**: 257
 - **Categories**: 11
-- **Last Updated**: February 2, 2026
+- **Last Updated**: January 31, 2026
 
 ## 📁 Categories
 
-### Arrays (58 problems)
-- **Easy**: 12 problems
-- **Medium**: 34 problems
-- **Hard**: 12 problems
+### Arrays (69 problems)
+- **Easy**: 15 problems
+- **Medium**: 39 problems
+- **Hard**: 15 problems
 
-### Strings (30 problems)
-- **Easy**: 4 problems
-- **Medium**: 18 problems
+### Strings (33 problems)
+- **Easy**: 6 problems
+- **Medium**: 19 problems
 - **Hard**: 8 problems
 
 ### DP (28 problems)
@@ -24,34 +24,34 @@ This index organizes all LeetCode solutions by their algorithmic category.
 - **Medium**: 10 problems
 - **Hard**: 13 problems
 
-### Binary Tree (20 problems)
-- **Easy**: 8 problems
-- **Medium**: 11 problems
-- **Hard**: 1 problems
+### Binary Tree (27 problems)
+- **Easy**: 11 problems
+- **Medium**: 14 problems
+- **Hard**: 2 problems
 
-### Math (17 problems)
+### Math (21 problems)
 - **Easy**: 5 problems
-- **Medium**: 11 problems
-- **Hard**: 1 problems
+- **Medium**: 13 problems
+- **Hard**: 3 problems
 
-### Linked Lists (14 problems)
-- **Easy**: 2 problems
+### Graphs (20 problems)
+- **Medium**: 15 problems
+- **Hard**: 5 problems
+
+### Linked Lists (16 problems)
+- **Easy**: 4 problems
 - **Medium**: 10 problems
 - **Hard**: 2 problems
 
 ### Design (15 problems)
 - **Easy**: 4 problems
-- **Medium**: 5 problems
-- **Hard**: 6 problems
+- **Medium**: 8 problems
+- **Hard**: 3 problems
 
 ### Sorting (10 problems)
 - **Easy**: 3 problems
 - **Medium**: 6 problems
 - **Hard**: 1 problems
-
-### Graphs (20 problems)
-- **Medium**: 8 problems
-- **Hard**: 12 problems
 
 ### Sql (9 problems)
 - **Easy**: 4 problems
