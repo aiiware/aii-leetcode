@@ -68,7 +68,7 @@ func TestRobII(t *testing.T) {
 		{
 			name:     "All houses same value",
 			nums:     []int{5, 5, 5, 5, 5},
-			expected: 15,
+			expected: 10, // Fixed: For 5 houses in a circle, max is 10 (2 houses), not 15
 		},
 		{
 			name:     "Alternating high values",

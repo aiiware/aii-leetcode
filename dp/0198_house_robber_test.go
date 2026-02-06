@@ -53,7 +53,7 @@ func TestRob(t *testing.T) {
 		{
 			name:     "Large values",
 			nums:     []int{100, 50, 400, 200, 100},
-			expected: 500,
+			expected: 600, // Rob houses 0, 2, 4: 100 + 400 + 100 = 600
 		},
 	}
 
