@@ -1,65 +1,100 @@
 package graphs
 
-// 0547. Number of Provinces
-// https://leetcode.com/problems/number-of-provinces/
+/*
+547. Number of Provinces
 
-// FindCircleNum finds the number of connected components in an undirected graph
-// represented by an adjacency matrix (isConnected[i][j] = 1 if cities i and j are connected)
-func FindCircleNum(isConnected [][]int) int {
+There are n cities. Some of them are connected, while some are not. 
+If city a is connected directly with city b, and city b is connected directly with city c, 
+then city a is connected indirectly with city c.
+
+A province is a group of directly or indirectly connected cities and no other cities outside of the group.
+
+You are given an n x n matrix isConnected where isConnected[i][j] = 1 if the ith city and the jth city 
+are directly connected, and isConnected[i][j] = 0 otherwise.
+
+Return the total number of provinces.
+
+Example 1:
+Input: isConnected = [[1,1,0],[1,1,0],[0,0,1]]
+Output: 2
+
+Example 2:
+Input: isConnected = [[1,0,0],[0,1,0],[0,0,1]]
+Output: 3
+
+Constraints:
+- 1 <= n <= 200
+- n == isConnected.length
+- n == isConnected[i].length
+- isConnected[i][j] is 1 or 0.
+- isConnected[i][i] == 1
+- isConnected[i][j] == isConnected[j][i]
+*/
+
+/*
+Difficulty: Medium
+Tags: Depth-First Search, Breadth-First Search, Union Find, Graph
+Companies: Amazon, Facebook, Google, Microsoft, Apple, Bloomberg, Uber, Oracle, TikTok, LinkedIn
+*/
+
+// findCircleNumDFS uses Depth-First Search to find connected components
+func findCircleNumDFS(isConnected [][]int) int {
 	n := len(isConnected)
 	if n == 0 {
 		return 0
 	}
 
 	visited := make([]bool, n)
-	provinces := 0
+	count := 0
 
-	// DFS to mark all cities in the same province
+	// DFS function to mark all connected cities
 	var dfs func(city int)
 	dfs = func(city int) {
 		visited[city] = true
 		for neighbor := 0; neighbor < n; neighbor++ {
+			// If cities are connected and neighbor not visited
 			if isConnected[city][neighbor] == 1 && !visited[neighbor] {
 				dfs(neighbor)
 			}
 		}
 	}
 
-	// Count provinces
+	// Iterate through all cities
 	for city := 0; city < n; city++ {
 		if !visited[city] {
-			provinces++
+			count++
 			dfs(city)
 		}
 	}
 
-	return provinces
+	return count
 }
 
-// FindCircleNumBFS finds provinces using BFS
-func FindCircleNumBFS(isConnected [][]int) int {
+// findCircleNumBFS uses Breadth-First Search to find connected components
+func findCircleNumBFS(isConnected [][]int) int {
 	n := len(isConnected)
 	if n == 0 {
 		return 0
 	}
 
 	visited := make([]bool, n)
-	provinces := 0
+	count := 0
 
-	for i := 0; i < n; i++ {
-		if !visited[i] {
-			provinces++
+	for city := 0; city < n; city++ {
+		if !visited[city] {
+			count++
 			
-			// BFS for this province
-			queue := []int{i}
-			visited[i] = true
+			// BFS queue
+			queue := []int{city}
+			visited[city] = true
 			
 			for len(queue) > 0 {
-				city := queue[0]
+				current := queue[0]
 				queue = queue[1:]
 				
+				// Check all neighbors
 				for neighbor := 0; neighbor < n; neighbor++ {
-					if isConnected[city][neighbor] == 1 && !visited[neighbor] {
+					if isConnected[current][neighbor] == 1 && !visited[neighbor] {
 						visited[neighbor] = true
 						queue = append(queue, neighbor)
 					}
@@ -68,53 +103,41 @@ func FindCircleNumBFS(isConnected [][]int) int {
 		}
 	}
 
-	return provinces
+	return count
 }
 
-// FindCircleNumUnionFind finds provinces using Union-Find (Disjoint Set Union)
-func FindCircleNumUnionFind(isConnected [][]int) int {
+// findCircleNumUnionFind uses Union-Find (Disjoint Set Union) to find connected components
+func findCircleNumUnionFind(isConnected [][]int) int {
 	n := len(isConnected)
 	if n == 0 {
 		return 0
 	}
 
-	// Initialize Union-Find
+	// Initialize parent array for Union-Find
 	parent := make([]int, n)
-	rank := make([]int, n)
 	for i := 0; i < n; i++ {
 		parent[i] = i
-		rank[i] = 1
 	}
 
-	// Find with path compression
-	find := func(x int) int {
-		for parent[x] != x {
-			parent[x] = parent[parent[x]] // Path compression
-			x = parent[x]
+	// Find operation with path compression
+	var find func(x int) int
+	find = func(x int) int {
+		if parent[x] != x {
+			parent[x] = find(parent[x]) // Path compression
 		}
-		return x
+		return parent[x]
 	}
 
-	// Union by rank
+	// Union operation
 	union := func(x, y int) {
 		rootX := find(x)
 		rootY := find(y)
-		
-		if rootX == rootY {
-			return
-		}
-		
-		if rank[rootX] > rank[rootY] {
-			parent[rootY] = rootX
-		} else if rank[rootX] < rank[rootY] {
+		if rootX != rootY {
 			parent[rootX] = rootY
-		} else {
-			parent[rootY] = rootX
-			rank[rootX]++
 		}
 	}
 
-	// Union connected cities
+	// Perform union for all connected cities
 	for i := 0; i < n; i++ {
 		for j := i + 1; j < n; j++ {
 			if isConnected[i][j] == 1 {
@@ -123,11 +146,16 @@ func FindCircleNumUnionFind(isConnected [][]int) int {
 		}
 	}
 
-	// Count unique roots
-	roots := make(map[int]bool)
+	// Count number of unique roots (provinces)
+	provinces := make(map[int]bool)
 	for i := 0; i < n; i++ {
-		roots[find(i)] = true
+		provinces[find(i)] = true
 	}
 
-	return len(roots)
+	return len(provinces)
+}
+
+// findCircleNum is the main function that uses DFS (can be changed to BFS or Union-Find)
+func findCircleNum(isConnected [][]int) int {
+	return findCircleNumDFS(isConnected)
 }

@@ -4,23 +4,15 @@ package arrays
 // Difficulty: Medium
 // Tags: Array, Hash Table, Union Find
 //
-// Given an unsorted array of integers nums, return the length of the longest consecutive
-// elements sequence.
+// Given an unsorted array of integers nums, return the length of the longest
+// consecutive elements sequence.
 //
 // You must write an algorithm that runs in O(n) time.
 //
-// Example 1:
+// Example:
 // Input: nums = [100,4,200,1,3,2]
 // Output: 4
-// Explanation: The longest consecutive elements sequence is [1, 2, 3, 4]. Therefore its length is 4.
-//
-// Example 2:
-// Input: nums = [0,3,7,2,5,8,4,6,0,1]
-// Output: 9
-//
-// Constraints:
-// 0 <= nums.length <= 10^5
-// -10^9 <= nums[i] <= 10^9
+// Explanation: The longest consecutive elements sequence is [1, 2, 3, 4].
 //
 // Time complexity: O(n), Space complexity: O(n)
 func LongestConsecutive(nums []int) int {
@@ -36,10 +28,10 @@ func LongestConsecutive(nums []int) int {
 
 	longestStreak := 0
 
-	// For each number, check if it's the start of a sequence
+	// Iterate through each number
 	for num := range numSet {
-		// Check if this number is the start of a sequence
-		// (i.e., num-1 is not in the set)
+		// Only start counting from the beginning of a sequence
+		// (i.e., when num-1 is not in the set)
 		if !numSet[num-1] {
 			currentNum := num
 			currentStreak := 1

@@ -57,20 +57,20 @@ func TrapDP(height []int) int {
     leftMax := make([]int, n)
     leftMax[0] = height[0]
     for i := 1; i < n; i++ {
-        leftMax[i] = max(leftMax[i-1], height[i])
+        leftMax[i] = maxInt(leftMax[i-1], height[i])
     }
     
     // Right max array
     rightMax := make([]int, n)
     rightMax[n-1] = height[n-1]
     for i := n - 2; i >= 0; i-- {
-        rightMax[i] = max(rightMax[i+1], height[i])
+        rightMax[i] = maxInt(rightMax[i+1], height[i])
     }
     
     // Calculate water
     water := 0
     for i := 0; i < n; i++ {
-        water += min(leftMax[i], rightMax[i]) - height[i]
+        water += minInt(leftMax[i], rightMax[i]) - height[i]
     }
     
     return water
@@ -99,11 +99,26 @@ func TrapStack(height []int) int {
             // Calculate distance
             distance := i - stack[len(stack)-1] - 1
             // Calculate bounded height
-            boundedHeight := min(height[i], height[stack[len(stack)-1]]) - height[top]
+            boundedHeight := minInt(height[i], height[stack[len(stack)-1]]) - height[top]
             water += distance * boundedHeight
         }
         stack = append(stack, i)
     }
     
     return water
+}
+
+// Helper functions
+func minInt(a, b int) int {
+    if a < b {
+        return a
+    }
+    return b
+}
+
+func maxInt(a, b int) int {
+    if a > b {
+        return a
+    }
+    return b
 }

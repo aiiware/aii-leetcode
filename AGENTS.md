@@ -3,7 +3,7 @@
 <!-- AGENTS.md - Universal AI Agent Instructions -->
 
 ## Project Overview
-This is a LeetCode solutions repository written in Go. It contains implementations of algorithms, data structures, and problem solutions, organized by category (e.g., arrays, graphs, dynamic programming). The project uses Go's standard tooling for building and testing.
+This is a LeetCode solutions repository written in Go. The project organizes coding challenge solutions by algorithm and data structure categories (e.g., arrays, graphs, dynamic programming). It includes command-line entrypoints, utilities, documentation, and build scripts.
 
 ## Directory Structure
 ```
@@ -25,66 +25,65 @@ linked-lists/
 ```
 
 ## File Patterns
-*   **Source Files:** Primarily use `.go` extension (512 files). A small number of `.py` files (15) are also present.
-*   **Test Files:** Follow the Go convention: `*_test.go` (e.g., `handler_test.go`).
-*   **Naming:** Likely uses `snake_case` for filenames.
-*   **Organization:** Solutions are organized into topic-specific directories (e.g., `arrays/`, `graphs/`, `dp/`).
+- **Source Files:** Primarily use `.go` extension (552 files). A small number of `.py` files (15) are present.
+- **Test Files:** Follow the Go convention `*_test.go` (e.g., `handler_test.go`).
+- **Naming:** Files and directories predominantly use `snake_case`.
+- **Organization:** Solutions are grouped into thematic directories like `arrays/`, `graphs/`, `dp/`, etc.
 
 ## Core Commands
-*   **Build:** `go build ./...`
-*   **Test:** `go test ./...`
+- **Build:** `go build ./...`
+- **Test:** `go test ./...`
 
 ## Git Conventions
-*   **Convention:** Conventional Commits.
-*   **Default Branch:** `main`.
-*   **Common Commit Types & Scopes:**
-    *   `feat(scope)`: For new solutions or features. Common scopes: `leetcode`, `design`, `graphs`, `benchmarks`, `organization`.
-    *   `refactor(scope)`: For restructuring code. Common scopes: `organization`, `test`, `leetcode`, `graph`.
-    *   `docs(scope)`: For documentation updates. Common scopes: `plan`, `agents`, `readme`.
-    *   `fix(scope)`: For bug fixes. Common scopes: `organization`, `algorithm`, `binary`.
-    *   `test(scope)`: For adding or updating tests. Common scopes: `binary-tree`, `leetcode`.
-    *   `chore(scope)`: For maintenance tasks. Scope: `gitignore`.
-*   **Examples:**
-    *   `feat(leetcode): add House Robber solutions and linked list removal`
-    *   `refactor(organization): Refactor folder structure for better organization`
-    *   `docs(plan): implement Phase 2 documentation system with templates and category overviews`
-    *   `fix(organization): Fix build issues and update documentation`
+- **Convention:** Conventional Commits.
+- **Default Branch:** `main`.
+- **Common Commit Types & Scopes:**
+  - `feat`: (test, leetcode, design, graphs, benchmarks)
+  - `refactor`: (organization, test, leetcode, tests, graph)
+  - `docs`: (plan, agents, readme)
+  - `fix`: (organization, reorganization, bit-manipulation, algorithm, binary)
+  - `test`: (binary-tree, leetcode)
+  - `chore`: (gitignore)
+
+**Example Commit Messages:**
+- `feat(test): add comprehensive test suite for length of last word algorithm`
+- `docs(plan): implement Phase 2 documentation system with templates and category overviews`
+- `fix(organization): Fix build issues and update documentation`
+- `refactor(organization): Refactor folder structure for better organization`
+- `test(binary-tree): simplify test case tree representations`
 
 ## Coding Standards
-*   **Language:** Go. Follow standard Go idioms and effective Go practices.
-*   **Linting/Formatting:** Use `gofmt` for code formatting. Adhere to `go vet` checks.
-*   **Imports:** Organize imports in standard Go groups (stdlib, third-party, local).
-*   **File Naming:** Use descriptive, lowercase `snake_case` names for solution files that indicate the problem (e.g., `two_sum.go`).
+- **Language:** Go.
+- **Linting/Testing:** Uses the standard Go toolchain (`go test`, `go build`).
+- **File Naming:** Adheres to Go conventions: lowercase, snake_case for multi-word names, with `_test.go` suffix for test files.
+- **Structure:** Solution code is organized into packages by category (e.g., `arrays/`, `dp/`). The `cmd/` directory contains application entry points.
 
 ## Safety Rules
-*   **Do NOT modify:**
-    *   `go.mod` or `go.sum` files without explicit approval.
-    *   The root `LICENSE` file.
-    *   CI/CD configuration files (if any in `scripts/` or root).
-    *   The existing `AGENTS.md` file unless the task is to update it.
-*   **Require confirmation for:**
-    *   Changing the project's directory structure or moving large numbers of files.
-    *   Modifying build scripts in `scripts/`.
-    *   Adding new dependencies to `go.mod`.
-    *   Deleting or significantly altering existing solution files.
+- **Do NOT modify:**
+  - The `go.mod` and `go.sum` files without explicit approval.
+  - Any existing `AGENTS.md` or other instruction files.
+  - The `LICENSE` file.
+  - CI/CD configuration files (if any are added in the future).
+- **Require confirmation for:**
+  - Any changes to the root-level directory structure (e.g., moving `cmd/`, `utils/`).
+  - Modifying the `scripts/` directory, as these may affect builds.
+  - Deleting or significantly refactoring entire solution categories.
 
 ## Permissions
-*   **Allowed without prompt:**
-    *   Create new `.go` solution files within appropriate topic directories.
-    *   Create corresponding `*_test.go` files.
-    *   Update documentation in `docs/`.
-    *   Make minor refactors to existing solution code for clarity or performance.
-    *   Commit changes using the established Conventional Commits format.
-*   **Requires confirmation:**
-    *   Actions listed in the "Safety Rules" section above.
-    *   Creating new top-level directories.
-    *   Adding non-Go source files (e.g., `.py`).
-    *   Modifying files in `cmd/` or `utils/`.
-*   **Never allowed:**
-    *   Disabling or removing tests.
-    *   Changing the core build/test commands.
-    *   Modifying git history (rebase, force push) on shared branches.
-    *   Committing broken code that fails the `go build ./...` command.
+- **Allowed without prompt:**
+  - Adding new solution files within existing category directories (e.g., `arrays/`, `graphs/`).
+  - Updating documentation in `docs/`.
+  - Creating or updating Go test files (`*_test.go`).
+  - Making minor refactors within a single file or package.
+- **Requires confirmation:**
+  - Creating new top-level directories.
+  - Modifying files in `cmd/` or `utils/`.
+  - Running commands that affect dependencies (`go get`, `go mod tidy`).
+  - Changing the project's `AGENTS.md` file.
+- **Never allowed:**
+  - Modifying `go.mod` or `go.sum` lock files.
+  - Deleting the `LICENSE` file.
+  - Changing the Git commit convention.
 ---
 
-*Generated by Aii CLI /init command with LLM enhancement (~1094 tokens, 87 lines)*
+*Generated by Aii CLI /init command with LLM enhancement (~961 tokens, 86 lines)*
