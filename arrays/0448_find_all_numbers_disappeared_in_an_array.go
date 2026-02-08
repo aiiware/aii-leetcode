@@ -23,31 +23,33 @@ package arrays
 // Time complexity: O(n), Space complexity: O(1) excluding output array
 func FindDisappearedNumbers(nums []int) []int {
 	n := len(nums)
-	
+
 	// First pass: mark numbers that appear by using negative marking
 	for i := 0; i < n; i++ {
 		// Get the absolute value since we might have marked it negative already
 		val := abs(nums[i])
-		
+
 		// Use 0-based indexing: val-1 gives us the correct index
+		// val is in range [1, n], so idx is in range [0, n-1]
 		idx := val - 1
-		
+
 		// Mark this number as seen by making the value at this index negative
+		// Only mark if it's positive to avoid double-negating
 		if nums[idx] > 0 {
 			nums[idx] = -nums[idx]
 		}
 	}
-	
+
 	// Second pass: collect indices where values are still positive
 	// These indices correspond to missing numbers
-	result := []int{}
+	result := make([]int, 0, n)
 	for i := 0; i < n; i++ {
 		if nums[i] > 0 {
 			// Convert back to 1-based number
 			result = append(result, i+1)
 		}
 	}
-	
+
 	return result
 }
 

@@ -99,8 +99,9 @@ func TestMaxSubArray_EdgeCases(t *testing.T) {
 			}
 		}
 		result := MaxSubArray(nums)
-		// Best is to take all even indices (1000 each)
-		assert.Equal(t, 500*1000, result) // 500 even indices
+		// Best subarray: starts at index 0, includes all pairs
+		// 1000 + 499*(1000-999) = 1000 + 499 = 1499
+		assert.Equal(t, 1499, result)
 	})
 }
 

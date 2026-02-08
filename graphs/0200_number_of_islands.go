@@ -40,7 +40,7 @@ func numIslands(grid [][]byte) int {
 	count := 0
 
 	// Directions: up, down, left, right
-	directions := [4][2]int{{-1, 0}, {1, 0}, {0, -1}, {0, 1}}
+	_ = [4][2]int{{-1, 0}, {1, 0}, {0, -1}, {0, 1}} // used via directions variable
 
 	// BFS helper function
 	bfs := func(startRow, startCol int) {
@@ -53,7 +53,7 @@ func numIslands(grid [][]byte) int {
 			row, col := cell[0], cell[1]
 
 			// Explore all 4 directions
-			for _, dir := range directions {
+			for _, dir := range [4][2]int{{-1, 0}, {1, 0}, {0, -1}, {0, 1}} {
 				newRow, newCol := row+dir[0], col+dir[1]
 
 				// Check bounds and if it's land
@@ -76,6 +76,11 @@ func numIslands(grid [][]byte) int {
 	}
 
 	return count
+}
+
+// numIslandsBFS is an alias for numIslands (BFS approach)
+func numIslandsBFS(grid [][]byte) int {
+	return numIslands(grid)
 }
 
 // numIslandsDFS solves using DFS approach (recursive)
@@ -168,9 +173,6 @@ func numIslandsUnionFind(grid [][]byte) int {
 			count-- // Each union reduces island count by 1
 		}
 	}
-
-	// Directions: right and down (to avoid duplicate unions)
-	directions := [2][2]int{{0, 1}, {1, 0}}
 
 	// Process the grid
 	for i := 0; i < m; i++ {

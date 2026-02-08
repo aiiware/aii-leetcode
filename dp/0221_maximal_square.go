@@ -38,7 +38,7 @@ func MaximalSquare(matrix [][]byte) int {
 			if matrix[i-1][j-1] == '1' {
 				// The side length of the square ending at (i-1, j-1) is
 				// 1 + min of squares ending at left, top, and top-left
-				dp[i][j] = min(dp[i-1][j], dp[i][j-1], dp[i-1][j-1]) + 1
+				dp[i][j] = min3(dp[i-1][j], dp[i][j-1], dp[i-1][j-1]) + 1
 				if dp[i][j] > maxSide {
 					maxSide = dp[i][j]
 				}
@@ -49,8 +49,8 @@ func MaximalSquare(matrix [][]byte) int {
 	return maxSide * maxSide
 }
 
-// Helper function to find minimum of three integers
-func min(a, b, c int) int {
+// min3 returns the minimum of three integers
+func min3(a, b, c int) int {
 	if a < b {
 		if a < c {
 			return a

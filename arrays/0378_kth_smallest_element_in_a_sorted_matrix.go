@@ -4,6 +4,13 @@ import (
 	"container/heap"
 )
 
+// Item represents an element in the min-heap for kthSmallest
+type Item struct {
+	value int
+	row   int
+	col   int
+}
+
 // kthSmallest solves LeetCode problem 0378: Kth Smallest Element in a Sorted Matrix
 // Difficulty: Medium
 // Tags: Array, Binary Search, Heap (Priority Queue), Matrix
@@ -37,13 +44,6 @@ func kthSmallest(matrix [][]int, k int) int {
 
 	// Min-heap approach
 	// We'll use a min-heap to always get the smallest element
-	type Item struct {
-		value int
-		row   int
-		col   int
-	}
-
-	// Min-heap implementation
 	minHeap := &MinHeap{}
 	heap.Init(minHeap)
 
@@ -59,7 +59,7 @@ func kthSmallest(matrix [][]int, k int) int {
 	// Extract the smallest element k-1 times
 	for i := 0; i < k-1; i++ {
 		item := heap.Pop(minHeap).(Item)
-		
+
 		// If there's a next element in the same row, push it
 		if item.col+1 < n {
 			heap.Push(minHeap, Item{
@@ -106,11 +106,11 @@ func kthSmallestBinarySearch(matrix [][]int, k int) int {
 
 	for left < right {
 		mid := left + (right-left)/2
-		
+
 		// Count how many elements are <= mid
 		count := 0
 		col := n - 1
-		
+
 		// Start from top-right corner
 		for row := 0; row < n; row++ {
 			// Move left until we find element <= mid

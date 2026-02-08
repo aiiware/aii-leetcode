@@ -69,7 +69,7 @@ func TestLongestIncreasingPath(t *testing.T) {
 				{4, 3, 2},
 				{3, 2, 1},
 			},
-			expected: 1,
+			expected: 5, // Path: 1->2->3->4->5 (from bottom-right to top-left)
 		},
 		{
 			name: "Complex case 1",
@@ -102,8 +102,8 @@ func TestLongestIncreasingPath(t *testing.T) {
 			expected: 140, // Snake pattern through the matrix
 		},
 		{
-			name: "Empty matrix",
-			matrix: [][]int{},
+			name:     "Empty matrix",
+			matrix:   [][]int{},
 			expected: 0,
 		},
 		{
@@ -131,7 +131,7 @@ func BenchmarkLongestIncreasingPath(b *testing.B) {
 		{6, 6, 8},
 		{2, 1, 1},
 	}
-	
+
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		longestIncreasingPath(matrix)
@@ -147,7 +147,7 @@ func BenchmarkLongestIncreasingPathLarge(b *testing.B) {
 			matrix[i][j] = i*50 + j
 		}
 	}
-	
+
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		longestIncreasingPath(matrix)

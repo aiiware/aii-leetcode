@@ -37,6 +37,21 @@ Tags: Depth-First Search, Breadth-First Search, Union Find, Graph
 Companies: Amazon, Facebook, Google, Microsoft, Apple, Bloomberg, Uber, Oracle, TikTok, LinkedIn
 */
 
+// FindCircleNum is the main function that uses DFS (can be changed to BFS or Union-Find)
+func FindCircleNum(isConnected [][]int) int {
+	return findCircleNumDFS(isConnected)
+}
+
+// FindCircleNumBFS uses Breadth-First Search to find connected components
+func FindCircleNumBFS(isConnected [][]int) int {
+	return findCircleNumBFS(isConnected)
+}
+
+// FindCircleNumUnionFind uses Union-Find (Disjoint Set Union) to find connected components
+func FindCircleNumUnionFind(isConnected [][]int) int {
+	return findCircleNumUnionFind(isConnected)
+}
+
 // findCircleNumDFS uses Depth-First Search to find connected components
 func findCircleNumDFS(isConnected [][]int) int {
 	n := len(isConnected)
@@ -83,15 +98,15 @@ func findCircleNumBFS(isConnected [][]int) int {
 	for city := 0; city < n; city++ {
 		if !visited[city] {
 			count++
-			
+
 			// BFS queue
 			queue := []int{city}
 			visited[city] = true
-			
+
 			for len(queue) > 0 {
 				current := queue[0]
 				queue = queue[1:]
-				
+
 				// Check all neighbors
 				for neighbor := 0; neighbor < n; neighbor++ {
 					if isConnected[current][neighbor] == 1 && !visited[neighbor] {
@@ -153,9 +168,4 @@ func findCircleNumUnionFind(isConnected [][]int) int {
 	}
 
 	return len(provinces)
-}
-
-// findCircleNum is the main function that uses DFS (can be changed to BFS or Union-Find)
-func findCircleNum(isConnected [][]int) int {
-	return findCircleNumDFS(isConnected)
 }

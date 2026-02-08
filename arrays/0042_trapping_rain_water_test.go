@@ -95,7 +95,9 @@ func TestTrap_EdgeCases(t *testing.T) {
 		assert.Equal(t, 0, result)
 	})
 
-	t.Run("Large symmetric valley", func(t *testing.T) {
+	t.Run("Large symmetric valley (mountain shape)", func(t *testing.T) {
+		// This creates a mountain shape: 0, 1, 2, ..., 500, 499, ..., 1, 0
+		// Since it's a mountain (increasing then decreasing), no water is trapped
 		height := make([]int, 1001)
 		for i := range height {
 			if i < 500 {
@@ -105,10 +107,8 @@ func TestTrap_EdgeCases(t *testing.T) {
 			}
 		}
 		result := Trap(height)
-		// The valley should trap water in the middle
-		// Maximum height is 500 at index 500
-		// Water trapped = sum of (500 - height[i]) for i where height[i] < 500
-		assert.True(t, result > 0, "Should trap some water")
+		// No water trapped because it's a mountain shape, not a valley
+		assert.Equal(t, 0, result)
 	})
 
 	t.Run("Alternating high-low", func(t *testing.T) {
@@ -121,12 +121,12 @@ func TestTrap_EdgeCases(t *testing.T) {
 			}
 		}
 		result := Trap(height)
-		// Between each pair of high points (10), there's a low point (1)
-		// Water trapped = (10-1) * number of low points between highs
-		// There are 49 low points between highs (indices 1, 3, 5, ..., 97, 99)
-		// But the first and last low points don't have walls on both sides
-		// So actual trapped water is less
-		assert.Equal(t, 9*48, result) // 48 interior low points * 9 units each
+		// For alternating [10, 1, 10, 1, ...], the DP approach calculates:
+		// At each 1 (odd indices), water = min(leftMax, rightMax) - 1
+		// At indices 1, 3, 5, ..., 97: leftMax=10, rightMax=10, water = 10-1 = 9 (49 positions)
+		// At index 99 (last): leftMax=10, rightMax=1, water = min(10,1)-1 = 0
+		// Total = 49 * 9 = 441
+		assert.Equal(t, 441, result)
 	})
 }
 
