@@ -1,5 +1,9 @@
 package math
 
+import (
+	"sort"
+)
+
 // 0268 - Missing Number (Easy)
 // https://leetcode.com/problems/missing-number/
 
@@ -41,14 +45,10 @@ func MissingNumberXOR(nums []int) int {
 // MissingNumberSort first sorts the array (not optimal but shows alternative approach)
 // This is O(n log n) time, O(1) space if we can modify input
 func MissingNumberSort(nums []int) int {
-	// In a real implementation, we would sort the array
-	// But for this problem, we have better solutions
-	// This is just to show the concept
+	// Sort the array in-place
+	sort.Ints(nums)
 	
 	n := len(nums)
-	// If we could sort nums in-place:
-	// sort.Ints(nums)
-	
 	// After sorting, check each position
 	for i := 0; i < n; i++ {
 		if nums[i] != i {
