@@ -27,7 +27,7 @@ func FindDisappearedNumbers(nums []int) []int {
 	// First pass: mark numbers that appear by using negative marking
 	for i := 0; i < n; i++ {
 		// Get the absolute value since we might have marked it negative already
-		val := abs(nums[i])
+		val := absInt(nums[i])
 
 		// Use 0-based indexing: val-1 gives us the correct index
 		// val is in range [1, n], so idx is in range [0, n-1]
@@ -54,7 +54,7 @@ func FindDisappearedNumbers(nums []int) []int {
 }
 
 // Helper function to get absolute value
-func abs(x int) int {
+func absInt(x int) int {
 	if x < 0 {
 		return -x
 	}

@@ -34,7 +34,7 @@ func FindDuplicates(nums []int) []int {
 	// Use negative marking technique
 	for i := 0; i < len(nums); i++ {
 		// Get absolute value (since we might have marked it negative)
-		val := abs(nums[i])
+		val := absInt(nums[i])
 		idx := val - 1 // Convert to 0-based index
 
 		// If the value at this index is already negative,

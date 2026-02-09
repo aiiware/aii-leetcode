@@ -90,18 +90,18 @@ func BenchmarkFindMedianSortedArrays(b *testing.B) {
 		},
 		{
 			name:  "Medium arrays",
-			nums1: makeRange(0, 100),
-			nums2: makeRange(50, 150),
+			nums1: makeRangeInt(0, 100),
+			nums2: makeRangeInt(50, 150),
 		},
 		{
 			name:  "Large arrays",
-			nums1: makeRange(0, 1000),
-			nums2: makeRange(500, 1500),
+			nums1: makeRangeInt(0, 1000),
+			nums2: makeRangeInt(500, 1500),
 		},
 		{
 			name:  "Very different sizes",
-			nums1: makeRange(0, 10),
-			nums2: makeRange(0, 1000),
+			nums1: makeRangeInt(0, 10),
+			nums2: makeRangeInt(0, 1000),
 		},
 	}
 
@@ -115,7 +115,7 @@ func BenchmarkFindMedianSortedArrays(b *testing.B) {
 }
 
 // Helper function to create a range of integers
-func makeRange(start, end int) []int {
+func makeRangeInt(start, end int) []int {
 	result := make([]int, end-start)
 	for i := range result {
 		result[i] = start + i
