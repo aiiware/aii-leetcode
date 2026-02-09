@@ -367,7 +367,7 @@ func TestSearchInRotatedSortedArrayII_Consistency(t *testing.T) {
 			}
 
 			results := make([]bool, len(implementations))
-			
+
 			for i, impl := range implementations {
 				results[i] = impl.fn(tc.nums, tc.target)
 			}
@@ -398,11 +398,11 @@ func TestSearchInRotatedSortedArrayII_PropertyBased(t *testing.T) {
 			// Test multiple targets including values that may or may not be in nums
 			targets := append([]int{}, nums...)
 			targets = append(targets, -100, 100, 0, 999)
-			
+
 			for _, target := range targets {
 				binaryResult := SearchInRotatedSortedArrayII(nums, target)
 				linearResult := SearchInRotatedSortedArrayIILinear(nums, target)
-				
+
 				assert.Equal(t, linearResult, binaryResult,
 					"For nums=%v, target=%d: binary=%v, linear=%v",
 					nums, target, binaryResult, linearResult)
@@ -452,7 +452,7 @@ func TestSearchInRotatedSortedArrayII_PropertyBased(t *testing.T) {
 		for _, tc := range testCases {
 			result1 := SearchInRotatedSortedArrayII(tc.nums, tc.target)
 			result2 := SearchInRotatedSortedArrayII(tc.nums, tc.target)
-			
+
 			assert.Equal(t, result1, result2,
 				"SearchInRotatedSortedArrayII should be idempotent for nums=%v, target=%d",
 				tc.nums, tc.target)
@@ -473,7 +473,7 @@ func BenchmarkSearchInRotatedSortedArrayII(b *testing.B) {
 			target: 0,
 		},
 		{
-			name:   "Medium (100 elements) with few duplicates",
+			name: "Medium (100 elements) with few duplicates",
 			nums: func() []int {
 				nums := make([]int, 100)
 				for i := 0; i < 100; i++ {
@@ -484,7 +484,7 @@ func BenchmarkSearchInRotatedSortedArrayII(b *testing.B) {
 			target: 42,
 		},
 		{
-			name:   "Medium (100 elements) with many duplicates",
+			name: "Medium (100 elements) with many duplicates",
 			nums: func() []int {
 				nums := make([]int, 100)
 				for i := 0; i < 100; i++ {
@@ -498,7 +498,7 @@ func BenchmarkSearchInRotatedSortedArrayII(b *testing.B) {
 			target: 5,
 		},
 		{
-			name:   "Large (1000 elements)",
+			name: "Large (1000 elements)",
 			nums: func() []int {
 				nums := make([]int, 1000)
 				for i := 0; i < 1000; i++ {
@@ -512,7 +512,7 @@ func BenchmarkSearchInRotatedSortedArrayII(b *testing.B) {
 			target: 500,
 		},
 		{
-			name:   "All same elements",
+			name: "All same elements",
 			nums: func() []int {
 				nums := make([]int, 1000)
 				for i := range nums {
@@ -523,7 +523,7 @@ func BenchmarkSearchInRotatedSortedArrayII(b *testing.B) {
 			target: 7,
 		},
 		{
-			name:   "Worst case (many duplicates, target at end)",
+			name: "Worst case (many duplicates, target at end)",
 			nums: func() []int {
 				nums := make([]int, 1000)
 				for i := range nums {
@@ -535,7 +535,7 @@ func BenchmarkSearchInRotatedSortedArrayII(b *testing.B) {
 			target: 2,
 		},
 		{
-			name:   "Not found case",
+			name: "Not found case",
 			nums: func() []int {
 				nums := make([]int, 1000)
 				for i := range nums {

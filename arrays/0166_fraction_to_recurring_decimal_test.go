@@ -126,7 +126,7 @@ func TestFractionToDecimal(t *testing.T) {
 func BenchmarkFractionToDecimal(b *testing.B) {
 	numerator := 1
 	denominator := 7
-	
+
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		fractionToDecimal(numerator, denominator)
@@ -136,7 +136,7 @@ func BenchmarkFractionToDecimal(b *testing.B) {
 func BenchmarkFractionToDecimalLarge(b *testing.B) {
 	numerator := 1000000007
 	denominator := 999983
-	
+
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		fractionToDecimal(numerator, denominator)
@@ -146,7 +146,7 @@ func BenchmarkFractionToDecimalLarge(b *testing.B) {
 func BenchmarkFractionToDecimalRepeating(b *testing.B) {
 	numerator := 1
 	denominator := 333
-	
+
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		fractionToDecimal(numerator, denominator)

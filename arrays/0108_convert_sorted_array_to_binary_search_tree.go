@@ -1,6 +1,5 @@
 package arrays
 
-
 /*
 Difficulty: Medium
 Tags: [Add relevant tags]

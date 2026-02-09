@@ -45,7 +45,7 @@ func IsValidSudoku(board [][]byte) bool {
 		seen := make([]bool, 10)
 		rowStart := (box / 3) * 3
 		colStart := (box % 3) * 3
-		
+
 		for i := 0; i < 3; i++ {
 			for j := 0; j < 3; j++ {
 				cell := board[rowStart+i][colStart+j]
@@ -116,7 +116,7 @@ func IsValidSudokuGeneric(board [][]byte) bool {
 	for i := 0; i < n; i++ {
 		rowSeen := make([]bool, n+1)
 		colSeen := make([]bool, n+1)
-		
+
 		for j := 0; j < n; j++ {
 			// Check row
 			if board[i][j] != '.' {
@@ -142,7 +142,7 @@ func IsValidSudokuGeneric(board [][]byte) bool {
 	for boxRow := 0; boxRow < n; boxRow += subSize {
 		for boxCol := 0; boxCol < n; boxCol += subSize {
 			seen := make([]bool, n+1)
-			
+
 			for i := 0; i < subSize; i++ {
 				for j := 0; j < subSize; j++ {
 					cell := board[boxRow+i][boxCol+j]

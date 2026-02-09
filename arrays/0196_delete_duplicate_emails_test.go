@@ -53,7 +53,7 @@ func BenchmarkDeleteDuplicateEmails(b *testing.B) {
 		"c@example.com",
 		"b@example.com",
 	}
-	
+
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		DeleteDuplicateEmails(emails)

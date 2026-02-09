@@ -108,13 +108,13 @@ func TestRotateArray(t *testing.T) {
 					// Create a copy of the input array
 					nums := make([]int, len(tt.nums))
 					copy(nums, tt.nums)
-					
+
 					// Apply the rotation
 					sf.f(nums, tt.k)
-					
+
 					// Check the result
 					if !reflect.DeepEqual(nums, tt.expected) {
-						t.Errorf("%s(%v, %d) = %v, expected %v", 
+						t.Errorf("%s(%v, %d) = %v, expected %v",
 							sf.name, tt.nums, tt.k, nums, tt.expected)
 					}
 				})
@@ -164,18 +164,18 @@ func TestRotateEdgeCases(t *testing.T) {
 				rotateGCD,
 				rotateRecursive,
 			}
-			
+
 			// For each solution, verify it doesn't panic
 			for i, f := range solutions {
 				nums := make([]int, len(tt.nums))
 				copy(nums, tt.nums)
-				
+
 				// This should not panic
 				f(nums, tt.k)
-				
+
 				// Verify the array still has the same length
 				if len(nums) != len(tt.nums) {
-					t.Errorf("Solution %d changed array length from %d to %d", 
+					t.Errorf("Solution %d changed array length from %d to %d",
 						i, len(tt.nums), len(nums))
 				}
 			}
@@ -214,7 +214,7 @@ func TestRotateConsistency(t *testing.T) {
 	for _, tc := range testCases {
 		t.Run(tc.name, func(t *testing.T) {
 			results := make([][]int, len(solutions))
-			
+
 			// Run each solution
 			for i, sf := range solutions {
 				nums := make([]int, len(tc.nums))
@@ -222,7 +222,7 @@ func TestRotateConsistency(t *testing.T) {
 				sf.f(nums, tc.k)
 				results[i] = nums
 			}
-			
+
 			// Verify all results are the same
 			for i := 1; i < len(results); i++ {
 				if !reflect.DeepEqual(results[0], results[i]) {
@@ -248,7 +248,7 @@ func BenchmarkRotateArray(b *testing.B) {
 		{"rotateGCD", rotateGCD},
 		{"rotateRecursive", rotateRecursive},
 	}
-	
+
 	// Test cases of different sizes
 	testCases := []struct {
 		name string
@@ -281,13 +281,13 @@ func TestRotateSpecialCases(t *testing.T) {
 	t.Run("Identity rotation", func(t *testing.T) {
 		nums := []int{1, 2, 3, 4, 5}
 		expected := []int{1, 2, 3, 4, 5}
-		
+
 		// Rotating by array length should give same array
 		rotate(nums, len(nums))
 		if !reflect.DeepEqual(nums, expected) {
 			t.Errorf("Rotating by array length should give identity: got %v", nums)
 		}
-		
+
 		// Rotating by 0 should give same array
 		nums = []int{1, 2, 3, 4, 5}
 		rotate(nums, 0)
@@ -295,42 +295,42 @@ func TestRotateSpecialCases(t *testing.T) {
 			t.Errorf("Rotating by 0 should give identity: got %v", nums)
 		}
 	})
-	
+
 	t.Run("Double rotation property", func(t *testing.T) {
 		nums := []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
 		k1, k2 := 3, 4
-		
+
 		// Copy for first approach
 		nums1 := make([]int, len(nums))
 		copy(nums1, nums)
 		rotate(nums1, k1)
 		rotate(nums1, k2)
-		
+
 		// Copy for second approach
 		nums2 := make([]int, len(nums))
 		copy(nums2, nums)
 		rotate(nums2, k1+k2)
-		
+
 		if !reflect.DeepEqual(nums1, nums2) {
 			t.Errorf("rotate(rotate(nums, %d), %d) != rotate(nums, %d): %v vs %v",
 				k1, k2, k1+k2, nums1, nums2)
 		}
 	})
-	
+
 	t.Run("Reverse rotation", func(t *testing.T) {
 		nums := []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
 		k := 3
-		
+
 		// Rotate forward by k
 		numsForward := make([]int, len(nums))
 		copy(numsForward, nums)
 		rotate(numsForward, k)
-		
+
 		// Rotate backward by k (which is rotate by n-k forward)
 		numsBackward := make([]int, len(nums))
 		copy(numsBackward, numsForward)
 		rotate(numsBackward, len(nums)-k)
-		
+
 		if !reflect.DeepEqual(numsBackward, nums) {
 			t.Errorf("Rotating forward by %d then backward by %d should give original: got %v",
 				k, len(nums)-k, numsBackward)

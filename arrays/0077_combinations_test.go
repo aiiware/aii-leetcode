@@ -37,9 +37,9 @@ func TestCombine(t *testing.T) {
 			expected: [][]int{{1, 2, 3}},
 		},
 		{
-			name:     "n=5, k=2",
-			n:        5,
-			k:        2,
+			name: "n=5, k=2",
+			n:    5,
+			k:    2,
 			expected: [][]int{
 				{1, 2}, {1, 3}, {1, 4}, {1, 5},
 				{2, 3}, {2, 4}, {2, 5},
@@ -72,9 +72,9 @@ func TestCombine(t *testing.T) {
 			expected: [][]int{},
 		},
 		{
-			name:     "n=5, k=3",
-			n:        5,
-			k:        3,
+			name: "n=5, k=3",
+			n:    5,
+			k:    3,
 			expected: [][]int{
 				{1, 2, 3}, {1, 2, 4}, {1, 2, 5},
 				{1, 3, 4}, {1, 3, 5}, {1, 4, 5},
@@ -126,9 +126,9 @@ func TestCombineOptimized(t *testing.T) {
 			expected: [][]int{{1, 2, 3}},
 		},
 		{
-			name:     "n=5, k=2",
-			n:        5,
-			k:        2,
+			name: "n=5, k=2",
+			n:    5,
+			k:    2,
 			expected: [][]int{
 				{1, 2}, {1, 3}, {1, 4}, {1, 5},
 				{2, 3}, {2, 4}, {2, 5},
@@ -186,9 +186,9 @@ func TestCombineIterative(t *testing.T) {
 			expected: [][]int{{1, 2, 3}},
 		},
 		{
-			name:     "n=5, k=2",
-			n:        5,
-			k:        2,
+			name: "n=5, k=2",
+			n:    5,
+			k:    2,
 			expected: [][]int{
 				{1, 2}, {1, 3}, {1, 4}, {1, 5},
 				{2, 3}, {2, 4}, {2, 5},
@@ -240,9 +240,9 @@ func TestCombineDP(t *testing.T) {
 			expected: [][]int{{1, 2, 3}},
 		},
 		{
-			name:     "n=5, k=2",
-			n:        5,
-			k:        2,
+			name: "n=5, k=2",
+			n:    5,
+			k:    2,
 			expected: [][]int{
 				{1, 2}, {1, 3}, {1, 4}, {1, 5},
 				{2, 3}, {2, 4}, {2, 5},
@@ -294,9 +294,9 @@ func TestCombineMath(t *testing.T) {
 			expected: [][]int{{1, 2, 3}},
 		},
 		{
-			name:     "n=5, k=2",
-			n:        5,
-			k:        2,
+			name: "n=5, k=2",
+			n:    5,
+			k:    2,
 			expected: [][]int{
 				{1, 2}, {1, 3}, {1, 4}, {1, 5},
 				{2, 3}, {2, 4}, {2, 5},

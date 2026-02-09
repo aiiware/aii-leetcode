@@ -64,7 +64,7 @@ func TestMaximumGap(t *testing.T) {
 
 func BenchmarkMaximumGap(b *testing.B) {
 	nums := []int{3, 6, 9, 1}
-	
+
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		maximumGap(nums)
@@ -77,7 +77,7 @@ func BenchmarkMaximumGapLarge(b *testing.B) {
 	for i := range nums {
 		nums[i] = i * 100
 	}
-	
+
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		maximumGap(nums)

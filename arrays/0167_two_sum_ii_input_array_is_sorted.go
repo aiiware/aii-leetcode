@@ -43,10 +43,10 @@ Companies: Amazon, Apple, ByteDance, Expedia, Facebook, Goldman Sachs, Google, M
 func twoSum(numbers []int, target int) []int {
 	// Use two pointers approach since array is sorted
 	left, right := 0, len(numbers)-1
-	
+
 	for left < right {
 		sum := numbers[left] + numbers[right]
-		
+
 		if sum == target {
 			// Return 1-indexed indices
 			return []int{left + 1, right + 1}
@@ -58,7 +58,7 @@ func twoSum(numbers []int, target int) []int {
 			right--
 		}
 	}
-	
+
 	// According to constraints, there's always a solution
 	return []int{-1, -1}
 }

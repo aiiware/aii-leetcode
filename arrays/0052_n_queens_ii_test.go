@@ -181,13 +181,13 @@ func BenchmarkTotalNQueensDFS(b *testing.B) {
 func BenchmarkComparison(b *testing.B) {
 	// Compare performance of both implementations
 	n := 9
-	
+
 	b.Run("BitManipulation", func(b *testing.B) {
 		for i := 0; i < b.N; i++ {
 			TotalNQueens(n)
 		}
 	})
-	
+
 	b.Run("DFS", func(b *testing.B) {
 		for i := 0; i < b.N; i++ {
 			TotalNQueensDFS(n)

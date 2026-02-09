@@ -67,13 +67,13 @@ func hammingWeight3(num uint32) int {
 	// Go's math/bits package provides optimized implementation
 	// This would be: return bits.OnesCount32(num)
 	// But we'll implement our own for educational purposes
-	
+
 	// Divide and conquer approach
 	// Count bits in parallel
-	num = (num & 0x55555555) + ((num >> 1) & 0x55555555) // count bits in pairs
-	num = (num & 0x33333333) + ((num >> 2) & 0x33333333) // count bits in 4-bit groups
-	num = (num & 0x0f0f0f0f) + ((num >> 4) & 0x0f0f0f0f) // count bits in 8-bit groups
-	num = (num & 0x00ff00ff) + ((num >> 8) & 0x00ff00ff) // count bits in 16-bit groups
+	num = (num & 0x55555555) + ((num >> 1) & 0x55555555)  // count bits in pairs
+	num = (num & 0x33333333) + ((num >> 2) & 0x33333333)  // count bits in 4-bit groups
+	num = (num & 0x0f0f0f0f) + ((num >> 4) & 0x0f0f0f0f)  // count bits in 8-bit groups
+	num = (num & 0x00ff00ff) + ((num >> 8) & 0x00ff00ff)  // count bits in 16-bit groups
 	num = (num & 0x0000ffff) + ((num >> 16) & 0x0000ffff) // count bits in 32-bit number
 	return int(num)
 }

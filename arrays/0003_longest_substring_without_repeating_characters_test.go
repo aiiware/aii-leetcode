@@ -78,7 +78,7 @@ func TestLengthOfLongestSubstring(t *testing.T) {
 		t.Run(tt.name, func(t *testing.T) {
 			result := LengthOfLongestSubstring(tt.input)
 			assert.Equal(t, tt.expected, result,
-				"LengthOfLongestSubstring(%q) = %d, expected %d", 
+				"LengthOfLongestSubstring(%q) = %d, expected %d",
 				tt.input, result, tt.expected)
 		})
 	}
@@ -87,7 +87,7 @@ func TestLengthOfLongestSubstring(t *testing.T) {
 func BenchmarkLengthOfLongestSubstring(b *testing.B) {
 	// Create a large test string for benchmarking
 	testString := "abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz"
-	
+
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		LengthOfLongestSubstring(testString)

@@ -80,7 +80,7 @@ func TestTwoSumII(t *testing.T) {
 func BenchmarkTwoSumII(b *testing.B) {
 	numbers := []int{2, 7, 11, 15}
 	target := 9
-	
+
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		twoSum(numbers, target)
@@ -94,7 +94,7 @@ func BenchmarkTwoSumIILarge(b *testing.B) {
 		numbers[i] = i * 2
 	}
 	target := 19998 // Sum of last two elements
-	
+
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		twoSum(numbers, target)
@@ -108,7 +108,7 @@ func BenchmarkTwoSumIIWorstCase(b *testing.B) {
 		numbers[i] = i
 	}
 	target := 9999 // Sum of first (0) and last (9999) elements
-	
+
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		twoSum(numbers, target)

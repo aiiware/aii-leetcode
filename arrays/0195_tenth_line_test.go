@@ -59,7 +59,7 @@ func BenchmarkTenthLine(b *testing.B) {
 	for i := 0; i < 100; i++ {
 		lines[i] = fmt.Sprintf("Line %d", i+1)
 	}
-	
+
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		TenthLine(lines)

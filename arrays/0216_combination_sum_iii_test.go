@@ -31,9 +31,9 @@ func TestCombinationSum3(t *testing.T) {
 			},
 		},
 		{
-			name: "k=2, n=18",
-			k:    2,
-			n:    18,
+			name:     "k=2, n=18",
+			k:        2,
+			n:        18,
 			expected: [][]int{},
 		},
 		{
@@ -57,7 +57,7 @@ func TestCombinationSum3(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			result := CombinationSum3(tt.k, tt.n)
-			
+
 			// Sort results for comparison
 			sort.Slice(result, func(i, j int) bool {
 				for k := range result[i] {
@@ -67,12 +67,12 @@ func TestCombinationSum3(t *testing.T) {
 				}
 				return false
 			})
-			
+
 			if len(result) != len(tt.expected) {
 				t.Errorf("CombinationSum3(%d, %d) = %v, want %v", tt.k, tt.n, result, tt.expected)
 				return
 			}
-			
+
 			for i := range result {
 				if len(result[i]) != len(tt.expected[i]) {
 					t.Errorf("CombinationSum3(%d, %d)[%d] = %v, want %v", tt.k, tt.n, i, result[i], tt.expected[i])

@@ -12,7 +12,7 @@ package arrays
 func CombinationSum3(k int, n int) [][]int {
 	var result [][]int
 	var current []int
-	
+
 	var backtrack func(start, remaining int)
 	backtrack = func(start, remaining int) {
 		if len(current) == k {
@@ -24,7 +24,7 @@ func CombinationSum3(k int, n int) [][]int {
 			}
 			return
 		}
-		
+
 		for i := start; i <= 9; i++ {
 			if i > remaining {
 				break
@@ -34,8 +34,8 @@ func CombinationSum3(k int, n int) [][]int {
 			current = current[:len(current)-1]
 		}
 	}
-	
+
 	backtrack(1, n)
-	
+
 	return result
 }

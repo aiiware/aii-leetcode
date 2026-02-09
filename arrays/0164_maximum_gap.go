@@ -36,7 +36,7 @@ func maximumGap(nums []int) int {
 	if n < 2 {
 		return 0
 	}
-	
+
 	// Find min and max values
 	minVal, maxVal := nums[0], nums[0]
 	for _, num := range nums {
@@ -47,16 +47,16 @@ func maximumGap(nums []int) int {
 			maxVal = num
 		}
 	}
-	
+
 	// If all elements are the same
 	if minVal == maxVal {
 		return 0
 	}
-	
+
 	// Calculate bucket size and number of buckets
 	bucketSize := maxIntGap(1, (maxVal-minVal)/(n-1))
 	bucketCount := (maxVal-minVal)/bucketSize + 1
-	
+
 	// Initialize buckets
 	bucketMin := make([]int, bucketCount)
 	bucketMax := make([]int, bucketCount)
@@ -64,7 +64,7 @@ func maximumGap(nums []int) int {
 		bucketMin[i] = math.MaxInt32
 		bucketMax[i] = math.MinInt32
 	}
-	
+
 	// Put numbers into buckets
 	for _, num := range nums {
 		bucketIdx := (num - minVal) / bucketSize
@@ -75,7 +75,7 @@ func maximumGap(nums []int) int {
 			bucketMax[bucketIdx] = num
 		}
 	}
-	
+
 	// Calculate maximum gap
 	maxGap := 0
 	prevMax := minVal
@@ -88,7 +88,7 @@ func maximumGap(nums []int) int {
 		maxGap = maxIntGap(maxGap, bucketMin[i]-prevMax)
 		prevMax = bucketMax[i]
 	}
-	
+
 	return maxGap
 }
 

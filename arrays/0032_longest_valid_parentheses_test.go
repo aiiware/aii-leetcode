@@ -82,7 +82,7 @@ func TestLongestValidParentheses(t *testing.T) {
 
 func BenchmarkLongestValidParentheses(b *testing.B) {
 	s := "((()())()(()))((()())()(()))((()())()(()))"
-	
+
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		LongestValidParentheses(s)
@@ -91,7 +91,7 @@ func BenchmarkLongestValidParentheses(b *testing.B) {
 
 func BenchmarkLongestValidParenthesesDP(b *testing.B) {
 	s := "((()())()(()))((()())()(()))((()())()(()))"
-	
+
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		LongestValidParenthesesDP(s)
@@ -100,7 +100,7 @@ func BenchmarkLongestValidParenthesesDP(b *testing.B) {
 
 func BenchmarkLongestValidParenthesesTwoPass(b *testing.B) {
 	s := "((()())()(()))((()())()(()))((()())()(()))"
-	
+
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		LongestValidParenthesesTwoPass(s)

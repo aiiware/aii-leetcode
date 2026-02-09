@@ -37,23 +37,23 @@ func TestSubsets(t *testing.T) {
 			expected: [][]int{{}, {1}, {2}, {1, 2}},
 		},
 		{
-			name:     "Four elements",
-			nums:     []int{1, 2, 3, 4},
+			name: "Four elements",
+			nums: []int{1, 2, 3, 4},
 			expected: [][]int{
 				{}, {1}, {2}, {1, 2}, {3}, {1, 3}, {2, 3}, {1, 2, 3},
 				{4}, {1, 4}, {2, 4}, {1, 2, 4}, {3, 4}, {1, 3, 4}, {2, 3, 4}, {1, 2, 3, 4},
 			},
 		},
 		{
-			name:     "Negative numbers",
-			nums:     []int{-1, 0, 1},
+			name: "Negative numbers",
+			nums: []int{-1, 0, 1},
 			expected: [][]int{
 				{}, {-1}, {0}, {-1, 0}, {1}, {-1, 1}, {0, 1}, {-1, 0, 1},
 			},
 		},
 		{
-			name:     "Large range",
-			nums:     []int{10, 20, 30},
+			name: "Large range",
+			nums: []int{10, 20, 30},
 			expected: [][]int{
 				{}, {10}, {20}, {10, 20}, {30}, {10, 30}, {20, 30}, {10, 20, 30},
 			},
@@ -97,8 +97,8 @@ func TestSubsetsIterative(t *testing.T) {
 			expected: [][]int{{}, {1}, {2}, {1, 2}},
 		},
 		{
-			name:     "Negative numbers",
-			nums:     []int{-1, 0, 1},
+			name: "Negative numbers",
+			nums: []int{-1, 0, 1},
 			expected: [][]int{
 				{}, {-1}, {0}, {-1, 0}, {1}, {-1, 1}, {0, 1}, {-1, 0, 1},
 			},
@@ -142,8 +142,8 @@ func TestSubsetsBitMask(t *testing.T) {
 			expected: [][]int{{}, {1}, {2}, {1, 2}},
 		},
 		{
-			name:     "Negative numbers",
-			nums:     []int{-1, 0, 1},
+			name: "Negative numbers",
+			nums: []int{-1, 0, 1},
 			expected: [][]int{
 				{}, {-1}, {0}, {-1, 0}, {1}, {-1, 1}, {0, 1}, {-1, 0, 1},
 			},
@@ -187,8 +187,8 @@ func TestSubsetsDFS(t *testing.T) {
 			expected: [][]int{{}, {1}, {2}, {1, 2}},
 		},
 		{
-			name:     "Negative numbers",
-			nums:     []int{-1, 0, 1},
+			name: "Negative numbers",
+			nums: []int{-1, 0, 1},
 			expected: [][]int{
 				{}, {-1}, {0}, {-1, 0}, {1}, {-1, 1}, {0, 1}, {-1, 0, 1},
 			},
@@ -232,8 +232,8 @@ func TestSubsetsLexicographic(t *testing.T) {
 			expected: [][]int{{}, {1}, {2}, {1, 2}},
 		},
 		{
-			name:     "Negative numbers",
-			nums:     []int{-1, 0, 1},
+			name: "Negative numbers",
+			nums: []int{-1, 0, 1},
 			expected: [][]int{
 				{}, {-1}, {0}, {-1, 0}, {1}, {-1, 1}, {0, 1}, {-1, 0, 1},
 			},

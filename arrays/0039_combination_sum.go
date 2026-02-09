@@ -4,7 +4,6 @@
 
 package arrays
 
-
 /*
 Difficulty: Medium
 Tags: [Add relevant tags]
@@ -17,7 +16,7 @@ Companies: [Add company names]
 func CombinationSum(candidates []int, target int) [][]int {
 	result := [][]int{}
 	var current []int
-	
+
 	backtrackCombinationSum(candidates, target, 0, current, &result)
 	return result
 }
@@ -27,7 +26,7 @@ func backtrackCombinationSum(candidates []int, target, start int, current []int,
 	if target < 0 {
 		return
 	}
-	
+
 	if target == 0 {
 		// Make a copy of current combination
 		combination := make([]int, len(current))
@@ -35,7 +34,7 @@ func backtrackCombinationSum(candidates []int, target, start int, current []int,
 		*result = append(*result, combination)
 		return
 	}
-	
+
 	for i := start; i < len(candidates); i++ {
 		// Include candidates[i] in the combination
 		current = append(current, candidates[i])
@@ -50,10 +49,10 @@ func CombinationSumDP(candidates []int, target int) [][]int {
 	// dp[i] stores all combinations that sum to i
 	dp := make([][][]int, target+1)
 	dp[0] = [][]int{{}} // Base case: one way to make sum 0 (empty combination)
-	
+
 	// Sort candidates to ensure consistent ordering
 	sortInts(candidates)
-	
+
 	for _, num := range candidates {
 		for t := num; t <= target; t++ {
 			for _, combination := range dp[t-num] {
@@ -65,7 +64,7 @@ func CombinationSumDP(candidates []int, target int) [][]int {
 			}
 		}
 	}
-	
+
 	// Return empty slice instead of nil
 	if dp[target] == nil {
 		return [][]int{}
@@ -79,23 +78,23 @@ func CombinationSumIterative(candidates []int, target int) [][]int {
 	if target == 0 {
 		return [][]int{{}}
 	}
-	
+
 	result := [][]int{}
-	
+
 	// Stack stores (remaining target, start index, current combination)
 	stack := [][]interface{}{
 		{target, 0, []int{}},
 	}
-	
+
 	for len(stack) > 0 {
 		// Pop from stack
 		item := stack[len(stack)-1]
 		stack = stack[:len(stack)-1]
-		
+
 		remaining := item[0].(int)
 		start := item[1].(int)
 		current := item[2].([]int)
-		
+
 		if remaining == 0 {
 			// Found a valid combination
 			combination := make([]int, len(current))
@@ -103,17 +102,17 @@ func CombinationSumIterative(candidates []int, target int) [][]int {
 			result = append(result, combination)
 			continue
 		}
-		
+
 		if remaining < 0 {
 			continue
 		}
-		
+
 		// Try each candidate starting from 'start'
 		for i := start; i < len(candidates); i++ {
 			newCurrent := make([]int, len(current)+1)
 			copy(newCurrent, current)
 			newCurrent[len(current)] = candidates[i]
-			
+
 			stack = append(stack, []interface{}{
 				remaining - candidates[i],
 				i, // Note: i not i+1 because we can reuse same element
@@ -121,7 +120,7 @@ func CombinationSumIterative(candidates []int, target int) [][]int {
 			})
 		}
 	}
-	
+
 	return result
 }
 

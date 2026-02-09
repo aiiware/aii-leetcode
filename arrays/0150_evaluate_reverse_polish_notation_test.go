@@ -108,7 +108,7 @@ func BenchmarkEvalRPN(b *testing.B) {
 		"10", "6", "9", "3", "+", "-11", "*", "/", "*", "17", "+", "5", "+",
 		"2", "*", "3", "/", "4", "+", "5", "-", "6", "*", "7", "/", "8", "+",
 	}
-	
+
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		EvalRPN(tokens)
@@ -122,21 +122,21 @@ func TestEdgeCases(t *testing.T) {
 			t.Errorf("7/3 should truncate to 2, got %d", result)
 		}
 	})
-	
+
 	t.Run("Division by negative number truncates toward zero", func(t *testing.T) {
 		result := EvalRPN([]string{"-7", "3", "/"})
 		if result != -2 {
 			t.Errorf("-7/3 should truncate to -2, got %d", result)
 		}
 	})
-	
+
 	t.Run("Division of negative by negative", func(t *testing.T) {
 		result := EvalRPN([]string{"-7", "-3", "/"})
 		if result != 2 {
 			t.Errorf("-7/-3 should truncate to 2, got %d", result)
 		}
 	})
-	
+
 	t.Run("Large multiplication", func(t *testing.T) {
 		result := EvalRPN([]string{"1000", "1000", "*"})
 		if result != 1000000 {

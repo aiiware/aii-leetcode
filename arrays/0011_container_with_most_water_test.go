@@ -22,7 +22,7 @@ func TestMaxArea(t *testing.T) {
 		{"Single element", []int{5}, 0},
 		{"All zeros", []int{0, 0, 0, 0}, 0},
 		{"Very large numbers", []int{1000000, 500000, 1000000}, 2000000}, // Fixed: min(1000000,1000000)*2 = 2000000
-		{"Alternating heights", []int{1, 100, 1, 100, 1}, 200}, // Fixed: min(100,100)*2 = 200
+		{"Alternating heights", []int{1, 100, 1, 100, 1}, 200},           // Fixed: min(100,100)*2 = 200
 		{"Peak in middle", []int{1, 2, 100, 2, 1}, 4},
 		{"Valley in middle", []int{100, 1, 2, 1, 100}, 400},
 		{"Large array with pattern", []int{1, 3, 5, 7, 9, 7, 5, 3, 1}, 20},

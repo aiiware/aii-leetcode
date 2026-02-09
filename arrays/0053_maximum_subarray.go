@@ -33,7 +33,7 @@ func MaxSubArray(nums []int) int {
 	for i := 1; i < len(nums); i++ {
 		// Either extend the current subarray or start a new one
 		maxCurrent = max(nums[i], maxCurrent+nums[i])
-		
+
 		// Update global maximum if current is better
 		if maxCurrent > maxGlobal {
 			maxGlobal = maxCurrent

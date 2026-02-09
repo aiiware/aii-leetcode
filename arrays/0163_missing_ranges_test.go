@@ -90,7 +90,7 @@ func BenchmarkFindMissingRanges(b *testing.B) {
 	nums := []int{0, 1, 3, 50, 75}
 	lower := 0
 	upper := 99
-	
+
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		findMissingRanges(nums, lower, upper)

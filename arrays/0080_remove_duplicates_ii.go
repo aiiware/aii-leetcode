@@ -123,7 +123,7 @@ func RemoveDuplicatesIIGeneric(nums []int, maxDuplicates int) int {
 	if maxDuplicates < 0 {
 		return 0
 	}
-	
+
 	if len(nums) <= maxDuplicates {
 		return len(nums)
 	}
@@ -133,7 +133,7 @@ func RemoveDuplicatesIIGeneric(nums []int, maxDuplicates int) int {
 		if len(nums) == 0 {
 			return 0
 		}
-		
+
 		k := 1 // position to write next unique element
 		for i := 1; i < len(nums); i++ {
 			if nums[i] != nums[k-1] {

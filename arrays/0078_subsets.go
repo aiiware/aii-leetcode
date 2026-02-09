@@ -140,7 +140,7 @@ func SubsetsLexicographic(nums []int) [][]int {
 func SubsetsWithDuplicates(nums []int) [][]int {
 	// First sort to handle duplicates
 	// sort.Ints(nums) // Uncomment if nums can have duplicates
-	
+
 	result := make([][]int, 0)
 	current := make([]int, 0)
 

@@ -1,6 +1,5 @@
 package arrays
 
-
 /*
 Difficulty: Medium
 Tags: [Add relevant tags]
@@ -15,7 +14,7 @@ import (
 
 // Problem 0090: Subsets II
 //
-// Given an integer array nums that may contain duplicates, return all possible 
+// Given an integer array nums that may contain duplicates, return all possible
 // subsets (the power set).
 //
 // The solution set must not contain duplicate subsets. Return the solution in any order.
@@ -37,33 +36,33 @@ import (
 func subsetsWithDup(nums []int) [][]int {
 	// Sort to handle duplicates
 	sort.Ints(nums)
-	
+
 	result := [][]int{}
 	current := []int{}
-	
+
 	var backtrack func(int)
 	backtrack = func(start int) {
 		// Add current subset to result
 		temp := make([]int, len(current))
 		copy(temp, current)
 		result = append(result, temp)
-		
+
 		// Explore further
 		for i := start; i < len(nums); i++ {
 			// Skip duplicates
 			if i > start && nums[i] == nums[i-1] {
 				continue
 			}
-			
+
 			// Include nums[i]
 			current = append(current, nums[i])
 			backtrack(i + 1)
-			
+
 			// Backtrack
 			current = current[:len(current)-1]
 		}
 	}
-	
+
 	backtrack(0)
 	return result
 }
@@ -72,9 +71,9 @@ func subsetsWithDup(nums []int) [][]int {
 func subsetsWithDupIterative(nums []int) [][]int {
 	// Sort to handle duplicates
 	sort.Ints(nums)
-	
+
 	result := [][]int{{}} // Start with empty subset
-	
+
 	size := 0
 	start := 0
 	for i := 0; i < len(nums); i++ {
@@ -84,7 +83,7 @@ func subsetsWithDupIterative(nums []int) [][]int {
 		} else {
 			start = 0
 		}
-		
+
 		size = len(result)
 		for j := start; j < size; j++ {
 			// Create new subset by adding nums[i] to existing subset
@@ -94,7 +93,7 @@ func subsetsWithDupIterative(nums []int) [][]int {
 			result = append(result, newSubset)
 		}
 	}
-	
+
 	return result
 }
 
@@ -102,12 +101,12 @@ func subsetsWithDupIterative(nums []int) [][]int {
 func subsetsWithDupBitmask(nums []int) [][]int {
 	// Sort to make duplicates adjacent
 	sort.Ints(nums)
-	
+
 	n := len(nums)
 	total := 1 << n
 	result := [][]int{}
 	seen := make(map[string]bool)
-	
+
 	for mask := 0; mask < total; mask++ {
 		subset := []int{}
 		for i := 0; i < n; i++ {
@@ -115,7 +114,7 @@ func subsetsWithDupBitmask(nums []int) [][]int {
 				subset = append(subset, nums[i])
 			}
 		}
-		
+
 		// Create a string key to check for duplicates
 		key := fmtSubset(subset)
 		if !seen[key] {
@@ -123,7 +122,7 @@ func subsetsWithDupBitmask(nums []int) [][]int {
 			result = append(result, subset)
 		}
 	}
-	
+
 	return result
 }
 
@@ -141,7 +140,7 @@ func fmtSubset(subset []int) string {
 func subsetsWithDupDFS(nums []int) [][]int {
 	sort.Ints(nums)
 	result := [][]int{}
-	
+
 	var dfs func(int, []int)
 	dfs = func(index int, current []int) {
 		if index == len(nums) {
@@ -150,12 +149,12 @@ func subsetsWithDupDFS(nums []int) [][]int {
 			result = append(result, temp)
 			return
 		}
-		
+
 		// Include current element
 		current = append(current, nums[index])
 		dfs(index+1, current)
 		current = current[:len(current)-1]
-		
+
 		// Skip duplicates
 		next := index + 1
 		for next < len(nums) && nums[next] == nums[index] {
@@ -163,7 +162,7 @@ func subsetsWithDupDFS(nums []int) [][]int {
 		}
 		dfs(next, current)
 	}
-	
+
 	dfs(0, []int{})
 	return result
 }
@@ -171,9 +170,9 @@ func subsetsWithDupDFS(nums []int) [][]int {
 // subsetsWithDupBFS uses BFS approach.
 func subsetsWithDupBFS(nums []int) [][]int {
 	sort.Ints(nums)
-	
+
 	result := [][]int{{}} // Start with empty subset
-	
+
 	size := 0
 	start := 0
 	for i := 0; i < len(nums); i++ {
@@ -183,7 +182,7 @@ func subsetsWithDupBFS(nums []int) [][]int {
 		} else {
 			start = 0
 		}
-		
+
 		size = len(result)
 		for j := start; j < size; j++ {
 			// Create new subset by adding nums[i] to existing subset
@@ -193,33 +192,33 @@ func subsetsWithDupBFS(nums []int) [][]int {
 			result = append(result, newSubset)
 		}
 	}
-	
+
 	return result
 }
 
 // subsetsWithDupOptimized is an optimized version.
 func subsetsWithDupOptimized(nums []int) [][]int {
 	sort.Ints(nums)
-	
+
 	result := [][]int{}
 	current := []int{}
-	
+
 	var backtrack func(int)
 	backtrack = func(start int) {
 		result = append(result, append([]int{}, current...))
-		
+
 		for i := start; i < len(nums); i++ {
 			// Skip duplicates
 			if i > start && nums[i] == nums[i-1] {
 				continue
 			}
-			
+
 			current = append(current, nums[i])
 			backtrack(i + 1)
 			current = current[:len(current)-1]
 		}
 	}
-	
+
 	backtrack(0)
 	return result
 }

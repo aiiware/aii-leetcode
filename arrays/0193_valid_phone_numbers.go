@@ -13,13 +13,13 @@ package arrays
 // Time complexity: O(n), Space complexity: O(1)
 func ValidPhoneNumbers(phones []string) []string {
 	var result []string
-	
+
 	for _, phone := range phones {
 		if isValidPhoneNumber(phone) {
 			result = append(result, phone)
 		}
 	}
-	
+
 	return result
 }
 
@@ -37,7 +37,7 @@ func isValidPhoneNumber(phone string) bool {
 			}
 		}
 	}
-	
+
 	// Format: xxx-xxx-xxxx (length 12)
 	// 123-456-7890
 	// 012345678901
@@ -51,7 +51,7 @@ func isValidPhoneNumber(phone string) bool {
 			}
 		}
 	}
-	
+
 	return false
 }
 

@@ -11,13 +11,13 @@ package arrays
 func DeleteDuplicateEmails(emails []string) []string {
 	seen := make(map[string]bool)
 	var result []string
-	
+
 	for _, email := range emails {
 		if !seen[email] {
 			seen[email] = true
 			result = append(result, email)
 		}
 	}
-	
+
 	return result
 }

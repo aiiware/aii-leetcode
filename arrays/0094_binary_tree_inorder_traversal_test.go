@@ -32,7 +32,7 @@ func TestInorderTraversal(t *testing.T) {
 		root.Right = &TreeNode{Val: 3}
 		root.Left.Left = &TreeNode{Val: 4}
 		root.Left.Right = &TreeNode{Val: 5}
-		
+
 		result := InorderTraversal(root)
 		assert.Equal(t, []int{4, 2, 5, 1, 3}, result)
 	})
@@ -47,7 +47,7 @@ func TestInorderTraversal(t *testing.T) {
 		root := &TreeNode{Val: 1}
 		root.Left = &TreeNode{Val: 2}
 		root.Left.Left = &TreeNode{Val: 3}
-		
+
 		result := InorderTraversal(root)
 		assert.Equal(t, []int{3, 2, 1}, result)
 	})
@@ -62,7 +62,7 @@ func TestInorderTraversal(t *testing.T) {
 		root := &TreeNode{Val: 1}
 		root.Right = &TreeNode{Val: 2}
 		root.Right.Right = &TreeNode{Val: 3}
-		
+
 		result := InorderTraversal(root)
 		assert.Equal(t, []int{1, 2, 3}, result)
 	})
@@ -85,7 +85,7 @@ func TestInorderTraversal(t *testing.T) {
 		root.Right.Right = &TreeNode{Val: 9}
 		root.Left.Left.Left = &TreeNode{Val: 1}
 		root.Right.Left.Left = &TreeNode{Val: 6}
-		
+
 		result := InorderTraversal(root)
 		assert.Equal(t, []int{1, 2, 3, 4, 5, 6, 7, 8, 9}, result)
 	})
@@ -95,13 +95,13 @@ func BenchmarkInorderTraversal(b *testing.B) {
 	// Create a moderately sized tree for benchmarking
 	root := &TreeNode{Val: 1}
 	current := root
-	
+
 	// Create a left-skewed tree for benchmarking
 	for i := 2; i <= 100; i++ {
 		current.Left = &TreeNode{Val: i}
 		current = current.Left
 	}
-	
+
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		InorderTraversal(root)

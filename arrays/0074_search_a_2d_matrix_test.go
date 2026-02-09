@@ -98,8 +98,8 @@ func TestSearchMatrix(t *testing.T) {
 			expected: false,
 		},
 		{
-			name: "Empty matrix",
-			matrix: [][]int{},
+			name:     "Empty matrix",
+			matrix:   [][]int{},
 			target:   5,
 			expected: false,
 		},
@@ -293,8 +293,8 @@ func TestSearchMatrixTwoStep(t *testing.T) {
 			expected: false,
 		},
 		{
-			name: "Empty matrix",
-			matrix: [][]int{},
+			name:     "Empty matrix",
+			matrix:   [][]int{},
 			target:   5,
 			expected: false,
 		},
@@ -434,8 +434,8 @@ func TestSearchMatrixLinear(t *testing.T) {
 			expected: false,
 		},
 		{
-			name: "Empty matrix",
-			matrix: [][]int{},
+			name:     "Empty matrix",
+			matrix:   [][]int{},
 			target:   5,
 			expected: false,
 		},

@@ -53,7 +53,7 @@ func TestCalculateMinimumHP(t *testing.T) {
 			},
 			// Path: -2, -5, 10, -3, 1
 			// Need to survive: at -2 need 3, at -5 need 8, at 10 need 1 (since 8-10=-2, but min is 1), at -3 need 4, at 1 need 1
-			// Actually let's compute: 
+			// Actually let's compute:
 			// Starting from end: dp[0][4] = max(1, 1 - 1) = 1
 			// dp[0][3] = max(1, dp[0][4] - (-3)) = max(1, 1 + 3) = 4
 			// dp[0][2] = max(1, dp[0][3] - 10) = max(1, 4 - 10) = 1 (since negative)
@@ -115,18 +115,18 @@ func TestCalculateMinimumHP(t *testing.T) {
 			expected: 97,
 		},
 		{
-			name: "Empty dungeon (edge case)",
-			dungeon: [][]int{},
+			name:     "Empty dungeon (edge case)",
+			dungeon:  [][]int{},
 			expected: 1,
 		},
 		{
-			name: "Dungeon with zero rows",
-			dungeon: [][]int{},
+			name:     "Dungeon with zero rows",
+			dungeon:  [][]int{},
 			expected: 1,
 		},
 		{
-			name: "Dungeon with zero columns",
-			dungeon: [][]int{{}},
+			name:     "Dungeon with zero columns",
+			dungeon:  [][]int{{}},
 			expected: 1,
 		},
 	}
@@ -137,13 +137,13 @@ func TestCalculateMinimumHP(t *testing.T) {
 			if result != tt.expected {
 				t.Errorf("calculateMinimumHP() = %d, expected %d", result, tt.expected)
 			}
-			
+
 			// Also test the space-optimized version
 			result2 := calculateMinimumHP2(tt.dungeon)
 			if result2 != tt.expected {
 				t.Errorf("calculateMinimumHP2() = %d, expected %d", result2, tt.expected)
 			}
-			
+
 			// Both implementations should give the same result
 			if result != result2 {
 				t.Errorf("Mismatch between implementations: calculateMinimumHP() = %d, calculateMinimumHP2() = %d", result, result2)
@@ -160,7 +160,7 @@ func TestCalculateMinimumHP_EdgeCases(t *testing.T) {
 			t.Errorf("calculateMinimumHP(nil) = %d, expected 1", result)
 		}
 	})
-	
+
 	// Test with 1x1 positive
 	t.Run("1x1 positive", func(t *testing.T) {
 		dungeon := [][]int{{5}}
@@ -169,7 +169,7 @@ func TestCalculateMinimumHP_EdgeCases(t *testing.T) {
 			t.Errorf("calculateMinimumHP([[5]]) = %d, expected 1", result)
 		}
 	})
-	
+
 	// Test with 1x1 negative
 	t.Run("1x1 negative", func(t *testing.T) {
 		dungeon := [][]int{{-5}}
@@ -178,7 +178,7 @@ func TestCalculateMinimumHP_EdgeCases(t *testing.T) {
 			t.Errorf("calculateMinimumHP([[-5]]) = %d, expected 6", result)
 		}
 	})
-	
+
 	// Test with 1x1 zero
 	t.Run("1x1 zero", func(t *testing.T) {
 		dungeon := [][]int{{0}}
@@ -246,7 +246,7 @@ func BenchmarkCalculateMinimumHP(b *testing.B) {
 			}
 		}
 	}
-	
+
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		calculateMinimumHP(dungeon)
@@ -270,7 +270,7 @@ func BenchmarkCalculateMinimumHP2(b *testing.B) {
 			}
 		}
 	}
-	
+
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		calculateMinimumHP2(dungeon)
@@ -283,7 +283,7 @@ func BenchmarkCalculateMinimumHP_Small(b *testing.B) {
 		{-5, -10, 1},
 		{10, 30, -5},
 	}
-	
+
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		calculateMinimumHP(dungeon)
@@ -296,7 +296,7 @@ func BenchmarkCalculateMinimumHP2_Small(b *testing.B) {
 		{-5, -10, 1},
 		{10, 30, -5},
 	}
-	
+
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		calculateMinimumHP2(dungeon)

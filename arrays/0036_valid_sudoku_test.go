@@ -137,7 +137,7 @@ func BenchmarkIsValidSudoku(b *testing.B) {
 		{'.', '.', '.', '4', '1', '9', '.', '.', '5'},
 		{'.', '.', '.', '.', '8', '.', '.', '7', '9'},
 	}
-	
+
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		IsValidSudoku(board)
@@ -156,7 +156,7 @@ func BenchmarkIsValidSudokuOptimized(b *testing.B) {
 		{'.', '.', '.', '4', '1', '9', '.', '.', '5'},
 		{'.', '.', '.', '.', '8', '.', '.', '7', '9'},
 	}
-	
+
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		IsValidSudokuOptimized(board)

@@ -272,7 +272,7 @@ func TestAllImplementationsMatch(t *testing.T) {
 		result1 := MaxProductKadane(nums)
 		result2 := MaxProductPrefixSuffix(nums)
 		result3 := MaxProductDP(nums)
-		
+
 		// Only test brute force for small arrays (it's O(n^2))
 		if len(nums) <= 10 {
 			result4 := MaxProductBruteForce(nums)
@@ -363,7 +363,7 @@ func TestMaxProductEdgeCases(t *testing.T) {
 				nums[i] = -1
 			}
 		}
-		
+
 		// For even length array of alternating 1 and -1, max product is 1
 		result := MaxProduct(nums)
 		if result != 1 {
@@ -376,7 +376,7 @@ func TestMaxProductEdgeCases(t *testing.T) {
 		for i := range nums {
 			nums[i] = 1
 		}
-		
+
 		result := MaxProduct(nums)
 		if result != 1 {
 			t.Errorf("MaxProduct(all ones x50) = %d, expected 1", result)

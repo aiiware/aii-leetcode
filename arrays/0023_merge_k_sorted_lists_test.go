@@ -22,7 +22,7 @@ func TestMergeKLists(t *testing.T) {
 
 		lists := []*ListNode{list1, list2, list3}
 		result := MergeKLists(lists)
-		
+
 		// Expected: 1->1->2->3->4->4->5->6
 		expectedVals := []int{1, 1, 2, 3, 4, 4, 5, 6}
 		actualVals := []int{}
@@ -31,7 +31,7 @@ func TestMergeKLists(t *testing.T) {
 			actualVals = append(actualVals, current.Val)
 			current = current.Next
 		}
-		
+
 		assert.Equal(t, expectedVals, actualVals)
 	})
 
@@ -44,7 +44,7 @@ func TestMergeKLists(t *testing.T) {
 		list := &ListNode{Val: 1}
 		list.Next = &ListNode{Val: 2}
 		list.Next.Next = &ListNode{Val: 3}
-		
+
 		result := MergeKLists([]*ListNode{list})
 		expectedVals := []int{1, 2, 3}
 		actualVals := []int{}
@@ -53,7 +53,7 @@ func TestMergeKLists(t *testing.T) {
 			actualVals = append(actualVals, current.Val)
 			current = current.Next
 		}
-		
+
 		assert.Equal(t, expectedVals, actualVals)
 	})
 
@@ -78,9 +78,9 @@ func BenchmarkMergeKLists(b *testing.B) {
 
 	list3 := &ListNode{Val: 2}
 	list3.Next = &ListNode{Val: 6}
-	
+
 	lists := []*ListNode{list1, list2, list3}
-	
+
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		MergeKLists(lists)

@@ -90,31 +90,31 @@ func TestCombinationSum(t *testing.T) {
 				copy(expected[i], comb)
 			}
 			sortResults(expected)
-			
+
 			// Test backtracking approach
 			result := CombinationSum(test.candidates, test.target)
 			sortResults(result)
-			
+
 			if !reflect.DeepEqual(result, expected) {
-				t.Errorf("CombinationSum(%v, %d) = %v, expected %v", 
+				t.Errorf("CombinationSum(%v, %d) = %v, expected %v",
 					test.candidates, test.target, result, expected)
 			}
 
 			// Test DP approach
 			result = CombinationSumDP(test.candidates, test.target)
 			sortResults(result)
-			
+
 			if !reflect.DeepEqual(result, expected) {
-				t.Errorf("CombinationSumDP(%v, %d) = %v, expected %v", 
+				t.Errorf("CombinationSumDP(%v, %d) = %v, expected %v",
 					test.candidates, test.target, result, expected)
 			}
 
 			// Test iterative approach
 			result = CombinationSumIterative(test.candidates, test.target)
 			sortResults(result)
-			
+
 			if !reflect.DeepEqual(result, expected) {
-				t.Errorf("CombinationSumIterative(%v, %d) = %v, expected %v", 
+				t.Errorf("CombinationSumIterative(%v, %d) = %v, expected %v",
 					test.candidates, test.target, result, expected)
 			}
 		})
@@ -124,7 +124,7 @@ func TestCombinationSum(t *testing.T) {
 func BenchmarkCombinationSum(b *testing.B) {
 	candidates := []int{2, 3, 5, 7}
 	target := 15
-	
+
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		CombinationSum(candidates, target)
@@ -134,7 +134,7 @@ func BenchmarkCombinationSum(b *testing.B) {
 func BenchmarkCombinationSumDP(b *testing.B) {
 	candidates := []int{2, 3, 5, 7}
 	target := 15
-	
+
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		CombinationSumDP(candidates, target)
@@ -144,7 +144,7 @@ func BenchmarkCombinationSumDP(b *testing.B) {
 func BenchmarkCombinationSumIterative(b *testing.B) {
 	candidates := []int{2, 3, 5, 7}
 	target := 15
-	
+
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		CombinationSumIterative(candidates, target)

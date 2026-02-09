@@ -72,7 +72,7 @@ func BenchmarkValidPhoneNumbers(b *testing.B) {
 		"invalid",
 		"(999) 888-7777",
 	}
-	
+
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		ValidPhoneNumbers(phones)

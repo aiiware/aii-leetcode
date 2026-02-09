@@ -1,8 +1,8 @@
 package arrays
 
 import (
-	"sort"
 	"leetcode/utils"
+	"sort"
 )
 
 // ThreeSumClosest solves LeetCode problem 0016: 3Sum Closest

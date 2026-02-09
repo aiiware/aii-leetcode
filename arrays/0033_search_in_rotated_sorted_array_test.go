@@ -78,14 +78,14 @@ func TestSearchInRotatedSortedArray(t *testing.T) {
 			// Test single pass approach
 			result := SearchInRotatedSortedArray(test.nums, test.target)
 			if result != test.expected {
-				t.Errorf("SearchInRotatedSortedArray(%v, %d) = %d, expected %d", 
+				t.Errorf("SearchInRotatedSortedArray(%v, %d) = %d, expected %d",
 					test.nums, test.target, result, test.expected)
 			}
 
 			// Test two-pass approach
 			result = SearchInRotatedSortedArrayTwoPass(test.nums, test.target)
 			if result != test.expected {
-				t.Errorf("SearchInRotatedSortedArrayTwoPass(%v, %d) = %d, expected %d", 
+				t.Errorf("SearchInRotatedSortedArrayTwoPass(%v, %d) = %d, expected %d",
 					test.nums, test.target, result, test.expected)
 			}
 		})
@@ -95,7 +95,7 @@ func TestSearchInRotatedSortedArray(t *testing.T) {
 func BenchmarkSearchInRotatedSortedArray(b *testing.B) {
 	nums := []int{15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14}
 	target := 7
-	
+
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		SearchInRotatedSortedArray(nums, target)
@@ -105,7 +105,7 @@ func BenchmarkSearchInRotatedSortedArray(b *testing.B) {
 func BenchmarkSearchInRotatedSortedArrayTwoPass(b *testing.B) {
 	nums := []int{15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14}
 	target := 7
-	
+
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		SearchInRotatedSortedArrayTwoPass(nums, target)

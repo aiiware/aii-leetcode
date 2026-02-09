@@ -1,6 +1,5 @@
 package arrays
 
-
 /*
 Difficulty: Hard
 Tags: [Add relevant tags]
@@ -60,26 +59,26 @@ Space Complexity: O(1)
 // CanCompleteCircuit returns the starting gas station index if possible, otherwise -1
 func CanCompleteCircuit(gas []int, cost []int) int {
 	n := len(gas)
-	
+
 	// Check if total gas is enough for total cost
 	totalGas, totalCost := 0, 0
 	for i := 0; i < n; i++ {
 		totalGas += gas[i]
 		totalCost += cost[i]
 	}
-	
+
 	// If total gas is less than total cost, impossible to complete circuit
 	if totalGas < totalCost {
 		return -1
 	}
-	
+
 	// Find starting station using greedy approach
 	currentGas := 0
 	startStation := 0
-	
+
 	for i := 0; i < n; i++ {
 		currentGas += gas[i] - cost[i]
-		
+
 		// If we can't reach next station from current start
 		if currentGas < 0 {
 			// Reset starting point to next station
@@ -87,6 +86,6 @@ func CanCompleteCircuit(gas []int, cost []int) int {
 			currentGas = 0
 		}
 	}
-	
+
 	return startStation
 }

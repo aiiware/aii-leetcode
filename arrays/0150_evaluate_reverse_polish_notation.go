@@ -53,7 +53,7 @@ import (
 // EvalRPN evaluates an arithmetic expression in Reverse Polish Notation
 func EvalRPN(tokens []string) int {
 	stack := make([]int, 0)
-	
+
 	for _, token := range tokens {
 		// Check if token is an operator
 		if token == "+" || token == "-" || token == "*" || token == "/" {
@@ -61,7 +61,7 @@ func EvalRPN(tokens []string) int {
 			b := stack[len(stack)-1]
 			a := stack[len(stack)-2]
 			stack = stack[:len(stack)-2]
-			
+
 			// Perform operation
 			var result int
 			switch token {
@@ -74,7 +74,7 @@ func EvalRPN(tokens []string) int {
 			case "/":
 				result = a / b
 			}
-			
+
 			// Push result back to stack
 			stack = append(stack, result)
 		} else {
@@ -83,7 +83,7 @@ func EvalRPN(tokens []string) int {
 			stack = append(stack, num)
 		}
 	}
-	
+
 	// Final result is the only element in stack
 	return stack[0]
 }

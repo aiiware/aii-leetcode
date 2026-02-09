@@ -2,8 +2,8 @@ package arrays
 
 import (
 	"fmt"
+	"leetcode/utils"
 	"testing"
-    "leetcode/utils"
 )
 
 func TestSubsetsWithDup(t *testing.T) {
@@ -90,22 +90,22 @@ func TestSubsetsWithDup(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			result := SubsetsWithDup(tt.nums)
-			
+
 			// Sort both result and expected for comparison
 			utils.SortSubsets(result)
 			utils.SortSubsets(tt.expected)
-			
+
 			if !utils.SubsetsEqual(result, tt.expected) {
-				t.Errorf("SubsetsWithDup(%v) = %v, expected %v", 
+				t.Errorf("SubsetsWithDup(%v) = %v, expected %v",
 					tt.nums, result, tt.expected)
 			}
-			
+
 			// Additional check: no duplicates in result
 			if utils.HasDuplicateSubsets(result) {
-				t.Errorf("SubsetsWithDup(%v) contains duplicate subsets: %v", 
+				t.Errorf("SubsetsWithDup(%v) contains duplicate subsets: %v",
 					tt.nums, result)
 			}
-			
+
 			// Check that all subsets are valid
 			for _, subset := range result {
 				if !utils.IsSubset(subset, tt.nums) {
@@ -191,7 +191,7 @@ func TestSubsetsWithDupEdgeCases(t *testing.T) {
 		if len(result) != 5 {
 			t.Errorf("Expected 5 subsets, got %d: %v", len(result), result)
 		}
-		
+
 		// Check all subsets are valid
 		for _, subset := range result {
 			for _, num := range subset {
@@ -200,7 +200,7 @@ func TestSubsetsWithDupEdgeCases(t *testing.T) {
 				}
 			}
 		}
-		
+
 		// Check no duplicates
 		if utils.HasDuplicateSubsets(result) {
 			t.Errorf("Contains duplicate subsets: %v", result)
@@ -211,12 +211,12 @@ func TestSubsetsWithDupEdgeCases(t *testing.T) {
 		// Test with maximum allowed size
 		nums := []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
 		result := SubsetsWithDup(nums)
-		
+
 		// Without duplicates, should have 2^10 = 1024 subsets
 		if len(result) != 1024 {
 			t.Errorf("Expected 1024 subsets for n=10 without duplicates, got %d", len(result))
 		}
-		
+
 		// Check no duplicates
 		if utils.HasDuplicateSubsets(result) {
 			t.Errorf("Contains duplicate subsets")
@@ -226,19 +226,19 @@ func TestSubsetsWithDupEdgeCases(t *testing.T) {
 	t.Run("With many duplicates", func(t *testing.T) {
 		nums := []int{1, 1, 2, 2, 2, 3}
 		result := SubsetsWithDup(nums)
-		
+
 		// Should have fewer than 2^6 = 64 subsets due to duplicates
 		if len(result) >= 64 {
 			t.Errorf("Should have fewer than 64 subsets due to duplicates, got %d", len(result))
 		}
-		
+
 		// Check all subsets are valid
 		for _, subset := range result {
 			if !utils.IsSubset(subset, nums) {
 				t.Errorf("Invalid subset %v for nums %v", subset, nums)
 			}
 		}
-		
+
 		// Check no duplicates
 		if utils.HasDuplicateSubsets(result) {
 			t.Errorf("Contains duplicate subsets: %v", result)
@@ -303,7 +303,7 @@ func TestSubsetsWithDupProperties(t *testing.T) {
 					// Property 4: Number of subsets should be <= 2^n
 					n := len(nums)
 					if len(result) > 1<<n {
-						t.Errorf("Too many subsets: %d > 2^%d = %d", 
+						t.Errorf("Too many subsets: %d > 2^%d = %d",
 							len(result), n, 1<<n)
 					}
 
@@ -373,19 +373,19 @@ func BenchmarkSubsetsWithDupWorstCase(b *testing.B) {
 	nums := []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10} // n=10, 2^10=1024 subsets
 
 	b.ResetTimer()
-	
+
 	b.Run("subsetsWithDup", func(b *testing.B) {
 		for i := 0; i < b.N; i++ {
 			subsetsWithDup(nums)
 		}
 	})
-	
+
 	b.Run("subsetsWithDupOptimized", func(b *testing.B) {
 		for i := 0; i < b.N; i++ {
 			subsetsWithDupOptimized(nums)
 		}
 	})
-	
+
 	b.Run("subsetsWithDupIterative", func(b *testing.B) {
 		for i := 0; i < b.N; i++ {
 			subsetsWithDupIterative(nums)

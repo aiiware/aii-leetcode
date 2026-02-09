@@ -30,13 +30,13 @@ package arrays
 // Time complexity: O(n), Space complexity: O(1) excluding output array
 func FindDuplicates(nums []int) []int {
 	result := []int{}
-	
+
 	// Use negative marking technique
 	for i := 0; i < len(nums); i++ {
 		// Get absolute value (since we might have marked it negative)
 		val := abs(nums[i])
-		idx := val - 1  // Convert to 0-based index
-		
+		idx := val - 1 // Convert to 0-based index
+
 		// If the value at this index is already negative,
 		// it means we've seen this number before (it's a duplicate)
 		if nums[idx] < 0 {
@@ -46,9 +46,6 @@ func FindDuplicates(nums []int) []int {
 			nums[idx] = -nums[idx]
 		}
 	}
-	
+
 	return result
 }
-
-// Note: abs function is already defined in 0448_find_all_numbers_disappeared_in_an_array.go
-// The compiler will use that same function

@@ -8,9 +8,9 @@ import (
 
 func TestMerge(t *testing.T) {
 	tests := []struct {
-		name       string
-		intervals  [][]int
-		expected   [][]int
+		name      string
+		intervals [][]int
+		expected  [][]int
 	}{
 		{
 			name: "Example 1",
@@ -37,9 +37,9 @@ func TestMerge(t *testing.T) {
 			},
 		},
 		{
-			name:       "Empty intervals",
-			intervals:  [][]int{},
-			expected:   [][]int{},
+			name:      "Empty intervals",
+			intervals: [][]int{},
+			expected:  [][]int{},
 		},
 		{
 			name: "Single interval",

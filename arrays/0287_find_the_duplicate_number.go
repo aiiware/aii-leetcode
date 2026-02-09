@@ -11,22 +11,22 @@ package arrays
 // constant extra space.
 //
 // Constraints:
-// - 1 <= n <= 10^5
-// - nums.length == n + 1
-// - 1 <= nums[i] <= n
-// - All the integers in nums appear only once except for precisely one integer
-//   which appears two or more times.
+//   - 1 <= n <= 10^5
+//   - nums.length == n + 1
+//   - 1 <= nums[i] <= n
+//   - All the integers in nums appear only once except for precisely one integer
+//     which appears two or more times.
 //
 // Time complexity: O(n), Space complexity: O(1) using Floyd's algorithm
 func FindDuplicate(nums []int) int {
 	// Floyd's Tortoise and Hare algorithm (Cycle Detection)
 	// Treat the array as a linked list where nums[i] points to nums[nums[i]]
 	// Since there's a duplicate, there must be a cycle
-	
+
 	// Phase 1: Find intersection point
 	slow := nums[0]
 	fast := nums[0]
-	
+
 	// Move slow by 1 step, fast by 2 steps
 	for {
 		slow = nums[slow]
@@ -35,7 +35,7 @@ func FindDuplicate(nums []int) int {
 			break
 		}
 	}
-	
+
 	// Phase 2: Find the entrance to the cycle (duplicate number)
 	// Reset slow to start, keep fast at meeting point
 	// Move both by 1 step until they meet again
@@ -44,7 +44,7 @@ func FindDuplicate(nums []int) int {
 		slow = nums[slow]
 		fast = nums[fast]
 	}
-	
+
 	return slow
 }
 
@@ -54,10 +54,10 @@ func FindDuplicate(nums []int) int {
 func FindDuplicateBinarySearch(nums []int) int {
 	// Binary search on the range [1, n] (not on the array indices)
 	left, right := 1, len(nums)-1
-	
+
 	for left < right {
 		mid := left + (right-left)/2
-		
+
 		// Count how many numbers are <= mid
 		count := 0
 		for _, num := range nums {
@@ -65,7 +65,7 @@ func FindDuplicateBinarySearch(nums []int) int {
 				count++
 			}
 		}
-		
+
 		// If count > mid, duplicate is in [left, mid]
 		// Otherwise, duplicate is in [mid+1, right]
 		if count > mid {
@@ -74,7 +74,7 @@ func FindDuplicateBinarySearch(nums []int) int {
 			left = mid + 1
 		}
 	}
-	
+
 	return left
 }
 
@@ -84,33 +84,33 @@ func FindDuplicateBinarySearch(nums []int) int {
 func FindDuplicateBitManipulation(nums []int) int {
 	duplicate := 0
 	n := len(nums) - 1
-	
+
 	// For each bit position
 	for bit := 0; bit < 32; bit++ {
 		mask := 1 << bit
-		baseCount := 0  // Count of 1s in numbers 1..n
-		numCount := 0   // Count of 1s in nums array
-		
+		baseCount := 0 // Count of 1s in numbers 1..n
+		numCount := 0  // Count of 1s in nums array
+
 		// Count 1s in numbers from 1 to n
 		for i := 1; i <= n; i++ {
 			if i&mask != 0 {
 				baseCount++
 			}
 		}
-		
+
 		// Count 1s in nums array
 		for _, num := range nums {
 			if num&mask != 0 {
 				numCount++
 			}
 		}
-		
+
 		// If numCount > baseCount, this bit is set in duplicate
 		if numCount > baseCount {
 			duplicate |= mask
 		}
 	}
-	
+
 	return duplicate
 }
 

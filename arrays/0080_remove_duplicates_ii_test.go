@@ -8,99 +8,99 @@ import (
 
 func TestRemoveDuplicatesII(t *testing.T) {
 	tests := []struct {
-		name     string
-		nums     []int
-		expected int
+		name         string
+		nums         []int
+		expected     int
 		expectedNums []int
 	}{
 		{
-			name:     "Example 1",
-			nums:     []int{1, 1, 1, 2, 2, 3},
-			expected: 5,
+			name:         "Example 1",
+			nums:         []int{1, 1, 1, 2, 2, 3},
+			expected:     5,
 			expectedNums: []int{1, 1, 2, 2, 3},
 		},
 		{
-			name:     "Example 2",
-			nums:     []int{0, 0, 1, 1, 1, 1, 2, 3, 3},
-			expected: 7,
+			name:         "Example 2",
+			nums:         []int{0, 0, 1, 1, 1, 1, 2, 3, 3},
+			expected:     7,
 			expectedNums: []int{0, 0, 1, 1, 2, 3, 3},
 		},
 		{
-			name:     "No duplicates",
-			nums:     []int{1, 2, 3, 4, 5},
-			expected: 5,
+			name:         "No duplicates",
+			nums:         []int{1, 2, 3, 4, 5},
+			expected:     5,
 			expectedNums: []int{1, 2, 3, 4, 5},
 		},
 		{
-			name:     "All same elements (more than 2)",
-			nums:     []int{1, 1, 1, 1, 1},
-			expected: 2,
+			name:         "All same elements (more than 2)",
+			nums:         []int{1, 1, 1, 1, 1},
+			expected:     2,
 			expectedNums: []int{1, 1},
 		},
 		{
-			name:     "Exactly 2 duplicates",
-			nums:     []int{1, 1, 2, 2, 3, 3},
-			expected: 6,
+			name:         "Exactly 2 duplicates",
+			nums:         []int{1, 1, 2, 2, 3, 3},
+			expected:     6,
 			expectedNums: []int{1, 1, 2, 2, 3, 3},
 		},
 		{
-			name:     "Single element",
-			nums:     []int{1},
-			expected: 1,
+			name:         "Single element",
+			nums:         []int{1},
+			expected:     1,
 			expectedNums: []int{1},
 		},
 		{
-			name:     "Two elements same",
-			nums:     []int{1, 1},
-			expected: 2,
+			name:         "Two elements same",
+			nums:         []int{1, 1},
+			expected:     2,
 			expectedNums: []int{1, 1},
 		},
 		{
-			name:     "Two elements different",
-			nums:     []int{1, 2},
-			expected: 2,
+			name:         "Two elements different",
+			nums:         []int{1, 2},
+			expected:     2,
 			expectedNums: []int{1, 2},
 		},
 		{
-			name:     "Empty array",
-			nums:     []int{},
-			expected: 0,
+			name:         "Empty array",
+			nums:         []int{},
+			expected:     0,
 			expectedNums: []int{},
 		},
 		{
-			name:     "Mixed with negative numbers",
-			nums:     []int{-5, -5, -5, -3, -3, -3, -1, 0, 0, 2, 2, 2},
-			expected: 9,
+			name:         "Mixed with negative numbers",
+			nums:         []int{-5, -5, -5, -3, -3, -3, -1, 0, 0, 2, 2, 2},
+			expected:     9,
 			expectedNums: []int{-5, -5, -3, -3, -1, 0, 0, 2, 2},
 		},
 		{
-			name:     "Large duplicates block",
-			nums:     []int{1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3},
-			expected: 5,
+			name:         "Large duplicates block",
+			nums:         []int{1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3},
+			expected:     5,
 			expectedNums: []int{1, 1, 2, 2, 3},
 		},
 		{
-			name:     "Alternating duplicates",
-			nums:     []int{1, 1, 1, 2, 2, 2, 3, 3, 3},
-			expected: 6,
+			name:         "Alternating duplicates",
+			nums:         []int{1, 1, 1, 2, 2, 2, 3, 3, 3},
+			expected:     6,
 			expectedNums: []int{1, 1, 2, 2, 3, 3},
 		},
 		{
-			name:     "Three different duplicates patterns",
-			nums:     []int{1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3, 3},
-			expected: 6,
+			name:         "Three different duplicates patterns",
+			nums:         []int{1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3, 3},
+			expected:     6,
 			expectedNums: []int{1, 1, 2, 2, 3, 3},
 		},
 		{
-			name:     "Zeros and ones",
-			nums:     []int{0, 0, 0, 0, 1, 1, 1, 1},
-			expected: 4,
+			name:         "Zeros and ones",
+			nums:         []int{0, 0, 0, 0, 1, 1, 1, 1},
+			expected:     4,
 			expectedNums: []int{0, 0, 1, 1},
 		},
 		{
-			name:     "Descending then ascending (should not happen with sorted input)",
-			nums:     []int{5, 4, 3, 2, 1},
-			expected: 5,
+			name:         "Descending then ascending (should not happen with sorted input)",
+			nums:         []int{5, 4, 3, 2, 1},
+			expected:     5,
 			expectedNums: []int{5, 4, 3, 2, 1},
 		},
 	}
@@ -110,13 +110,13 @@ func TestRemoveDuplicatesII(t *testing.T) {
 			// Create a copy of nums since we'll modify it
 			numsCopy := make([]int, len(tt.nums))
 			copy(numsCopy, tt.nums)
-			
+
 			result := RemoveDuplicatesII(numsCopy)
-			
+
 			assert.Equal(t, tt.expected, result,
 				"RemoveDuplicatesII(%v) returned %d, expected %d",
 				tt.nums, result, tt.expected)
-			
+
 			// Check first 'result' elements match expectedNums
 			for i := 0; i < tt.expected; i++ {
 				if i < len(tt.expectedNums) {
@@ -156,7 +156,7 @@ func TestRemoveDuplicatesIISimple(t *testing.T) {
 		t.Run(tt.name, func(t *testing.T) {
 			numsCopy := make([]int, len(tt.nums))
 			copy(numsCopy, tt.nums)
-			
+
 			result := RemoveDuplicatesIISimple(numsCopy)
 			assert.Equal(t, tt.expected, result)
 		})
@@ -180,7 +180,7 @@ func TestRemoveDuplicatesIIBruteForce(t *testing.T) {
 		t.Run(tt.name, func(t *testing.T) {
 			numsCopy := make([]int, len(tt.nums))
 			copy(numsCopy, tt.nums)
-			
+
 			result := RemoveDuplicatesIIBruteForce(numsCopy)
 			assert.Equal(t, tt.expected, result)
 		})
@@ -189,34 +189,34 @@ func TestRemoveDuplicatesIIBruteForce(t *testing.T) {
 
 func TestRemoveDuplicatesIIGeneric(t *testing.T) {
 	tests := []struct {
-		name        string
-		nums        []int
+		name          string
+		nums          []int
 		maxDuplicates int
-		expected    int
+		expected      int
 	}{
 		{
-			name:        "Allow 1 duplicate (standard remove duplicates)",
-			nums:        []int{1, 1, 1, 2, 2, 3},
+			name:          "Allow 1 duplicate (standard remove duplicates)",
+			nums:          []int{1, 1, 1, 2, 2, 3},
 			maxDuplicates: 1,
-			expected:    3,
+			expected:      3,
 		},
 		{
-			name:        "Allow 2 duplicates (problem requirement)",
-			nums:        []int{1, 1, 1, 2, 2, 3},
+			name:          "Allow 2 duplicates (problem requirement)",
+			nums:          []int{1, 1, 1, 2, 2, 3},
 			maxDuplicates: 2,
-			expected:    5,
+			expected:      5,
 		},
 		{
-			name:        "Allow 3 duplicates",
-			nums:        []int{1, 1, 1, 1, 2, 2, 2, 3},
+			name:          "Allow 3 duplicates",
+			nums:          []int{1, 1, 1, 1, 2, 2, 2, 3},
 			maxDuplicates: 3,
-			expected:    7,
+			expected:      7,
 		},
 		{
-			name:        "Allow 0 duplicates (remove all duplicates)",
-			nums:        []int{1, 1, 2, 2, 3, 3},
+			name:          "Allow 0 duplicates (remove all duplicates)",
+			nums:          []int{1, 1, 2, 2, 3, 3},
 			maxDuplicates: 0,
-			expected:    3,
+			expected:      3,
 		},
 	}
 
@@ -224,7 +224,7 @@ func TestRemoveDuplicatesIIGeneric(t *testing.T) {
 		t.Run(tt.name, func(t *testing.T) {
 			numsCopy := make([]int, len(tt.nums))
 			copy(numsCopy, tt.nums)
-			
+
 			result := RemoveDuplicatesIIGeneric(numsCopy, tt.maxDuplicates)
 			assert.Equal(t, tt.expected, result)
 		})
@@ -248,7 +248,7 @@ func TestRemoveDuplicatesIIWithMap(t *testing.T) {
 		t.Run(tt.name, func(t *testing.T) {
 			numsCopy := make([]int, len(tt.nums))
 			copy(numsCopy, tt.nums)
-			
+
 			result := RemoveDuplicatesIIWithMap(numsCopy)
 			assert.Equal(t, tt.expected, result)
 		})
@@ -272,7 +272,7 @@ func TestRemoveDuplicatesIIEarlyExit(t *testing.T) {
 		t.Run(tt.name, func(t *testing.T) {
 			numsCopy := make([]int, len(tt.nums))
 			copy(numsCopy, tt.nums)
-			
+
 			result := RemoveDuplicatesIIEarlyExit(numsCopy)
 			assert.Equal(t, tt.expected, result)
 		})
@@ -334,7 +334,7 @@ func TestRemoveDuplicatesII_Consistency(t *testing.T) {
 			}{"RemoveDuplicatesIIGeneric(2)", genericFn})
 
 			results := make([]int, len(implementations))
-			
+
 			for i, impl := range implementations {
 				numsCopy := make([]int, len(tc.nums))
 				copy(numsCopy, tc.nums)
@@ -367,7 +367,7 @@ func TestRemoveDuplicatesII_PropertyBased(t *testing.T) {
 		for _, nums := range testCases {
 			numsCopy := make([]int, len(nums))
 			copy(numsCopy, nums)
-			
+
 			result := RemoveDuplicatesII(numsCopy)
 			assert.True(t, result <= len(nums),
 				"Result length %d should be <= original length %d for %v",
@@ -385,9 +385,9 @@ func TestRemoveDuplicatesII_PropertyBased(t *testing.T) {
 		for _, nums := range testCases {
 			numsCopy := make([]int, len(nums))
 			copy(numsCopy, nums)
-			
+
 			k := RemoveDuplicatesII(numsCopy)
-			
+
 			// Check that first k elements have at most 2 duplicates
 			for i := 0; i < k; i++ {
 				count := 1
@@ -413,9 +413,9 @@ func TestRemoveDuplicatesII_PropertyBased(t *testing.T) {
 		for _, nums := range testCases {
 			numsCopy := make([]int, len(nums))
 			copy(numsCopy, nums)
-			
+
 			k := RemoveDuplicatesII(numsCopy)
-			
+
 			// Check that first k elements are in non-decreasing order
 			for i := 1; i < k; i++ {
 				assert.True(t, numsCopy[i] >= numsCopy[i-1],

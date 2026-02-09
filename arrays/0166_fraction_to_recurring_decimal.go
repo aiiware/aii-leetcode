@@ -41,17 +41,17 @@ func fractionToDecimal(numerator int, denominator int) string {
 	if numerator == 0 {
 		return "0"
 	}
-	
+
 	// Handle sign
 	var result string
 	if (numerator < 0) != (denominator < 0) {
 		result += "-"
 	}
-	
+
 	// Convert to positive numbers using int64 to handle edge cases
 	num := int64(numerator)
 	den := int64(denominator)
-	
+
 	// Use absolute values
 	if num < 0 {
 		num = -num
@@ -59,22 +59,22 @@ func fractionToDecimal(numerator int, denominator int) string {
 	if den < 0 {
 		den = -den
 	}
-	
+
 	// Integer part
 	result += strconv.FormatInt(num/den, 10)
 	num %= den
-	
+
 	// If no fractional part
 	if num == 0 {
 		return result
 	}
-	
+
 	// Fractional part
 	result += "."
-	
+
 	// Map to store remainder positions
 	remainderMap := make(map[int64]int)
-	
+
 	for num != 0 {
 		// If we've seen this remainder before, we have a repeating decimal
 		if pos, exists := remainderMap[num]; exists {
@@ -82,15 +82,15 @@ func fractionToDecimal(numerator int, denominator int) string {
 			result = result[:pos] + "(" + result[pos:] + ")"
 			break
 		}
-		
+
 		// Store the current remainder position
 		remainderMap[num] = len(result)
-		
+
 		// Multiply remainder by 10 for next digit
 		num *= 10
 		result += strconv.FormatInt(num/den, 10)
 		num %= den
 	}
-	
+
 	return result
 }

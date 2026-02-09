@@ -31,7 +31,7 @@ func TotalNQueens(n int) int {
 	// We'll track columns, diagonals, and anti-diagonals
 	var count int
 	var backtrack func(row, cols, diags, antiDiags int)
-	
+
 	backtrack = func(row, cols, diags, antiDiags int) {
 		// If all queens are placed, we found a solution
 		if row == n {
@@ -48,7 +48,7 @@ func TotalNQueens(n int) int {
 		for available > 0 {
 			// Get the rightmost available position
 			pos := available & -available
-			
+
 			// Place queen at this position
 			// For next row:
 			// - cols: mark this column as occupied
@@ -60,7 +60,7 @@ func TotalNQueens(n int) int {
 				(diags|pos)<<1,
 				(antiDiags|pos)>>1,
 			)
-			
+
 			// Remove this position from available
 			available &^= pos
 		}
@@ -80,7 +80,7 @@ func TotalNQueensDFS(n int) int {
 	count := 0
 	// Track which columns, diagonals, and anti-diagonals are occupied
 	cols := make([]bool, n)
-	diags := make([]bool, 2*n-1)    // diagonals: row - col + (n-1)
+	diags := make([]bool, 2*n-1)     // diagonals: row - col + (n-1)
 	antiDiags := make([]bool, 2*n-1) // anti-diagonals: row + col
 
 	var dfs func(row int)

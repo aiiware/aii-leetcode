@@ -93,7 +93,7 @@ func BenchmarkMaxPoints(b *testing.B) {
 	for i := 0; i < 100; i++ {
 		points[i] = []int{i, i * i} // Points on a parabola
 	}
-	
+
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		MaxPoints(points)

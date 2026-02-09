@@ -17,13 +17,13 @@ func SearchMatrixII(matrix [][]int, target int) bool {
 	}
 
 	m, n := len(matrix), len(matrix[0])
-	
+
 	// Start from top-right corner
 	row, col := 0, n-1
 
 	for row < m && col >= 0 {
 		current := matrix[row][col]
-		
+
 		if current == target {
 			return true
 		} else if current > target {
@@ -53,7 +53,7 @@ func SearchMatrixIIBinarySearch(matrix [][]int, target int) bool {
 		if len(row) == 0 || target < row[0] || target > row[len(row)-1] {
 			continue
 		}
-		
+
 		// Binary search in this row
 		left, right := 0, len(row)-1
 		for left <= right {

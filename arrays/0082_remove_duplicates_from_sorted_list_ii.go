@@ -2,7 +2,7 @@ package arrays
 
 // RemoveDuplicatesFromSortedListII removes all duplicate nodes from a sorted linked list
 // that appear more than once, leaving only distinct nodes.
-// 
+//
 // LeetCode problem 0082: Remove Duplicates from Sorted List II
 // Difficulty: Medium
 // Tags: Linked Lists, Two Pointers
@@ -13,7 +13,7 @@ func RemoveDuplicatesFromSortedListII(head *ListNode) *ListNode {
 	dummy := &ListNode{Val: 0, Next: head}
 	prev := dummy
 	current := head
-	
+
 	for current != nil {
 		// Check if current node has duplicates
 		if current.Next != nil && current.Val == current.Next.Val {
@@ -30,6 +30,6 @@ func RemoveDuplicatesFromSortedListII(head *ListNode) *ListNode {
 			current = current.Next
 		}
 	}
-	
+
 	return dummy.Next
 }

@@ -4,7 +4,6 @@
 
 package arrays
 
-
 /*
 Difficulty: Medium
 Tags: [Add relevant tags]
@@ -55,17 +54,17 @@ func NextPermutationBruteForce(nums []int) {
 	// This is not efficient but shows the concept
 	// In practice, use the optimized algorithm above
 	n := len(nums)
-	
+
 	// Find the next permutation by checking all permutations
 	// This is O(n!) and not practical for large n
 	// Implemented here only for educational purposes
-	
+
 	// Find the first position where we can make a change
 	i := n - 2
 	for i >= 0 && nums[i] >= nums[i+1] {
 		i--
 	}
-	
+
 	if i >= 0 {
 		// Find the next larger element to swap with
 		j := n - 1
@@ -74,7 +73,7 @@ func NextPermutationBruteForce(nums []int) {
 		}
 		nums[i], nums[j] = nums[j], nums[i]
 	}
-	
+
 	// Reverse the suffix
 	left, right := i+1, n-1
 	for left < right {

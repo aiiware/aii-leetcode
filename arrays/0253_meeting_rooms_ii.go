@@ -36,35 +36,35 @@ func MinMeetingRooms(intervals [][]int) int {
 	if len(intervals) == 0 {
 		return 0
 	}
-	
+
 	// Sort intervals by start time
 	sorted := make([][]int, len(intervals))
 	copy(sorted, intervals)
-	
+
 	sort.Slice(sorted, func(i, j int) bool {
 		return sorted[i][0] < sorted[j][0]
 	})
-	
+
 	// Min-heap to track end times of meetings in progress
 	h := &MinHeapII{}
 	heap.Init(h)
-	
+
 	// Add first meeting's end time
 	heap.Push(h, sorted[0][1])
-	
+
 	// Process remaining meetings
 	for i := 1; i < len(sorted); i++ {
 		start, end := sorted[i][0], sorted[i][1]
-		
+
 		// If the earliest ending meeting ends before or when this meeting starts,
 		// we can reuse that room
 		if (*h)[0] <= start {
 			heap.Pop(h)
 		}
-		
+
 		// Add current meeting's end time to heap
 		heap.Push(h, end)
 	}
-	
+
 	return h.Len()
 }

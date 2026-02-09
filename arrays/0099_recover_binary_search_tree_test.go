@@ -16,19 +16,19 @@ func TestRecoverBinarySearchTree(t *testing.T) {
 		//       3
 		//      / \
 		//     1   2
-		
+
 		root := &TreeNode{Val: 1}
 		root.Left = &TreeNode{Val: 3}
 		root.Right = &TreeNode{Val: 2}
-		
+
 		RecoverBinarySearchTree(root)
-		
+
 		// Check that tree is now valid BST
 		assert.Equal(t, 3, root.Val)
 		assert.Equal(t, 1, root.Left.Val)
 		assert.Equal(t, 2, root.Right.Val)
 	})
-	
+
 	t.Run("Example 2", func(t *testing.T) {
 		// Create tree: [3,1,4,null,null,2]
 		//       3
@@ -42,15 +42,15 @@ func TestRecoverBinarySearchTree(t *testing.T) {
 		//     1   4
 		//        / \
 		//       3   5
-		
+
 		root := &TreeNode{Val: 3}
 		root.Left = &TreeNode{Val: 1}
 		root.Right = &TreeNode{Val: 4}
 		root.Right.Left = &TreeNode{Val: 2}
 		root.Right.Right = &TreeNode{Val: 5}
-		
+
 		RecoverBinarySearchTree(root)
-		
+
 		// Check that tree is now valid BST
 		assert.Equal(t, 2, root.Val)
 		assert.Equal(t, 1, root.Left.Val)
@@ -58,7 +58,7 @@ func TestRecoverBinarySearchTree(t *testing.T) {
 		assert.Equal(t, 3, root.Right.Left.Val)
 		assert.Equal(t, 5, root.Right.Right.Val)
 	})
-	
+
 	t.Run("Single node", func(t *testing.T) {
 		root := &TreeNode{Val: 1}
 		RecoverBinarySearchTree(root)
@@ -74,7 +74,7 @@ func BenchmarkRecoverBinarySearchTree(b *testing.B) {
 	root.Right = &TreeNode{Val: 4}
 	root.Right.Left = &TreeNode{Val: 2}
 	root.Right.Right = &TreeNode{Val: 5}
-	
+
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		RecoverBinarySearchTree(root)

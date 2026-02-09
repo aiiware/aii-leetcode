@@ -39,9 +39,6 @@ func numIslands(grid [][]byte) int {
 	m, n := len(grid), len(grid[0])
 	count := 0
 
-	// Directions: up, down, left, right
-	_ = [4][2]int{{-1, 0}, {1, 0}, {0, -1}, {0, 1}} // used via directions variable
-
 	// BFS helper function
 	bfs := func(startRow, startCol int) {
 		queue := [][2]int{{startRow, startCol}}

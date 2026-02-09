@@ -120,7 +120,7 @@ func TestKthLargest_EdgeCases(t *testing.T) {
 		}
 		k := 250
 		expected := n - k + 1 // Since array is 1..n, kth largest is n-k+1
-		
+
 		result := KthLargest(nums, k)
 		assert.Equal(t, expected, result)
 	})

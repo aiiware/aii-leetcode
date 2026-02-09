@@ -11,17 +11,17 @@ package arrays
 func RecoverBinarySearchTree(root *TreeNode) {
 	// Initialize variables to track the misplaced nodes
 	var first, second, prev *TreeNode
-	
+
 	// In-order traversal to find the misplaced nodes
 	var inorder func(*TreeNode)
 	inorder = func(node *TreeNode) {
 		if node == nil {
 			return
 		}
-		
+
 		// Traverse left subtree
 		inorder(node.Left)
-		
+
 		// Check if current node is misplaced
 		if prev != nil && prev.Val > node.Val {
 			if first == nil {
@@ -31,17 +31,17 @@ func RecoverBinarySearchTree(root *TreeNode) {
 			// Second misplaced node
 			second = node
 		}
-		
+
 		// Update previous node
 		prev = node
-		
+
 		// Traverse right subtree
 		inorder(node.Right)
 	}
-	
+
 	// Perform in-order traversal
 	inorder(root)
-	
+
 	// Swap the values of the misplaced nodes
 	if first != nil && second != nil {
 		first.Val, second.Val = second.Val, first.Val

@@ -1,10 +1,10 @@
 package arrays
 
 import (
+	"leetcode/trees"
+	"leetcode/utils"
 	"reflect"
 	"testing"
-    "leetcode/utils"
-    "leetcode/trees"
 )
 
 func TestSortedArrayToBSTRecursive(t *testing.T) {

@@ -247,11 +247,11 @@ func TestAllSolutionsConsistency(t *testing.T) {
 	for _, nums := range testCases {
 		// Get result from first solution
 		expected := majorityElementBoyerMoore(nums)
-		
+
 		for _, solution := range solutions {
 			result := solution.fn(nums)
 			if result != expected {
-				t.Errorf("Inconsistency for nums=%v: %s=%d, expected=%d", 
+				t.Errorf("Inconsistency for nums=%v: %s=%d, expected=%d",
 					nums, solution.name, result, expected)
 			}
 		}

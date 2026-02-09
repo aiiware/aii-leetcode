@@ -77,7 +77,7 @@ func TestCanCompleteCircuit(t *testing.T) {
 		t.Run(tt.name, func(t *testing.T) {
 			result := CanCompleteCircuit(tt.gas, tt.cost)
 			if result != tt.expected {
-				t.Errorf("CanCompleteCircuit(%v, %v) = %d, expected %d", 
+				t.Errorf("CanCompleteCircuit(%v, %v) = %d, expected %d",
 					tt.gas, tt.cost, result, tt.expected)
 			}
 		})

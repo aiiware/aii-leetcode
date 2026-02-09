@@ -4,7 +4,6 @@
 
 package arrays
 
-
 /*
 Difficulty: Hard
 Tags: [Add relevant tags]
@@ -24,7 +23,7 @@ func LongestValidParentheses(s string) int {
 		} else {
 			// Pop the last element
 			stack = stack[:len(stack)-1]
-			
+
 			if len(stack) == 0 {
 				// No matching '(' found, push current index as new base
 				stack = append(stack, i)
@@ -80,7 +79,7 @@ func LongestValidParenthesesDP(s string) int {
 // LongestValidParenthesesTwoPass uses two-pointer approach
 func LongestValidParenthesesTwoPass(s string) int {
 	maxLen := 0
-	
+
 	// Left to right scan
 	left, right := 0, 0
 	for i := 0; i < len(s); i++ {
@@ -89,7 +88,7 @@ func LongestValidParenthesesTwoPass(s string) int {
 		} else {
 			right++
 		}
-		
+
 		if left == right {
 			if 2*right > maxLen {
 				maxLen = 2 * right
@@ -98,7 +97,7 @@ func LongestValidParenthesesTwoPass(s string) int {
 			left, right = 0, 0
 		}
 	}
-	
+
 	// Right to left scan
 	left, right = 0, 0
 	for i := len(s) - 1; i >= 0; i-- {
@@ -107,7 +106,7 @@ func LongestValidParenthesesTwoPass(s string) int {
 		} else {
 			right++
 		}
-		
+
 		if left == right {
 			if 2*left > maxLen {
 				maxLen = 2 * left
@@ -116,6 +115,6 @@ func LongestValidParenthesesTwoPass(s string) int {
 			left, right = 0, 0
 		}
 	}
-	
+
 	return maxLen
 }

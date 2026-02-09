@@ -6,9 +6,9 @@ import (
 
 func TestGetSkyline(t *testing.T) {
 	tests := []struct {
-		name     string
+		name      string
 		buildings [][]int
-		want     [][]int
+		want      [][]int
 	}{
 		{
 			name: "Example 1",
@@ -41,9 +41,9 @@ func TestGetSkyline(t *testing.T) {
 			},
 		},
 		{
-			name:     "Empty input",
+			name:      "Empty input",
 			buildings: [][]int{},
-			want:     [][]int{},
+			want:      [][]int{},
 		},
 		{
 			name: "Single building",

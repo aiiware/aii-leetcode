@@ -91,7 +91,7 @@ func BenchmarkLengthOfLastWordLong(b *testing.B) {
 		testString += "word "
 	}
 	testString += "lastword"
-	
+
 	for i := 0; i < b.N; i++ {
 		LengthOfLastWord(testString)
 	}

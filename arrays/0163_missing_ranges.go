@@ -43,7 +43,7 @@ Companies: Amazon, Facebook, Google, Oracle
 
 func findMissingRanges(nums []int, lower int, upper int) []string {
 	result := []string{}
-	
+
 	// Helper function to add range to result
 	addRange := func(start, end int) {
 		if start > end {
@@ -55,29 +55,29 @@ func findMissingRanges(nums []int, lower int, upper int) []string {
 			result = append(result, fmt.Sprintf("%d->%d", start, end))
 		}
 	}
-	
+
 	// Handle empty array case
 	if len(nums) == 0 {
 		addRange(lower, upper)
 		return result
 	}
-	
+
 	// Check for missing numbers before the first element
 	if nums[0] > lower {
 		addRange(lower, nums[0]-1)
 	}
-	
+
 	// Check for missing numbers between elements
 	for i := 1; i < len(nums); i++ {
 		if nums[i] > nums[i-1]+1 {
 			addRange(nums[i-1]+1, nums[i]-1)
 		}
 	}
-	
+
 	// Check for missing numbers after the last element
 	if nums[len(nums)-1] < upper {
 		addRange(nums[len(nums)-1]+1, upper)
 	}
-	
+
 	return result
 }

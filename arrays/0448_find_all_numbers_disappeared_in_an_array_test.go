@@ -76,7 +76,7 @@ func TestFindDisappearedNumbersEdgeCases(t *testing.T) {
 		// So we have 999 unique values and 1 duplicate of one value
 		n := 1000
 		nums := make([]int, n)
-		
+
 		// Fill with 1-499, then 501-1000 (999 values), then duplicate one
 		idx := 0
 		for i := 1; i <= 499; i++ {

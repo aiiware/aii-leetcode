@@ -71,7 +71,7 @@ func TestSolveSudoku(t *testing.T) {
 				board[i] = make([]byte, len(test.board[i]))
 				copy(board[i], test.board[i])
 			}
-			
+
 			SolveSudoku(board)
 			if !reflect.DeepEqual(board, test.expected) {
 				t.Errorf("SolveSudoku() failed\nGot: %v\nExpected: %v", board, test.expected)
@@ -83,7 +83,7 @@ func TestSolveSudoku(t *testing.T) {
 				board[i] = make([]byte, len(test.board[i]))
 				copy(board[i], test.board[i])
 			}
-			
+
 			SolveSudokuOptimized(board)
 			if !reflect.DeepEqual(board, test.expected) {
 				t.Errorf("SolveSudokuOptimized() failed\nGot: %v\nExpected: %v", board, test.expected)
@@ -95,7 +95,7 @@ func TestSolveSudoku(t *testing.T) {
 				board[i] = make([]byte, len(test.board[i]))
 				copy(board[i], test.board[i])
 			}
-			
+
 			SolveSudokuMRV(board)
 			if !reflect.DeepEqual(board, test.expected) {
 				t.Errorf("SolveSudokuMRV() failed\nGot: %v\nExpected: %v", board, test.expected)
@@ -116,7 +116,7 @@ func BenchmarkSolveSudoku(b *testing.B) {
 		{'.', '.', '.', '4', '1', '9', '.', '.', '5'},
 		{'.', '.', '.', '.', '8', '.', '.', '7', '9'},
 	}
-	
+
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		// Create a copy for each iteration
@@ -141,7 +141,7 @@ func BenchmarkSolveSudokuOptimized(b *testing.B) {
 		{'.', '.', '.', '4', '1', '9', '.', '.', '5'},
 		{'.', '.', '.', '.', '8', '.', '.', '7', '9'},
 	}
-	
+
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		// Create a copy for each iteration

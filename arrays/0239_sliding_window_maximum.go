@@ -19,7 +19,7 @@ func maxSlidingWindow(nums []int, k int) []int {
 
 	// Result slice to store maximums for each window
 	result := make([]int, 0, len(nums)-k+1)
-	
+
 	// Deque to store indices of elements in the current window
 	// The deque maintains indices of elements in decreasing order of their values
 	deque := make([]int, 0)

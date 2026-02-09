@@ -4,7 +4,7 @@ import "sort"
 
 // 0169. Majority Element
 // https://leetcode.com/problems/majority-element
-// 
+//
 // Problem Description:
 // Given an array nums of size n, return the majority element.
 // The majority element is the element that appears more than ⌊n / 2⌋ times.
@@ -12,7 +12,7 @@ import "sort"
 //
 // Categories: Array, Hash Table, Divide and Conquer, Sorting, Counting
 // Difficulty: Easy
-// 
+//
 // Companies that have asked this problem:
 // Amazon, Google, Meta, Apple, Adobe, Microsoft, Uber, Oracle, Bloomberg, Yahoo, Zenefits
 //
@@ -96,10 +96,10 @@ func majorityElementSorting(nums []int) int {
 	// Create a copy to avoid modifying input
 	sorted := make([]int, len(nums))
 	copy(sorted, nums)
-	
+
 	// Sort the array
 	sort.Ints(sorted)
-	
+
 	// Majority element will be at the middle
 	return sorted[len(sorted)/2]
 }
@@ -186,24 +186,24 @@ func majorityElementBitManipulation(nums []int) int {
 
 func majorityElementRandom(nums []int) int {
 	n := len(nums)
-	
+
 	// In practice, we would use a random number generator
 	// For deterministic testing, we'll just iterate
 	for i := 0; i < 20; i++ { // Try up to 20 times
 		candidate := nums[i%n]
 		count := 0
-		
+
 		for _, num := range nums {
 			if num == candidate {
 				count++
 			}
 		}
-		
+
 		if count > n/2 {
 			return candidate
 		}
 	}
-	
+
 	// Should not reach here
 	return -1
 }
@@ -217,19 +217,19 @@ func majorityElementWithVerification(nums []int) int {
 	// Phase 1: Find candidate
 	candidate := 0
 	count := 0
-	
+
 	for _, num := range nums {
 		if count == 0 {
 			candidate = num
 		}
-		
+
 		if num == candidate {
 			count++
 		} else {
 			count--
 		}
 	}
-	
+
 	// Phase 2: Verify candidate
 	count = 0
 	for _, num := range nums {
@@ -237,11 +237,11 @@ func majorityElementWithVerification(nums []int) int {
 			count++
 		}
 	}
-	
+
 	if count > len(nums)/2 {
 		return candidate
 	}
-	
+
 	// According to problem, this should never happen
 	return -1
 }
@@ -255,7 +255,7 @@ func majorityElementBuiltinSort(nums []int) int {
 	// Note: This modifies the input array
 	// sort.Ints(nums)
 	// return nums[len(nums)/2]
-	
+
 	// To avoid modifying input, create a copy
 	copyNums := make([]int, len(nums))
 	copy(copyNums, nums)

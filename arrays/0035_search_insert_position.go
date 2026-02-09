@@ -4,7 +4,6 @@
 
 package arrays
 
-
 /*
 Difficulty: Easy
 Tags: [Add relevant tags]

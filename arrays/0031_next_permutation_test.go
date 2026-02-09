@@ -59,7 +59,7 @@ func TestNextPermutation(t *testing.T) {
 			nums := make([]int, len(test.nums))
 			copy(nums, test.nums)
 			NextPermutation(nums)
-			
+
 			if !reflect.DeepEqual(nums, test.expected) {
 				t.Errorf("NextPermutation(%v) = %v, expected %v", test.nums, nums, test.expected)
 			}
@@ -68,7 +68,7 @@ func TestNextPermutation(t *testing.T) {
 			nums2 := make([]int, len(test.nums))
 			copy(nums2, test.nums)
 			NextPermutationBruteForce(nums2)
-			
+
 			if !reflect.DeepEqual(nums2, test.expected) {
 				t.Errorf("NextPermutationBruteForce(%v) = %v, expected %v", test.nums, nums2, test.expected)
 			}
@@ -78,7 +78,7 @@ func TestNextPermutation(t *testing.T) {
 
 func BenchmarkNextPermutation(b *testing.B) {
 	nums := []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
-	
+
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		// Create a copy for each iteration
@@ -90,7 +90,7 @@ func BenchmarkNextPermutation(b *testing.B) {
 
 func BenchmarkNextPermutationBruteForce(b *testing.B) {
 	nums := []int{1, 2, 3, 4, 5}
-	
+
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		// Create a copy for each iteration

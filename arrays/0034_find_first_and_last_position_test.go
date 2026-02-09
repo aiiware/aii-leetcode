@@ -73,14 +73,14 @@ func TestSearchRange(t *testing.T) {
 			// Test two-pass approach
 			result := SearchRange(test.nums, test.target)
 			if !reflect.DeepEqual(result, test.expected) {
-				t.Errorf("SearchRange(%v, %d) = %v, expected %v", 
+				t.Errorf("SearchRange(%v, %d) = %v, expected %v",
 					test.nums, test.target, result, test.expected)
 			}
 
 			// Test single-pass approach
 			result = SearchRangeSinglePass(test.nums, test.target)
 			if !reflect.DeepEqual(result, test.expected) {
-				t.Errorf("SearchRangeSinglePass(%v, %d) = %v, expected %v", 
+				t.Errorf("SearchRangeSinglePass(%v, %d) = %v, expected %v",
 					test.nums, test.target, result, test.expected)
 			}
 		})
@@ -90,7 +90,7 @@ func TestSearchRange(t *testing.T) {
 func BenchmarkSearchRange(b *testing.B) {
 	nums := []int{1, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 5, 5, 6, 7, 8, 9, 10, 10, 10}
 	target := 3
-	
+
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		SearchRange(nums, target)
@@ -100,7 +100,7 @@ func BenchmarkSearchRange(b *testing.B) {
 func BenchmarkSearchRangeSinglePass(b *testing.B) {
 	nums := []int{1, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 5, 5, 6, 7, 8, 9, 10, 10, 10}
 	target := 3
-	
+
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		SearchRangeSinglePass(nums, target)

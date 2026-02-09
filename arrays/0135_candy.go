@@ -1,6 +1,5 @@
 package arrays
 
-
 /*
 Difficulty: Hard
 Tags: [Add relevant tags]
@@ -54,20 +53,20 @@ func Candy(ratings []int) int {
 	if n == 1 {
 		return 1
 	}
-	
+
 	// Initialize candies array with 1 candy for each child
 	candies := make([]int, n)
 	for i := range candies {
 		candies[i] = 1
 	}
-	
+
 	// Left to right pass
 	for i := 1; i < n; i++ {
 		if ratings[i] > ratings[i-1] {
 			candies[i] = candies[i-1] + 1
 		}
 	}
-	
+
 	// Right to left pass
 	for i := n - 2; i >= 0; i-- {
 		if ratings[i] > ratings[i+1] {
@@ -77,12 +76,12 @@ func Candy(ratings []int) int {
 			}
 		}
 	}
-	
+
 	// Sum all candies
 	total := 0
 	for _, candy := range candies {
 		total += candy
 	}
-	
+
 	return total
 }

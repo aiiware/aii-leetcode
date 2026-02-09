@@ -1,8 +1,8 @@
 package arrays
 
 import (
+	"leetcode/utils"
 	"math"
-    "leetcode/utils"
 )
 
 // FindMedianSortedArrays solves LeetCode problem 0004: Median of Two Sorted Arrays

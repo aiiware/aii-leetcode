@@ -45,15 +45,15 @@ func rotate(nums []int, k int) {
 	if n == 0 || k == 0 {
 		return
 	}
-	
+
 	// Normalize k to avoid unnecessary rotations
 	k = k % n
-	
+
 	// If k is 0 after normalization, no rotation needed
 	if k == 0 {
 		return
 	}
-	
+
 	// Helper function to reverse a portion of the array
 	reverse := func(start, end int) {
 		for start < end {
@@ -62,7 +62,7 @@ func rotate(nums []int, k int) {
 			end--
 		}
 	}
-	
+
 	// Step 1: Reverse the entire array
 	reverse(0, n-1)
 	// Step 2: Reverse the first k elements
@@ -79,20 +79,20 @@ func rotateExtraArray(nums []int, k int) {
 	if n == 0 || k == 0 {
 		return
 	}
-	
+
 	k = k % n
 	if k == 0 {
 		return
 	}
-	
+
 	// Create a copy of the array
 	temp := make([]int, n)
-	
+
 	// Copy elements to their new positions
 	for i := 0; i < n; i++ {
 		temp[(i+k)%n] = nums[i]
 	}
-	
+
 	// Copy back to original array
 	copy(nums, temp)
 }
@@ -105,17 +105,17 @@ func rotateCyclic(nums []int, k int) {
 	if n == 0 || k == 0 {
 		return
 	}
-	
+
 	k = k % n
 	if k == 0 {
 		return
 	}
-	
+
 	count := 0 // Number of elements moved
 	for start := 0; count < n; start++ {
 		current := start
 		prev := nums[start]
-		
+
 		for {
 			next := (current + k) % n
 			temp := nums[next]
@@ -123,7 +123,7 @@ func rotateCyclic(nums []int, k int) {
 			prev = temp
 			current = next
 			count++
-			
+
 			if start == current {
 				break
 			}
@@ -139,19 +139,19 @@ func rotateBuiltin(nums []int, k int) {
 	if n == 0 || k == 0 {
 		return
 	}
-	
+
 	k = k % n
 	if k == 0 {
 		return
 	}
-	
+
 	// Get the last k elements
 	lastK := make([]int, k)
 	copy(lastK, nums[n-k:])
-	
+
 	// Shift the first n-k elements to the right
 	copy(nums[k:], nums[:n-k])
-	
+
 	// Copy the last k elements to the beginning
 	copy(nums[:k], lastK)
 }
@@ -164,21 +164,21 @@ func rotateBruteForce(nums []int, k int) {
 	if n == 0 || k == 0 {
 		return
 	}
-	
+
 	k = k % n
 	if k == 0 {
 		return
 	}
-	
+
 	for i := 0; i < k; i++ {
 		// Store the last element
 		last := nums[n-1]
-		
+
 		// Shift all elements to the right by 1
 		for j := n - 1; j > 0; j-- {
 			nums[j] = nums[j-1]
 		}
-		
+
 		// Put the last element at the beginning
 		nums[0] = last
 	}
@@ -192,7 +192,7 @@ func rotateBlockSwap(nums []int, k int) {
 	if n == 0 || k == 0 {
 		return
 	}
-	
+
 	k = k % n
 	if k == 0 {
 		return
@@ -200,20 +200,20 @@ func rotateBlockSwap(nums []int, k int) {
 
 	// Convert right rotation to left rotation distance.
 	d := n - k
-	
+
 	// Helper function to swap two blocks
 	swap := func(start1, start2, length int) {
 		for i := 0; i < length; i++ {
 			nums[start1+i], nums[start2+i] = nums[start2+i], nums[start1+i]
 		}
 	}
-	
+
 	// If k is exactly half the array length
 	if d == n-d {
 		swap(0, n-d, d)
 		return
 	}
-	
+
 	// Handle general case
 	i, j := d, n-d
 	for i != j {
@@ -225,7 +225,7 @@ func rotateBlockSwap(nums []int, k int) {
 			i -= j
 		}
 	}
-	
+
 	swap(d-i, d, i)
 }
 
@@ -237,12 +237,12 @@ func rotateGCD(nums []int, k int) {
 	if n == 0 || k == 0 {
 		return
 	}
-	
+
 	k = k % n
 	if k == 0 {
 		return
 	}
-	
+
 	// Function to calculate GCD
 	gcd := func(a, b int) int {
 		for b != 0 {
@@ -250,20 +250,20 @@ func rotateGCD(nums []int, k int) {
 		}
 		return a
 	}
-	
+
 	cycles := gcd(n, k)
-	
+
 	for i := 0; i < cycles; i++ {
 		current := i
 		prev := nums[i]
-		
+
 		for {
 			next := (current + k) % n
 			temp := nums[next]
 			nums[next] = prev
 			prev = temp
 			current = next
-			
+
 			if current == i {
 				break
 			}
@@ -279,12 +279,12 @@ func rotateRecursive(nums []int, k int) {
 	if n == 0 || k == 0 {
 		return
 	}
-	
+
 	k = k % n
 	if k == 0 {
 		return
 	}
-	
+
 	var reverse func(start, end int)
 	reverse = func(start, end int) {
 		if start >= end {

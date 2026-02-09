@@ -14,11 +14,11 @@ func CanAttendMeetings(intervals [][]int) bool {
 	// Sort intervals by start time
 	sorted := make([][]int, len(intervals))
 	copy(sorted, intervals)
-	
+
 	sort.Slice(sorted, func(i, j int) bool {
 		return sorted[i][0] < sorted[j][0]
 	})
-	
+
 	// Check for overlaps
 	for i := 1; i < len(sorted); i++ {
 		if sorted[i][0] < sorted[i-1][1] {
@@ -26,6 +26,6 @@ func CanAttendMeetings(intervals [][]int) bool {
 			return false
 		}
 	}
-	
+
 	return true
 }

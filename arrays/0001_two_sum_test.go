@@ -8,10 +8,10 @@ import (
 
 func TestTwoSum(t *testing.T) {
 	tests := []struct {
-		name          string
-		nums          []int
-		target        int
-		validResults  [][]int // Multiple valid results if algorithm can return different valid pairs
+		name         string
+		nums         []int
+		target       int
+		validResults [][]int // Multiple valid results if algorithm can return different valid pairs
 	}{
 		{
 			name:         "Example 1",
@@ -50,8 +50,8 @@ func TestTwoSum(t *testing.T) {
 			validResults: [][]int{{0, 3}},
 		},
 		{
-			name:  "Large numbers",
-			nums:  []int{1000000, 500000, 1500000},
+			name:   "Large numbers",
+			nums:   []int{1000000, 500000, 1500000},
 			target: 2000000,
 			// Both [0, 2] and [1, 2] are valid solutions
 			validResults: [][]int{{0, 2}, {1, 2}},
@@ -67,7 +67,7 @@ func TestTwoSum(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			result := TwoSum(tt.nums, tt.target)
-			
+
 			// Check if result is one of the valid results
 			found := false
 			for _, validResult := range tt.validResults {
@@ -77,14 +77,14 @@ func TestTwoSum(t *testing.T) {
 					break
 				}
 			}
-			
-			assert.True(t, found, 
-				"TwoSum(%v, %d) = %v, expected one of %v", 
+
+			assert.True(t, found,
+				"TwoSum(%v, %d) = %v, expected one of %v",
 				tt.nums, tt.target, result, tt.validResults)
-			
+
 			// Verify the result is mathematically correct
 			if len(result) == 2 {
-				assert.Equal(t, tt.target, tt.nums[result[0]] + tt.nums[result[1]],
+				assert.Equal(t, tt.target, tt.nums[result[0]]+tt.nums[result[1]],
 					"Indices %v: %d + %d should equal %d",
 					result, tt.nums[result[0]], tt.nums[result[1]], tt.target)
 			}

@@ -90,21 +90,21 @@ func TestSearchInsert(t *testing.T) {
 			// Test binary search approach
 			result := SearchInsert(test.nums, test.target)
 			if result != test.expected {
-				t.Errorf("SearchInsert(%v, %d) = %d, expected %d", 
+				t.Errorf("SearchInsert(%v, %d) = %d, expected %d",
 					test.nums, test.target, result, test.expected)
 			}
 
 			// Test linear search approach
 			result = SearchInsertLinear(test.nums, test.target)
 			if result != test.expected {
-				t.Errorf("SearchInsertLinear(%v, %d) = %d, expected %d", 
+				t.Errorf("SearchInsertLinear(%v, %d) = %d, expected %d",
 					test.nums, test.target, result, test.expected)
 			}
 
 			// Test recursive approach
 			result = SearchInsertRecursive(test.nums, test.target)
 			if result != test.expected {
-				t.Errorf("SearchInsertRecursive(%v, %d) = %d, expected %d", 
+				t.Errorf("SearchInsertRecursive(%v, %d) = %d, expected %d",
 					test.nums, test.target, result, test.expected)
 			}
 		})
@@ -114,7 +114,7 @@ func TestSearchInsert(t *testing.T) {
 func BenchmarkSearchInsert(b *testing.B) {
 	nums := []int{1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25, 27, 29}
 	target := 16
-	
+
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		SearchInsert(nums, target)
@@ -124,7 +124,7 @@ func BenchmarkSearchInsert(b *testing.B) {
 func BenchmarkSearchInsertLinear(b *testing.B) {
 	nums := []int{1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25, 27, 29}
 	target := 16
-	
+
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		SearchInsertLinear(nums, target)
@@ -134,7 +134,7 @@ func BenchmarkSearchInsertLinear(b *testing.B) {
 func BenchmarkSearchInsertRecursive(b *testing.B) {
 	nums := []int{1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25, 27, 29}
 	target := 16
-	
+
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		SearchInsertRecursive(nums, target)
