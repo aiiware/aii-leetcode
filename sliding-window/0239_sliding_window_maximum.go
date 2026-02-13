@@ -1,4 +1,4 @@
-package arrays
+package sliding_window
 
 // 0239. Sliding Window Maximum
 // https://leetcode.com/problems/sliding-window-maximum/

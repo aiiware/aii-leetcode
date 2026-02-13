@@ -1,4 +1,4 @@
-package arrays
+package sliding_window
 
 // 0209. Minimum Size Subarray Sum
 // https://leetcode.com/problems/minimum-size-subarray-sum/

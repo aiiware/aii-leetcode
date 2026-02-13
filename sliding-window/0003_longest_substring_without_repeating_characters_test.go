@@ -1,4 +1,4 @@
-package arrays
+package sliding_window
 
 import (
 	"testing"

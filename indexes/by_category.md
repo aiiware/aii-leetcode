@@ -3,15 +3,15 @@
 This index organizes all LeetCode solutions by their algorithmic category.
 
 ## 📊 Statistics
-- **Total Problems**: 257
+- **Total Problems**: 262
 - **Categories**: 11
-- **Last Updated**: January 31, 2026
+- **Last Updated**: February 10, 2026
 
 ## 📁 Categories
 
-### Arrays (69 problems)
-- **Easy**: 15 problems
-- **Medium**: 39 problems
+### Arrays (74 problems)
+- **Easy**: 17 problems
+- **Medium**: 42 problems
 - **Hard**: 15 problems
 
 ### Strings (33 problems)

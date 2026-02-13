@@ -1,4 +1,4 @@
-package arrays
+package sliding_window
 
 // LengthOfLongestSubstring solves LeetCode problem 0003: Longest Substring Without Repeating Characters
 // Difficulty: Medium

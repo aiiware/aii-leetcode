@@ -1,12 +1,12 @@
 # LeetCode Solutions by Problem Number
 
-This index organizes all 171 LeetCode solutions in numerical order.
+This index organizes all 177 LeetCode solutions in numerical order.
 
 ## 📊 Statistics
-- **Total Problems**: 171
-- **Number Range**: 0001 to 0714
-- **Coverage**: 23.9% of first 300 problems (71/300)
-- **Last Updated**: January 31, 2026
+- **Total Problems**: 177
+- **Number Range**: 0001 to 1011
+- **Coverage**: 25.3% of first 300 problems (76/300)
+- **Last Updated**: February 10, 2026
 
 ## 📈 Coverage Analysis
 
@@ -14,12 +14,15 @@ This index organizes all 171 LeetCode solutions in numerical order.
 |-------|-------|------------|
 | 0001-0100 | 100 | 100% |
 | 0101-0200 | 56 | 56% |
-| 0201-0300 | 8 | 8% |
-| 0301-0400 | 4 | 4% |
-| 0401-0500 | 2 | 2% |
+| 0201-0300 | 9 | 9% |
+| 0301-0400 | 5 | 5% |
+| 0401-0500 | 3 | 3% |
 | 0501-0600 | 0 | 0% |
-| 0601-0700 | 1 | 1% |
+| 0601-0700 | 2 | 2% |
 | 0701-0800 | 0 | 0% |
+| 0801-0900 | 1 | 1% |
+| 0901-1000 | 0 | 0% |
+| 1001-1100 | 1 | 1% |
 
 ## 📁 Problems in Numerical Order
 
@@ -182,7 +185,7 @@ This index organizes all 171 LeetCode solutions in numerical order.
 - **0154**: Find Minimum in Rotated Sorted Array II (Hard) — *Binary Search*
 - **0155**: Min Stack (Medium) — *Design*
 
-### 0201-0300 (8 problems)
+### 0201-0300 (9 problems)
 - **0160**: Intersection of Two Linked Lists (Easy) — *Linked Lists*
 - **0168**: Excel Sheet Column Title (Easy) — *Math*
 - **0169**: Majority Element (Easy) — *Arrays*
@@ -211,9 +214,10 @@ This index organizes all 171 LeetCode solutions in numerical order.
 - **0215**: Kth Largest Element in an Array (Medium) — *Sorting*
 - **0221**: Maximal Square (Medium) — *DP*
 - **0261**: Graph Valid Tree (Medium) — *Graphs*
+- **0278**: First Bad Version (Easy) — *Arrays*
 - **0295**: Find Median from Data Stream (Hard) — *Design*
 
-### 0301-0400 (4 problems)
+### 0301-0400 (5 problems)
 - **0300**: Longest Increasing Subsequence (Medium) — *DP*
 - **0309**: Best Time to Buy and Sell Stock with Cooldown (Medium) — *DP*
 - **0322**: Coin Change (Medium) — *DP*
@@ -221,23 +225,35 @@ This index organizes all 171 LeetCode solutions in numerical order.
 - **0329**: Longest Increasing Path in a Matrix (Hard) — *DP*
 - **0337**: House Robber III (Medium) — *DP*
 - **0343**: Integer Break (Medium) — *DP*
+- **0367**: Valid Perfect Square (Easy) — *Arrays*
 - **0376**: Wiggle Subsequence (Medium) — *DP*
 - **0392**: Is Subsequence (Easy) — *DP*
 - **0399**: Evaluate Division (Medium) — *Graphs*
 
-### 0401-0500 (2 problems)
+### 0401-0500 (3 problems)
 - **0416**: Partition Equal Subset Sum (Medium) — *DP*
+- **0436**: Find Right Interval (Medium) — *Arrays*
 - **0494**: Target Sum (Medium) — *DP*
 
 ### 0501-0600 (0 problems)
 *No solutions in this range*
 
-### 0601-0700 (1 problem)
+### 0601-0700 (2 problems)
 - **0647**: Palindromic Substrings (Medium) — *DP*
+- **0658**: Find K Closest Elements (Medium) — *Arrays*
 - **0695**: Max Area of Island (Medium) — *Graphs*
 
 ### 0701-0800 (0 problems)
 *No solutions in this range*
+
+### 0801-0900 (1 problem)
+- **0875**: Koko Eating Bananas (Medium) — *Arrays*
+
+### 0901-1000 (0 problems)
+*No solutions in this range*
+
+### 1001-1100 (1 problem)
+- **1011**: Capacity To Ship Packages Within D Days (Medium) — *Arrays*
 
 ## 📝 Notes
 - Problem numbers are formatted with leading zeros (e.g., 0001, 0010, 0100)
